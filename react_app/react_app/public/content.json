@@ -1,0 +1,2728 @@
+{
+  "en": {
+    "home": {
+      "title": "Welcome to Guilherme's Portfolio",
+      "subtitle": "Innovating the Future Through Technology and Creativity",
+      "bio": {
+        "title": "Who I Am",
+        "content": "I am Guilherme, a Data Scientist and Data Engineer who finds fulfillment in turning data into meaningful impact. Armed with a Bachelors in Economics, a Masters in Geospatial Technologies, and over six years in the data IT field, I build solutions that combine analytics and innovation."
+      },
+      "highlights": {
+        "title": "Highlights (v0.033)",
+        "items": [
+          {
+            "title": "Scalable Data Pipelines",
+            "description": "Designing and implementing robust ETL pipelines to process large-scale, time-series data efficiently."
+          },
+          {
+            "title": "Machine Learning for Impact",
+            "description": "Applying advanced machine learning techniques to uncover predictive insights and optimize decision-making."
+          },
+          {
+            "title": "Geospatial Data Insights",
+            "description": "Leveraging spatial data analysis to create actionable solutions for urban planning and environmental challenges."
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "Curriculum Vitae",
+      "content": "With a robust background in computer science and years of experience in software development, my CV highlights my academic credentials, professional roles, and technical expertise. I've led teams in building scalable applications and have a proven track record in delivering impactful solutions.",
+      "education": {
+        "title": "Education",
+        "items": [
+          {
+            "degree": "Masters in Geospatial Technologies",
+            "institution": "Münster University (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "Bachelors in Economics",
+            "institution": "Federal University of Santa Catarina (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "Professional Experience",
+        "items": [
+          {
+            "role": "Cloud Data Engineer",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "Development of data pipelines that ensure data quality and availability, consultancy for external clients, and AI experimentation."
+          },
+          {
+            "role": "Data Consultant",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "Cloud and Data consultancy, with Azure, GCP, Terraform, Python, and Bash, mostly."
+          },
+          {
+            "role": "Census Angent of Adminstration and Informatics",
+            "company": "IBGE - Brazilian Institute of Geography and Statistics",
+            "duration": "2022 - 2024",
+            "description": "Field research for the 2022 Brazilian Census. Management of human resources and training of new Field Census Agents. Allocation of equipment and materials to the field agents."
+          },
+          {
+            "role": "Applied Data Scientist",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "Development of pipelines for time series forecasting, with Bash, Python, R, and Azure."
+          },
+          {
+            "role": "Junior Data Scientist",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "Data Science consultancy in various projects, using R, Python, Docker, JS, CSS, SQL, Postgres, MongoDB, GCP, AWS, Terraform."
+          }
+        ]
+      },
+      "skills": {
+        "title": "Skills",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "GIS",
+          "Machine Learning",
+          "Time-Series Analysis",
+          "Spatial-Serie Analysis",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "Agile",
+          "Flutter",
+          "Dart",
+          "Data Engineering",
+          "Data Science",
+          "API",
+          "REST",
+          "Cloud",
+          "Terraform",
+          "Remote Sensing",
+          "Data Quality",
+          "Documentation",
+          "MongoDB",
+          "Machine Learning",
+          "Deep Learning",
+          "Distributed Computing"
+        ]
+      },
+      "certifications": {
+        "title": "Certifications",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "Awards",
+        "items": [
+          {
+            "name": "Merit-based Scholarship for module Thesis",
+            "issuer": "Münster University (WWU)",
+            "year": "2024",
+            "description": "Awarded for outstanding performance in the Geospatial Technologies program and Thesis module."
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "Publications",
+      "items": [
+        {
+          "title": "Migration Dynamics in Brazil",
+          "subtitle": "A Spatial Econometric Analysis\nMaster's thesis awarded merit-based fellowship in the Erasmus Mundus GeoSpatial Technologies program 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "Higher Education, Economic Complexity, and Knowledge Spillovers Across Micro-Regions of Brazil",
+          "subtitle": "A Geographically Weighted Regression Approach\nBachelor thesis for the degree of Economic Sciences\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "Export complexity, industrial complexity and regional economic growth in Brazil",
+          "subtitle": "A comparison of various complexity (ECI) metrics with Brazilian exports and employment data\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "Notes on the Census Microdata",
+          "subtitle": "Extracting, Transforming, and Loading with Bash, PySpark, and Cloud Storage\nPython, PySpark, HDFS, Big Data, Micro Data, Census",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "Geographic Normalization",
+          "subtitle": "What is it and what are its implications?\nR, Spatial Statistics, Data Visualization",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "Money Neutrality in the Covid19 Era",
+          "subtitle": "An Animated Analysis with R\nBased on economic models, the idea of money neutrality is explained in an animated way. Guilherme rightly predicts inflation in the medium term, as expansionary monetary policies were applied to mitigate the Covid effects. In the long term, 'inflation is nothing but a monetary phenomenon'",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "Socioeconomic Observatory of Santa Catarina",
+          "subtitle": "OSESC\nA dashboard to analyze and forecast time series of Brazilian socio-economic data, with focus on the state of Santa Catarina",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "items": [
+        {
+          "name": "Wilhelm, your Artificial Econometrics Professor",
+          "description": "Digital book to teach Econometrics with the support of an AI Agent, Wilhelm, that helps the user take the most from the classes.",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "An R package to get access to Brazilian polygon data at various spatial granularities, as well as some methods for Exploratory Spatial Data Analysis.",
+          "tech": "R, Rstudio, Posit, Brazil, Polygon, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "Terraform automation script for deployment of Azure Virtual Machines at scale.",
+          "tech": "Terraform, Azure, Cloud Computing",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "How much is this mansion worth?",
+          "description": "Spatial data forecasting to estimate the price of a - supposedly - overpriced house bought by a politician",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "Bash and Python code for a Raspberry Pi send messages when a motion is detected.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Equanimy Systems",
+          "description": "An AI system to efficiently and equitably allocate resources in a group.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "Discovery AI",
+      "subtabs": {
+        "disc1": {
+          "title": "Virtual Guigo",
+          "description": "A personalized AI assistant embodying Guilherme's expertise in data science and geospatial analysis, offering tailored insights and guidance.",
+          "example": "Who is Guilherme and what are his favourite programming languages?",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "disc2": {
+          "title": "GWR Discovery",
+          "description": "A specialized tool for exploring Geographically Weighted Regression models (GWR, MixedGWR, MultiscaleGWR), enabling researchers to compare and analyze spatial regression techniques.",
+          "link": "discovery2",
+          "example": "Compare GWR and MultiscaleGWR for spatial data analysis.",
+          "image": "gwrSearchEngine"
+        },
+        "disc3": {
+          "title": "Masters Thesis Discovery",
+          "description": "A search engine to streamline research on migration driven by economic opportunities, organizing academic resources for Guilherme's master's thesis.",
+          "link": "discovery3",
+          "example": "How does the concept of Sublime Object of Ideology, by Slavoj Zizek, relate to migration?",
+          "image": "migSearchEngine"
+        },
+        "disc4": {
+          "title": "Tom Riddle's Virtual Diary",
+          "description": "An Ollama Phi3 customed model that impersonates the infamous Tom Riddle's diary. Yes, the one who should not be named (Voldemort) memories and thoughts are hereby made available as an AI Chat Bot.",
+          "link": "discovery4",
+          "example": "Are you the half-blood prince?",
+          "image": "diarytom"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "Virtual Guigo Discovery Engine",
+      "description": "A Gemini Discovery Engine that embodies Guilherme's expertise in data science and geospatial analysis, offering tailored insights and guidance.",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "Search here"
+    },
+    "discovery2": {
+      "title": "GWR Discovery AI",
+      "description": "A specialized tool for exploring Geographically Weighted Regression models (GWR, MixedGWR, MultiscaleGWR), enabling researchers to compare and analyze spatial regression techniques.",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "Search here"
+    },
+    "discovery3": {
+      "title": "Masters Thesis Discovery AI",
+      "description": "A search engine to streamline research on migration driven by economic opportunities, organizing academic resources for Guilherme's master's thesis.",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "Search here"
+    },
+    "discovery4": {
+      "title": "Tom Riddle's Virtual Diary",
+      "description": "An Ollama Phi3 customed model that impersonates the infamous Tom Riddle's diary. Yes, the one who should not be named (Voldemort) memories and thoughts are hereby made available as an AI Chat Bot.",
+      "linkApp": "https://toms-frontend-911461992812.us-central1.run.app",
+      "tech": "Tech: Ollama, Phi3, Docker, Python, FastAPI, Streamlit, React, GCP, Terraform, Cloud Run, GitHub Actions",
+      "linkGH": "https://github.com/Gui-go/tom_riddles_diary"
+    },
+    "geolayers": {
+      "title": "GeoLayers",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "Main cities I have been",
+          "description": "Embark on a tour through the main cities I’ve explored, from the historic charm of Rome’s ancient streets to the futuristic skyline of London. Each city holds a unique story, blending vibrant cultures, iconic landmarks, and personal adventures that have shaped my travels.",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "Cities I have lived in",
+          "description": "A brief description of my history abroad, while living and working in Santa Catarina, Ireland, Portugal, and Germany.",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "My favourite restaurants around the world",
+          "description": "Join me on a culinary journey as I share my favorite restaurants around the world, from cozy Portuguese bistros to vibrant street food stalls in São Paulo. Each spot is a personal gem, chosen for its unforgettable flavors, unique atmosphere, and the stories that make dining there truly special.",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "Welcome to geolayers 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "First Section of geolayers 1",
+          "description": "Content for the first section of geolayers one goes here.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Second Section of geolayers 1",
+          "description": "More exciting content for the second part of blog one.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "Cities I have lived in",
+      "subtitle1": "From Roots to Routes",
+      "paragraph1": "I was born in Santa Catarina, a southern Brazilian state where rich culture and landscapes sparked my early curiosity about the world. Growing up there gave me a grounded sense of community and a deep appreciation for local identities—something that would continue to shape my academic and professional interests.",
+      "subtitle2": "An Early Leap to Ireland (2014-2015)",
+      "paragraph2": "In my youth, a pivotal moment came when I moved to Ireland. This international experience, though early in life, broadened my perspective and ignited a fascination with cultural exchange, migration, and global systems. Living abroad at a young age taught me how to adapt quickly and think beyond borders.",
+      "subtitle3": "Returning Home to Grow (2015–2022)",
+      "paragraph3": "After my time in Ireland, I returned to Brazil to pursue a degree in Economics. I studied at the Federal University of Santa Catarina (UFSC), where I developed a strong analytical foundation and a keen interest in spatial inequalities, migration trends, and development patterns. This academic period laid the groundwork for the geospatial lens I apply to economic phenomena today.",
+      "subtitle4": "A Step into Europe: Portugal and IT (2022-2023)",
+      "paragraph4": "Following graduation, I moved to Portugal to work in the IT sector. The shift to tech not only expanded my skillset but also deepened my understanding of digital infrastructures and their global interconnections. It was during this time I began connecting economic theory with real-world systems, through data and cloud technologies.",
+      "subtitle5": "Bringing It All Together: Back to the Professional World",
+      "paragraph5": "Having recently completed my Masters in Geospatial Technologies in Münster, Germany, I am now reintegrating into the professional world with a renewed perspective. My journey across countries and disciplines has equipped me with a unique blend of economic insight, spatial thinking, and technical expertise. I’m eager to apply these skills to meaningful challenges—whether in research, policy, or tech-driven solutions that address how people, places, and data connect in today’s dynamic world."
+    },
+    "geolayer3": {
+      "title": "Exploring geolayers 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Interesting Topic in geolayers 3",
+          "description": "Details about an interesting topic in the second blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "Current Available Blog Posts",
+      "subtabs": {
+        "blog1Link": {
+          "title": "Geographic Projections in D3.js",
+          "description": "Demonstrations of various geographic projection mappings so to understand its differences and similarities.",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "Go to Blog 2",
+          "description": "Click here to read Blog 2.",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "Go to Blog 3",
+          "description": "Click here to read Blog 3.",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "Welcome to Blog 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "First Section of Blog 1",
+          "description": "Content for the first section of blog one goes here.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Second Section of Blog 1",
+          "description": "More exciting content for the second part of blog one.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "Exploring Blog 2",
+      "subtabs": {
+        "itemX": {
+          "title": "Interesting Topic in Blog 2",
+          "description": "Details about an interesting topic in the second blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "Exploring Blog 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Interesting Topic in Blog 3",
+          "description": "Details about an interesting topic in the second blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "About Me",
+      "bio": "I'm Guilherme, a data scientist and geospatial analyst passionate about uncovering insights through data. Based somewhere on Earth, I specialize in econometrics, spatial regression, and AI-driven solutions. I'm open to freelance projects, collaborations, or just a chat about tech!",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "Portfolio",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "Get in Touch",
+        "intro": "Send me a Pub/Sub message!",
+        "name_label": "Name",
+        "email_label": "Email",
+        "message_label": "Message",
+        "send_button": "Send Message"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "Home",
+      "cv": "CV",
+      "publications": "Publications",
+      "projects": "Projects",
+      "geolayers": "GeoLayers",
+      "discovery": "Discovery",
+      "blog": "Blog",
+      "about": "About"
+    }
+  },
+  "es": {
+    "home": {
+      "title": "Bienvenido al Portafolio de Guilherme",
+      "subtitle": "Innovando el Futuro a Través de la Tecnología y la Creatividad",
+      "bio": {
+        "title": "Quién Soy",
+        "content": "Soy Guilherme, un Científico de Datos e Ingeniero de Datos que encuentra satisfacción en transformar datos en impacto significativo. Con una licenciatura en Economía, una maestría en Tecnologías Geoespaciales y más de seis años en el campo de TI de datos, construyo soluciones que combinan análisis e innovación."
+      },
+      "highlights": {
+        "title": "Destacados (v0.033)",
+        "items": [
+          {
+            "title": "Pipelines de Datos Escalables",
+            "description": "Diseñando e implementando pipelines ETL robustos para procesar datos a gran escala y series temporales de manera eficiente."
+          },
+          {
+            "title": "Machine Learning con Impacto",
+            "description": "Aplicando técnicas avanzadas de machine learning para descubrir insights predictivos y optimizar la toma de decisiones."
+          },
+          {
+            "title": "Análisis de Datos Geoespaciales",
+            "description": "Utilizando análisis de datos espaciales para crear soluciones accionables en planificación urbana y desafíos ambientales."
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "Currículum Vitae",
+      "content": "Con una sólida formación en informática y años de experiencia en desarrollo de software, mi CV destaca mis credenciales académicas, roles profesionales y experiencia técnica. He liderado equipos en la construcción de aplicaciones escalables y tengo un historial comprobado en la entrega de soluciones impactantes.",
+      "education": {
+        "title": "Educación",
+        "items": [
+          {
+            "degree": "Maestría en Tecnologías Geoespaciales",
+            "institution": "Universidad de Münster (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "Licenciatura en Economía",
+            "institution": "Universidad Federal de Santa Catarina (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "Experiencia Profesional",
+        "items": [
+          {
+            "role": "Ingeniero de Datos en la Nube",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "Desarrollo de pipelines de datos que garantizan calidad y disponibilidad de datos, consultoría para clientes externos y experimentación con IA."
+          },
+          {
+            "role": "Consultor de Datos",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "Consultoría en Nube y Datos, principalmente con Azure, GCP, Terraform, Python y Bash."
+          },
+          {
+            "role": "Agente Censal de Administración e Informática",
+            "company": "IBGE - Instituto Brasileño de Geografía y Estadística",
+            "duration": "2022 - 2024",
+            "description": "Investigación de campo para el Censo Brasileño 2022. Gestión de recursos humanos y capacitación de nuevos Agentes Censales. Distribución de equipos y materiales a los agentes de campo."
+          },
+          {
+            "role": "Científico de Datos Aplicado",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "Desarrollo de pipelines para pronóstico de series temporales, con Bash, Python, R y Azure."
+          },
+          {
+            "role": "Científico de Datos Junior",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "Consultoría en Ciencia de Datos en varios proyectos, usando R, Python, Docker, JS, CSS, SQL, Postgres, MongoDB, GCP, AWS, Terraform."
+          }
+        ]
+      },
+      "skills": {
+        "title": "Habilidades",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "GIS",
+          "Machine Learning",
+          "Análisis de Series Temporales",
+          "Análisis Espacial-Series",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "Agile",
+          "Flutter",
+          "Dart",
+          "Ingeniería de Datos",
+          "Ciencia de Datos",
+          "API",
+          "REST",
+          "Cloud",
+          "Terraform",
+          "Teledetección",
+          "Calidad de Datos",
+          "Documentación",
+          "MongoDB",
+          "Machine Learning",
+          "Deep Learning",
+          "Computación Distribuida"
+        ]
+      },
+      "certifications": {
+        "title": "Certificaciones",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "Premios",
+        "items": [
+          {
+            "name": "Beca por Mérito para el módulo de Tesis",
+            "issuer": "Universidad de Münster (WWU)",
+            "year": "2024",
+            "description": "Otorgado por desempeño excepcional en el programa de Tecnologías Geoespaciales y el módulo de Tesis."
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "Publicaciones",
+      "items": [
+        {
+          "title": "Dinámica Migratoria en Brasil",
+          "subtitle": "Un Análisis Econométrico Espacial\nTesis de maestría galardonada con beca por mérito en el programa Erasmus Mundus GeoSpatial Technologies 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "Educación Superior, Complejidad Económica y Derramas de Conocimiento en las Microrregiones de Brasil",
+          "subtitle": "Un Enfoque de Regresión Ponderada Geográficamente\nTesis de licenciatura para el grado de Ciencias Económicas\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "Complejidad de Exportaciones, Complejidad Industrial y Crecimiento Económico Regional en Brasil",
+          "subtitle": "Una comparación de varias métricas de complejidad (ECI) con datos de exportaciones y empleo en Brasil\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "Notas sobre los Microdatos del Censo",
+          "subtitle": "Extracción, Transformación y Carga con Bash, PySpark y Almacenamiento en la Nube\nPython, PySpark, HDFS, Big Data, Microdatos, Censo",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "Normalización Geográfica",
+          "subtitle": "¿Qué es y cuáles son sus implicaciones?\nR, Estadística Espacial, Visualización de Datos",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "Neutralidad del Dinero en la Era Covid19",
+          "subtitle": "Un Análisis Animado con R\nBasado en modelos económicos, la idea de neutralidad del dinero se explica de manera animada. Guilherme predijo correctamente la inflación a mediano plazo, ya que se aplicaron políticas monetarias expansivas para mitigar los efectos del Covid. A largo plazo, 'la inflación no es más que un fenómeno monetario'",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "Observatorio Socioeconómico de Santa Catarina",
+          "subtitle": "OSESC\nUn panel para analizar y pronosticar series temporales de datos socioeconómicos brasileños, con enfoque en el estado de Santa Catarina",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Proyectos",
+      "items": [
+        {
+          "name": "Wilhelm, tu Profesor de Econometría Artificial",
+          "description": "Libro digital para enseñar Econometría con el apoyo de un Agente de IA, Wilhelm, que ayuda al usuario a aprovechar al máximo las clases.",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "Un paquete de R para acceder a datos de polígonos brasileños en varias granularidades espaciales, así como algunos métodos para Análisis Exploratorio de Datos Espaciales.",
+          "tech": "R, Rstudio, Posit, Brasil, Polígono, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "Script de automatización Terraform para implementar Máquinas Virtuales de Azure a escala.",
+          "tech": "Terraform, Azure, Computación en la Nube",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "¿Cuánto vale esta mansión?",
+          "description": "Pronóstico de datos espaciales para estimar el precio de una casa - supuestamente - sobrevalorada comprada por un político",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "Código en Bash y Python para que una Raspberry Pi envíe mensajes cuando se detecta movimiento.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Equanimy Systems",
+          "description": "Un sistema de IA para asignar recursos de manera eficiente y equitativa en un grupo.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "Discovery AI",
+      "subtabs": {
+        "virtual_guigo": {
+          "title": "Guigo Virtual",
+          "description": "Un asistente de IA personalizado que incorpora la experiencia de Guilherme en ciencia de datos y análisis geoespacial, ofreciendo insights y orientación personalizados.",
+          "example": "¿Quién es Guilherme y cuáles son sus lenguajes de programación favoritos?",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "gwr_discovery": {
+          "title": "GWR Discovery",
+          "description": "Una herramienta especializada para explorar modelos de Regresión Ponderada Geográficamente (GWR, MixedGWR, MultiscaleGWR), permitiendo a los investigadores comparar y analizar técnicas de regresión espacial.",
+          "link": "discovery2",
+          "example": "Compara GWR y MultiscaleGWR para análisis de datos espaciales.",
+          "image": "gwrSearchEngine"
+        },
+        "ms_thesis_discovery": {
+          "title": "Masters Thesis Discovery",
+          "description": "Un motor de búsqueda para optimizar investigaciones sobre migración impulsada por oportunidades económicas, organizando recursos académicos para la tesis de maestría de Guilherme.",
+          "link": "discovery3",
+          "example": "¿Cómo se relaciona el concepto de Sublime Objeto de la Ideología, de Slavoj Zizek, con la migración?",
+          "image": "migSearchEngine"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "Virtual Guigo Discovery Engine",
+      "description": "Un Gemini Discovery Engine que incorpora la experiencia de Guilherme en ciencia de datos y análisis geoespacial, ofreciendo insights y orientación personalizados.",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "Buscar aquí"
+    },
+    "discovery2": {
+      "title": "GWR Discovery AI",
+      "description": "Una herramienta especializada para explorar modelos de Regresión Ponderada Geográficamente (GWR, MixedGWR, MultiscaleGWR), permitiendo a los investigadores comparar y analizar técnicas de regresión espacial.",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "Buscar aquí"
+    },
+    "discovery3": {
+      "title": "Masters Thesis Discovery AI",
+      "description": "Un motor de búsqueda para optimizar investigaciones sobre migración impulsada por oportunidades económicas, organizando recursos académicos para la tesis de maestría de Guilherme.",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "Buscar aquí"
+    },
+    "geolayers": {
+      "title": "GeoLayers",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "Principales ciudades que he visitado",
+          "description": "Embárcate en un recorrido por las principales ciudades que he explorado, desde el encanto histórico de las calles antiguas de Roma hasta el skyline futurista de Londres. Cada ciudad guarda una historia única, combinando culturas vibrantes, hitos icónicos y aventuras personales que han dado forma a mis viajes.",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "Ciudades donde he vivido",
+          "description": "Una breve descripción de mi historia en el extranjero, mientras vivía y trabajaba en Santa Catarina, Irlanda, Portugal y Alemania.",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "Mis restaurantes favoritos alrededor del mundo",
+          "description": "Acompáñame en un viaje culinario mientras comparto mis restaurantes favoritos alrededor del mundo, desde acogedores bistrós portugueses hasta puestos de comida callejera vibrantes en São Paulo. Cada lugar es una joya personal, elegida por sus sabores inolvidables, ambiente único y las historias que hacen que comer allí sea realmente especial.",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "Bienvenido a geolayers 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Primera Sección de geolayers 1",
+          "description": "El contenido de la primera sección de geolayers uno va aquí.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Segunda Sección de geolayers 1",
+          "description": "Más contenido emocionante para la segunda parte del blog uno.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "Ciudades donde he vivido",
+      "subtitle1": "De Raíces a Rutas",
+      "paragraph1": "Nací en Santa Catarina, un estado del sur de Brasil, donde la cultura rica y los paisajes despertaron mi curiosidad temprana por el mundo. Crecer allí me dio un sentido de comunidad y una profunda apreciación por las identidades locales, algo que continuaría moldeando mis intereses académicos y profesionales.",
+      "subtitle2": "Un Primer Salto a Irlanda (2014-2015)",
+      "paragraph2": "En mi juventud, un momento crucial fue cuando me mudé a Irlanda. Esta experiencia internacional, aunque temprana en mi vida, amplió mi perspectiva y encendió una fascinación por el intercambio cultural, la migración y los sistemas globales. Vivir en el extranjero a una edad temprana me enseñó a adaptarme rápidamente y pensar más allá de las fronteras.",
+      "subtitle3": "Regresando a Casa para Crecer (2015–2022)",
+      "paragraph3": "Después de mi tiempo en Irlanda, regresé a Brasil para estudiar Economía. Me formé en la Universidad Federal de Santa Catarina (UFSC), donde desarrollé una base analítica sólida y un gran interés en las desigualdades espaciales, las tendencias migratorias y los patrones de desarrollo. Este período académico sentó las bases para la lente geoespacial que aplico a los fenómenos económicos hoy.",
+      "subtitle4": "Un Paso hacia Europa: Portugal y TI (2022-2023)",
+      "paragraph4": "Tras graduarme, me mudé a Portugal para trabajar en el sector de TI. El cambio a la tecnología no solo expandió mis habilidades, sino que también profundizó mi comprensión de las infraestructuras digitales y sus interconexiones globales. Fue durante este tiempo que comencé a conectar la teoría económica con los sistemas del mundo real, a través de datos y tecnologías en la nube.",
+      "subtitle5": "Reuniéndolo Todo: De Vuelta al Mundo Profesional",
+      "paragraph5": "Habiendo completado recientemente mi maestría en Tecnologías Geoespaciales en Münster, Alemania, ahora me estoy reintegrando al mundo profesional con una perspectiva renovada. Mi viaje a través de países y disciplinas me ha equipado con una combinación única de conocimiento económico, pensamiento espacial y experiencia técnica. Estoy ansioso por aplicar estas habilidades a desafíos significativos, ya sea en investigación, políticas o soluciones basadas en tecnología que aborden cómo las personas, los lugares y los datos se conectan en el mundo dinámico de hoy."
+    },
+    "geolayer3": {
+      "title": "Explorando geolayers 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Tema Interesante en geolayers 3",
+          "description": "Detalles sobre un tema interesante en el segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "Publicaciones de Blog Disponibles",
+      "subtabs": {
+        "blog1Link": {
+          "title": "Proyecciones Geográficas en D3.js",
+          "description": "Demostraciones de varios mapeos de proyecciones geográficas para entender sus diferencias y similitudes.",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "Ir al Blog 2",
+          "description": "Haz clic aquí para leer el Blog 2.",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "Ir al Blog 3",
+          "description": "Haz clic aquí para leer el Blog 3.",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "Bienvenido al Blog 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Primera Sección del Blog 1",
+          "description": "El contenido de la primera sección del blog uno va aquí.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Segunda Sección del Blog 1",
+          "description": "Más contenido emocionante para la segunda parte del blog uno.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "Explorando el Blog 2",
+      "subtabs": {
+        "itemX": {
+          "title": "Tema Interesante en el Blog 2",
+          "description": "Detalles sobre un tema interesante en el segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "Explorando el Blog 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Tema Interesante en el Blog 3",
+          "description": "Detalles sobre un tema interesante en el segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "Sobre Mí",
+      "bio": "Soy Guilherme, un científico de datos y analista geoespacial apasionado por descubrir insights a través de los datos. Radicado en algún lugar de la Tierra, me especializo en econometría, regresión espacial y soluciones basadas en IA. ¡Estoy abierto a proyectos freelance, colaboraciones o simplemente a charlar sobre tecnología!",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "Portfolio",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "Contacto",
+        "intro": "¡Envíame un mensaje Pub/Sub!",
+        "name_label": "Nombre",
+        "email_label": "Email",
+        "message_label": "Mensaje",
+        "send_button": "Enviar Mensaje"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "Inicio",
+      "cv": "CV",
+      "publications": "Publicaciones",
+      "projects": "Proyectos",
+      "geolayers": "GeoLayers",
+      "discovery": "Discovery",
+      "blog": "Blog",
+      "about": "Sobre"
+    }
+  },
+  "pt": {
+    "home": {
+      "title": "Bem-vindo ao Portfólio de Guilherme",
+      "subtitle": "Inovando o Futuro Através da Tecnologia e Criatividade",
+      "bio": {
+        "title": "Quem Sou Eu",
+        "content": "Eu sou Guilherme, um Cientista de Dados e Engenheiro de Dados que encontra realização em transformar dados em impacto significativo. Com uma graduação em Economia, um mestrado em Tecnologias Geoespaciais e mais de seis anos na área de TI de dados, construo soluções que combinam análise e inovação."
+      },
+      "highlights": {
+        "title": "Destaques (v0.033)",
+        "items": [
+          {
+            "title": "Pipelines de Dados Escaláveis",
+            "description": "Projetando e implementando pipelines ETL robustos para processar dados em larga escala e séries temporais com eficiência."
+          },
+          {
+            "title": "Machine Learning com Impacto",
+            "description": "Aplicando técnicas avançadas de machine learning para descobrir insights preditivos e otimizar a tomada de decisões."
+          },
+          {
+            "title": "Insights de Dados Geoespaciais",
+            "description": "Utilizando análise de dados espaciais para criar soluções acionáveis para planejamento urbano e desafios ambientais."
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "Currículo",
+      "content": "Com uma sólida formação em ciência da computação e anos de experiência em desenvolvimento de software, meu currículo destaca minhas credenciais acadêmicas, funções profissionais e expertise técnica. Lidero equipes na construção de aplicações escaláveis e tenho um histórico comprovado na entrega de soluções impactantes.",
+      "education": {
+        "title": "Formação Acadêmica",
+        "items": [
+          {
+            "degree": "Mestrado em Tecnologias Geoespaciais",
+            "institution": "Universidade de Münster (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "Bacharelado em Economia",
+            "institution": "Universidade Federal de Santa Catarina (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "Experiência Profissional",
+        "items": [
+          {
+            "role": "Engenheiro de Dados em Nuvem",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "Desenvolvimento de pipelines de dados que garantem qualidade e disponibilidade dos dados, consultoria para clientes externos e experimentação com IA."
+          },
+          {
+            "role": "Consultor de Dados",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "Consultoria em Nuvem e Dados, principalmente com Azure, GCP, Terraform, Python e Bash."
+          },
+          {
+            "role": "Agente Censitário de Administração e Informática",
+            "company": "IBGE - Instituto Brasileiro de Geografia e Estatística",
+            "duration": "2022 - 2024",
+            "description": "Pesquisa de campo para o Censo Brasileiro de 2022. Gestão de recursos humanos e treinamento de novos Agentes Censitários. Alocação de equipamentos e materiais para os agentes de campo."
+          },
+          {
+            "role": "Cientista de Dados Aplicado",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "Desenvolvimento de pipelines para previsão de séries temporais, com Bash, Python, R e Azure."
+          },
+          {
+            "role": "Cientista de Dados Júnior",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "Consultoria em Ciência de Dados em diversos projetos, utilizando R, Python, Docker, JS, CSS, SQL, Postgres, MongoDB, GCP, AWS, Terraform."
+          }
+        ]
+      },
+      "skills": {
+        "title": "Habilidades",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "GIS",
+          "Machine Learning",
+          "Análise de Séries Temporais",
+          "Análise Espacial-Série",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "Agile",
+          "Flutter",
+          "Dart",
+          "Engenharia de Dados",
+          "Ciência de Dados",
+          "API",
+          "REST",
+          "Cloud",
+          "Terraform",
+          "Sensoriamento Remoto",
+          "Qualidade de Dados",
+          "Documentação",
+          "MongoDB",
+          "Machine Learning",
+          "Deep Learning",
+          "Computação Distribuída"
+        ]
+      },
+      "certifications": {
+        "title": "Certificações",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "Prêmios",
+        "items": [
+          {
+            "name": "Bolsa de Mérito para o módulo de Tese",
+            "issuer": "Universidade de Münster (WWU)",
+            "year": "2024",
+            "description": "Concedido por desempenho excepcional no programa de Tecnologias Geoespaciais e no módulo de Tese."
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "Publicações",
+      "items": [
+        {
+          "title": "Dinâmica Migratória no Brasil",
+          "subtitle": "Uma Análise Econométrica Espacial\nTese de mestrado premiada com bolsa de mérito no programa Erasmus Mundus GeoSpatial Technologies 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "Educação Superior, Complexidade Econômica e Externalidades de Conhecimento nas Microrregiões do Brasil",
+          "subtitle": "Uma Abordagem de Regressão Ponderada Geograficamente\nTese de bacharelado para o grau de Ciências Econômicas\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "Complexidade das Exportações, Complexidade Industrial e Crescimento Econômico Regional no Brasil",
+          "subtitle": "Uma comparação de várias métricas de complexidade (ECI) com dados de exportações e emprego no Brasil\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "Notas sobre os Microdados do Censo",
+          "subtitle": "Extraindo, Transformando e Carregando com Bash, PySpark e Armazenamento em Nuvem\nPython, PySpark, HDFS, Big Data, Microdados, Censo",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "Normalização Geográfica",
+          "subtitle": "O que é e quais são suas implicações?\nR, Estatística Espacial, Visualização de Dados",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "Neutralidade da Moeda na Era Covid19",
+          "subtitle": "Uma Análise Animada com R\nBaseado em modelos econômicos, a ideia de neutralidade da moeda é explicada de forma animada. Guilherme previu corretamente a inflação no médio prazo, já que políticas monetárias expansionistas foram aplicadas para mitigar os efeitos da Covid. No longo prazo, 'a inflação não passa de um fenômeno monetário'",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "Observatório Socioeconômico de Santa Catarina",
+          "subtitle": "OSESC\nUm painel para analisar e prever séries temporais de dados socioeconômicos brasileiros, com foco no estado de Santa Catarina",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projetos",
+      "items": [
+        {
+          "name": "Wilhelm, seu Professor de Econometria Artificial",
+          "description": "Livro digital para ensinar Econometria com o suporte de um Agente de IA, Wilhelm, que ajuda o usuário a aproveitar ao máximo as aulas.",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "Um pacote R para acessar dados de polígonos brasileiros em várias granularidades espaciais, além de alguns métodos para Análise Exploratória de Dados Espaciais.",
+          "tech": "R, Rstudio, Posit, Brasil, Polígono, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "Script de automação Terraform para implantação de Máquinas Virtuais Azure em escala.",
+          "tech": "Terraform, Azure, Computação em Nuvem",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "Quanto vale esta mansão?",
+          "description": "Previsão de dados espaciais para estimar o preço de uma casa - supostamente - superfaturada comprada por um político",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "Código em Bash e Python para um Raspberry Pi enviar mensagens quando um movimento é detectado.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Equanimy Systems",
+          "description": "Um sistema de IA para alocar recursos de forma eficiente e equitativa em um grupo.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "Discovery AI",
+      "subtabs": {
+        "virtual_guigo": {
+          "title": "Guigo Virtual",
+          "description": "Um assistente de IA personalizado que incorpora a expertise de Guilherme em ciência de dados e análise geoespacial, oferecendo insights e orientação sob medida.",
+          "example": "Quem é Guilherme e quais são suas linguagens de programação favoritas?",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "gwr_discovery": {
+          "title": "GWR Discovery",
+          "description": "Uma ferramenta especializada para explorar modelos de Regressão Ponderada Geograficamente (GWR, MixedGWR, MultiscaleGWR), permitindo que pesquisadores comparem e analisem técnicas de regressão espacial.",
+          "link": "discovery2",
+          "example": "Compare GWR e MultiscaleGWR para análise de dados espaciais.",
+          "image": "gwrSearchEngine"
+        },
+        "ms_thesis_discovery": {
+          "title": "Masters Thesis Discovery",
+          "description": "Um mecanismo de busca para otimizar pesquisas sobre migração impulsionada por oportunidades econômicas, organizando recursos acadêmicos para a tese de mestrado de Guilherme.",
+          "link": "discovery3",
+          "example": "Como o conceito de Sublime Objeto da Ideologia, de Slavoj Zizek, se relaciona com a migração?",
+          "image": "migSearchEngine"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "Virtual Guigo Discovery Engine",
+      "description": "Um Gemini Discovery Engine que incorpora a expertise de Guilherme em ciência de dados e análise geoespacial, oferecendo insights e orientação sob medida.",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "Pesquise aqui"
+    },
+    "discovery2": {
+      "title": "GWR Discovery AI",
+      "description": "Uma ferramenta especializada para explorar modelos de Regressão Ponderada Geograficamente (GWR, MixedGWR, MultiscaleGWR), permitindo que pesquisadores comparem e analisem técnicas de regressão espacial.",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "Pesquise aqui"
+    },
+    "discovery3": {
+      "title": "Masters Thesis Discovery AI",
+      "description": "Um mecanismo de busca para otimizar pesquisas sobre migração impulsionada por oportunidades econômicas, organizando recursos acadêmicos para a tese de mestrado de Guilherme.",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "Pesquise aqui"
+    },
+    "geolayers": {
+      "title": "GeoLayers",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "Principais cidades que visitei",
+          "description": "Embarque em um tour pelas principais cidades que explorei, desde o charme histórico das ruas antigas de Roma até o skyline futurista de Londres. Cada cidade guarda uma história única, misturando culturas vibrantes, marcos icônicos e aventuras pessoais que moldaram minhas viagens.",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "Cidades onde morei",
+          "description": "Uma breve descrição da minha história no exterior, enquanto vivia e trabalhava em Santa Catarina, Irlanda, Portugal e Alemanha.",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "Meus restaurantes favoritos ao redor do mundo",
+          "description": "Acompanhe-me em uma jornada culinária enquanto compartilho meus restaurantes favoritos pelo mundo, desde bistrôs aconchegantes em Portugal até barracas de comida de rua vibrantes em São Paulo. Cada lugar é uma joia pessoal, escolhida por seus sabores inesquecíveis, atmosfera única e as histórias que tornam a experiência de comer lá verdadeiramente especial.",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "Bem-vindo ao geolayers 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Primeira Seção do geolayers 1",
+          "description": "O conteúdo da primeira seção do geolayers um vai aqui.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Segunda Seção do geolayers 1",
+          "description": "Mais conteúdo emocionante para a segunda parte do blog um.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "Cidades onde morei",
+      "subtitle1": "De Raízes a Rotas",
+      "paragraph1": "Nasci em Santa Catarina, um estado do sul do Brasil, onde a cultura rica e as paisagens despertaram minha curiosidade inicial sobre o mundo. Crescer lá me deu um senso de comunidade e uma profunda apreciação por identidades locais - algo que continuaria a moldar meus interesses acadêmicos e profissionais.",
+      "subtitle2": "Um Primeiro Salto para a Irlanda (2014-2015)",
+      "paragraph2": "Na minha juventude, um momento crucial foi quando me mudei para a Irlanda. Essa experiência internacional, embora precoce, ampliou minha perspectiva e acendeu uma fascinação por intercâmbio cultural, migração e sistemas globais. Viver no exterior em uma idade jovem me ensinou a me adaptar rapidamente e pensar além das fronteiras.",
+      "subtitle3": "Voltando para Casa para Crescer (2015–2022)",
+      "paragraph3": "Depois do meu tempo na Irlanda, voltei ao Brasil para cursar Economia. Estudei na Universidade Federal de Santa Catarina (UFSC), onde desenvolvi uma sólida base analítica e um grande interesse em desigualdades espaciais, tendências migratórias e padrões de desenvolvimento. Esse período acadêmico preparou o terreno para a lente geoespacial que aplico a fenômenos econômicos hoje.",
+      "subtitle4": "Um Passo para a Europa: Portugal e TI (2022-2023)",
+      "paragraph4": "Após a graduação, me mudei para Portugal para trabalhar no setor de TI. A mudança para a tecnologia não apenas expandiu minhas habilidades, mas também aprofundou meu entendimento de infraestruturas digitais e suas interconexões globais. Foi durante esse tempo que comecei a conectar teoria econômica com sistemas do mundo real, através de dados e tecnologias em nuvem.",
+      "subtitle5": "Reunindo Tudo: De Volta ao Mundo Profissional",
+      "paragraph5": "Tendo recentemente concluído meu mestrado em Tecnologias Geoespaciais em Münster, Alemanha, agora estou me reintegrando ao mundo profissional com uma perspectiva renovada. Minha jornada por países e disciplinas me equipou com uma combinação única de insight econômico, pensamento espacial e expertise técnica. Estou ansioso para aplicar essas habilidades em desafios significativos - seja em pesquisa, políticas ou soluções baseadas em tecnologia que abordem como pessoas, lugares e dados se conectam no mundo dinâmico de hoje."
+    },
+    "geolayer3": {
+      "title": "Explorando geolayers 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Tópico Interessante no geolayers 3",
+          "description": "Detalhes sobre um tópico interessante no segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "Posts de Blog Disponíveis",
+      "subtabs": {
+        "blog1Link": {
+          "title": "Projeções Geográficas em D3.js",
+          "description": "Demonstrações de vários mapeamentos de projeções geográficas para entender suas diferenças e similaridades.",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "Ir para o Blog 2",
+          "description": "Clique aqui para ler o Blog 2.",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "Ir para o Blog 3",
+          "description": "Clique aqui para ler o Blog 3.",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "Bem-vindo ao Blog 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Primeira Seção do Blog 1",
+          "description": "O conteúdo da primeira seção do blog um vai aqui.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Segunda Seção do Blog 1",
+          "description": "Mais conteúdo emocionante para a segunda parte do blog um.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "Explorando o Blog 2",
+      "subtabs": {
+        "itemX": {
+          "title": "Tópico Interessante no Blog 2",
+          "description": "Detalhes sobre um tópico interessante no segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "Explorando o Blog 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Tópico Interessante no Blog 3",
+          "description": "Detalhes sobre um tópico interessante no segundo blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "Sobre Mim",
+      "bio": "Eu sou Guilherme, um cientista de dados e analista geoespacial apaixonado por descobrir insights através de dados. Baseado em algum lugar na Terra, eu me especializo em econometria, regressão espacial e soluções baseadas em IA. Estou aberto a projetos freelancer, colaborações ou apenas uma conversa sobre tecnologia!",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "Portfolio",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "Entre em Contato",
+        "intro": "Envie-me uma mensagem Pub/Sub!",
+        "name_label": "Nome",
+        "email_label": "Email",
+        "message_label": "Mensagem",
+        "send_button": "Enviar Mensagem"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "Início",
+      "cv": "Currículo",
+      "publications": "Publicações",
+      "projects": "Projetos",
+      "geolayers": "GeoLayers",
+      "discovery": "Discovery",
+      "blog": "Blog",
+      "about": "Sobre"
+    }
+  },
+  "de": {
+    "home": {
+      "title": "Willkommen in Guilhermes Portfolio",
+      "subtitle": "Die Zukunft gestalten durch Technologie und Kreativität",
+      "bio": {
+        "title": "Wer ich bin",
+        "content": "Ich bin Guilherme, ein Data Scientist und Data Engineer, der Erfüllung darin findet, Daten in bedeutungsvolle Wirkung zu verwandeln. Mit einem Bachelor in Wirtschaftswissenschaften, einem Master in Geospatial Technologies und über sechs Jahren Erfahrung im IT-Datenbereich entwickle ich Lösungen, die Analytik und Innovation verbinden."
+      },
+      "highlights": {
+        "title": "Highlights (v0.033)",
+        "items": [
+          {
+            "title": "Skalierbare Datenpipelines",
+            "description": "Entwurf und Implementierung robuster ETL-Pipelines zur effizienten Verarbeitung von großvolumigen Zeitreihendaten."
+          },
+          {
+            "title": "Machine Learning mit Wirkung",
+            "description": "Anwendung fortgeschrittener Machine-Learning-Techniken, um prädiktive Erkenntnisse zu gewinnen und Entscheidungsprozesse zu optimieren."
+          },
+          {
+            "title": "Geospatiale Datenanalyse",
+            "description": "Nutzung räumlicher Datenanalysen zur Entwicklung umsetzbarer Lösungen für Stadtplanung und Umweltprobleme."
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "Lebenslauf",
+      "content": "Mit einem starken Hintergrund in Informatik und jahrelanger Erfahrung in der Softwareentwicklung zeigt mein Lebenslauf meine akademischen Qualifikationen, beruflichen Stationen und technischen Fähigkeiten. Ich habe Teams bei der Entwicklung skalierbarer Anwendungen geleitet und habe eine nachgewiesene Erfolgsbilanz in der Lieferung wirkungsvoller Lösungen.",
+      "education": {
+        "title": "Ausbildung",
+        "items": [
+          {
+            "degree": "Master in Geospatial Technologies",
+            "institution": "Universität Münster (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "Bachelor in Wirtschaftswissenschaften",
+            "institution": "Bundesuniversität von Santa Catarina (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "Berufserfahrung",
+        "items": [
+          {
+            "role": "Cloud Data Engineer",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "Entwicklung von Datenpipelines zur Sicherstellung von Datenqualität und -verfügbarkeit, Beratung externer Kunden und Experimente mit KI."
+          },
+          {
+            "role": "Data Consultant",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "Beratung in Cloud- und Datenfragen, hauptsächlich mit Azure, GCP, Terraform, Python und Bash."
+          },
+          {
+            "role": "Zensusmitarbeiter für Verwaltung und Informatik",
+            "company": "IBGE - Brasilianisches Institut für Geographie und Statistik",
+            "duration": "2022 - 2024",
+            "description": "Feldforschung für den brasilianischen Zensus 2022. Personalmanagement und Schulung neuer Feldforschungsmitarbeiter. Zuweisung von Ausrüstung und Material an die Feldforscher."
+          },
+          {
+            "role": "Applied Data Scientist",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "Entwicklung von Pipelines für Zeitreihenvorhersagen mit Bash, Python, R und Azure."
+          },
+          {
+            "role": "Junior Data Scientist",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "Data-Science-Beratung in verschiedenen Projekten mit R, Python, Docker, JS, CSS, SQL, Postgres, MongoDB, GCP, AWS, Terraform."
+          }
+        ]
+      },
+      "skills": {
+        "title": "Fähigkeiten",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "GIS",
+          "Machine Learning",
+          "Zeitreihenanalyse",
+          "Räumliche Zeitreihenanalyse",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "Agile",
+          "Flutter",
+          "Dart",
+          "Data Engineering",
+          "Data Science",
+          "API",
+          "REST",
+          "Cloud",
+          "Terraform",
+          "Fernerkundung",
+          "Datenqualität",
+          "Dokumentation",
+          "MongoDB",
+          "Machine Learning",
+          "Deep Learning",
+          "Verteilte Datenverarbeitung"
+        ]
+      },
+      "certifications": {
+        "title": "Zertifizierungen",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practitioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "Auszeichnungen",
+        "items": [
+          {
+            "name": "Leistungsstipendium für das Thesemodul",
+            "issuer": "Universität Münster (WWU)",
+            "year": "2024",
+            "description": "Verliehen für herausragende Leistungen im Geospatial Technologies-Programm und Thesemodul."
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "Veröffentlichungen",
+      "items": [
+        {
+          "title": "Migrationsdynamik in Brasilien",
+          "subtitle": "Eine räumlich ökonometrische Analyse\nMasterarbeit, die mit einem Leistungsstipendium im Erasmus Mundus GeoSpatial Technologies-Programm 2025 ausgezeichnet wurde\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "Hochschulbildung, wirtschaftliche Komplexität und Wissensspillover in Mikroregionen Brasiliens",
+          "subtitle": "Ein Geographically Weighted Regression-Ansatz\nBachelorarbeit für den Abschluss in Wirtschaftswissenschaften\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "Exportkomplexität, industrielle Komplexität und regionales Wirtschaftswachstum in Brasilien",
+          "subtitle": "Ein Vergleich verschiedener Komplexitätsmetriken (ECI) mit brasilianischen Export- und Beschäftigungsdaten\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "Notizen zu den Zensus-Mikrodaten",
+          "subtitle": "Extraktion, Transformation und Laden mit Bash, PySpark und Cloud Storage\nPython, PySpark, HDFS, Big Data, Mikrodaten, Zensus",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "Geografische Normalisierung",
+          "subtitle": "Was ist das und welche Auswirkungen hat es?\nR, Räumliche Statistik, Datenvisualisierung",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "Geldneutralität in der Covid19-Ära",
+          "subtitle": "Eine animierte Analyse mit R\nBasierend auf ökonomischen Modellen wird das Konzept der Geldneutralität auf animierte Weise erklärt. Guilherme sagt die Inflation mittelfristig korrekt voraus, da expansive Geldpolitik zur Milderung der Covid-Auswirkungen eingesetzt wurde. Langfristig ist 'Inflation nichts anderes als ein monetäres Phänomen'.",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "Sozioökonomisches Observatorium von Santa Catarina",
+          "subtitle": "OSESC\nEin Dashboard zur Analyse und Vorhersage von Zeitreihen brasilianischer sozioökonomischer Daten mit Fokus auf den Bundesstaat Santa Catarina",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projekte",
+      "items": [
+        {
+          "name": "Wilhelm, dein künstlicher Ökonometrie-Professor",
+          "description": "Digitales Buch zum Unterrichten von Ökonometrie mit Unterstützung eines KI-Agenten, Wilhelm, der dem Nutzer hilft, das Beste aus den Kursen herauszuholen.",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "Ein R-Paket zum Zugriff auf brasilianische Polygondaten auf verschiedenen räumlichen Granularitätsebenen sowie einige Methoden für explorative räumliche Datenanalyse.",
+          "tech": "R, Rstudio, Posit, Brasilien, Polygon, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "Terraform-Automatisierungsskript für die Bereitstellung von Azure Virtual Machines in großem Maßstab.",
+          "tech": "Terraform, Azure, Cloud Computing",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "Wie viel ist diese Villa wert?",
+          "description": "Räumliche Datenvorhersage zur Schätzung des Preises eines - vermeintlich - überteuerten Hauses, das von einem Politiker gekauft wurde",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "Bash- und Python-Code für einen Raspberry Pi, der Nachrichten sendet, wenn eine Bewegung erkannt wird.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Equanimy Systems",
+          "description": "Ein KI-System zur effizienten und gerechten Ressourcenverteilung in einer Gruppe.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "Discovery AI",
+      "subtabs": {
+        "virtual_guigo": {
+          "title": "Virtueller Guigo",
+          "description": "Ein personalisierter KI-Assistent, der Guilhermes Expertise in Data Science und geospatialer Analyse verkörpert und maßgeschneiderte Einblicke und Anleitung bietet.",
+          "example": "Wer ist Guilherme und was sind seine Lieblingsprogrammiersprachen?",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "gwr_discovery": {
+          "title": "GWR Discovery",
+          "description": "Ein spezialisiertes Tool zur Erforschung von Geographically Weighted Regression-Modellen (GWR, MixedGWR, MultiscaleGWR), das Forschern ermöglicht, räumliche Regressionstechniken zu vergleichen und zu analysieren.",
+          "link": "discovery2",
+          "example": "Vergleiche GWR und MultiscaleGWR für räumliche Datenanalyse.",
+          "image": "gwrSearchEngine"
+        },
+        "ms_thesis_discovery": {
+          "title": "Masterarbeit Discovery",
+          "description": "Eine Suchmaschine zur Vereinfachung der Forschung zu wirtschaftlich motivierter Migration, die akademische Ressourcen für Guilhermes Masterarbeit organisiert.",
+          "link": "discovery3",
+          "example": "Wie hängt das Konzept des Sublimen Objekts der Ideologie von Slavoj Zizek mit Migration zusammen?",
+          "image": "migSearchEngine"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "Virtueller Guigo Discovery Engine",
+      "description": "Eine Gemini Discovery Engine, die Guilhermes Expertise in Data Science und geospatialer Analyse verkörpert und maßgeschneiderte Einblicke und Anleitung bietet.",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "Hier suchen"
+    },
+    "discovery2": {
+      "title": "GWR Discovery AI",
+      "description": "Ein spezialisiertes Tool zur Erforschung von Geographically Weighted Regression-Modellen (GWR, MixedGWR, MultiscaleGWR), das Forschern ermöglicht, räumliche Regressionstechniken zu vergleichen und zu analysieren.",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "Hier suchen"
+    },
+    "discovery3": {
+      "title": "Masterarbeit Discovery AI",
+      "description": "Eine Suchmaschine zur Vereinfachung der Forschung zu wirtschaftlich motivierter Migration, die akademische Ressourcen für Guilhermes Masterarbeit organisiert.",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "Hier suchen"
+    },
+    "geolayers": {
+      "title": "GeoLayers",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "Hauptstädte, die ich besucht habe",
+          "description": "Begib dich auf eine Reise durch die Hauptstädte, die ich erkundet habe - vom historischen Charme der alten Straßen Roms bis zur futuristischen Skyline Londons. Jede Stadt erzählt eine einzigartige Geschichte, die lebendige Kulturen, ikonische Wahrzeichen und persönliche Abenteuer vereint, die meine Reisen geprägt haben.",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "Städte, in denen ich gelebt habe",
+          "description": "Eine kurze Beschreibung meiner Geschichte im Ausland, während ich in Santa Catarina, Irland, Portugal und Deutschland gelebt und gearbeitet habe.",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "Meine Lieblingsrestaurants auf der Welt",
+          "description": "Begleite mich auf eine kulinarische Reise, während ich meine Lieblingsrestaurants auf der Welt teile - von gemütlichen portugiesischen Bistros bis zu lebendigen Street-Food-Ständen in São Paulo. Jeder Ort ist ein persönliches Juwel, ausgewählt für seinen unvergesslichen Geschmack, einzigartige Atmosphäre und die Geschichten, die das Essen dort besonders machen.",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "Willkommen zu Geolayers 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Erster Abschnitt von Geolayers 1",
+          "description": "Inhalt für den ersten Abschnitt von Geolayers eins kommt hier.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Zweiter Abschnitt von Geolayers 1",
+          "description": "Weitere spannende Inhalte für den zweiten Teil von Blog eins.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "Städte, in denen ich gelebt habe",
+      "subtitle1": "Von Wurzeln zu Wegen",
+      "paragraph1": "Ich wurde in Santa Catarina geboren, einem südbrasilianischen Bundesstaat, wo reiche Kultur und Landschaften meine frühe Neugier auf die Welt weckten. Dort aufzuwachsen gab mir ein Gefühl von Gemeinschaft und eine tiefe Wertschätzung für lokale Identitäten - etwas, das meine akademischen und beruflichen Interessen weiter prägen würde.",
+      "subtitle2": "Ein früher Sprung nach Irland (2014-2015)",
+      "paragraph2": "In meiner Jugend kam ein entscheidender Moment, als ich nach Irland zog. Diese internationale Erfahrung erweiterte meinen Horizont und entfachte eine Faszination für kulturellen Austausch, Migration und globale Systeme. Das Leben im Ausland in jungen Jahren lehrte mich, mich schnell anzupassen und über Grenzen hinaus zu denken.",
+      "subtitle3": "Rückkehr nach Hause zum Wachsen (2015–2022)",
+      "paragraph3": "Nach meiner Zeit in Irland kehrte ich nach Brasilien zurück, um Wirtschaftswissenschaften zu studieren. Ich studierte an der Bundesuniversität von Santa Catarina (UFSC), wo ich eine starke analytische Grundlage und ein großes Interesse an räumlichen Ungleichheiten, Migrationstrends und Entwicklungsmustern entwickelte. Diese akademische Phase legte den Grundstein für die geospatiale Perspektive, die ich heute auf wirtschaftliche Phänomene anwende.",
+      "subtitle4": "Ein Schritt nach Europa: Portugal und IT (2022-2023)",
+      "paragraph4": "Nach meinem Abschluss zog ich nach Portugal, um im IT-Sektor zu arbeiten. Der Wechsel in die Technologie erweiterte nicht nur meine Fähigkeiten, sondern vertiefte auch mein Verständnis digitaler Infrastrukturen und ihrer globalen Vernetzung. Während dieser Zeit begann ich, Wirtschaftstheorie mit realen Systemen durch Daten und Cloud-Technologien zu verbinden.",
+      "subtitle5": "Alles zusammenführen: Rückkehr in die Berufswelt",
+      "paragraph5": "Nachdem ich kürzlich meinen Master in Geospatial Technologies in Münster, Deutschland, abgeschlossen habe, kehre ich mit einer neuen Perspektive in die Berufswelt zurück. Meine Reise durch Länder und Disziplinen hat mich mit einer einzigartigen Kombination aus wirtschaftlichem Verständnis, räumlichem Denken und technischem Know-how ausgestattet. Ich freue mich darauf, diese Fähigkeiten auf bedeutungsvolle Herausforderungen anzuwenden - sei es in der Forschung, Politik oder tech-gestützten Lösungen, die die Verbindung von Menschen, Orten und Daten in der dynamischen Welt von heute adressieren."
+    },
+    "geolayer3": {
+      "title": "Erkundung von Geolayers 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Interessantes Thema in Geolayers 3",
+          "description": "Details über ein interessantes Thema im zweiten Blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "Aktuell verfügbare Blogbeiträge",
+      "subtabs": {
+        "blog1Link": {
+          "title": "Geografische Projektionen in D3.js",
+          "description": "Demonstrationen verschiedener geografischer Projektionsabbildungen, um deren Unterschiede und Gemeinsamkeiten zu verstehen.",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "Zu Blog 2 gehen",
+          "description": "Klicke hier, um Blog 2 zu lesen.",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "Zu Blog 3 gehen",
+          "description": "Klicke hier, um Blog 3 zu lesen.",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "Willkommen zu Blog 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Erster Abschnitt von Blog 1",
+          "description": "Inhalt für den ersten Abschnitt von Blog eins kommt hier.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Zweiter Abschnitt von Blog 1",
+          "description": "Weitere spannende Inhalte für den zweiten Teil von Blog eins.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "Erkundung von Blog 2",
+      "subtabs": {
+        "itemX": {
+          "title": "Interessantes Thema in Blog 2",
+          "description": "Details über ein interessantes Thema im zweiten Blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "Erkundung von Blog 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Interessantes Thema in Blog 3",
+          "description": "Details über ein interessantes Thema im zweiten Blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "Über mich",
+      "bio": "Ich bin Guilherme, ein Data Scientist und Geospatial Analyst, der leidenschaftlich gerne Erkenntnisse durch Daten gewinnt. Irgendwo auf der Erde zu Hause, spezialisiere ich mich auf Ökonometrie, räumliche Regression und KI-gestützte Lösungen. Ich bin offen für freiberufliche Projekte, Zusammenarbeiten oder einfach einen Plausch über Technik!",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "Portfolio",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "Kontakt",
+        "intro": "Schick mir eine Pub/Sub-Nachricht!",
+        "name_label": "Name",
+        "email_label": "E-Mail",
+        "message_label": "Nachricht",
+        "send_button": "Nachricht senden"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "Start",
+      "cv": "Lebenslauf",
+      "publications": "Veröffentlichungen",
+      "projects": "Projekte",
+      "geolayers": "GeoLayers",
+      "discovery": "Discovery",
+      "blog": "Blog",
+      "about": "Über mich"
+    }
+  },
+  "fr": {
+    "home": {
+      "title": "Bienvenue sur le Portfolio de Guilherme",
+      "subtitle": "Innover pour le Futur à travers la Technologie et la Créativité",
+      "bio": {
+        "title": "Qui suis-je",
+        "content": "Je suis Guilherme, un Data Scientist et Data Engineer qui trouve son épanouissement dans la transformation des données en impact significatif. Titulaire d'une licence en Économie, d'un master en Technologies Géospatiales et avec plus de six ans d'expérience dans le domaine des données informatiques, je construis des solutions qui allient analyse et innovation."
+      },
+      "highlights": {
+        "title": "Points Forts (v0.033)",
+        "items": [
+          {
+            "title": "Pipelines de Données Évolutifs",
+            "description": "Conception et mise en œuvre de pipelines ETL robustes pour traiter efficacement des données à grande échelle et temporelles."
+          },
+          {
+            "title": "Machine Learning à Impact",
+            "description": "Application de techniques avancées de machine learning pour découvrir des insights prédictifs et optimiser la prise de décision."
+          },
+          {
+            "title": "Insights Géospatiaux",
+            "description": "Exploitation de l'analyse de données spatiales pour créer des solutions actionnables pour l'urbanisme et les défis environnementaux."
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "Curriculum Vitae",
+      "content": "Avec une solide formation en informatique et des années d'expérience en développement logiciel, mon CV met en avant mes diplômes, mes rôles professionnels et mon expertise technique. J'ai dirigé des équipes dans la construction d'applications évolutives et j'ai un historique prouvé dans la livraison de solutions impactantes.",
+      "education": {
+        "title": "Formation",
+        "items": [
+          {
+            "degree": "Master en Technologies Géospatiales",
+            "institution": "Université de Münster (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "Licence en Économie",
+            "institution": "Université Fédérale de Santa Catarina (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "Expérience Professionnelle",
+        "items": [
+          {
+            "role": "Ingénieur Données Cloud",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "Développement de pipelines de données assurant la qualité et la disponibilité des données, conseil pour des clients externes et expérimentation en IA."
+          },
+          {
+            "role": "Consultant Données",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "Conseil en Cloud et Données, principalement avec Azure, GCP, Terraform, Python et Bash."
+          },
+          {
+            "role": "Agent de Recensement en Administration et Informatique",
+            "company": "IBGE - Institut Brésilien de Géographie et Statistique",
+            "duration": "2022 - 2024",
+            "description": "Recherche sur le terrain pour le Recensement Brésilien 2022. Gestion des ressources humaines et formation des nouveaux agents de recensement. Allocation d'équipements et de matériel aux agents de terrain."
+          },
+          {
+            "role": "Data Scientist Appliqué",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "Développement de pipelines pour la prévision de séries temporelles, avec Bash, Python, R et Azure."
+          },
+          {
+            "role": "Data Scientist Junior",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "Consultant en Data Science sur divers projets, utilisant R, Python, Docker, JS, CSS, SQL, Postgres, MongoDB, GCP, AWS, Terraform."
+          }
+        ]
+      },
+      "skills": {
+        "title": "Compétences",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "SIG",
+          "Machine Learning",
+          "Analyse de Séries Temporelles",
+          "Analyse de Séries Spatiales",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "Agile",
+          "Flutter",
+          "Dart",
+          "Ingénierie des Données",
+          "Science des Données",
+          "API",
+          "REST",
+          "Cloud",
+          "Terraform",
+          "Télédétection",
+          "Qualité des Données",
+          "Documentation",
+          "MongoDB",
+          "Machine Learning",
+          "Deep Learning",
+          "Calcul Distribué"
+        ]
+      },
+      "certifications": {
+        "title": "Certifications",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "Récompenses",
+        "items": [
+          {
+            "name": "Bourse au Mérite pour le module Thèse",
+            "issuer": "Université de Münster (WWU)",
+            "year": "2024",
+            "description": "Décernée pour une performance exceptionnelle dans le programme Technologies Géospatiales et le module Thèse."
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "Publications",
+      "items": [
+        {
+          "title": "Dynamiques Migratoires au Brésil",
+          "subtitle": "Une Analyse Économétrique Spatiale\nThèse de master récompensée par une bourse au mérite dans le programme Erasmus Mundus GeoSpatial Technologies 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "Enseignement Supérieur, Complexité Économique et Externalités de Connaissance dans les Micro-Régions du Brésil",
+          "subtitle": "Une Approche par Régression Géographiquement Pondérée\nThèse de licence pour le diplôme en Sciences Économiques\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "Complexité des Exportations, Complexité Industrielle et Croissance Économique Régionale au Brésil",
+          "subtitle": "Une comparaison de différentes métriques de complexité (ECI) avec les données d'exportation et d'emploi brésiliennes\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "Notes sur les Microdonnées du Recensement",
+          "subtitle": "Extraction, Transformation et Chargement avec Bash, PySpark et Stockage Cloud\nPython, PySpark, HDFS, Big Data, Microdonnées, Recensement",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "Normalisation Géographique",
+          "subtitle": "Qu'est-ce que c'est et quelles sont ses implications ?\nR, Statistiques Spatiales, Visualisation de Données",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "Neutralité de la Monnaie à l'Ère Covid19",
+          "subtitle": "Une Analyse Animée avec R\nBasé sur des modèles économiques, l'idée de neutralité de la monnaie est expliquée de manière animée. Guilherme prédit correctement l'inflation à moyen terme, car des politiques monétaires expansionnistes ont été appliquées pour atténuer les effets du Covid. À long terme, 'l'inflation n'est rien d'autre qu'un phénomène monétaire'",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "Observatoire Socio-économique de Santa Catarina",
+          "subtitle": "OSESC\nUn tableau de bord pour analyser et prévoir des séries temporelles de données socio-économiques brésiliennes, avec un focus sur l'état de Santa Catarina",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projets",
+      "items": [
+        {
+          "name": "Wilhelm, votre Professeur d'Économétrie Artificiel",
+          "description": "Livre numérique pour enseigner l'économétrie avec le support d'un agent IA, Wilhelm, qui aide l'utilisateur à tirer le meilleur parti des cours.",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "Un package R pour accéder aux données polygonales brésiliennes à différentes granularités spatiales, ainsi qu'à des méthodes d'Analyse Exploratoire de Données Spatiales.",
+          "tech": "R, Rstudio, Posit, Brésil, Polygone, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "Script d'automatisation Terraform pour le déploiement de Machines Virtuelles Azure à grande échelle.",
+          "tech": "Terraform, Azure, Cloud Computing",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "Combien vaut ce manoir ?",
+          "description": "Prévision de données spatiales pour estimer le prix d'une maison - supposée - surévaluée achetée par un politicien",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "Code Bash et Python pour un Raspberry Pi envoyant des messages lorsqu'un mouvement est détecté.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Systèmes Equanimy",
+          "description": "Un système IA pour allouer des ressources de manière efficace et équitable dans un groupe.",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "Découverte IA",
+      "subtabs": {
+        "virtual_guigo": {
+          "title": "Guigo Virtuel",
+          "description": "Un assistant IA personnalisé incarnant l'expertise de Guilherme en science des données et analyse géospatiale, offrant des insights et conseils sur mesure.",
+          "example": "Qui est Guilherme et quels sont ses langages de programmation préférés ?",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "gwr_discovery": {
+          "title": "Découverte GWR",
+          "description": "Un outil spécialisé pour explorer les modèles de Régression Géographiquement Pondérée (GWR, MixedGWR, MultiscaleGWR), permettant aux chercheurs de comparer et d'analyser les techniques de régression spatiale.",
+          "link": "discovery2",
+          "example": "Comparez GWR et MultiscaleGWR pour l'analyse de données spatiales.",
+          "image": "gwrSearchEngine"
+        },
+        "ms_thesis_discovery": {
+          "title": "Découverte Thèse de Master",
+          "description": "Un moteur de recherche pour faciliter la recherche sur la migration motivée par les opportunités économiques, organisant les ressources académiques pour la thèse de master de Guilherme.",
+          "link": "discovery3",
+          "example": "Comment le concept de Sublime Objet de l'Idéologie, de Slavoj Zizek, est-il lié à la migration ?",
+          "image": "migSearchEngine"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "Moteur de Découverte Guigo Virtuel",
+      "description": "Un moteur de découverte Gemini incarnant l'expertise de Guilherme en science des données et analyse géospatiale, offrant des insights et conseils sur mesure.",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "Rechercher ici"
+    },
+    "discovery2": {
+      "title": "Découverte IA GWR",
+      "description": "Un outil spécialisé pour explorer les modèles de Régression Géographiquement Pondérée (GWR, MixedGWR, MultiscaleGWR), permettant aux chercheurs de comparer et d'analyser les techniques de régression spatiale.",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "Rechercher ici"
+    },
+    "discovery3": {
+      "title": "Découverte IA Thèse de Master",
+      "description": "Un moteur de recherche pour faciliter la recherche sur la migration motivée par les opportunités économiques, organisant les ressources académiques pour la thèse de master de Guilherme.",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "Rechercher ici"
+    },
+    "geolayers": {
+      "title": "Couches Géographiques",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "Principales villes que j'ai visitées",
+          "description": "Partez en voyage à travers les principales villes que j'ai explorées, du charme historique des rues anciennes de Rome à la skyline futuriste de Londres. Chaque ville raconte une histoire unique, mêlant cultures vibrantes, monuments emblématiques et aventures personnelles qui ont façonné mes voyages.",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "Villes où j'ai vécu",
+          "description": "Une brève description de mon histoire à l'étranger, en vivant et travaillant à Santa Catarina, en Irlande, au Portugal et en Allemagne.",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "Mes restaurants préférés autour du monde",
+          "description": "Rejoignez-moi dans un voyage culinaire où je partage mes restaurants préférés autour du monde, des bistrots portugais chaleureux aux échoppes de street food vibrantes de São Paulo. Chaque endroit est un joyau personnel, choisi pour ses saveurs inoubliables, son atmosphère unique et les histoires qui rendent le repas vraiment spécial.",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "Bienvenue sur les couches géographiques 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Première Section des couches géographiques 1",
+          "description": "Le contenu de la première section des couches géographiques un va ici.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Deuxième Section des couches géographiques 1",
+          "description": "Un contenu plus excitant pour la deuxième partie des couches géographiques un.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "Villes où j'ai vécu",
+      "subtitle1": "Des Racines aux Routes",
+      "paragraph1": "Je suis né à Santa Catarina, un état du sud du Brésil où la culture riche et les paysages ont éveillé ma curiosité précoce pour le monde. Grandir là-bas m'a donné un sens ancré de la communauté et une profonde appréciation des identités locales - quelque chose qui continuerait à façonner mes intérêts académiques et professionnels.",
+      "subtitle2": "Un Premier Saut en Irlande (2014-2015)",
+      "paragraph2": "Dans ma jeunesse, un moment charnière est survenu lorsque j'ai déménagé en Irlande. Cette expérience internationale, bien que précoce dans ma vie, a élargi ma perspective et allumé une fascination pour l'échange culturel, la migration et les systèmes mondiaux. Vivre à l'étranger jeune m'a appris à m'adapter rapidement et à penser au-delà des frontières.",
+      "subtitle3": "Retour à la Maison pour Grandir (2015–2022)",
+      "paragraph3": "Après mon séjour en Irlande, je suis retourné au Brésil pour poursuivre un diplôme en Économie. J'ai étudié à l'Université Fédérale de Santa Catarina (UFSC), où j'ai développé une solide base analytique et un vif intérêt pour les inégalités spatiales, les tendances migratoires et les modèles de développement. Cette période académique a jeté les bases de la perspective géospatiale que j'applique aujourd'hui aux phénomènes économiques.",
+      "subtitle4": "Un Pas en Europe : Portugal et IT (2022-2023)",
+      "paragraph4": "Après l'obtention de mon diplôme, j'ai déménagé au Portugal pour travailler dans le secteur informatique. Le passage à la technologie a non seulement élargi mes compétences, mais aussi approfondi ma compréhension des infrastructures numériques et de leurs interconnexions mondiales. C'est pendant cette période que j'ai commencé à relier la théorie économique aux systèmes réels, à travers les données et les technologies cloud.",
+      "subtitle5": "Tout Rassembler : Retour dans le Monde Professionnel",
+      "paragraph5": "Ayant récemment terminé mon Master en Technologies Géospatiales à Münster, en Allemagne, je réintègre maintenant le monde professionnel avec une perspective renouvelée. Mon voyage à travers les pays et les disciplines m'a doté d'un mélange unique de perspicacité économique, de pensée spatiale et d'expertise technique. Je suis impatient d'appliquer ces compétences à des défis significatifs - que ce soit dans la recherche, les politiques ou les solutions technologiques qui abordent la manière dont les personnes, les lieux et les données se connectent dans le monde dynamique d'aujourd'hui."
+    },
+    "geolayer3": {
+      "title": "Exploration des couches géographiques 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Sujet Intéressant dans les couches géographiques 3",
+          "description": "Détails sur un sujet intéressant dans le deuxième blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "Articles de Blog Disponibles",
+      "subtabs": {
+        "blog1Link": {
+          "title": "Projections Géographiques en D3.js",
+          "description": "Démonstrations de diverses projections géographiques pour comprendre leurs différences et similitudes.",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "Aller au Blog 2",
+          "description": "Cliquez ici pour lire le Blog 2.",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "Aller au Blog 3",
+          "description": "Cliquez ici pour lire le Blog 3.",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "Bienvenue sur le Blog 1",
+      "subtabs": {
+        "sectionA": {
+          "title": "Première Section du Blog 1",
+          "description": "Le contenu de la première section du blog un va ici.",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "Deuxième Section du Blog 1",
+          "description": "Un contenu plus excitant pour la deuxième partie du blog un.",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "Exploration du Blog 2",
+      "subtabs": {
+        "itemX": {
+          "title": "Sujet Intéressant dans le Blog 2",
+          "description": "Détails sur un sujet intéressant dans le deuxième blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "Exploration du Blog 3",
+      "subtabs": {
+        "itemX": {
+          "title": "Sujet Intéressant dans le Blog 3",
+          "description": "Détails sur un sujet intéressant dans le deuxième blog.",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "À Propos de Moi",
+      "bio": "Je suis Guilherme, un data scientist et analyste géospatial passionné par la découverte d'insights à travers les données. Basé quelque part sur Terre, je me spécialise en économétrie, régression spatiale et solutions basées sur l'IA. Je suis ouvert aux projets freelance, collaborations ou simplement à discuter de tech !",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "Portfolio",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "Contactez-moi",
+        "intro": "Envoyez-moi un message Pub/Sub !",
+        "name_label": "Nom",
+        "email_label": "Email",
+        "message_label": "Message",
+        "send_button": "Envoyer le Message"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "Accueil",
+      "cv": "CV",
+      "publications": "Publications",
+      "projects": "Projets",
+      "geolayers": "Couches Géographiques",
+      "discovery": "Découverte",
+      "blog": "Blog",
+      "about": "À Propos"
+    }
+  },
+  "zh": {
+    "home": {
+      "title": "欢迎来到Guilherme的作品集",
+      "subtitle": "通过技术与创新塑造未来",
+      "bio": {
+        "title": "关于我",
+        "content": "我是Guilherme，一名数据科学家和数据工程师，致力于将数据转化为有意义的影响力。拥有经济学学士学位、地理空间技术硕士学位，以及在数据IT领域超过六年的经验，我专注于构建结合分析与创新的解决方案。"
+      },
+      "highlights": {
+        "title": "亮点 (v0.033)",
+        "items": [
+          {
+            "title": "可扩展的数据管道",
+            "description": "设计并实施稳健的ETL管道，高效处理大规模时间序列数据。"
+          },
+          {
+            "title": "具有影响力的机器学习",
+            "description": "应用先进的机器学习技术，揭示预测性洞察并优化决策制定。"
+          },
+          {
+            "title": "地理空间数据洞察",
+            "description": "利用空间数据分析，为城市规划和环境挑战提供可操作的解决方案。"
+          }
+        ]
+      }
+    },
+    "cv": {
+      "title": "简历",
+      "content": "凭借扎实的计算机科学背景和多年的软件开发经验，我的简历展示了我的学术背景、职业角色和技术专长。我曾领导团队构建可扩展的应用程序，并在交付具有影响力的解决方案方面有着良好的记录。",
+      "education": {
+        "title": "教育背景",
+        "items": [
+          {
+            "degree": "地理空间技术硕士",
+            "institution": "明斯特大学 (WWU)",
+            "year": "2023-2025"
+          },
+          {
+            "degree": "经济学学士",
+            "institution": "圣卡塔琳娜联邦大学 (UFSC)",
+            "year": "2018-2022"
+          }
+        ]
+      },
+      "experience": {
+        "title": "职业经历",
+        "items": [
+          {
+            "role": "云数据工程师",
+            "company": "CloudPilots",
+            "duration": "2024 - 2025",
+            "description": "开发确保数据质量和可用性的数据管道，为外部客户提供咨询服务，并进行AI实验。"
+          },
+          {
+            "role": "数据顾问",
+            "company": "Inetum",
+            "duration": "2022 - 2024",
+            "description": "主要使用Azure、GCP、Terraform、Python和Bash进行云和数据咨询。"
+          },
+          {
+            "role": "行政与信息普查员",
+            "company": "巴西地理与统计研究所 (IBGE)",
+            "duration": "2022 - 2024",
+            "description": "参与2022年巴西人口普查的实地调查。管理人力资源并培训新普查员。为实地普查员分配设备和材料。"
+          },
+          {
+            "role": "应用数据科学家",
+            "company": "4Intelligence",
+            "duration": "2021 - 2022",
+            "description": "使用Bash、Python、R和Azure开发时间序列预测管道。"
+          },
+          {
+            "role": "初级数据科学家",
+            "company": "Aquarela",
+            "duration": "2019 - 2021",
+            "description": "在多个项目中提供数据科学咨询服务，使用R、Python、Docker、JS、CSS、SQL、Postgres、MongoDB、GCP、AWS和Terraform等技术。"
+          }
+        ]
+      },
+      "skills": {
+        "title": "技能",
+        "items": [
+          "Python",
+          "Bash",
+          "SQL",
+          "R",
+          "PySpark",
+          "GIS",
+          "机器学习",
+          "时间序列分析",
+          "空间序列分析",
+          "GCP",
+          "Azure",
+          "AWS",
+          "DataForm",
+          "SQLX",
+          "JS",
+          "Docker",
+          "Kubernetes",
+          "AirFlow",
+          "HDFS",
+          "Kafka",
+          "Git",
+          "GitHub",
+          "GitLab",
+          "GitHub Actions",
+          "CI/CD",
+          "Scrum",
+          "敏捷开发",
+          "Flutter",
+          "Dart",
+          "数据工程",
+          "数据科学",
+          "API",
+          "REST",
+          "云计算",
+          "Terraform",
+          "遥感",
+          "数据质量",
+          "文档编写",
+          "MongoDB",
+          "机器学习",
+          "深度学习",
+          "分布式计算"
+        ]
+      },
+      "certifications": {
+        "title": "认证",
+        "items": [
+          {
+            "name": "Associate Cloud Engineer",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Practioner",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Cloud Digital Leader",
+            "issuer": "Google Cloud Platform",
+            "year": "2024"
+          },
+          {
+            "name": "Associate Data Scientist",
+            "issuer": "Microsoft Azure",
+            "year": "2023"
+          }
+        ]
+      },
+      "awards": {
+        "title": "奖项",
+        "items": [
+          {
+            "name": "硕士论文优秀奖学金",
+            "issuer": "明斯特大学 (WWU)",
+            "year": "2024",
+            "description": "因在地理空间技术项目和论文模块中的出色表现而获奖。"
+          }
+        ]
+      }
+    },
+    "publications": {
+      "title": "出版物",
+      "items": [
+        {
+          "title": "巴西的迁移动态",
+          "subtitle": "空间计量经济学分析\n2025年Erasmus Mundus地理空间技术项目硕士论文，获优秀奖学金\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR",
+          "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing"
+        },
+        {
+          "title": "巴西微型区域的高等教育、经济复杂性与知识溢出",
+          "subtitle": "地理加权回归方法\n经济学学士学位论文\nR, Python, GWR",
+          "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754"
+        },
+        {
+          "title": "巴西的出口复杂性、产业复杂性与区域经济增长",
+          "subtitle": "比较多种复杂性指标（ECI）与巴西出口和就业数据\nPython, R, Shiny",
+          "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm"
+        },
+        {
+          "title": "关于普查微观数据的笔记",
+          "subtitle": "使用Bash、PySpark和云存储进行提取、转换和加载\nPython, PySpark, HDFS, 大数据, 微观数据, 普查",
+          "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d"
+        },
+        {
+          "title": "地理标准化",
+          "subtitle": "什么是地理标准化？它有哪些影响？\nR, 空间统计, 数据可视化",
+          "link": "https://aquare.la/normalizacao-geografica/"
+        },
+        {
+          "title": "新冠时代的货币中性",
+          "subtitle": "使用R的动画分析\n基于经济模型，以动画形式解释货币中性概念。Guilherme正确预测了中期通货膨胀，因为扩张性货币政策被用于缓解新冠影响。长期来看，“通货膨胀无非是一种货币现象”。",
+          "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98"
+        },
+        {
+          "title": "圣卡塔琳娜社会经济观察站",
+          "subtitle": "OSESC\n一个用于分析和预测巴西社会经济数据时间序列的仪表板，重点关注圣卡塔琳娜州。",
+          "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view"
+        }
+      ]
+    },
+    "projects": {
+      "title": "项目",
+      "items": [
+        {
+          "name": "Wilhelm，您的人工智能计量经济学教授",
+          "description": "一本数字书籍，通过AI助手Wilhelm的支持教授计量经济学，帮助用户从课程中获得最大收益。",
+          "tech": "GCP, R, Python, SQL",
+          "image": "wilhelmRobotProfessor"
+        },
+        {
+          "name": "BRvectors",
+          "description": "一个R包，用于获取巴西不同空间粒度的多边形数据，以及一些探索性空间数据分析方法。",
+          "tech": "R, Rstudio, Posit, Brazil, Polygon, IBGE, SHP, GeoParquet",
+          "image": "BRvectors"
+        },
+        {
+          "name": "AzureVM4Nomads",
+          "description": "用于大规模部署Azure虚拟机的Terraform自动化脚本。",
+          "tech": "Terraform, Azure, 云计算",
+          "image": "digitalNomad"
+        },
+        {
+          "name": "这座豪宅值多少钱？",
+          "description": "空间数据预测，用于估算一位政治家购买的（据称）价格过高的房屋的价值。",
+          "tech": "Python, SQL",
+          "image": "mansion"
+        },
+        {
+          "name": "Motion Snitcher",
+          "description": "用于树莓派的Bash和Python代码，当检测到运动时发送消息。",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "raspberryPI"
+        },
+        {
+          "name": "Equanimy Systems",
+          "description": "一个AI系统，用于高效且公平地在群体中分配资源。",
+          "tech": "Bash, Python, IoT, RaspberryPi",
+          "image": "dawnofacity"
+        }
+      ]
+    },
+    "discovery": {
+      "title": "探索AI",
+      "subtabs": {
+        "virtual_guigo": {
+          "title": "虚拟Guigo",
+          "description": "一个个性化的AI助手，体现了Guilherme在数据科学和地理空间分析方面的专业知识，提供定制化的见解和指导。",
+          "example": "Guilherme是谁？他最喜欢的编程语言是什么？",
+          "link": "discovery1",
+          "image": "virtualGuigo"
+        },
+        "gwr_discovery": {
+          "title": "GWR探索",
+          "description": "一个专门用于探索地理加权回归模型（GWR、MixedGWR、MultiscaleGWR）的工具，使研究人员能够比较和分析空间回归技术。",
+          "link": "discovery2",
+          "example": "比较GWR和MultiscaleGWR在空间数据分析中的应用。",
+          "image": "gwrSearchEngine"
+        },
+        "ms_thesis_discovery": {
+          "title": "硕士论文探索",
+          "description": "一个搜索引擎，用于简化由经济机会驱动的迁移研究，为Guilherme的硕士论文组织学术资源。",
+          "link": "discovery3",
+          "example": "斯拉沃热·齐泽克的《意识形态的崇高客体》概念如何与迁移相关？",
+          "image": "migSearchEngine"
+        }
+      }
+    },
+    "discovery1": {
+      "title": "虚拟Guigo探索引擎",
+      "description": "一个Gemini探索引擎，体现了Guilherme在数据科学和地理空间分析方面的专业知识，提供定制化的见解和指导。",
+      "configid": "faadabe8-f17d-4a69-8f93-f0dac48512fd",
+      "searchterm": "在此搜索"
+    },
+    "discovery2": {
+      "title": "GWR探索AI",
+      "description": "一个专门用于探索地理加权回归模型（GWR、MixedGWR、MultiscaleGWR）的工具，使研究人员能够比较和分析空间回归技术。",
+      "configid": "b3807ce8-19e2-46b3-a3f8-e3647fe785ec",
+      "searchterm": "在此搜索"
+    },
+    "discovery3": {
+      "title": "硕士论文探索AI",
+      "description": "一个搜索引擎，用于简化由经济机会驱动的迁移研究，为Guilherme的硕士论文组织学术资源。",
+      "configid": "ed260ab9-df84-4dcc-9522-1e76c22b4e84",
+      "searchterm": "在此搜索"
+    },
+    "geolayers": {
+      "title": "地理图层",
+      "subtabs": {
+        "geolayers1Link": {
+          "title": "我去过的主要城市",
+          "description": "踏上我探索过的主要城市之旅，从罗马古老街道的历史魅力到伦敦未来主义的天际线。每座城市都有独特的故事，融合了充满活力的文化、标志性地标和个人冒险，塑造了我的旅行经历。",
+          "link": "geolayer1",
+          "image": "globebridge"
+        },
+        "geolayers2Link": {
+          "title": "我居住过的城市",
+          "description": "简要描述我在圣卡塔琳娜、爱尔兰、葡萄牙和德国生活和工作期间的海外经历。",
+          "link": "geolayer2",
+          "image": "2worlds"
+        },
+        "geolayers3Link": {
+          "title": "我最喜欢的全球餐厅",
+          "description": "与我一起踏上美食之旅，分享我最喜欢的全球餐厅，从舒适的葡萄牙小酒馆到圣保罗充满活力的街头小吃摊。每一处都是我个人珍爱的地方，因其难忘的风味、独特的氛围和背后的故事而显得格外特别。",
+          "link": "geolayer3",
+          "image": "restaurants2world"
+        }
+      }
+    },
+    "geolayer1": {
+      "title": "欢迎来到地理图层1",
+      "subtabs": {
+        "sectionA": {
+          "title": "地理图层1的第一部分",
+          "description": "地理图层1第一部分的内容在此。",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "地理图层1的第二部分",
+          "description": "地理图层1第二部分的更多精彩内容。",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "geolayer2": {
+      "title": "我居住过的城市",
+      "subtitle1": "从根源到旅程",
+      "paragraph1": "我出生在巴西南部的圣卡塔琳娜州，那里丰富的文化和景观激发了我对世界的好奇心。在那里长大让我对社区有了根深蒂固的认同感，并深深欣赏当地特色——这些将继续塑造我的学术和职业兴趣。",
+      "subtitle2": "早年跃迁至爱尔兰（2014-2015）",
+      "paragraph2": "年轻时，我搬到了爱尔兰，这是一个关键时刻。这段国际经历虽然发生在人生的早期阶段，但拓宽了我的视野，并点燃了我对文化交流、迁移和全球系统的兴趣。年轻时在国外生活教会了我如何快速适应并超越国界思考。",
+      "subtitle3": "回国成长（2015–2022）",
+      "paragraph3": "在爱尔兰的经历之后，我回到巴西攻读经济学学位。我在圣卡塔琳娜联邦大学（UFSC）学习，在那里我建立了扎实的分析基础，并对空间不平等、迁移趋势和发展模式产生了浓厚兴趣。这段学术时期为我今天应用于经济现象的地理空间视角奠定了基础。",
+      "subtitle4": "踏入欧洲：葡萄牙与IT（2022-2023）",
+      "paragraph4": "毕业后，我搬到葡萄牙从事IT行业工作。转向科技不仅扩展了我的技能，还加深了我对数字基础设施及其全球互联的理解。正是在这段时间里，我开始通过数据和云技术将经济理论与现实世界的系统联系起来。",
+      "subtitle5": "整合一切：重返职业世界",
+      "paragraph5": "最近在德国明斯特完成了地理空间技术硕士学位后，我正以全新的视角重新融入职业世界。跨越国家和学科的经历使我具备了独特的洞察力、空间思维和技术专长。我渴望将这些技能应用于有意义的挑战——无论是在研究、政策还是解决当今动态世界中人员、地点和数据如何连接的科技驱动解决方案中。"
+    },
+    "geolayer3": {
+      "title": "探索地理图层3",
+      "subtabs": {
+        "itemX": {
+          "title": "地理图层3中的有趣话题",
+          "description": "关于第二个博客中有趣话题的详细信息。",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog": {
+      "title": "当前可用的博客文章",
+      "subtabs": {
+        "blog1Link": {
+          "title": "D3.js中的地理投影",
+          "description": "展示各种地理投影映射，以理解其差异和相似之处。",
+          "link": "blog1",
+          "image": "projectionglobe"
+        },
+        "blog2Link": {
+          "title": "前往博客2",
+          "description": "点击此处阅读博客2。",
+          "link": "blog2",
+          "image": "gwrSearchEngine???"
+        },
+        "blog3Link": {
+          "title": "前往博客3",
+          "description": "点击此处阅读博客3。",
+          "link": "blog3",
+          "image": "gwrSearchEngine???"
+        }
+      }
+    },
+    "blog1": {
+      "title": "欢迎来到博客1",
+      "subtabs": {
+        "sectionA": {
+          "title": "博客1的第一部分",
+          "description": "博客1第一部分的内容在此。",
+          "image": "virtualGuigo",
+          "link": "#sectionA"
+        },
+        "sectionB": {
+          "title": "博客1的第二部分",
+          "description": "博客1第二部分的更多精彩内容。",
+          "image": "gwrSearchEngine",
+          "link": "#sectionB"
+        }
+      }
+    },
+    "blog2": {
+      "title": "探索博客2",
+      "subtabs": {
+        "itemX": {
+          "title": "博客2中的有趣话题",
+          "description": "关于第二个博客中有趣话题的详细信息。",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "blog3": {
+      "title": "探索博客3",
+      "subtabs": {
+        "itemX": {
+          "title": "博客3中的有趣话题",
+          "description": "关于第二个博客中有趣话题的详细信息。",
+          "image": "migSearchEngine",
+          "link": "#topicX"
+        }
+      }
+    },
+    "about": {
+      "title": "关于我",
+      "bio": "我是Guilherme，一名数据科学家和地理空间分析师，热衷于通过数据揭示洞察。我专注于计量经济学、空间回归和AI驱动的解决方案，目前居住在地球上的某个地方。我欢迎自由职业项目、合作或仅仅是关于科技的聊天！",
+      "social": [
+        {
+          "platform": "LinkedIn",
+          "link": "https://www.linkedin.com/in/guilherme-viegas-1b5b0495/"
+        },
+        {
+          "platform": "GitHub",
+          "link": "https://www.github.com/Gui-go"
+        },
+        {
+          "platform": "作品集",
+          "link": "https://www.guigo.dev.br"
+        }
+      ],
+      "contact": {
+        "title": "联系我",
+        "intro": "给我发送一条Pub/Sub消息！",
+        "name_label": "姓名",
+        "email_label": "邮箱",
+        "message_label": "消息",
+        "send_button": "发送消息"
+      },
+      "image": "profile.jpeg"
+    },
+    "navbar": {
+      "home": "首页",
+      "cv": "简历",
+      "publications": "出版物",
+      "projects": "项目",
+      "geolayers": "地理图层",
+      "discovery": "探索",
+      "blog": "博客",
+      "about": "关于"
+    }
+  }
+}
