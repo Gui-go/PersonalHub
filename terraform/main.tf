@@ -5,8 +5,10 @@ locals {
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
   domain          = "guigo.dev.br"
+  # subdomains      = ["frontend", "vault"]
   subdomains      = [
     "www", 
+    "frontend",
     "portfolio", 
     "react-portfolio", 
     # "flutter-portfolio", 
@@ -16,7 +18,6 @@ locals {
   tag_owner       = "guilhermeviegas"
   tag_env         = "prod"
 }
-
 
 
 provider "google-beta" {
