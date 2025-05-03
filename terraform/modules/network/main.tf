@@ -5,14 +5,14 @@ resource "google_compute_network" "vpc_net" {
   auto_create_subnetworks = true
 }
 
-resource "google_compute_subnetwork" "vpc_subnet" {
-  project                  = var.proj_id
-  name                     = "${var.proj_name}-vpc-subnet"
-  ip_cidr_range            = var.vpc_subnet_cidr
-  network                  = google_compute_network.vpc_net.id
-  region                   = var.location
-  private_ip_google_access = true
-}
+# resource "google_compute_subnetwork" "vpc_subnet" {
+#   project                  = var.proj_id
+#   name                     = "${var.proj_name}-vpc-subnet"
+#   ip_cidr_range            = var.vpc_subnet_cidr
+#   network                  = google_compute_network.vpc_net.id
+#   region                   = var.location
+#   private_ip_google_access = true
+# }
 
 resource "google_compute_region_network_endpoint_group" "neg_region" {
   for_each              = toset(var.subdomains)
@@ -136,7 +136,7 @@ resource "google_dns_managed_zone" "dns_zone" {
 }
 
 resource "google_dns_record_set" "subdomain_records" {
-  for_each = toset(var.subdomains)
+  for_each     = toset(var.subdomains)
   name         = "${each.key}.${var.domain}."
   project      = var.proj_id
   managed_zone = google_dns_managed_zone.dns_zone.name
@@ -144,45 +144,4 @@ resource "google_dns_record_set" "subdomain_records" {
   ttl          = 300
   rrdatas      = [google_compute_global_address.lb_ip.address]
 }
-
-# resource "google_dns_record_set" "txt_verification" {
-#   name         = "${var.domain}."
-#   project      = var.proj_id
-#   managed_zone = google_dns_managed_zone.dns_zone.name
-#   type         = "TXT"
-#   ttl          = 300
-#   rrdatas      = ["google-site-verification=your-verification-code"]
-# }
-
-# values(module.compute.run_names)
-# resource "google_compute_address" "static_ip" {
-#   project = var.proj_id
-#   name         = "${var.proj_name}-static-ip"
-#   region       = var.location
-# }
-
-# resource "google_dns_managed_zone" "dns_zone" {
-#   project = var.proj_id
-#   name        = "${var.proj_name}-dns-zone"
-#   dns_name    = "guigo.dev.br."
-#   description = "My DNS zone"
-# }
-
-# resource "google_dns_record_set" "a_record" {
-#   project = var.proj_id
-#   name         = "guigo.dev.br."
-#   managed_zone = google_dns_managed_zone.dns_zone.name
-#   type         = "A"
-#   ttl          = 300
-#   rrdatas      = [google_compute_address.static_ip.address]
-# }
-
-# resource "google_dns_record_set" "www_a_record" {
-#   project      = var.proj_id
-#   name         = "www.guigo.dev.br."
-#   managed_zone = google_dns_managed_zone.dns_zone.name
-#   type         = "A"
-#   ttl          = 300
-#   rrdatas      = [google_compute_address.static_ip.address]
-# }
 
