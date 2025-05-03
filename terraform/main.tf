@@ -11,8 +11,9 @@ locals {
     "frontend",
     "portfolio", 
     "react-portfolio", 
-    # "flutter-portfolio", 
-    "vault"
+    "flutter-portfolio", 
+    "vault",
+    "rstudio"
   ]
   release         = "1"
   tag_owner       = "guilhermeviegas"

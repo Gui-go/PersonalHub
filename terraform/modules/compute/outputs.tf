@@ -15,11 +15,12 @@ output "run_vault_name" {
 
 output "run_names" {
   value = {
-    www             = google_cloud_run_v2_service.run_frontend.name,
-    frontend        = google_cloud_run_v2_service.run_frontend.name,
-    portfolio       = google_cloud_run_v2_service.run_frontend.name,
-    react-portfolio = google_cloud_run_v2_service.run_frontend.name,
-    # flutter-portfolio = google_cloud_run_v2_service.run_frontend.name,
-    vault           = google_cloud_run_v2_service.run_vault.name,
+    www               = google_cloud_run_v2_service.run_frontend.name,
+    frontend          = google_cloud_run_v2_service.run_frontend.name,
+    portfolio         = google_cloud_run_v2_service.run_frontend.name,
+    react-portfolio   = google_cloud_run_v2_service.run_frontend.name,
+    flutter-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name,
+    vault             = google_cloud_run_v2_service.run_vault.name,
+    rstudio           = google_cloud_run_v2_service.run_rstudio.name
   }
 }

@@ -5,14 +5,14 @@ resource "google_compute_network" "vpc_net" {
   auto_create_subnetworks = true
 }
 
-# resource "google_compute_subnetwork" "vpc_subnet" {
-#   project                  = var.proj_id
-#   name                     = "${var.proj_name}-vpc-subnet"
-#   ip_cidr_range            = var.vpc_subnet_cidr
-#   network                  = google_compute_network.vpc_net.id
-#   region                   = var.location
-#   private_ip_google_access = true
-# }
+resource "google_compute_subnetwork" "vpc_subnet" {
+  project                  = var.proj_id
+  name                     = "${var.proj_name}-vpc-subnet"
+  ip_cidr_range            = var.vpc_subnet_cidr
+  network                  = google_compute_network.vpc_net.id
+  region                   = var.location
+  private_ip_google_access = true
+}
 
 resource "google_compute_region_network_endpoint_group" "neg_region" {
   for_each              = toset(var.subdomains)
@@ -75,22 +75,29 @@ resource "google_compute_url_map" "http_redirect" {
   }
 }
 
+resource "google_compute_target_https_proxy" "https_proxy" {
+  name             = "https-proxy"
+  project          = var.proj_id
+  url_map          = google_compute_url_map.url_map.id
+  ssl_certificates = [google_compute_managed_ssl_certificate.ssl_certs.id]
+  depends_on       = [google_compute_managed_ssl_certificate.ssl_certs]
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "google_compute_managed_ssl_certificate" "ssl_certs" {
   name    = "ssl-certs"
   project = var.proj_id
   managed {
     domains = [for subdomain in var.subdomains : "${subdomain}.${var.domain}"]
   }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 
-# HTTPS Proxy
-resource "google_compute_target_https_proxy" "https_proxy" {
-  name             = "https-proxy"
-  project          = var.proj_id
-  url_map          = google_compute_url_map.url_map.id
-  ssl_certificates = [google_compute_managed_ssl_certificate.ssl_certs.id]
-}
 
 # HTTP Proxy for Redirect
 resource "google_compute_target_http_proxy" "http_proxy" {
@@ -116,7 +123,7 @@ resource "google_compute_global_forwarding_rule" "https_forwarding_rule" {
   ip_address            = google_compute_global_address.lb_ip.id
 }
 
-# HTTP Forwarding Rule for Redirect
+# # HTTP Forwarding Rule for Redirect
 resource "google_compute_global_forwarding_rule" "http_forwarding_rule" {
   name                  = "http-forwarding-rule"
   project               = var.proj_id
@@ -128,6 +135,7 @@ resource "google_compute_global_forwarding_rule" "http_forwarding_rule" {
 }
 
 
+## It may take long to repair if deleted. Takes a while to propagate DNS mappings.
 resource "google_dns_managed_zone" "dns_zone" {
   name        = "dns-zone"
   project     = var.proj_id

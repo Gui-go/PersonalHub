@@ -124,7 +124,7 @@ docker build -t guigo13/personalhub-flutter -f flutter_app/Dockerfile flutter_ap
 
 docker run -p 8080:8080 guigo13/personalhub-flutter
 
-
+docker build -t guigo13/dbt -f dbt.dockerfile .
 
 --
 
@@ -139,3 +139,28 @@ perf: Performance improvement
 test: Adding or updating tests
 chore: Maintenance tasks, config changes
 
+
+
+----------------------------
+
+https://whois.domaintools.com/guigo.dev.br
+
+
+
+
+
+docker build -t vanilla_app .
+docker run -p 3000:3000 vanilla_app
+
+
+
+docker build -t guigo13/gitlab -f gitlab.dockerfile .
+docker run -p 81:80 guigo13/gitlab
+
+
+
+
+----------------------------------
+
+# Delete before creating new subdomains
+terraform destroy -target=module.network.google_compute_managed_ssl_certificate.ssl_certs
