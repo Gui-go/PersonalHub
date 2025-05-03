@@ -18,6 +18,7 @@ locals {
 }
 
 
+
 provider "google-beta" {
   project     = local.proj_id
   region      = local.location
