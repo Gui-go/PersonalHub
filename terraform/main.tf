@@ -3,12 +3,20 @@ locals {
   proj_id         = "personalhub3"
   location        = "us-central1"
   zone            = "us-central1-b"
-#   machine_type = "n1-standard-4"
   vpc_subnet_cidr = "10.8.0.0/28"
+  domain          = "guigo.dev.br"
+  subdomains      = [
+    "www", 
+    "portfolio", 
+    "react-portfolio", 
+    # "flutter-portfolio", 
+    "vault"
+  ]
   release         = "1"
   tag_owner       = "guilhermeviegas"
   tag_env         = "prod"
 }
+
 
 provider "google-beta" {
   project     = local.proj_id
@@ -17,22 +25,27 @@ provider "google-beta" {
 }
 
 module "network" {
-  source          = "./modules/network"
-  proj_name       = local.proj_name
-  proj_id         = local.proj_id
-  location        = local.location
-  tag_owner       = local.tag_owner
-  vpc_subnet_cidr = local.vpc_subnet_cidr
+  source            = "./modules/network"
+  proj_name         = local.proj_name
+  proj_id           = local.proj_id
+  location          = local.location
+  tag_owner         = local.tag_owner
+  vpc_subnet_cidr   = local.vpc_subnet_cidr
+  run_frontend_name = module.compute.run_frontend_name 
+  run_vault_name    = module.compute.run_vault_name 
+  run_names         = module.compute.run_names
+  domain            = local.domain
+  subdomains        = local.subdomains
 }
 
-# module "datalake" {
-#   source    = "./modules/datalake"
-#   proj_name = local.proj_name
-#   proj_id   = local.proj_id
-#   location  = "US" # NOT local.location
-#   tag_owner = local.tag_owner
-#   tag_env   = local.tag_env
-# }
+module "datalake" {
+  source    = "./modules/datalake"
+  proj_name = local.proj_name
+  proj_id   = local.proj_id
+  location  = "US" # NOT local.location
+  tag_owner = local.tag_owner
+  tag_env   = local.tag_env
+}
 
 # module "datawarehouse" {
 #   source      = "./modules/datawarehouse"
@@ -47,6 +60,7 @@ module "compute" {
   proj_name           = local.proj_name
   proj_id             = local.proj_id
   location            = local.location
+  vault_bucket_name   = module.datalake.vault_bucket_name
 #   zone                = local.zone
 #   machine_type        = local.machine_type
 #   tag_owner           = local.tag_owner

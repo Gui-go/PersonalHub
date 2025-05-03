@@ -1,5 +1,5 @@
 
-resource "google_artifact_registry_repository" "tf_artifact_repo" {
+resource "google_artifact_registry_repository" "artifact_repo" {
   project       = var.proj_id
   repository_id = "${var.proj_name}-artifact-repo"
   description   = "Artifact registry repository for ${var.proj_name}"
@@ -11,52 +11,112 @@ resource "google_artifact_registry_repository" "tf_artifact_repo" {
 }
 
 
+# Frontend ------------------------------------------------------------------------------------------
+resource "google_cloud_run_v2_service" "run_frontend" {
+  project  = var.proj_id
+  name     = "${var.proj_name}-run-frontend"
+  location = var.location
+  ingress  = "INGRESS_TRAFFIC_ALL"
+  template {
+    containers {
+      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/frontend-app:latest"
+      command = ["npm", "start"]
+      ports {
+        container_port = 3000
+      }
+      resources {
+        limits = {
+          cpu    = "4"
+          memory = "8Gi"
+        }
+      }
+    }
+    scaling {
+      max_instance_count = 1
+      min_instance_count = 0
+    }
+    # vpc_access {
+    #   connector = google_vpc_access_connector.connector.id
+    #   egress = "ALL_TRAFFIC"
+    # }
+    timeout = "120s"
+  }
+  traffic {
+    percent = 100
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+  }
+}
 
-# resource "google_cloud_run_v2_service" "tf_toms_ollama" {
-#   name     = "toms-ollama"
-#   location = local.region
-#   ingress = "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
-#   template {
-#     containers {
-#       image = "gcr.io/tom-riddle-diary1/ollama"
-#       command = ["/bin/sh", "-c", "ollama serve"]
-#       ports {
-#         container_port = 11434
-#       }
-#       resources {
-#         limits = {
-#           cpu    = "4"
-#           memory = "16Gi"
-#           # "nvidia.com/gpu" = "1"
-#         }
-#       }
-#     }
-#     scaling {
-#       max_instance_count = 1
-#       min_instance_count = 0
-#     }
-#     vpc_access {
-#       connector = google_vpc_access_connector.connector.id
-#       egress = "ALL_TRAFFIC"
-#     }
-#     # node_selector {
-#     #   accelerator = "nvidia-l4"
-#     # }
-#     # gpu_zonal_redundancy_disabled = true
-#     # dynamic "node_selector" {
-#     #   for_each = local.enable_gpu ? [1] : []
-#     #   content {
-#     #     accelerator = local.gpu_type
-#     #   }
-#     # }
-#     # gpu_zonal_redundancy_disabled = local.enable_gpu ? false : true
-#     timeout = "60s"
-#   }
-#   traffic {
-#     percent = 100
-#     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-#   }
-# }
+resource "google_cloud_run_service_iam_member" "frontend_public_access" {
+  project  = var.proj_id
+  service  = google_cloud_run_v2_service.run_frontend.name
+  location = google_cloud_run_v2_service.run_frontend.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+
+# vaultwarden ------------------------------------------------------------------------------------------
+resource "google_cloud_run_v2_service" "run_vault" {
+  project  = var.proj_id
+  name     = "${var.proj_name}-run-vault"
+  location = var.location
+  ingress  = "INGRESS_TRAFFIC_ALL"
+  template {
+    containers {
+      image = "vaultwarden/server:latest"
+      env {
+        name  = "WEBSOCKET_ENABLED"
+        value = "true"
+      }
+      env {
+        name  = "SIGNUPS_ALLOWED"
+        value = "false" # Disable if signup is needed          
+      }
+      ports {container_port = 80}
+      resources {
+        limits = {
+          cpu    = "1"
+          memory = "2Gi"
+        }
+      }
+      volume_mounts {
+        name       = "vaultwarden-data"
+        mount_path = "/data"
+      }
+    }
+    volumes {
+      name = "vaultwarden-data"
+      gcs {
+        bucket    = var.vault_bucket_name
+        read_only = false
+      }
+    }
+    scaling {
+      max_instance_count = 1
+      min_instance_count = 0
+    }
+    timeout = "120s"
+  }
+  traffic {
+    percent = 100
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+  }
+}
+
+
+resource "google_cloud_run_service_iam_member" "vault_public_access" {
+  project  = var.proj_id
+  service  = google_cloud_run_v2_service.run_vault.name
+  location = google_cloud_run_v2_service.run_vault.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+
+
+
+
 
 
 

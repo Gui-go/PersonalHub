@@ -59,10 +59,6 @@ gcloud iam service-accounts keys create key.json \
   --iam-account=github-actions-deployer@personalhub1.iam.gserviceaccount.com
 
 
-gcloud artifacts repositories create personalhub-repo \
-  --repository-format=docker \
-  --location=us \
-  --description="Docker repo for my portfolio app"
 
 
 
@@ -127,3 +123,19 @@ docker build -t guigo13/personalhub-flutter -f flutter_app/Dockerfile .
 docker build -t guigo13/personalhub-flutter -f flutter_app/Dockerfile flutter_app
 
 docker run -p 8080:8080 guigo13/personalhub-flutter
+
+
+
+--
+
+
+Common types:
+feat: New feature
+fix: Bug fix
+docs: Documentation changes
+style: Formatting, missing semicolons, etc.
+refactor: Code change that neither fixes nor adds a feature
+perf: Performance improvement
+test: Adding or updating tests
+chore: Maintenance tasks, config changes
+

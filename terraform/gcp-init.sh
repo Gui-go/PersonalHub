@@ -6,6 +6,7 @@
 export BILLING_ACC="01F0C7-9A2082-488963"
 export PROJECT_NAME="personalhub"
 export PROJECT_ID="${PROJECT_NAME}3"
+export REGION="us-central1"
 
 # GCP setting:
 gcloud projects create $PROJECT_ID --name=$PROJECT_NAME --labels=owner=guilhermeviegas --enable-cloud-apis
@@ -57,16 +58,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 gcloud iam service-accounts keys create ${GH_ACTIONS_SA}-key.json \
   --iam-account=$GH_ACTIONS_SA@$PROJECT_ID.iam.gserviceaccount.com
 
-# Create a Docker repository in Artifact Registry:
-gcloud artifacts repositories create $PROJECT_NAME-repo \
-  --repository-format=docker \
-  --location=us \
-  --description="Docker repo for $PROJECT_NAME"
-### do it in terraform
-
-
-
-
+##
 
 
 terraform init 
@@ -84,5 +76,7 @@ terraform graph | dot -Tsvg > terraform-graph.svg
 
 
 
-
+docker buildx build --platform linux/amd64 \
+  -t $REGION-docker.pkg.dev/$PROJECT_ID/${PROJECT_NAME}-artifact-repo/frontend-app:latest \
+  --push react_app/
 

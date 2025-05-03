@@ -28,6 +28,28 @@ variable "vpc_subnet_cidr" {
   type        = string
 }
 
+variable "run_frontend_name" {
+  description = "Run instance frontend output name"
+  type        = string
+}
 
+variable "run_vault_name" {
+  description = "Run instance vault output name"
+  type        = string
+}
 
-  
+variable "run_names" {
+  description = "Mapping of run instances names"
+  type        = map(string)
+}
+
+variable "domain" {
+  description = "Root domain name"
+  type        = string
+}
+
+variable "subdomains" {
+  description = "List of subdomains to route"
+  type        = list(string)
+}
+

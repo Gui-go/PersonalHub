@@ -18,5 +18,9 @@ variable "location" {
 #   type        = string
 # }
 
+variable "vault_bucket_name" {
+  description = "Vaultwarden bucket name"
+  type        = string
+}
 
 

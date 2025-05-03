@@ -1,48 +1,188 @@
 
-resource "google_compute_network" "tf_vpc_net" {
+resource "google_compute_network" "vpc_net" {
   project                 = var.proj_id
   name                    = "${var.proj_name}-vpc-net"
   auto_create_subnetworks = true
 }
 
-resource "google_compute_subnetwork" "tf_vpc_subnet" {
+resource "google_compute_subnetwork" "vpc_subnet" {
   project                  = var.proj_id
   name                     = "${var.proj_name}-vpc-subnet"
   ip_cidr_range            = var.vpc_subnet_cidr
-  network                  = google_compute_network.tf_vpc_net.id
+  network                  = google_compute_network.vpc_net.id
   region                   = var.location
   private_ip_google_access = true
 }
 
+resource "google_compute_region_network_endpoint_group" "neg_region" {
+  for_each              = toset(var.subdomains)
+  name                  = "${var.proj_name}-${each.key}-neg"
+  region                = var.location
+  project               = var.proj_id
+  network_endpoint_type = "SERVERLESS"
+  cloud_run {
+    service = var.run_names[each.key]
+  }
+}
 
-# resource "google_compute_address" "tf_static_ip" {
+resource "google_compute_backend_service" "backend" {
+  for_each = toset(var.subdomains)
+  name        = "${var.proj_name}-${each.key}-backend"
+  project     = var.proj_id
+  protocol    = "HTTPS"
+  timeout_sec = 30
+  backend {
+    group = google_compute_region_network_endpoint_group.neg_region[each.key].id
+  }
+  log_config {
+    enable      = true
+    sample_rate = 1.0
+  }
+}
+
+
+resource "google_compute_url_map" "url_map" {
+  name            = "url-map"
+  project         = var.proj_id
+  default_service = google_compute_backend_service.backend[var.subdomains[0]].id # Default backend
+  dynamic "host_rule" {
+    for_each = var.subdomains
+    content {
+      hosts        = ["${host_rule.value}.${var.domain}"]
+      path_matcher = "${host_rule.value}-matcher"
+    }
+  }
+  dynamic "path_matcher" {
+    for_each = var.subdomains
+    content {
+      name            = "${path_matcher.value}-matcher"
+      default_service = google_compute_backend_service.backend[path_matcher.value].id
+      path_rule {
+        paths   = ["/*"]
+        service = google_compute_backend_service.backend[path_matcher.value].id
+      }
+    }
+  }
+}
+
+
+resource "google_compute_url_map" "http_redirect" {
+  name    = "http-redirect"
+  project = var.proj_id
+  default_url_redirect {
+    https_redirect = true
+    strip_query    = false
+  }
+}
+
+resource "google_compute_managed_ssl_certificate" "ssl_certs" {
+  name    = "ssl-certs"
+  project = var.proj_id
+  managed {
+    domains = [for subdomain in var.subdomains : "${subdomain}.${var.domain}"]
+  }
+}
+
+
+# HTTPS Proxy
+resource "google_compute_target_https_proxy" "https_proxy" {
+  name             = "https-proxy"
+  project          = var.proj_id
+  url_map          = google_compute_url_map.url_map.id
+  ssl_certificates = [google_compute_managed_ssl_certificate.ssl_certs.id]
+}
+
+# HTTP Proxy for Redirect
+resource "google_compute_target_http_proxy" "http_proxy" {
+  name    = "http-proxy"
+  project = var.proj_id
+  url_map = google_compute_url_map.http_redirect.id
+}
+
+# Global IP Address
+resource "google_compute_global_address" "lb_ip" {
+  name    = "lb-ip"
+  project = var.proj_id
+}
+
+# HTTPS Forwarding Rule
+resource "google_compute_global_forwarding_rule" "https_forwarding_rule" {
+  name                  = "https-forwarding-rule"
+  project               = var.proj_id
+  ip_protocol           = "TCP"
+  load_balancing_scheme = "EXTERNAL"
+  port_range            = "443"
+  target                = google_compute_target_https_proxy.https_proxy.id
+  ip_address            = google_compute_global_address.lb_ip.id
+}
+
+# HTTP Forwarding Rule for Redirect
+resource "google_compute_global_forwarding_rule" "http_forwarding_rule" {
+  name                  = "http-forwarding-rule"
+  project               = var.proj_id
+  ip_protocol           = "TCP"
+  load_balancing_scheme = "EXTERNAL"
+  port_range            = "80"
+  target                = google_compute_target_http_proxy.http_proxy.id
+  ip_address            = google_compute_global_address.lb_ip.id
+}
+
+
+resource "google_dns_managed_zone" "dns_zone" {
+  name        = "dns-zone"
+  project     = var.proj_id
+  dns_name    = "${var.domain}."
+  description = "DNS zone for the domain"
+}
+
+resource "google_dns_record_set" "subdomain_records" {
+  for_each = toset(var.subdomains)
+  name         = "${each.key}.${var.domain}."
+  project      = var.proj_id
+  managed_zone = google_dns_managed_zone.dns_zone.name
+  type         = "A"
+  ttl          = 300
+  rrdatas      = [google_compute_global_address.lb_ip.address]
+}
+
+# resource "google_dns_record_set" "txt_verification" {
+#   name         = "${var.domain}."
+#   project      = var.proj_id
+#   managed_zone = google_dns_managed_zone.dns_zone.name
+#   type         = "TXT"
+#   ttl          = 300
+#   rrdatas      = ["google-site-verification=your-verification-code"]
+# }
+
+# values(module.compute.run_names)
+# resource "google_compute_address" "static_ip" {
 #   project = var.proj_id
 #   name         = "${var.proj_name}-static-ip"
 #   region       = var.location
 # }
 
-# resource "google_dns_managed_zone" "tf_dns_zone" {
+# resource "google_dns_managed_zone" "dns_zone" {
 #   project = var.proj_id
 #   name        = "${var.proj_name}-dns-zone"
 #   dns_name    = "guigo.dev.br."
 #   description = "My DNS zone"
 # }
 
-# resource "google_dns_record_set" "tf_a_record" {
+# resource "google_dns_record_set" "a_record" {
 #   project = var.proj_id
 #   name         = "guigo.dev.br."
-#   managed_zone = google_dns_managed_zone.tf_dns_zone.name
+#   managed_zone = google_dns_managed_zone.dns_zone.name
 #   type         = "A"
 #   ttl          = 300
-#   rrdatas      = [google_compute_address.tf_static_ip.address]
+#   rrdatas      = [google_compute_address.static_ip.address]
 # }
 
-# resource "google_dns_record_set" "tf_www_a_record" {
+# resource "google_dns_record_set" "www_a_record" {
 #   project      = var.proj_id
 #   name         = "www.guigo.dev.br."
-#   managed_zone = google_dns_managed_zone.tf_dns_zone.name
+#   managed_zone = google_dns_managed_zone.dns_zone.name
 #   type         = "A"
 #   ttl          = 300
-#   rrdatas      = [google_compute_address.tf_static_ip.address]
+#   rrdatas      = [google_compute_address.static_ip.address]
 # }
 
