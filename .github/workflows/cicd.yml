@@ -23,7 +23,7 @@ jobs:
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: dynamic-run-portfolio1
+          project_id: personalhub3
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-docker.pkg.dev
@@ -33,12 +33,12 @@ jobs:
         with:
           context: ./react_app
           push: true
-          tags: us-docker.pkg.dev/dynamic-run-portfolio1/dynamic-run-portfolio-repo/dynamic-run-portfolio:latest
+          tags: us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/frontend-app:latest
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy dynamic-run-portfolio \
-            --image=us-docker.pkg.dev/dynamic-run-portfolio1/dynamic-run-portfolio-repo/dynamic-run-portfolio:latest \
+          gcloud run deploy personalhub \
+            --image=us-docker.pkg.dev/personalhub3/personalhub-repo/personalhub:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
