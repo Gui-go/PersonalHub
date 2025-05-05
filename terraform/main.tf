@@ -5,7 +5,6 @@ locals {
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
   domain          = "guigo.dev.br"
-  # subdomains      = ["frontend", "vault"]
   subdomains      = [
     "www", 
     "frontend",
@@ -13,12 +12,39 @@ locals {
     "react-portfolio", 
     "flutter-portfolio", 
     "vault",
-    "rstudio"
+    "rstudio",
+    "wordpress",
+    "ollama",
+    "tom-riddles-diary",
+    "flask-api",
+    "django-api",
+    "soi-erasmus",
+    "soi-h-index",
   ]
   release         = "1"
   tag_owner       = "guilhermeviegas"
   tag_env         = "prod"
 }
+
+resource "google_project_service" "apis" {
+  for_each = toset([
+    "run.googleapis.com",
+    "storage.googleapis.com",
+    "cloudfunctions.googleapis.com",
+    "eventarc.googleapis.com",
+    "cloudscheduler.googleapis.com",
+    "iam.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "secretmanager.googleapis.com",
+    "vpcaccess.googleapis.com",
+    "eventarc.googleapis.com", # although not used, it is needed for google_cloudfunctions2_function
+    "pubsub.googleapis.com"    # although not used, it is needed for google_cloudfunctions2_function
+  ])
+  project = local.proj_id
+  service = each.key
+}
+
+
 
 
 provider "google-beta" {
@@ -64,6 +90,7 @@ module "compute" {
   proj_id             = local.proj_id
   location            = local.location
   vault_bucket_name   = module.datalake.vault_bucket_name
+  vpc_network_name    = module.network.vpc_network_name
 #   zone                = local.zone
 #   machine_type        = local.machine_type
 #   tag_owner           = local.tag_owner

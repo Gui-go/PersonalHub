@@ -23,4 +23,9 @@ variable "vault_bucket_name" {
   type        = string
 }
 
+variable "vpc_network_name" {
+  description = "Network name"
+  type        = string
+}
+
 

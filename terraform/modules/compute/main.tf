@@ -10,6 +10,16 @@ resource "google_artifact_registry_repository" "artifact_repo" {
   }
 }
 
+resource "google_vpc_access_connector" "connector" {
+  project        = var.proj_id
+  name           = "cloudrun-connector"
+  region         = var.location
+  ip_cidr_range  = "192.168.16.0/28"
+  network        = var.vpc_network_name
+  min_throughput = 200
+  max_throughput = 300
+}
+
 
 # react-portfolio ------------------------------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "run_frontend" {
@@ -26,8 +36,8 @@ resource "google_cloud_run_v2_service" "run_frontend" {
       }
       resources {
         limits = {
-          cpu    = "4"
-          memory = "8Gi"
+          cpu    = "1"
+          memory = "1Gi"
         }
       }
     }
@@ -35,10 +45,10 @@ resource "google_cloud_run_v2_service" "run_frontend" {
       max_instance_count = 1
       min_instance_count = 0
     }
-    # vpc_access {
-    #   connector = google_vpc_access_connector.connector.id
-    #   egress = "ALL_TRAFFIC"
-    # }
+    vpc_access {
+      connector = google_vpc_access_connector.connector.id
+      egress = "ALL_TRAFFIC"
+    }
     timeout = "120s"
   }
   traffic {
@@ -64,14 +74,13 @@ resource "google_cloud_run_v2_service" "run_flutter_portfolio" {
   template {
     containers {
       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/flutter-portfolio:latest"
-      # command = ["npm", "start"]
       ports {
         container_port = 8080
       }
       resources {
         limits = {
           cpu    = "1"
-          memory = "2Gi"
+          memory = "1Gi"
         }
       }
     }
@@ -79,10 +88,10 @@ resource "google_cloud_run_v2_service" "run_flutter_portfolio" {
       max_instance_count = 1
       min_instance_count = 0
     }
-    # vpc_access {
-    #   connector = google_vpc_access_connector.connector.id
-    #   egress = "ALL_TRAFFIC"
-    # }
+    vpc_access {
+      connector = google_vpc_access_connector.connector.id
+      egress = "ALL_TRAFFIC"
+    }
     timeout = "120s"
   }
   traffic {
@@ -121,7 +130,7 @@ resource "google_cloud_run_v2_service" "run_vault" {
       resources {
         limits = {
           cpu    = "1"
-          memory = "2Gi"
+          memory = "1Gi"
         }
       }
       volume_mounts {
@@ -172,8 +181,8 @@ resource "google_cloud_run_v2_service" "run_rstudio" {
       ports { container_port = 8787 }
       resources {
         limits = {
-          cpu    = "4"
-          memory = "8Gi"
+          cpu    = "2"
+          memory = "2Gi"
         }
       }
     }
@@ -181,10 +190,10 @@ resource "google_cloud_run_v2_service" "run_rstudio" {
       max_instance_count = 1
       min_instance_count = 0
     }
-    # vpc_access {
-    #   connector = google_vpc_access_connector.connector.id
-    #   egress = "ALL_TRAFFIC"
-    # }
+    vpc_access {
+      connector = google_vpc_access_connector.connector.id
+      egress = "ALL_TRAFFIC"
+    }
     timeout = "600s"
   }
   traffic {

@@ -164,3 +164,11 @@ docker run -p 81:80 guigo13/gitlab
 
 # Delete before creating new subdomains
 terraform destroy -target=module.network.google_compute_managed_ssl_certificate.ssl_certs
+
+gcloud services list --enabled --project=personalhub3
+
+
+
+
+
+
