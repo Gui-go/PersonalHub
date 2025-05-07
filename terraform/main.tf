@@ -1,23 +1,18 @@
 locals {
   proj_name       = "personalhub"
   proj_id         = "personalhub3"
+  proj_number     = "353128465181"
   location        = "us-central1"
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
   domain          = "guigo.dev.br"
   subdomains      = [
     "www", 
-    "frontend",
     "portfolio", 
-    "react-portfolio", 
-    "flutter-portfolio", 
     "vault",
     "rstudio",
-    "wordpress",
     "ollama",
     "tom-riddles-diary",
-    "flask-api",
-    "django-api",
     "soi-erasmus",
     "soi-h-index",
   ]
@@ -25,6 +20,7 @@ locals {
   tag_owner       = "guilhermeviegas"
   tag_env         = "prod"
 }
+
 
 resource "google_project_service" "apis" {
   for_each = toset([
@@ -52,6 +48,17 @@ provider "google-beta" {
   region      = local.location
 #   credentials = file("./personalhub1-sa-credential.json")
 }
+
+
+
+
+# data "google_secret_manager_secret_version" "data_gh_token_secret" {
+#   project = local.proj_id
+#   secret  = "gh-access-token-secret"
+#   version = "latest"
+# }
+
+
 
 module "network" {
   source            = "./modules/network"
@@ -109,3 +116,25 @@ module "compute" {
 #   # tag_env   = local.tag_env
 # }
 
+module "security" {
+  source      = "./modules/security"
+  proj_name   = local.proj_name
+  proj_id     = local.proj_id
+  proj_number = local.proj_number
+  location    = local.location
+  # zone        = local.zone
+  # release     = local.release
+  # tag_env   = local.tag_env
+}
+
+
+
+module "datawarehouse" {
+  source      = "./modules/datawarehouse"
+  proj_name   = local.proj_name
+  proj_id     = local.proj_id
+  location    = local.location
+  # zone        = local.zone
+  # release     = local.release
+  # tag_env   = local.tag_env
+}

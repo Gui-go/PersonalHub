@@ -21,23 +21,23 @@ resource "google_vpc_access_connector" "connector" {
 }
 
 
-# react-portfolio ------------------------------------------------------------------------------------------
-resource "google_cloud_run_v2_service" "run_frontend" {
+# Portfolio ------------------------------------------------------------------------------------------
+resource "google_cloud_run_v2_service" "run_portfolio" {
   project  = var.proj_id
-  name     = "${var.proj_name}-run-frontend"
+  name     = "${var.proj_name}-run-portfolio"
   location = var.location
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     containers {
-      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/frontend-app:latest"
-      command = ["npm", "start"]
+      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
+      # command = ["npm", "start"]
       ports {
         container_port = 3000
       }
       resources {
         limits = {
           cpu    = "1"
-          memory = "1Gi"
+          memory = "512Mi"
         }
       }
     }
@@ -49,7 +49,7 @@ resource "google_cloud_run_v2_service" "run_frontend" {
       connector = google_vpc_access_connector.connector.id
       egress = "ALL_TRAFFIC"
     }
-    timeout = "120s"
+    timeout = "60s"
   }
   traffic {
     percent = 100
@@ -57,56 +57,56 @@ resource "google_cloud_run_v2_service" "run_frontend" {
   }
 }
 
-resource "google_cloud_run_service_iam_member" "frontend_public_access" {
+resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
   project  = var.proj_id
-  service  = google_cloud_run_v2_service.run_frontend.name
-  location = google_cloud_run_v2_service.run_frontend.location
+  service  = google_cloud_run_v2_service.run_portfolio.name
+  location = google_cloud_run_v2_service.run_portfolio.location
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
 
 # flutter-portfolio ------------------------------------------------------------------------------------------
-resource "google_cloud_run_v2_service" "run_flutter_portfolio" {
-  project  = var.proj_id
-  name     = "${var.proj_name}-run-flutter-portfolio"
-  location = var.location
-  ingress  = "INGRESS_TRAFFIC_ALL"
-  template {
-    containers {
-      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/flutter-portfolio:latest"
-      ports {
-        container_port = 8080
-      }
-      resources {
-        limits = {
-          cpu    = "1"
-          memory = "1Gi"
-        }
-      }
-    }
-    scaling {
-      max_instance_count = 1
-      min_instance_count = 0
-    }
-    vpc_access {
-      connector = google_vpc_access_connector.connector.id
-      egress = "ALL_TRAFFIC"
-    }
-    timeout = "120s"
-  }
-  traffic {
-    percent = 100
-    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-  }
-}
+# resource "google_cloud_run_v2_service" "run_flutter_portfolio" {
+#   project  = var.proj_id
+#   name     = "${var.proj_name}-run-flutter-portfolio"
+#   location = var.location
+#   ingress  = "INGRESS_TRAFFIC_ALL"
+#   template {
+#     containers {
+#       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/flutter-portfolio:latest"
+#       ports {
+#         container_port = 8080
+#       }
+#       resources {
+#         limits = {
+#           cpu    = "0.5"
+#           memory = "512Mi"
+#         }
+#       }
+#     }
+#     scaling {
+#       max_instance_count = 1
+#       min_instance_count = 0
+#     }
+#     vpc_access {
+#       connector = google_vpc_access_connector.connector.id
+#       egress = "ALL_TRAFFIC"
+#     }
+#     timeout = "120s"
+#   }
+#   traffic {
+#     percent = 100
+#     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+#   }
+# }
 
-resource "google_cloud_run_service_iam_member" "flutter_public_access" {
-  project  = var.proj_id
-  service  = google_cloud_run_v2_service.run_flutter_portfolio.name
-  location = google_cloud_run_v2_service.run_flutter_portfolio.location
-  role     = "roles/run.invoker"
-  member   = "allUsers"
-}
+# resource "google_cloud_run_service_iam_member" "flutter_public_access" {
+#   project  = var.proj_id
+#   service  = google_cloud_run_v2_service.run_flutter_portfolio.name
+#   location = google_cloud_run_v2_service.run_flutter_portfolio.location
+#   role     = "roles/run.invoker"
+#   member   = "allUsers"
+# }
 
 
 # vaultwarden ------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ resource "google_cloud_run_v2_service" "run_vault" {
       resources {
         limits = {
           cpu    = "1"
-          memory = "1Gi"
+          memory = "512Mi"
         }
       }
       volume_mounts {
@@ -149,7 +149,7 @@ resource "google_cloud_run_v2_service" "run_vault" {
       max_instance_count = 1
       min_instance_count = 0
     }
-    timeout = "120s"
+    timeout = "60s"
   }
   traffic {
     percent = 100
@@ -181,8 +181,8 @@ resource "google_cloud_run_v2_service" "run_rstudio" {
       ports { container_port = 8787 }
       resources {
         limits = {
-          cpu    = "2"
-          memory = "2Gi"
+          cpu    = "1"
+          memory = "512Mi"
         }
       }
     }
@@ -194,7 +194,7 @@ resource "google_cloud_run_v2_service" "run_rstudio" {
       connector = google_vpc_access_connector.connector.id
       egress = "ALL_TRAFFIC"
     }
-    timeout = "600s"
+    timeout = "60s"
   }
   traffic {
     percent = 100

@@ -16,5 +16,5 @@ docker buildx build --platform linux/amd64,linux/arm64 \
 
 
 docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/frontend-app:latest  \
+  -t us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/portfolio-app:latest  \
   --push .

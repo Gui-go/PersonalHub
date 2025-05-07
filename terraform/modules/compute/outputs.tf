@@ -1,5 +1,5 @@
 output "run_frontend_name" {
-  value = google_cloud_run_v2_service.run_frontend.name
+  value = google_cloud_run_v2_service.run_portfolio.name
 }
 
 output "run_vault_name" {
@@ -15,20 +15,22 @@ output "run_vault_name" {
 
 output "run_names" {
   value = {
-    www               = google_cloud_run_v2_service.run_frontend.name,
-    frontend          = google_cloud_run_v2_service.run_frontend.name,
-    portfolio         = google_cloud_run_v2_service.run_frontend.name,
-    react-portfolio   = google_cloud_run_v2_service.run_frontend.name,
-    flutter-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name
+    www               = google_cloud_run_v2_service.run_portfolio.name,
+    portfolio         = google_cloud_run_v2_service.run_portfolio.name,
     vault             = google_cloud_run_v2_service.run_vault.name,
     rstudio           = google_cloud_run_v2_service.run_rstudio.name
-    wordpress         = google_cloud_run_v2_service.run_frontend.name,
-    tom-riddles-diary = google_cloud_run_v2_service.run_frontend.name,
-    soi-erasmus       = google_cloud_run_v2_service.run_frontend.name,
-    soi-h-index       = google_cloud_run_v2_service.run_frontend.name,
-    ollama            = google_cloud_run_v2_service.run_frontend.name,
-    flask-api         = google_cloud_run_v2_service.run_frontend.name,
-    django-api        = google_cloud_run_v2_service.run_frontend.name,
+    tom-riddles-diary = google_cloud_run_v2_service.run_portfolio.name,
+    ollama            = google_cloud_run_v2_service.run_portfolio.name,
+    soi-erasmus       = google_cloud_run_v2_service.run_portfolio.name,
+    soi-h-index       = google_cloud_run_v2_service.run_portfolio.name,
+
+
+    # react-portfolio   = google_cloud_run_v2_service.run_portfolio.name,
+    # flutter-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name
+    # wordpress         = google_cloud_run_v2_service.run_portfolio.name,
+
+    # flask-api         = google_cloud_run_v2_service.run_portfolio.name,
+    # django-api        = google_cloud_run_v2_service.run_portfolio.name,
 
     # django-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name,
     # php-portfolio   = google_cloud_run_v2_service.run_frontend.name,
