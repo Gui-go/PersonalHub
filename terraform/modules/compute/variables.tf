@@ -18,10 +18,10 @@ variable "location" {
 #   type        = string
 # }
 
-variable "vault_bucket_name" {
-  description = "Vaultwarden bucket name"
-  type        = string
-}
+# variable "vault_bucket_name" {
+#   description = "Vaultwarden bucket name"
+#   type        = string
+# }
 
 variable "vpc_network_name" {
   description = "Network name"
@@ -29,3 +29,7 @@ variable "vpc_network_name" {
 }
 
 
+variable "proj_number" {
+  description = "Project Number identifier"
+  type        = string
+}

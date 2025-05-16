@@ -2,27 +2,21 @@ output "run_frontend_name" {
   value = google_cloud_run_v2_service.run_portfolio.name
 }
 
-output "run_vault_name" {
-  value = google_cloud_run_v2_service.run_vault.name
-}
-
-# output "run_names" {
-#   value = {
-#     frontend = google_cloud_run_v2_service.run_frontend.name,
-#     vault    = google_cloud_run_v2_service.run_vault.name,
-#   }
+# output "run_vault_name" {
+#   value = google_cloud_run_v2_service.run_vault.name
 # }
 
 output "run_names" {
   value = {
     www               = google_cloud_run_v2_service.run_portfolio.name,
     portfolio         = google_cloud_run_v2_service.run_portfolio.name,
-    vault             = google_cloud_run_v2_service.run_vault.name,
-    rstudio           = google_cloud_run_v2_service.run_rstudio.name
-    tom-riddles-diary = google_cloud_run_v2_service.run_portfolio.name,
-    ollama            = google_cloud_run_v2_service.run_portfolio.name,
-    soi-erasmus       = google_cloud_run_v2_service.run_portfolio.name,
-    soi-h-index       = google_cloud_run_v2_service.run_portfolio.name,
+    # vault             = google_cloud_run_v2_service.run_vault.name,
+    # rstudio           = google_cloud_run_v2_service.run_rstudio.name,
+
+    # tom-riddles-diary = google_cloud_run_v2_service.run_portfolio.name,
+    # ollama            = google_cloud_run_v2_service.run_portfolio.name,
+    # soi-erasmus       = google_cloud_run_v2_service.run_portfolio.name,
+    # soi-h-index       = google_cloud_run_v2_service.run_portfolio.name,
 
 
     # react-portfolio   = google_cloud_run_v2_service.run_portfolio.name,

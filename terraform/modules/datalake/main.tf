@@ -60,17 +60,46 @@ resource "google_bigquery_dataset" "billing_bq_dataset" {
   description   = "BigQuery dataset for Cloud Billing"
 }
 
-# resource "google_bigquery_table" "tf_bqtable_dflocations_micro" {
-#   project             = var.proj_id
-#   dataset_id          = google_bigquery_dataset.tf_bqdataset_curated_bronze.dataset_id
-#   table_id            = "df_locations_micro"
-#   deletion_protection = false
-#   external_data_configuration {
-#     source_uris       = ["gs://personalvm-curated-bucket/micro/df_locations_micro.csv"]
-#     source_format     = "CSV"
-#     autodetect        = true
-#   }
+
+
+
+resource "google_storage_bucket" "database_bucket" {
+  project                     = var.proj_id
+  name                        = "${var.proj_id}-database-bucket"
+  location                    = var.location
+  uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+}
+
+resource "google_bigquery_dataset" "database_bq_dataset" {
+  project       = var.proj_id
+  dataset_id    = "database"
+  location      = var.location 
+  description   = "BigQuery dataset for Portfolio database"
+}
+
+
+resource "google_bigquery_table" "bq_table_dflocations" {
+  project             = var.proj_id
+  dataset_id          = google_bigquery_dataset.database_bq_dataset.dataset_id
+  table_id            = "df_locations"
+  deletion_protection = false
+  external_data_configuration {
+    source_uris       = ["gs://${var.proj_id}-database-bucket/df_locations.csv"]
+    source_format     = "CSV"
+    autodetect        = true
+  }
+}
+
+# 
+
+
+# resource "google_project_iam_member" "bq_job_user" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.jobUser"
+#   member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
 # }
+
 
 
 # provider "google-beta" {
@@ -214,3 +243,4 @@ resource "google_bigquery_dataset" "billing_bq_dataset" {
 #   time_zone       = "America/New_York"
 # }
 
+# --------------------------------------------------------------

@@ -9,12 +9,12 @@ locals {
   subdomains      = [
     "www", 
     "portfolio", 
-    "vault",
-    "rstudio",
-    "ollama",
-    "tom-riddles-diary",
-    "soi-erasmus",
-    "soi-h-index",
+    # "vault",
+    # "rstudio",
+    # "ollama",
+    # "tom-riddles-diary",
+    # "soi-erasmus",
+    # "soi-h-index",
   ]
   release         = "1"
   tag_owner       = "guilhermeviegas"
@@ -34,13 +34,12 @@ resource "google_project_service" "apis" {
     "secretmanager.googleapis.com",
     "vpcaccess.googleapis.com",
     "eventarc.googleapis.com", # although not used, it is needed for google_cloudfunctions2_function
-    "pubsub.googleapis.com"    # although not used, it is needed for google_cloudfunctions2_function
+    "pubsub.googleapis.com",    # although not used, it is needed for google_cloudfunctions2_function
+    "bigquery.googleapis.com"
   ])
   project = local.proj_id
   service = each.key
 }
-
-
 
 
 provider "google-beta" {
@@ -68,7 +67,7 @@ module "network" {
   tag_owner         = local.tag_owner
   vpc_subnet_cidr   = local.vpc_subnet_cidr
   run_frontend_name = module.compute.run_frontend_name 
-  run_vault_name    = module.compute.run_vault_name 
+  # run_vault_name    = module.compute.run_vault_name 
   run_names         = module.compute.run_names
   domain            = local.domain
   subdomains        = local.subdomains
@@ -95,8 +94,9 @@ module "compute" {
   source              = "./modules/compute"
   proj_name           = local.proj_name
   proj_id             = local.proj_id
+  proj_number         = local.proj_number
   location            = local.location
-  vault_bucket_name   = module.datalake.vault_bucket_name
+  # vault_bucket_name   = module.datalake.vault_bucket_name
   vpc_network_name    = module.network.vpc_network_name
 #   zone                = local.zone
 #   machine_type        = local.machine_type
@@ -116,16 +116,16 @@ module "compute" {
 #   # tag_env   = local.tag_env
 # }
 
-module "security" {
-  source      = "./modules/security"
-  proj_name   = local.proj_name
-  proj_id     = local.proj_id
-  proj_number = local.proj_number
-  location    = local.location
-  # zone        = local.zone
-  # release     = local.release
-  # tag_env   = local.tag_env
-}
+# module "security" {
+#   source      = "./modules/security"
+#   proj_name   = local.proj_name
+#   proj_id     = local.proj_id
+#   proj_number = local.proj_number
+#   location    = local.location
+#   # zone        = local.zone
+#   # release     = local.release
+#   # tag_env   = local.tag_env
+# }
 
 
 
