@@ -43,20 +43,20 @@ gcloud iam service-accounts create github-actions-deployer \
   --display-name "GitHub Actions Cloud Run Deployer"
 
 
-gcloud projects add-iam-policy-binding personalhub1 \
-  --member="serviceAccount:github-actions-deployer@personalhub1.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding personalhub3 \
+  --member="serviceAccount:github-actions-deployer@personalhub3.iam.gserviceaccount.com" \
   --role="roles/run.admin"
 
-gcloud projects add-iam-policy-binding personalhub1 \
-  --member="serviceAccount:github-actions-deployer@personalhub1.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding personalhub3 \
+  --member="serviceAccount:github-actions-deployer@personalhub3.iam.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 
-gcloud projects add-iam-policy-binding personalhub1 \
-  --member="serviceAccount:github-actions-deployer@personalhub1.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding personalhub3 \
+  --member="serviceAccount:github-actions-deployer@personalhub3.iam.gserviceaccount.com" \
   --role="roles/artifactregistry.admin"
 
-gcloud iam service-accounts keys create key.json \
-  --iam-account=github-actions-deployer@personalhub1.iam.gserviceaccount.com
+gcloud iam service-accounts keys create github-actions-deployer-key.json \
+  --iam-account=github-actions-deployer@personalhub3.iam.gserviceaccount.com
 
 
 
