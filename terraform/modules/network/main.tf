@@ -26,7 +26,7 @@ resource "google_compute_region_network_endpoint_group" "neg_region" {
 }
 
 resource "google_compute_backend_service" "backend" {
-  for_each = toset(var.subdomains)
+  for_each    = toset(var.subdomains)
   name        = "${var.proj_name}-${each.key}-backend"
   project     = var.proj_id
   protocol    = "HTTPS"

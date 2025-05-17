@@ -32,10 +32,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
   template {
     containers {
       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
-      # command = ["npm", "start"]
-      ports {
-        container_port = 3000
-      }
+      ports { container_port = 3000 }
       resources {
         limits = {
           cpu    = "1"
@@ -108,9 +105,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
   template {
     containers {
       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/fastapi-api:latest"
-      ports {
-        container_port = 8080
-      }
+      ports { container_port = 8080 }
       resources {
         limits = {
           cpu    = "1"

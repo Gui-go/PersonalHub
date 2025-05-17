@@ -9,7 +9,7 @@ ghactionsSA-key.json
 /terraform/terraform.tfstate.backup
 
 
-
+*.tfstate
 
 
 

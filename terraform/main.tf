@@ -9,6 +9,7 @@ locals {
   subdomains      = [
     "www", 
     "portfolio", 
+    "fastapi", 
     # "vault",
     # "rstudio",
     # "ollama",
