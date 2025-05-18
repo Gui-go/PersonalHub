@@ -23,6 +23,7 @@ resource "google_vpc_access_connector" "connector" {
 }
 
 
+
 # Portfolio ------------------------------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "run_portfolio" {
   project  = var.proj_id
