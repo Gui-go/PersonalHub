@@ -12,7 +12,7 @@
         "items": [
           {
             "title": "Scalable Data Pipelines",
-            "description": "Designing and implementing robust ETL pipelines to process large-scale, time-series data efficiently."
+            "description": "Designing and implementing robust ETL pipelines to process large-scale, time and spatial series data efficiently."
           },
           {
             "title": "Machine Learning for Impact",
