@@ -41,10 +41,5 @@ jobs:
             --image=us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/fastapi-api:latest \
             --platform=managed \
             --region=us-central1 \
-            --allow-unauthenticated \
-            --set-env-vars=PROJECT_ID=personalhub3 \
-            --timeout=600 \
-            --startup-probe-timeout=10s \
-            --startup-probe-period=10s \
-            --startup-probe-failure-threshold=6
+            --allow-unauthenticated
 
