@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from google.cloud import bigquery
 import os
+import uvicorn
 
 app = FastAPI()
 
@@ -26,6 +27,43 @@ async def run_query():
 async def root():
     return {"message": "FastAPI BigQuery Service"}
 
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8080))  # Default to 8080 if PORT not set
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
+# ---------------------------------------------------------------
+
+# from fastapi import FastAPI
+# from google.cloud import bigquery
+# import os
+
+# app = FastAPI()
+
+# # Initialize BigQuery client
+# project_id = os.getenv("PROJECT_ID")
+# client = bigquery.Client(project=project_id)
+
+# @app.get("/query")
+# async def run_query():
+#     query = """
+#     SELECT *
+#     FROM `database.df_locations`
+#     LIMIT 10
+#     """
+#     query_job = client.query(query)
+#     results = query_job.result()
+    
+#     # Convert results to list of dicts
+#     data = [dict(row) for row in results]
+#     return {"results": data}
+
+# @app.get("/")
+# async def root():
+#     return {"message": "FastAPI BigQuery Service"}
+
+
+# ----------------------------------------------------------------
 
 # 
 #  from fastapi import FastAPI, HTTPException
