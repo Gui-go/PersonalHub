@@ -95,3 +95,18 @@ resource "google_project_iam_member" "dataform_sa_secret_manager_secret_accessor
   member  = "serviceAccount:${google_service_account.dataform_sa.email}"
 }
 
+
+
+
+
+# BQ DataForm GCP managed SA ------------------------------------------------------------------------------------------
+# DataFrom demands this role to be created for the GCP managed service account
+resource "google_project_iam_member" "dataform_sa_secret_manager_secret_accessor22222222" {
+  project = var.proj_id
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
+}
+
+
+
+
