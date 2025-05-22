@@ -12,8 +12,9 @@ resource "google_dataform_repository" "bqdataform_billinganalytics_repo" {
   git_remote_settings {
       url = "https://github.com/Gui-go/gcp_billing_analytics.git"
       default_branch = "main"
-      # authentication_token_secret_version = "projects/${var.proj_number}/secrets/${var.gh_token_secret_address}/versions/latest" # GitHub account settings > Developer settings > Personal access tokens > Tokens (classic)
-      authentication_token_secret_version = var.gh_token_secret_address
+      # authentication_token_secret_version = "projects/${var.proj_number}/secrets/${var.gh_token_secret_name}/versions/latest" # GitHub account settings > Developer settings > Personal access tokens > Tokens (classic)
+      # authentication_token_secret_version = var.gh_token_secret_address
+      authentication_token_secret_version = var.gh_token_secret_name
   }
   workspace_compilation_overrides {
     default_database = var.proj_id

@@ -4,16 +4,16 @@
 #   sensitive = true
 # }
 
-# output "gh_token_secret_name" {
-#   value       = google_secret_manager_secret.gh_token_secret.name
-#   description = "The fully qualified name of the GitHub token secret"
-#   sensitive   = true
-# }
-
-output "gh_token_secret_address" {
-  value       = "projects/${var.proj_number}/secrets/${google_secret_manager_secret.gh_token_secret.name}/versions/latest"
-  description = "The secret version used by the Dataform repository"
+output "gh_token_secret_name" {
+  value       = google_secret_manager_secret.gh_token_secret.name
+  description = "The fully qualified name of the GitHub token secret"
+  sensitive   = true
 }
+
+# output "gh_token_secret_address" {
+#   value       = "projects/${var.proj_number}/secrets/${google_secret_manager_secret.gh_token_secret.name}/versions/latest"
+#   description = "The secret version used by the Dataform repository"
+# }
 
 # # Output the service account key (sensitive)
 # output "service_account_key_json" {

@@ -31,8 +31,8 @@ variable "tag_env" {
   default     = "prod"
 }
 
-variable "gh_token_secret_address" {
-  description = "GitHub Token Secret Address"
+variable "gh_token_secret_name" {
+  description = "GitHub Token Secret Name"
   type        = string
 }
 

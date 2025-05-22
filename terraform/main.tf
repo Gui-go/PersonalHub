@@ -88,7 +88,7 @@ module "datawarehouse" {
   proj_number             = local.proj_number
   location                = local.location
   dataform_sa_email       = module.iam.dataform_sa_email
-  gh_token_secret_address = module.security.gh_token_secret_address
+  gh_token_secret_name = module.security.gh_token_secret_name
 }
 
 module "compute" {
