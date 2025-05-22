@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy personalhub-run-portfolio \
+          gcloud run deploy personalhub-run-fastapi \
             --image=us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/fastapi-api:latest \
             --platform=managed \
             --region=us-central1 \
