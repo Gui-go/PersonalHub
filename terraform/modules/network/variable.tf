@@ -33,11 +33,6 @@ variable "run_frontend_name" {
   type        = string
 }
 
-# variable "run_vault_name" {
-#   description = "Run instance vault output name"
-#   type        = string
-# }
-
 variable "run_names" {
   description = "Mapping of run instances names"
   type        = map(string)

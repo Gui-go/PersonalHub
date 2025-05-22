@@ -2,9 +2,19 @@ output "run_frontend_name" {
   value = google_cloud_run_v2_service.run_portfolio.name
 }
 
-# output "run_vault_name" {
-#   value = google_cloud_run_v2_service.run_vault.name
-# }
+output "run_portfolio" {
+  value = {
+    service  = google_cloud_run_v2_service.run_portfolio.name
+    location = google_cloud_run_v2_service.run_portfolio.location
+  }
+}
+
+output "run_fastapi" {
+  value = {
+    service  = google_cloud_run_v2_service.run_fastapi.name
+    location = google_cloud_run_v2_service.run_fastapi.location
+  }
+}
 
 output "run_names" {
   value = {
@@ -19,13 +29,9 @@ output "run_names" {
     # soi-erasmus       = google_cloud_run_v2_service.run_portfolio.name,
     # soi-h-index       = google_cloud_run_v2_service.run_portfolio.name,
 
-
     # react-portfolio   = google_cloud_run_v2_service.run_portfolio.name,
     # flutter-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name
     # wordpress         = google_cloud_run_v2_service.run_portfolio.name,
-
-    # flask-api         = google_cloud_run_v2_service.run_portfolio.name,
-    # django-api        = google_cloud_run_v2_service.run_portfolio.name,
 
     # django-portfolio = google_cloud_run_v2_service.run_flutter_portfolio.name,
     # php-portfolio   = google_cloud_run_v2_service.run_frontend.name,
@@ -41,12 +47,6 @@ output "run_names" {
 
     # geoserver          = google_cloud_run_v2_service.run_frontend.name,
     # geonetwork          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
     
     
     # airflow          = google_cloud_run_v2_service.run_frontend.name,
@@ -54,17 +54,9 @@ output "run_names" {
     # kibana          = google_cloud_run_v2_service.run_frontend.name,
     # cassandra          = google_cloud_run_v2_service.run_frontend.name,
     # opensearch-dashboards          = google_cloud_run_v2_service.run_frontend.name,
-    # kafka          = google_cloud_run_v2_service.run_frontend.name,
-    # datapreper          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-
-    # selenium          = google_cloud_run_v2_service.run_frontend.name,
-    # ubuntu          = google_cloud_run_v2_service.run_frontend.name,
-    # matlab          = google_cloud_run_v2_service.run_frontend.name,
-    # portainer          = google_cloud_run_v2_service.run_frontend.name,
-    # zabbix          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
-    # frontend          = google_cloud_run_v2_service.run_frontend.name,
   }
 }
+
+
+
+

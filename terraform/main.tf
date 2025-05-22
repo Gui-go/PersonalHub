@@ -46,19 +46,7 @@ resource "google_project_service" "apis" {
 provider "google-beta" {
   project     = local.proj_id
   region      = local.location
-#   credentials = file("./personalhub1-sa-credential.json")
 }
-
-
-
-
-# data "google_secret_manager_secret_version" "data_gh_token_secret" {
-#   project = local.proj_id
-#   secret  = "gh-access-token-secret"
-#   version = "latest"
-# }
-
-
 
 module "network" {
   source            = "./modules/network"
@@ -74,6 +62,16 @@ module "network" {
   subdomains        = local.subdomains
 }
 
+module "iam" {
+  source        = "./modules/iam"
+  proj_name     = local.proj_name
+  proj_id       = local.proj_id
+  proj_number   = local.proj_number
+  location      = local.location
+  run_portfolio = module.compute.run_portfolio
+  run_fastapi   = module.compute.run_fastapi
+}
+
 module "datalake" {
   source    = "./modules/datalake"
   proj_name = local.proj_name
@@ -83,13 +81,12 @@ module "datalake" {
   tag_env   = local.tag_env
 }
 
-# module "datawarehouse" {
-#   source      = "./modules/datawarehouse"
-#   proj_name   = local.proj_name
-#   proj_id     = local.proj_id
-#   location    = local.location
-#   # bucket_name = local.bucket_name
-# }
+module "datawarehouse" {
+  source    = "./modules/datawarehouse"
+  proj_name = local.proj_name
+  proj_id   = local.proj_id
+  location  = local.location
+}
 
 module "compute" {
   source              = "./modules/compute"
@@ -97,14 +94,8 @@ module "compute" {
   proj_id             = local.proj_id
   proj_number         = local.proj_number
   location            = local.location
-  # vault_bucket_name   = module.datalake.vault_bucket_name
   vpc_network_name    = module.network.vpc_network_name
-#   zone                = local.zone
-#   machine_type        = local.machine_type
-#   tag_owner           = local.tag_owner
-#   network_name        = module.network.vpc_network_name
-#   cleanbucket_name    = module.datalake.cleanbucket_name
-#   curatedbucket_name  = module.datalake.curatedbucket_name
+  fastapi_sa_email    = module.iam.fastapi_sa_email
 }
 
 # module "searchengine" {
@@ -116,26 +107,3 @@ module "compute" {
 #   release     = local.release
 #   # tag_env   = local.tag_env
 # }
-
-module "security" {
-  source      = "./modules/security"
-  proj_name   = local.proj_name
-  proj_id     = local.proj_id
-  proj_number = local.proj_number
-  location    = local.location
-  # zone        = local.zone
-  # release     = local.release
-  # tag_env   = local.tag_env
-}
-
-
-
-module "datawarehouse" {
-  source      = "./modules/datawarehouse"
-  proj_name   = local.proj_name
-  proj_id     = local.proj_id
-  location    = local.location
-  # zone        = local.zone
-  # release     = local.release
-  # tag_env   = local.tag_env
-}

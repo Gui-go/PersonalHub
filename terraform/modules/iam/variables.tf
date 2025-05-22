@@ -18,25 +18,24 @@ variable "location" {
 #   type        = string
 # }
 
-# variable "vault_bucket_name" {
-#   description = "Vaultwarden bucket name"
-#   type        = string
-# }
-
-variable "vpc_network_name" {
-  description = "Network name"
-  type        = string
-}
-
-
 variable "proj_number" {
   description = "Project Number identifier"
   type        = string
 }
 
-variable "fastapi_sa_email" {
-  description = "FastAPI Service Account email"
-  type        = string
+variable "run_portfolio" {
+  description = "GCP Cloud Run service for Portfolio"
+  type = object({
+    service  = string
+    location = string
+  })
 }
 
+variable "run_fastapi" {
+  description = "GCP Cloud Run service for FastAPI"
+  type = object({
+    service  = string
+    location = string
+  })
+}
 
