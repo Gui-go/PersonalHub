@@ -82,10 +82,13 @@ module "datalake" {
 }
 
 module "datawarehouse" {
-  source    = "./modules/datawarehouse"
-  proj_name = local.proj_name
-  proj_id   = local.proj_id
-  location  = local.location
+  source                  = "./modules/datawarehouse"
+  proj_name               = local.proj_name
+  proj_id                 = local.proj_id
+  proj_number             = local.proj_number
+  location                = local.location
+  dataform_sa_email       = module.iam.dataform_sa_email
+  gh_token_secret_address = module.security.gh_token_secret_address
 }
 
 module "compute" {
@@ -107,3 +110,15 @@ module "compute" {
 #   release     = local.release
 #   # tag_env   = local.tag_env
 # }
+
+module "security" {
+  source       = "./modules/security"
+  proj_id      = local.proj_id
+  proj_number  = local.proj_number
+  location     = local.location
+  tag_owner    = local.tag_owner
+  tag_env      = local.tag_env
+}
+
+
+

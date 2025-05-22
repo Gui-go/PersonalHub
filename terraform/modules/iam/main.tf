@@ -57,4 +57,41 @@ resource "google_cloud_run_service_iam_member" "public_access" {
 
 
 
+# BQ Dataform ------------------------------------------------------------------------------------------
+resource "google_service_account" "dataform_sa" {
+  project      = var.proj_id
+  account_id   = "dataform-sa"
+  display_name = "Dataform SA"
+}
+# resource "google_project_iam_member" "dataform_sa_bigquery_data_editor" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.dataEditor"
+#   member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+# }
+# resource "google_project_iam_member" "dataform_sa_bigquery_data_owner" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.dataOwner"
+#   member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+# }
+resource "google_project_iam_member" "dataform_sa_bigquery_job_user" {
+  project = var.proj_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+}
+# resource "google_project_iam_member" "dataform_sa_bigquery_data_viewer" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.dataViewer"
+#   member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+# }
+# resource "google_project_iam_member" "dataform_sa_bigquery_user" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.user"
+#   member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+# }
+
+resource "google_project_iam_member" "dataform_sa_secret_manager_secret_accessor" {
+  project = var.proj_id
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:${google_service_account.dataform_sa.email}"
+}
 
