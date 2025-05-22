@@ -1,37 +1,37 @@
-resource "google_secret_manager_secret" "gh_token_secret" {
-  project   = var.proj_id
-  secret_id = "gh-access-token-secret"
-  labels = {
-    label = "gh-token123"
-  }
-  replication {
-    user_managed {
-      replicas {
-        location = var.location
-      }
-    }
-  }
-}
+# resource "google_secret_manager_secret" "gh_token_secret" {
+#   project   = var.proj_id
+#   secret_id = "gh-access-token-secret"
+#   labels = {
+#     label = "gh-token123"
+#   }
+#   replication {
+#     user_managed {
+#       replicas {
+#         location = var.location
+#       }
+#     }
+#   }
+# }
 
-resource "google_project_iam_member" "dataform_bigquery_job_user" {
-  project = var.proj_id
-  role    = "roles/bigquery.jobUser"
-  member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
-}
+# resource "google_project_iam_member" "dataform_bigquery_job_user" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.jobUser"
+#   member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
+# }
 
-resource "google_secret_manager_secret_iam_member" "dataform_secret_access" {
-  project = var.proj_id
-  secret_id = google_secret_manager_secret.gh_token_secret.id
-  role      = "roles/secretmanager.secretAccessor" 
-  member    = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
-}
-
-
+# resource "google_secret_manager_secret_iam_member" "dataform_secret_access" {
+#   project = var.proj_id
+#   secret_id = google_secret_manager_secret.gh_token_secret.id
+#   role      = "roles/secretmanager.secretAccessor" 
+#   member    = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
+# }
 
 
 
 
-# # Create the service account
+
+
+# # Create the service account for GH Actions:
 # resource "google_service_account" "github_actions_deployer" {
 #   project      = var.proj_id
 #   account_id   = "gh-actions"
@@ -59,10 +59,59 @@ resource "google_secret_manager_secret_iam_member" "dataform_secret_access" {
 #   member  = "serviceAccount:${google_service_account.github_actions_deployer.email}"
 # }
 
-# Create a service account key
+# # Create a service account key
 # resource "google_service_account_key" "github_actions_deployer_key" {
 #   service_account_id = google_service_account.github_actions_deployer.name
 # }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# resource "google_service_account" "fastapi_sa" {
+#   project      = var.proj_id
+#   account_id   = "fastapi-sa"
+#   display_name = "FastAPI API SA"
+# }
+
+# resource "google_project_iam_member" "fastapi_sa_bqdataviewer" {
+#   project    = var.proj_id
+#   role       = "roles/bigquery.dataViewer"
+#   member     = "serviceAccount:${google_service_account.fastapi_sa.email}"
+#   depends_on = [ google_service_account.fastapi_sa ]
+# }
+
+# resource "google_project_iam_member" "fastapi_sa_bqjobuser" {
+#   project    = var.proj_id
+#   role       = "roles/bigquery.jobUser"
+#   member     = "serviceAccount:${google_service_account.fastapi_sa.email}"
+#   depends_on = [ google_service_account.fastapi_sa ]
+# }
+
+# resource "google_service_account_key" "fastapi_sa_key" {
+#   service_account_id = google_service_account.fastapi_sa.name
+#   depends_on         = [ google_service_account.fastapi_sa ]
+# }
+
+
+
+
+
+
+
+
 
 
 

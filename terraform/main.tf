@@ -117,16 +117,16 @@ module "compute" {
 #   # tag_env   = local.tag_env
 # }
 
-# module "security" {
-#   source      = "./modules/security"
-#   proj_name   = local.proj_name
-#   proj_id     = local.proj_id
-#   proj_number = local.proj_number
-#   location    = local.location
-#   # zone        = local.zone
-#   # release     = local.release
-#   # tag_env   = local.tag_env
-# }
+module "security" {
+  source      = "./modules/security"
+  proj_name   = local.proj_name
+  proj_id     = local.proj_id
+  proj_number = local.proj_number
+  location    = local.location
+  # zone        = local.zone
+  # release     = local.release
+  # tag_env   = local.tag_env
+}
 
 
 

@@ -67,35 +67,35 @@ resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
 
 # FastAPI API ------------------------------------------------------------------------------------------
 
-resource "google_service_account" "cloud_run_sa" {
+resource "google_service_account" "fastapi_sa" {
   project      = var.proj_id
-  account_id   = "${var.proj_name}-run-sa"
-  display_name = "${var.proj_name}-run-sa"
+  account_id   = "fastapi-sa"
+  display_name = "fastapi-sa"
 }
 
 # IAM permissions for BigQuery
 resource "google_project_iam_member" "bigquery_data_viewer" {
   project = var.proj_id
   role    = "roles/bigquery.dataViewer"
-  member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
+  member  = "serviceAccount:${google_service_account.fastapi_sa.email}"
 }
 
 resource "google_project_iam_member" "bigquery_job_user" {
   project = var.proj_id
   role    = "roles/bigquery.jobUser"
-  member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
+  member  = "serviceAccount:${google_service_account.fastapi_sa.email}"
 }
 
 resource "google_project_iam_member" "bigquery_admin" {
   project = var.proj_id
   role    = "roles/bigquery.admin"
-  member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
+  member  = "serviceAccount:${google_service_account.fastapi_sa.email}"
 }
 
 resource "google_project_iam_member" "storage_object_viewer" {
   project = var.proj_id
   role    = "roles/storage.objectViewer"
-  member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
+  member  = "serviceAccount:${google_service_account.fastapi_sa.email}"
 }
 
 resource "google_cloud_run_v2_service" "run_fastapi" {
@@ -123,7 +123,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
-    service_account = google_service_account.cloud_run_sa.email
+    service_account = google_service_account.fastapi_sa.email
   }
   traffic {
     percent = 100
