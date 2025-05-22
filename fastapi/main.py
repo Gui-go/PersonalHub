@@ -93,6 +93,10 @@ def build_sql_query(table: str, params: QueryParams) -> str:
     return " ".join(query_parts)
 
 
+@app.get("/")
+async def root():
+    return {"message": "FastAPI BigQuery Service"}
+
 @app.get(
     "/health",
     summary="Check API health",
