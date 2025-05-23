@@ -1,32 +1,7 @@
 
-# resource "google_storage_bucket" "tf_rawbucket" {
-#   name          = "${var.proj_name}-raw-bucket"
-#   project       = var.proj_id
-#   location      = var.location
-#   storage_class = "COLDLINE" # NEARLINE COLDLINE ARCHIVE
-#   lifecycle_rule {
-#     action {
-#       type          = "SetStorageClass"
-#       storage_class = "ARCHIVE"
-#     }
-#     condition {
-#       age = 180 # Move to ARCHIVE after 180 days
-#     }
-#   }
-#   labels = {
-#     environment = "varproj_name"
-#     project     = var.proj_id
-#     owner       = var.tag_owner
-#   }
-# }
-
-
-
-
-
 resource "google_storage_bucket" "vault_bucket" {
   project                     = var.proj_id
-  name                        = "${var.proj_id}-vault-bucket"
+  name                        = "vault-bucket-${var.proj_id}"
   location                    = var.location
   uniform_bucket_level_access = true
   versioning {
@@ -34,79 +9,57 @@ resource "google_storage_bucket" "vault_bucket" {
   }
 }
 
-# resource "google_storage_bucket" "rstudio_bucket" {
-#   project  = var.proj_id
-#   name     = "${var.proj_id}-rstudio-bucket"
-#   location = var.location
-#   versioning {
-#     enabled = true
-#   }
-#   uniform_bucket_level_access = true
-# }
-
 resource "google_storage_bucket" "billing_bucket" {
   project                     = var.proj_id
-  name                        = "${var.proj_id}-billing-bucket"
+  name                        = "billing-bucket-${var.proj_id}"
+  location                    = var.location
+  uniform_bucket_level_access = true
+}
+
+resource "google_storage_bucket" "brvectors_bucket" {
+  project                     = var.proj_id
+  name                        = "brvectors-bucket-${var.proj_id}"
   location                    = var.location
   uniform_bucket_level_access = true
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
+
+
+
 
 
 resource "google_bigquery_dataset" "billing_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "billing"
-  location      = var.location 
-  description   = "BigQuery dataset for Cloud Billing"
+  location      = "EU"
+  # criar location, region, and zone at .env
+  # location      = var.location 
+  description   = "BigQuery dataset for Cloud Billing dumping"
 }
 
-
-
-
-resource "google_storage_bucket" "database_bucket" {
-  project                     = var.proj_id
-  name                        = "${var.proj_id}-database-bucket"
-  location                    = var.location
-  uniform_bucket_level_access = true
-  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
-}
-
-resource "google_bigquery_dataset" "database_bq_dataset" {
+resource "google_bigquery_dataset" "brvectors_bq_dataset" {
   project       = var.proj_id
-  dataset_id    = "database"
-  location      = var.location 
-  description   = "BigQuery dataset for Portfolio database"
+  dataset_id    = "brvectors"
+  location      = "EU"
+  # location      = var.location 
+  description   = "BigQuery BRvectors dataset"
 }
-
 
 resource "google_bigquery_table" "bq_table_dflocations" {
   project             = var.proj_id
-  dataset_id          = google_bigquery_dataset.database_bq_dataset.dataset_id
+  dataset_id          = google_bigquery_dataset.brvectors_bq_dataset.dataset_id
   table_id            = "df_locations"
   deletion_protection = false
   external_data_configuration {
-    source_uris       = ["gs://${var.proj_id}-database-bucket/df_locations.csv"]
+    source_uris       = ["gs://${google_storage_bucket.brvectors_bucket.name}/df_locations.csv"]
     source_format     = "CSV"
     autodetect        = true
   }
 }
 
-# 
-
-
-# resource "google_project_iam_member" "bq_job_user" {
-#   project = var.proj_id
-#   role    = "roles/bigquery.jobUser"
-#   member  = "serviceAccount:${google_service_account.cloud_run_sa.email}"
-# }
 
 
 
-# provider "google-beta" {
-#   project     = var.proj_id
-#   region      = var.location
-#   # credentials = file("./dynamic-run-portfolio1-sa-credential.json")
-# }
 
 
 # DATAFORM ------------------------------------
@@ -244,3 +197,39 @@ resource "google_bigquery_table" "bq_table_dflocations" {
 # }
 
 # --------------------------------------------------------------
+
+
+# resource "google_storage_bucket" "tf_rawbucket" {
+#   name          = "${var.proj_name}-raw-bucket"
+#   project       = var.proj_id
+#   location      = var.location
+#   storage_class = "COLDLINE" # NEARLINE COLDLINE ARCHIVE
+#   lifecycle_rule {
+#     action {
+#       type          = "SetStorageClass"
+#       storage_class = "ARCHIVE"
+#     }
+#     condition {
+#       age = 180 # Move to ARCHIVE after 180 days
+#     }
+#   }
+#   labels = {
+#     environment = "varproj_name"
+#     project     = var.proj_id
+#     owner       = var.tag_owner
+#   }
+# }
+
+# resource "google_storage_bucket" "rstudio_bucket" {
+#   project  = var.proj_id
+#   name     = "${var.proj_id}-rstudio-bucket"
+#   location = var.location
+#   versioning {
+#     enabled = true
+#   }
+#   uniform_bucket_level_access = true
+# }
+
+
+
+

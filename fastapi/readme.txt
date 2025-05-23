@@ -1,22 +1,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
+docker buildx build --platform linux/amd64 \
+  -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/personalhub-artifact-repo/fastapi-api:latest \
+  -f fastapi/fastapi.dockerfile \
+  --push fastapi/
 
 docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/fastapi-api:latest  \
-  -f fastapi.dockerfile \
-  --push .
-
-
+  -t guigo13/fastapi-api:latest \
+  -f fastapi/fastapi.dockerfile \
+  --push fastapi/
 
 
 gcloud iam service-accounts keys create ~/Documents/06-personalHub/fastapi/fastapi-sa-key.json \

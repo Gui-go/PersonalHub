@@ -6,15 +6,14 @@
 # #https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataform_repository
 resource "google_dataform_repository" "bqdataform_billinganalytics_repo" {
   provider = google-beta
-  name = "billing-analytics-repo"
-  display_name = "billing-analytics-repo"
+  name = "billing-dataform-repo"
+  display_name = "billing-dataform-repo"
+  region     = var.location
   service_account = var.dataform_sa_email
   git_remote_settings {
       url = "https://github.com/Gui-go/gcp_billing_analytics.git"
       default_branch = "main"
-      # authentication_token_secret_version = "projects/${var.proj_number}/secrets/${var.gh_token_secret_name}/versions/latest" # GitHub account settings > Developer settings > Personal access tokens > Tokens (classic)
-      # authentication_token_secret_version = var.gh_token_secret_address
-      authentication_token_secret_version = var.gh_token_secret_name
+      authentication_token_secret_version = var.gh_token_secret
   }
   workspace_compilation_overrides {
     default_database = var.proj_id
@@ -84,12 +83,14 @@ resource "google_dataform_repository" "bqdataform_billinganalytics_repo" {
 # #https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataform_repository
 resource "google_dataform_repository" "bqdataform_brvectos_repo" {
   provider = google-beta
-  name = "brvectors-repo"
-  display_name = "brvectors-repo"
+  name = "brvectors-dataform-repo"
+  display_name = "brvectors-dataform-repo"
+  region     = var.location
+  service_account = var.dataform_sa_email
   git_remote_settings {
       url = "git@github.com:Gui-go/BRvectors.git"
       default_branch = "main"
-      authentication_token_secret_version = "projects/353128465181/secrets/gh-access-token-secret/versions/latest"
+      authentication_token_secret_version = var.gh_token_secret
   }
   workspace_compilation_overrides {
     default_database = var.proj_id

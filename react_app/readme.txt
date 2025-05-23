@@ -3,23 +3,15 @@
 
 
 
-gcloud auth configure-docker us-central1-docker.pkg.dev
-
-
-
-
-
-
-docker buildx build --platform linux/amd64,linux/arm64 \
-  -t $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG \
-  --push .
+gcloud auth configure-docker europe-north2-docker.pkg.dev --quiet
 
 
 docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/portfolio-app:latest  \
-  --push .
-
-docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/portfolio-app:latest  \
+  -t europe-north2-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest  \
   -f react.dockerfile \
   --push .
+
+docker buildx build --platform linux/amd64 \
+  -t guigo13/portfolio-app:latest  \
+  -f react_app/react.dockerfile \
+  --push react_app/

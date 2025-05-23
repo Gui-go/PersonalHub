@@ -1,38 +1,38 @@
 
 
 
-resource "google_artifact_registry_repository" "artifact_repo" {
-  project       = var.proj_id
-  repository_id = "${var.proj_name}-artifact-repo"
-  description   = "Artifact registry repository for ${var.proj_name}"
-  location      = var.location
-  format        = "DOCKER"
-  docker_config {
-    immutable_tags = false
-  }
-}
+# resource "google_artifact_registry_repository" "artifact_repo" {
+#   project       = var.proj_id
+#   repository_id = "artifact-repo"
+#   description   = "Artifact registry repository for ${var.proj_name}"
+#   location      = var.location
+#   format        = "DOCKER"
+#   docker_config {
+#     immutable_tags = false
+#   }
+# }
 
-resource "google_vpc_access_connector" "connector" {
-  project        = var.proj_id
-  name           = "cloudrun-connector"
-  region         = var.location
-  ip_cidr_range  = "192.168.16.0/28"
-  network        = var.vpc_network_name
-  min_throughput = 200
-  max_throughput = 300
-}
-
+# resource "google_vpc_access_connector" "connector" {
+#   project        = var.proj_id
+#   name           = "cloudrun-connector"
+#   region         = var.location
+#   ip_cidr_range  = "192.168.16.0/28"
+#   network        = var.vpc_network_name
+#   min_throughput = 200
+#   max_throughput = 300
+# }
 
 
 # Portfolio ------------------------------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "run_portfolio" {
   project  = var.proj_id
-  name     = "${var.proj_name}-run-portfolio"
+  name     = "portfolio-run"
   location = var.location
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     containers {
-      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
+      # image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
+      image = "guigo13/portfolio-app:latest"
       ports { container_port = 3000 }
       resources {
         limits = {
@@ -46,7 +46,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       min_instance_count = 0
     }
     vpc_access {
-      connector = google_vpc_access_connector.connector.id
+      connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
@@ -61,12 +61,12 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
 
 resource "google_cloud_run_v2_service" "run_fastapi" {
   project  = var.proj_id
-  name     = "${var.proj_name}-run-fastapi"
+  name     = "fastapi-run"
   location = var.location
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     containers {
-      image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/fastapi-api:latest"
+      image = "guigo13/fastapi-api:latest"
       ports { container_port = 8080 }
       resources {
         limits = {
@@ -80,7 +80,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
       min_instance_count = 0
     }
     vpc_access {
-      connector = google_vpc_access_connector.connector.id
+      connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
@@ -94,56 +94,10 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
 }
 
 
-
-
-# flutter-portfolio ------------------------------------------------------------------------------------------
-# resource "google_cloud_run_v2_service" "run_flutter_portfolio" {
-#   project  = var.proj_id
-#   name     = "${var.proj_name}-run-flutter-portfolio"
-#   location = var.location
-#   ingress  = "INGRESS_TRAFFIC_ALL"
-#   template {
-#     containers {
-#       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/flutter-portfolio:latest"
-#       ports {
-#         container_port = 8080
-#       }
-#       resources {
-#         limits = {
-#           cpu    = "0.5"
-#           memory = "512Mi"
-#         }
-#       }
-#     }
-#     scaling {
-#       max_instance_count = 1
-#       min_instance_count = 0
-#     }
-#     vpc_access {
-#       connector = google_vpc_access_connector.connector.id
-#       egress = "ALL_TRAFFIC"
-#     }
-#     timeout = "120s"
-#   }
-#   traffic {
-#     percent = 100
-#     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-#   }
-# }
-
-# resource "google_cloud_run_service_iam_member" "flutter_public_access" {
-#   project  = var.proj_id
-#   service  = google_cloud_run_v2_service.run_flutter_portfolio.name
-#   location = google_cloud_run_v2_service.run_flutter_portfolio.location
-#   role     = "roles/run.invoker"
-#   member   = "allUsers"
-# }
-
-
 # vaultwarden ------------------------------------------------------------------------------------------
 # resource "google_cloud_run_v2_service" "run_vault" {
 #   project  = var.proj_id
-#   name     = "${var.proj_name}-run-vault"
+#   name     = "vault-run"
 #   location = var.location
 #   ingress  = "INGRESS_TRAFFIC_ALL"
 #   template {
@@ -202,7 +156,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
 # Rstudio ------------------------------------------------------------------------------------------
 # resource "google_cloud_run_v2_service" "run_rstudio" {
 #   project  = var.proj_id
-#   name     = "${var.proj_name}-run-rstudio"
+#   name     = "rstudio-run"
 #   location = var.location
 #   ingress  = "INGRESS_TRAFFIC_ALL"
 #   template {
@@ -222,7 +176,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
 #       min_instance_count = 0
 #     }
 #     vpc_access {
-#       connector = google_vpc_access_connector.connector.id
+#       connector = var.run_connector_id
 #       egress = "ALL_TRAFFIC"
 #     }
 #     timeout = "60s"

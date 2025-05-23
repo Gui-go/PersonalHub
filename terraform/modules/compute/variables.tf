@@ -23,11 +23,10 @@ variable "location" {
 #   type        = string
 # }
 
-variable "vpc_network_name" {
-  description = "Network name"
+variable "run_connector_id" {
+  description = "Cloud Run Connector ID identifier"
   type        = string
 }
-
 
 variable "proj_number" {
   description = "Project Number identifier"

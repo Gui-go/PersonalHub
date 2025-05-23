@@ -5,6 +5,6 @@ output "fastapi_sa_email" {
 }
 
 output "dataform_sa_email" {
-  value = google_service_account.dataform_sa.email
+  value = google_service_account.customdataform_sa.email
 }
 

@@ -1,8 +1,9 @@
 locals {
+  release         = "11"
   proj_name       = "personalhub"
-  proj_id         = "personalhub3"
-  proj_number     = "353128465181"
-  location        = "us-central1"
+  proj_id         = "personalhub11"
+  proj_number     = "353128465181" # dinamizar aqui
+  location        = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
   domain          = "guigo.dev.br"
@@ -17,7 +18,6 @@ locals {
     # "soi-erasmus",
     # "soi-h-index",
   ]
-  release         = "1"
   tag_owner       = "guilhermeviegas"
   tag_env         = "prod"
 }
@@ -82,23 +82,23 @@ module "datalake" {
 }
 
 module "datawarehouse" {
-  source                  = "./modules/datawarehouse"
-  proj_name               = local.proj_name
-  proj_id                 = local.proj_id
-  proj_number             = local.proj_number
-  location                = local.location
-  dataform_sa_email       = module.iam.dataform_sa_email
-  gh_token_secret_name = module.security.gh_token_secret_name
+  source            = "./modules/datawarehouse"
+  proj_name         = local.proj_name
+  proj_id           = local.proj_id
+  proj_number       = local.proj_number
+  location          = local.location
+  dataform_sa_email = module.iam.dataform_sa_email
+  gh_token_secret   = module.security.gh_token_secret
 }
 
 module "compute" {
-  source              = "./modules/compute"
-  proj_name           = local.proj_name
-  proj_id             = local.proj_id
-  proj_number         = local.proj_number
-  location            = local.location
-  vpc_network_name    = module.network.vpc_network_name
-  fastapi_sa_email    = module.iam.fastapi_sa_email
+  source           = "./modules/compute"
+  proj_name        = local.proj_name
+  proj_id          = local.proj_id
+  proj_number      = local.proj_number
+  location         = local.location
+  run_connector_id = module.network.run_connector_id
+  fastapi_sa_email = module.iam.fastapi_sa_email
 }
 
 # module "searchengine" {
@@ -112,12 +112,12 @@ module "compute" {
 # }
 
 module "security" {
-  source       = "./modules/security"
-  proj_id      = local.proj_id
-  proj_number  = local.proj_number
-  location     = local.location
-  tag_owner    = local.tag_owner
-  tag_env      = local.tag_env
+  source      = "./modules/security"
+  proj_id     = local.proj_id
+  proj_number = local.proj_number
+  location    = local.location
+  tag_owner   = local.tag_owner
+  tag_env     = local.tag_env
 }
 
 

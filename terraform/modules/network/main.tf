@@ -14,6 +14,16 @@ resource "google_compute_subnetwork" "vpc_subnet" {
   private_ip_google_access = true
 }
 
+resource "google_vpc_access_connector" "run_connector" {
+  project        = var.proj_id
+  name           = "cloudrun-connector"
+  region         = var.location
+  ip_cidr_range  = "192.168.16.0/28"
+  network        = google_compute_network.vpc_net.name
+  min_throughput = 200
+  max_throughput = 300
+}
+
 resource "google_compute_region_network_endpoint_group" "neg_region" {
   for_each              = toset(var.subdomains)
   name                  = "${var.proj_name}-${each.key}-neg"
@@ -63,7 +73,6 @@ resource "google_compute_url_map" "url_map" {
     }
   }
 }
-
 
 resource "google_compute_url_map" "http_redirect" {
   name    = "http-redirect"
