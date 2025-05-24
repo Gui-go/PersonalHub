@@ -15,7 +15,7 @@ from datetime import datetime
 app = FastAPI(title="BigQuery API", version="1.0.0")
 
 # Configuration
-PROJECT_ID = "personalhub3"
+PROJECT_ID = "personalhub11"
 CREDENTIALS_PATH = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "./fastapi-sa-key.json")
 
 # Initialize BigQuery client

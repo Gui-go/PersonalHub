@@ -2,19 +2,14 @@
 
 
 docker buildx build --platform linux/amd64 \
-  -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/personalhub-artifact-repo/fastapi-api:latest \
-  -f fastapi/fastapi.dockerfile \
-  --push fastapi/
-
-docker buildx build --platform linux/amd64 \
   -t guigo13/fastapi-api:latest \
   -f fastapi/fastapi.dockerfile \
   --push fastapi/
 
 
 gcloud iam service-accounts keys create ~/Documents/06-personalHub/fastapi/fastapi-sa-key.json \
-  --iam-account=fastapi-sa@personalhub3.iam.gserviceaccount.com \
-  --project=personalhub3
+  --iam-account=fastapi-sa@personalhub11.iam.gserviceaccount.com \
+  --project=personalhub11
 
 
 # to be able to run the functions locally:
