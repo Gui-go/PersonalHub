@@ -83,6 +83,18 @@ resource "google_project_iam_member" "customdataform_sa_bq_data_viewer" {
   member  = "serviceAccount:${google_service_account.customdataform_sa.email}"
 }
 
+resource "google_project_iam_member" "customdataform_sa_bq_table_create" {
+  project = var.proj_id
+  role    = "roles/bigquery.dataEditor"
+  member  = "serviceAccount:${google_service_account.customdataform_sa.email}"
+}
+
+resource "google_project_iam_member" "customdataform_sa_bq_object_viewer" {
+  project = var.proj_id
+  role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${google_service_account.customdataform_sa.email}"
+}
+
 
 
 
@@ -115,4 +127,88 @@ resource "google_project_iam_member" "gcpdataform_sa_bq_data_editor" {
   member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
 }
 
+resource "google_project_iam_member" "gcpdataform_sa_bq_job_user" {
+  project = var.proj_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
+}
 
+
+# ----------------------
+
+# # Vertex AI connection to use Gemini model in BigQuery:
+# resource "google_bigquery_connection" "billing_gemini_connection" {
+#   project = var.proj_id
+#   location = var.location
+#   connection_id = "billing_gemini_connection"
+#   friendly_name = "Gemini Connection for Billing Data"
+#   description = "Connection to Vertex AI for Gemini model access in BigQuery"
+#   cloud_resource {
+#     # service_account_id = "bqcx-875513564391-qhlb@gcp-sa-bigquery-condel.iam.gserviceaccount.com"
+#   }
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
+
+# resource "google_project_iam_member" "vertex_ai_user_binding" {
+#   project = var.proj_id
+#   role    = "roles/aiplatform.user"
+#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
+#   depends_on = [google_bigquery_connection.billing_gemini_connection]
+# }
+
+# resource "google_project_iam_member" "cx_objViewer" {
+#   project = var.proj_id
+#   role    = "roles/storage.objectViewer"
+#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
+#   depends_on = [google_bigquery_connection.billing_gemini_connection]
+# }
+
+
+# resource "google_project_iam_member" "cx_sa_binding" {
+#   project = var.proj_id
+#   role    = "roles/iam.serviceAccountAdmin"
+#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
+#   depends_on = [google_bigquery_connection.billing_gemini_connection]
+# }
+
+
+# resource "google_project_iam_member" "cx_admin_binding" {
+#   project = var.proj_id
+#   role    = "roles/bigquery.connectionAdmin"
+#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
+#   depends_on = [google_bigquery_connection.billing_gemini_connection]
+# }
+
+# resource "google_project_iam_member" "vertex_ai_user" {
+#   project = var.proj_id
+#   role    = "roles/aiplatform.user"
+#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
+# }
+
+
+
+
+# --------------------------------------------------------------------
+resource "google_project_iam_member" "bigquery_data_viewer123" {
+  project = var.proj_id
+  role    = "roles/bigquery.dataViewer"
+  member  = "serviceAccount:bqcx-875513564391-jbkt@gcp-sa-bigquery-condel.iam.gserviceaccount.com"
+}
+
+resource "google_project_iam_member" "vertex_ai_user" {
+  project = var.proj_id
+  role    = "roles/aiplatform.user"
+  member  = "serviceAccount:bqcx-875513564391-jbkt@gcp-sa-bigquery-condel.iam.gserviceaccount.com"
+}
+
+
+
+
+resource "google_bigquery_connection" "default3332323" {
+  connection_id = "my_cloud_resource_connection"
+  project       = var.proj_id
+  location      = "US"
+  cloud_resource {}
+}

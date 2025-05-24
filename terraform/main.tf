@@ -2,7 +2,7 @@ locals {
   release         = "11"
   proj_name       = "personalhub"
   proj_id         = "personalhub11"
-  proj_number     = "353128465181" # dinamizar aqui
+  proj_number     = "875513564391"
   location        = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
@@ -22,7 +22,6 @@ locals {
   tag_env         = "prod"
 }
 
-
 resource "google_project_service" "apis" {
   for_each = toset([
     "run.googleapis.com",
@@ -37,6 +36,7 @@ resource "google_project_service" "apis" {
     "eventarc.googleapis.com", # although not used, it is needed for google_cloudfunctions2_function
     "pubsub.googleapis.com",    # although not used, it is needed for google_cloudfunctions2_function
     "bigquery.googleapis.com"
+    # vertexAI
   ])
   project = local.proj_id
   service = each.key

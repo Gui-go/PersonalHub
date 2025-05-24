@@ -1,4 +1,6 @@
 
+# buckets ------------------------------------------------------------------------------------
+
 resource "google_storage_bucket" "vault_bucket" {
   project                     = var.proj_id
   name                        = "vault-bucket-${var.proj_id}"
@@ -24,30 +26,72 @@ resource "google_storage_bucket" "brvectors_bucket" {
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
+resource "google_storage_bucket" "geolayers_bucket" {
+  project                     = var.proj_id
+  name                        = "geolayers-bucket-${var.proj_id}"
+  location                    = var.location
+  uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+}
 
 
 
+# datasets ------------------------------------------------------------------------------------
 
-resource "google_bigquery_dataset" "billing_bq_dataset" {
+# resource "google_bigquery_dataset" "billing_bq_dataset" {
+#   project       = var.proj_id
+#   dataset_id    = "billing_source"
+#   location      = "US"
+#   description   = "BigQuery dataset for Cloud Billing dumping"
+# }
+
+resource "google_bigquery_dataset" "billing_dev_bq_dataset" {
   project       = var.proj_id
-  dataset_id    = "billing"
-  location      = "EU"
+  dataset_id    = "billing_dev"
+  location      = "US"
   # criar location, region, and zone at .env
   # location      = var.location 
-  description   = "BigQuery dataset for Cloud Billing dumping"
+  description   = "BigQuery dataset in development stage for Cloud Billing dumping"
 }
 
-resource "google_bigquery_dataset" "brvectors_bq_dataset" {
+resource "google_bigquery_dataset" "billing_prod_bq_dataset" {
   project       = var.proj_id
-  dataset_id    = "brvectors"
-  location      = "EU"
+  dataset_id    = "billing_prod"
+  location      = "US"
+  # criar location, region, and zone at .env
   # location      = var.location 
-  description   = "BigQuery BRvectors dataset"
+  description   = "BigQuery dataset in production stage for Cloud Billing dumping"
 }
+
+
+resource "google_bigquery_dataset" "brvectors_source_bq_dataset" {
+  project       = var.proj_id
+  dataset_id    = "brvectors_source"
+  location      = "US"
+  # location      = var.location 
+  description   = "BigQuery dataset for BRvectors sources"
+}
+
+resource "google_bigquery_dataset" "brvectors_dev_bq_dataset" {
+  project       = var.proj_id
+  dataset_id    = "brvectors_dev"
+  location      = "US"
+  # location      = var.location 
+  description   = "BigQuery dataset in developement stage for BRvectors"
+}
+
+resource "google_bigquery_dataset" "brvectors_prod_bq_dataset" {
+  project       = var.proj_id
+  dataset_id    = "brvectors_prod"
+  location      = "US"
+  # location      = var.location 
+  description   = "BigQuery dataset in production stage for BRvectors"
+}
+
 
 resource "google_bigquery_table" "bq_table_dflocations" {
   project             = var.proj_id
-  dataset_id          = google_bigquery_dataset.brvectors_bq_dataset.dataset_id
+  dataset_id          = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
   table_id            = "df_locations"
   deletion_protection = false
   external_data_configuration {
@@ -58,8 +102,95 @@ resource "google_bigquery_table" "bq_table_dflocations" {
 }
 
 
+# GeoLayers -----------------------------------------
+
+# Define the BigQuery dataset
+resource "google_bigquery_dataset" "geolayers_bq_dataset" {
+  project     = var.proj_id
+  dataset_id  = "geolayers"
+  location    = var.location
+  description = "BigQuery dataset for GeoLayers"
+}
+
+# Define the BigQuery table
+resource "google_bigquery_table" "cities_ivebeen" {
+  project             = var.proj_id
+  dataset_id          = google_bigquery_dataset.geolayers_bq_dataset.dataset_id
+  table_id            = "cities_ivebeen"
+  deletion_protection = false
+  external_data_configuration {
+    source_uris   = ["gs://${google_storage_bucket.geolayers_bucket.name}/cities_ivebeen.csv"]
+    source_format = "CSV"
+    autodetect    = true
+    compression   = "NONE"
+  }
+  schema = jsonencode([
+    {
+      "name": "id",
+      "type": "INTEGER",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "geom",
+      "type": "GEOGRAPHY", # For POINT geometry
+      "mode": "NULLABLE"
+    }
+  ])
+  # Ensure the dataset is created before the table
+  depends_on = [google_bigquery_dataset.geolayers_bq_dataset]
+}
 
 
+
+# resource "google_bigquery_dataset" "geolayers_bq_dataset" {
+#   project       = var.proj_id
+#   dataset_id    = "geolayers"
+#   # location      = "US"
+#   location      = var.location 
+#   description   = "BigQuery dataset for GeoLayers"
+# }
+
+
+
+# resource "google_bigquery_table" "cities_ivebeen2" {
+#   project             = var.proj_id
+#   dataset_id = var.proj_id
+#   table_id   = "cities_ivebeen"
+#   # schema = jsonencode([
+#   #   { "name": "id", "type": "INTEGER", "mode": "REQUIRED" },
+#   #   { "name": "name", "type": "STRING", "mode": "NULLABLE" },
+#   #   { "name": "geom", "type": "GEOGRAPHY", "mode": "NULLABLE" }
+#   # ])
+#   external_data_configuration {
+#     source_uris       = ["gs://${google_storage_bucket.geolayers_bucket.name}/cities_ivebeen.csv"]
+#     source_format     = "CSV"
+#     autodetect        = true
+#   }
+#   deletion_protection = false
+# }
+
+
+
+
+
+
+
+# resource "google_bigquery_table" "bq_table_dflocations" {
+#   project             = var.proj_id
+#   dataset_id          = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id            = "df_locations"
+#   deletion_protection = false
+#   external_data_configuration {
+#     source_uris       = ["gs://${google_storage_bucket.brvectors_bucket.name}/df_locations.csv"]
+#     source_format     = "CSV"
+#     autodetect        = true
+#   }
+# }
 
 
 # DATAFORM ------------------------------------

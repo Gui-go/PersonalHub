@@ -101,6 +101,27 @@ resource "google_dataform_repository" "bqdataform_brvectos_repo" {
 }
 
 
+## GeoLayers ----------------------------------------------------------------------------------
+
+resource "google_dataform_repository" "bqdataform_geolayers_repo" {
+  provider = google-beta
+  name = "geolayers-dataform-repo"
+  display_name = "geolayers-dataform-repo"
+  region     = var.location
+  service_account = var.dataform_sa_email
+  git_remote_settings {
+      url = "https://github.com/Gui-go/GeoLayers.git"
+      default_branch = "main"
+      authentication_token_secret_version = var.gh_token_secret
+  }
+  workspace_compilation_overrides {
+    default_database = var.proj_id
+    schema_suffix = ""
+    table_prefix = ""
+  }
+  # depends_on = [google_bigquery_dataset.bqdataset_bronze]
+}
+
 
 
 
