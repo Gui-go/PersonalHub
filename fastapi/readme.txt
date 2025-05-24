@@ -4,6 +4,7 @@
 docker buildx build --platform linux/amd64 \
   -t guigo13/fastapi-api:latest \
   -f fastapi/fastapi.dockerfile \
+  --no-cache \
   --push fastapi/
 
 

@@ -12,7 +12,8 @@ from datetime import datetime
 # from shapely.geometry import mapping
 # import geojson
 
-app = FastAPI(title="BigQuery API", version="1.0.0")
+version_release="1.0.2"
+app = FastAPI(title="BigQuery API", version=version_release)
 
 # Configuration
 PROJECT_ID = "personalhub11"
@@ -95,7 +96,7 @@ def build_sql_query(table: str, params: QueryParams) -> str:
 
 @app.get("/")
 async def root():
-    return {"message": "FastAPI BigQuery Service"}
+    return {"message": f"FastAPI BigQuery Service ({version_release})"}
 
 @app.get(
     "/health",
