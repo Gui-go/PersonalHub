@@ -1,0 +1,288 @@
+{
+  "en": {
+    "menu": [
+      {
+        "id": "home",
+        "label": "Home",
+        "path": "/",
+        "title": "Welcome to My Portfolio",
+        "description": "Hi! I'm a passionate developer and geospatial enthusiast. Explore my work in web development, geospatial analysis, and AI-driven projects.",
+        "image": "https://via.placeholder.com/1200x600?text=Hero+Banner",
+        "cta": [
+          { "label": "View Projects", "path": "/projects" },
+          { "label": "Contact Me", "path": "/contact" }
+        ]
+      },
+      {
+        "id": "cv",
+        "label": "CV",
+        "path": "/cv",
+        "title": "Curriculum Vitae",
+        "description": "A detailed overview of my education, experience, and skills.",
+        "image": "https://via.placeholder.com/1200x400?text=CV+Banner",
+        "sections": [
+          {
+            "title": "Education",
+            "items": [
+              "MSc in Computer Science, University of Example, 2018-2020",
+              "BSc in Geography, University of Example, 2014-2018"
+            ]
+          },
+          {
+            "title": "Experience",
+            "items": [
+              "Senior Developer, Tech Corp, 2020-Present",
+              "Geospatial Analyst, Geo Solutions, 2018-2020"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "publications",
+        "label": "Publications",
+        "path": "/publications",
+        "title": "My Publications",
+        "description": "A collection of my research papers and articles.",
+        "image": "https://via.placeholder.com/1200x400?text=Publications+Banner",
+        "sections": [
+          {
+            "title": "Recent Papers",
+            "items": [
+              "Advancements in Geospatial AI, Journal of GIS, 2023",
+              "Web Development with React, Tech Review, 2022"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "label": "Projects",
+        "path": "/projects",
+        "title": "My Projects",
+        "description": "Explore my portfolio of web and geospatial projects.",
+        "image": "https://via.placeholder.com/1200x400?text=Projects+Banner",
+        "sections": [
+          {
+            "title": "Featured Projects",
+            "items": [
+              "GeoMapper: A real-time GIS visualization tool",
+              "Portfolio Website: Built with React and Vite"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "geolayers",
+        "label": "GeoLayers",
+        "path": "/geolayers",
+        "title": "GeoLayers",
+        "description": "Interactive geospatial data visualization projects.",
+        "image": "https://via.placeholder.com/1200x400?text=GeoLayers+Banner",
+        "sections": [
+          {
+            "title": "Key Projects",
+            "items": [
+              "Urban Heat Map: Visualizing city temperature data",
+              "Flood Risk Analysis: Interactive GIS layers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "agents",
+        "label": "Agents",
+        "path": "/agents",
+        "title": "AI Agents",
+        "description": "My work on AI-driven agents for automation and analysis.",
+        "image": "https://via.placeholder.com/1200x400?text=Agents+Banner",
+        "sections": [
+          {
+            "title": "AI Projects",
+            "items": [
+              "Chatbot for GIS Queries",
+              "Predictive Model for Urban Planning"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "blog",
+        "label": "Blog",
+        "path": "/blog",
+        "title": "Blog",
+        "description": "Thoughts and tutorials on development and geospatial tech.",
+        "image": "https://via.placeholder.com/1200x400?text=Blog+Banner",
+        "sections": [
+          {
+            "title": "Recent Posts",
+            "items": [
+              "Getting Started with React Router, 2025",
+              "Geospatial Data with Leaflet, 2024"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "about",
+        "label": "About",
+        "path": "/about",
+        "title": "About Me",
+        "description": "Learn about my journey as a developer and geospatial enthusiast.",
+        "image": "https://via.placeholder.com/1200x400?text=About+Banner",
+        "sections": [
+          {
+            "title": "My Journey",
+            "items": [
+              "Started coding in 2014 with a focus on web development.",
+              "Passionate about combining GIS with modern tech."
+            ]
+          }
+        ]
+      }
+    ],
+    "title": "My Portfolio"
+  },
+  "es": {
+    "menu": [
+      {
+        "id": "home",
+        "label": "Inicio",
+        "path": "/",
+        "title": "Bienvenido a Mi Portafolio",
+        "description": "¡Hola! Soy un desarrollador apasionado y entusiasta de la tecnología geoespacial. Explora mi trabajo en desarrollo web, análisis geoespacial y proyectos de IA.",
+        "image": "https://via.placeholder.com/1200x600?text=Banner+Inicio",
+        "cta": [
+          { "label": "Ver Proyectos", "path": "/projects" },
+          { "label": "Contáctame", "path": "/contact" }
+        ]
+      },
+      {
+        "id": "cv",
+        "label": "CV",
+        "path": "/cv",
+        "title": "Curriculum Vitae",
+        "description": "Un resumen detallado de mi educación, experiencia y habilidades.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+CV",
+        "sections": [
+          {
+            "title": "Educación",
+            "items": [
+              "Máster en Ciencias de la Computación, Universidad Ejemplo, 2018-2020",
+              "Licenciatura en Geografía, Universidad Ejemplo, 2014-2018"
+            ]
+          },
+          {
+            "title": "Experiencia",
+            "items": [
+              "Desarrollador Senior, Tech Corp, 2020-Presente",
+              "Analista Geoespacial, Geo Solutions, 2018-2020"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "publications",
+        "label": "Publicaciones",
+        "path": "/publications",
+        "title": "Mis Publicaciones",
+        "description": "Una colección de mis artículos y trabajos de investigación.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+Publicaciones",
+        "sections": [
+          {
+            "title": "Artículos Recientes",
+            "items": [
+              "Avances en IA Geoespacial, Revista GIS, 2023",
+              "Desarrollo Web con React, Reseña Tecnológica, 2022"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "projects",
+        "label": "Proyectos",
+        "path": "/projects",
+        "title": "Mis Proyectos",
+        "description": "Explora mi portafolio de proyectos web y geoespaciales.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+Proyectos",
+        "sections": [
+          {
+            "title": "Proyectos Destacados",
+            "items": [
+              "GeoMapper: Herramienta de visualización GIS en tiempo real",
+              "Sitio Web de Portafolio: Construido con React y Vite"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "geolayers",
+        "label": "GeoCapas",
+        "path": "/geolayers",
+        "title": "GeoCapas",
+        "description": "Proyectos de visualización de datos geoespaciales interactivos.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+GeoCapas",
+        "sections": [
+          {
+            "title": "Proyectos Clave",
+            "items": [
+              "Mapa de Calor Urbano: Visualización de datos de temperatura",
+              "Análisis de Riesgo de Inundaciones: Capas GIS interactivas"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "agents",
+        "label": "Agentes",
+        "path": "/agents",
+        "title": "Agentes de IA",
+        "description": "Mi trabajo en agentes de IA para automatización y análisis.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+Agentes",
+        "sections": [
+          {
+            "title": "Proyectos de IA",
+            "items": [
+              "Chatbot para Consultas GIS",
+              "Modelo Predictivo para Planificación Urbana"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "blog",
+        "label": "Blog",
+        "path": "/blog",
+        "title": "Blog",
+        "description": "Pensamientos y tutoriales sobre desarrollo y tecnología geoespacial.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+Blog",
+        "sections": [
+          {
+            "title": "Publicaciones Recientes",
+            "items": [
+              "Introducción a React Router, 2025",
+              "Datos Geoespaciales con Leaflet, 2024"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "about",
+        "label": "Acerca",
+        "path": "/about",
+        "title": "Sobre Mí",
+        "description": "Conoce mi trayectoria como desarrollador y entusiasta geoespacial.",
+        "image": "https://via.placeholder.com/1200x400?text=Banner+Acerca",
+        "sections": [
+          {
+            "title": "Mi Trayectoria",
+            "items": [
+              "Empecé a programar en 2014 con enfoque en desarrollo web.",
+              "Apasionado por combinar GIS con tecnología moderna."
+            ]
+          }
+        ]
+      }
+    ],
+    "title": "Mi Portafolio"
+  }
+}

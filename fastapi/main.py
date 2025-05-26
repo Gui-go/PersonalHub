@@ -12,7 +12,7 @@ from datetime import datetime
 # from shapely.geometry import mapping
 # import geojson
 
-version_release="1.0.2"
+version_release="1.0.3"
 app = FastAPI(title="BigQuery API", version=version_release)
 
 # Configuration

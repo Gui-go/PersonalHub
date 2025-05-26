@@ -22,6 +22,9 @@ locals {
   tag_env         = "prod"
 }
 
+# location > region > zone
+
+
 resource "google_project_service" "apis" {
   for_each = toset([
     "run.googleapis.com",

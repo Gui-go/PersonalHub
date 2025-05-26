@@ -1,0 +1,13 @@
+services:
+  react-portfolio2:
+    build:
+      context: .
+      dockerfile: react-portfolio.dockerfile
+    ports:
+      - "3008:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=3000
