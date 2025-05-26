@@ -10,9 +10,18 @@
         "description": "I am a developer with a passion for web development, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "/images/cloud8.jpg",
         "cta": [
-          { "label": "Virtual Guigo (A customed LLM to present myself)", "path": "/agents/virtual-guigo" },
-          { "label": "Masters Thesis: Migration Dynamics in Brazil", "path": "/publications/masters-thesis" },
-          { "label": "Geo Layer: Main cities I have visited", "path": "/geolayers/cities-ivebeen" }
+          {
+            "label": "Virtual Guigo (A customed LLM to present myself)",
+            "path": "/agents/virtual-guigo"
+          },
+          {
+            "label": "Masters Thesis: Migration Dynamics in Brazil",
+            "path": "/publications/masters-thesis"
+          },
+          {
+            "label": "Geo Layer: Main cities I have visited",
+            "path": "/geolayers/cities-ivebeen"
+          }
         ]
       },
       {
@@ -128,16 +137,400 @@
         "id": "about",
         "label": "About",
         "path": "/about",
-        "title": "About Me",
-        "description": "Learn about my journey as a developer and geospatial enthusiast.",
+        "title": "Guilherme Viegas",
+        "tagline": "Data Scientist | Geospatial Analyst | AI Enthusiast",
+        "description": "I transform complex data into actionable insights through advanced analytics and machine learning. With expertise in econometrics and spatial analysis, I build solutions that help organizations make data-driven decisions. My approach combines technical rigor with clear communication to bridge the gap between data science and business strategy.",
         "image": "/images/profile.jpeg",
+        "backgroundImage": "/image/cloud1.jpg",
+        "stats": [
+          {
+            "value": "5+",
+            "label": "Years Experience"
+          },
+          {
+            "value": "50+",
+            "label": "Projects Completed"
+          },
+          {
+            "value": "10+",
+            "label": "Technologies Mastered"
+          },
+          {
+            "value": "∞",
+            "label": "Cups of Coffee"
+          }
+        ],
+        "skills": [
+          {
+            "name": "Python",
+            "icon": "🐍"
+          },
+          {
+            "name": "R",
+            "icon": "📊"
+          },
+          {
+            "name": "SQL",
+            "icon": "🗃️"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "📜"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "ʦ"
+          },
+          {
+            "name": "Java",
+            "icon": "☕"
+          },
+          {
+            "name": "Go",
+            "icon": "🐹"
+          },
+          {
+            "name": "Bash",
+            "icon": "🖥️"
+          },
+          {
+            "name": "TensorFlow",
+            "icon": "🧠"
+          },
+          {
+            "name": "PyTorch",
+            "icon": "🔥"
+          },
+          {
+            "name": "Keras",
+            "icon": "✨"
+          },
+          {
+            "name": "Scikit-learn",
+            "icon": "⚛️"
+          },
+          {
+            "name": "XGBoost",
+            "icon": "🚀"
+          },
+          {
+            "name": "Pandas",
+            "icon": "🐼"
+          },
+          {
+            "name": "NumPy",
+            "icon": "🔢"
+          },
+          {
+            "name": "Matplotlib",
+            "icon": "📈"
+          },
+          {
+            "name": "Seaborn",
+            "icon": "🌊"
+          },
+          {
+            "name": "Plotly",
+            "icon": "📊"
+          },
+          {
+            "name": "GeoPandas",
+            "icon": "🌍"
+          },
+          {
+            "name": "Shapely",
+            "icon": "📐"
+          },
+          {
+            "name": "GDAL/OGR",
+            "icon": "🌐"
+          },
+          {
+            "name": "QGIS",
+            "icon": "🗺️"
+          },
+          {
+            "name": "ArcGIS",
+            "icon": "🗺️"
+          },
+          {
+            "name": "PostGIS",
+            "icon": "🗺️"
+          },
+          {
+            "name": "MySQL",
+            "icon": "🐬"
+          },
+          {
+            "name": "PostgreSQL",
+            "icon": "🐘"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "🍃"
+          },
+          {
+            "name": "Redis",
+            "icon": "⚡"
+          },
+          {
+            "name": "Amazon S3",
+            "icon": "☁️"
+          },
+          {
+            "name": "Docker",
+            "icon": "🐳"
+          },
+          {
+            "name": "Kubernetes",
+            "icon": "☸️"
+          },
+          {
+            "name": "Git",
+            "icon": "🌳"
+          },
+          {
+            "name": "GitHub",
+            "icon": "🐙"
+          },
+          {
+            "name": "GitLab",
+            "icon": "🦊"
+          },
+          {
+            "name": "Jira",
+            "icon": "🎫"
+          },
+          {
+            "name": "Confluence",
+            "icon": "✍️"
+          },
+          {
+            "name": "AWS",
+            "icon": "☁️"
+          },
+          {
+            "name": "Google Cloud Platform (GCP)",
+            "icon": "☁️"
+          },
+          {
+            "name": "Azure",
+            "icon": "☁️"
+          },
+          {
+            "name": "Linux",
+            "icon": "🐧"
+          },
+          {
+            "name": "REST APIs",
+            "icon": "🌐"
+          },
+          {
+            "name": "GraphQL",
+            "icon": "🔮"
+          },
+          {
+            "name": "HTML",
+            "icon": " Markup"
+          },
+          {
+            "name": "CSS",
+            "icon": "🎨"
+          },
+          {
+            "name": "React",
+            "icon": "⚛️"
+          },
+          {
+            "name": "Angular",
+            "icon": "🅰️"
+          },
+          {
+            "name": "Vue.js",
+            "icon": "⚡"
+          },
+          {
+            "name": "Node.js",
+            "icon": "🟢"
+          },
+          {
+            "name": "Flask",
+            "icon": "🍶"
+          },
+          {
+            "name": "Django",
+            "icon": "🎶"
+          },
+          {
+            "name": "FastAPI",
+            "icon": "⚡"
+          },
+          {
+            "name": "Data Analysis",
+            "icon": "📈"
+          },
+          {
+            "name": "Machine Learning",
+            "icon": "🤖"
+          },
+          {
+            "name": "Deep Learning",
+            "icon": "🧠"
+          },
+          {
+            "name": "Computer Vision",
+            "icon": "👁️"
+          },
+          {
+            "name": "Natural Language Processing (NLP)",
+            "icon": "🗣️"
+          },
+          {
+            "name": "Reinforcement Learning",
+            "icon": "🎮"
+          },
+          {
+            "name": "Time Series Analysis",
+            "icon": "⏰"
+          },
+          {
+            "name": "Statistical Modeling",
+            "icon": "📊"
+          },
+          {
+            "name": "ETL",
+            "icon": "🔄"
+          },
+          {
+            "name": "Data Warehousing",
+            "icon": "📦"
+          },
+          {
+            "name": "Data Visualization",
+            "icon": "📈"
+          },
+          {
+            "name": "A/B Testing",
+            "icon": "🧪"
+          },
+          {
+            "name": "Agile Methodologies",
+            "icon": "🏃"
+          },
+          {
+            "name": "Scrum",
+            "icon": " scrum"
+          },
+          {
+            "name": "Jupyter Notebooks",
+            "icon": "📓"
+          },
+          {
+            "name": "Streamlit",
+            "icon": "🚀"
+          },
+          {
+            "name": "Dash",
+            "icon": "📈"
+          },
+          {
+            "name": "Airflow",
+            "icon": "💨"
+          },
+          {
+            "name": "Kafka",
+            "icon": "⚙️"
+          },
+          {
+            "name": "Terraform",
+            "icon": "🏗️"
+          },
+          {
+            "name": "Ansible",
+            "icon": "⚙️"
+          },
+          {
+            "name": "CI/CD",
+            "icon": "🚀"
+          },
+          {
+            "name": "Unit Testing",
+            "icon": "✅"
+          },
+          {
+            "name": "Integration Testing",
+            "icon": "🔗"
+          },
+          {
+            "name": "End-to-End Testing",
+            "icon": "🎯"
+          }
+        ],
         "sections": [
           {
-            "title": "My Journey",
+            "title": "Professional Journey",
+            "type": "timeline",
             "items": [
-              "Started coding in 2014 with a focus on web development.",
-              "Passionate about combining GIS with modern tech."
+              {
+                "title": "Senior Data Scientist - Tech Solutions Inc.",
+                "date": "2021 - Present",
+                "description": "Leading spatial analytics projects and developing machine learning models for urban planning applications."
+              },
+              {
+                "title": "Data Analyst - GeoAnalytics Corp",
+                "date": "2018 - 2021",
+                "description": "Built econometric models for real estate valuation and developed automated reporting systems."
+              },
+              {
+                "title": "Research Assistant - University of Data Science",
+                "date": "2016 - 2018",
+                "description": "Conducted research on spatial econometrics and published papers on novel geostatistical methods."
+              }
             ]
+          },
+          {
+            "title": "Education & Certifications",
+            "items": [
+              "MSc in Data Science - University of Data Science (2018)",
+              "BSc in Economics - Federal University of Analytics (2016)",
+              "Google Professional Data Engineer Certification",
+              "AWS Certified Machine Learning Specialty"
+            ]
+          },
+          {
+            "title": "Methodological Approach",
+            "content": "My work follows a rigorous analytical process: 1) Problem framing with stakeholders, 2) Exploratory data analysis, 3) Model development with validation, 4) Implementation strategy, and 5) Continuous monitoring. I emphasize reproducibility through version control and documentation, ensuring insights stand up to scrutiny."
+          },
+          {
+            "title": "Recent Projects",
+            "items": [
+              "Developed a spatial prediction model for urban growth patterns with 92% accuracy",
+              "Created an automated ETL pipeline processing 1TB+ of geospatial data daily",
+              "Built a real-time dashboard for COVID-19 impact analysis used by government agencies",
+              "Implemented a machine learning system reducing operational costs by 30% for a logistics company"
+            ]
+          }
+        ],
+        "links": [
+          {
+            "title": "GitHub",
+            "url": "https://github.com/guigo",
+            "icon": "👨‍💻"
+          },
+          {
+            "title": "LinkedIn",
+            "url": "https://linkedin.com/in/guilherme-viegas/",
+            "icon": "💼"
+          },
+          {
+            "title": "Email",
+            "url": "mailto:gui@example.com",
+            "icon": "✉️"
+          },
+          {
+            "title": "CV Download",
+            "url": "/cv.pdf",
+            "icon": "📄"
           }
         ]
       }
@@ -154,8 +547,14 @@
         "description": "¡Hola! Soy un desarrollador apasionado y entusiasta de la tecnología geoespacial. Explora mi trabajo en desarrollo web, análisis geoespacial y proyectos de IA.",
         "image": "https://via.placeholder.com/1200x600?text=Banner+Inicio",
         "cta": [
-          { "label": "Ver Proyectos", "path": "/projects" },
-          { "label": "Contáctame", "path": "/contact" }
+          {
+            "label": "Ver Proyectos",
+            "path": "/projects"
+          },
+          {
+            "label": "Contáctame",
+            "path": "/contact"
+          }
         ]
       },
       {
