@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
-import Page from './components/page';
-import NotFound from './components/notfound';
 import Footer from './components/footer';
-import Home from './components/home';
+import NotFound from './components/notfound';
+import Home from './home';
 import CV from './components/cv';
 import Publications from './components/publications';
 import Projects from './components/projects';
 import Agents from './components/agents';
 import Blog from './components/blog';
 import Geolayers from './components/geolayers';
+import About from './components/about';
 import Agent1 from './components/agents/agent1';
 import Agent2 from './components/agents/agent2';
 import Blog1 from './components/blog/blog1';
@@ -71,15 +71,6 @@ const App = () => {
   const menuItems = content.menu;
   const title = content.title;
 
-  // Find content for specific routes
-  const homeContent = menuItems.find((item) => item.path === '/');
-  const cvContent = menuItems.find((item) => item.path === '/cv');
-  const publicationsContent = menuItems.find((item) => item.path === '/publications');
-  const projectsContent = menuItems.find((item) => item.path === '/projects');
-  const agentsContent = menuItems.find((item) => item.path === '/agents');
-  const blogContent = menuItems.find((item) => item.path === '/blog');
-  const geolayersContent = menuItems.find((item) => item.path === '/geolayers');
-
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <div className="flex justify-end p-2 xs:p-3 sm:p-4">
@@ -98,22 +89,14 @@ const App = () => {
 
       <main className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home content={homeContent} />} />
-          <Route path="/cv" element={<CV content={cvContent} />} />
-          <Route path="/publications" element={<Publications content={publicationsContent} />} />
-          <Route path="/projects" element={<Projects content={projectsContent} />} />
-          <Route path="/agents" element={<Agents content={agentsContent} />} />
-          <Route path="/blog" element={<Blog content={blogContent} />} />
-          <Route path="/geolayers" element={<Geolayers content={geolayersContent} />} />
-          {menuItems
-            .filter((item) => !['/', '/cv', '/publications', '/projects', '/agents', '/blog', '/geolayers'].includes(item.path))
-            .map((item) => (
-              <Route
-                key={item.id}
-                path={item.path}
-                element={<Page content={item} />}
-              />
-            ))}
+          <Route path="/" element={<Home content={menuItems.find(item => item.path === '/')} />} />
+          <Route path="/cv" element={<CV content={menuItems.find(item => item.path === '/cv')} />} />
+          <Route path="/publications" element={<Publications content={menuItems.find(item => item.path === '/publications')} />} />
+          <Route path="/projects" element={<Projects content={menuItems.find(item => item.path === '/projects')} />} />
+          <Route path="/agents" element={<Agents content={menuItems.find(item => item.path === '/agents')} />} />
+          <Route path="/blog" element={<Blog content={menuItems.find(item => item.path === '/blog')} />} />
+          <Route path="/geolayers" element={<Geolayers content={menuItems.find(item => item.path === '/geolayers')} />} />
+          <Route path="/about" element={<About content={menuItems.find(item => item.path === '/about')} />} />
           <Route path="/agents/agent1" element={<Agent1 />} />
           <Route path="/agents/agent2" element={<Agent2 />} />
           <Route path="/blog/blog1" element={<Blog1 />} />

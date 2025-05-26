@@ -130,7 +130,7 @@
         "path": "/about",
         "title": "About Me",
         "description": "Learn about my journey as a developer and geospatial enthusiast.",
-        "image": "https://via.placeholder.com/1200x400?text=About+Banner",
+        "image": "/images/profile.jpeg",
         "sections": [
           {
             "title": "My Journey",

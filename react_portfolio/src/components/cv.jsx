@@ -1,9 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const CV = ({ content }) => {
-  const navigate = useNavigate();
-
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
@@ -26,18 +23,13 @@ const CV = ({ content }) => {
               </h3>
               <ul className="list-disc list-inside text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl">
                 {section.items.map((item, idx) => (
-                  <li key={idx} className="mb-2">{item}</li>
+                  <li key={idx} className="mb-2">
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
           ))}
-          {/* Add custom CV-specific features, e.g., downloadable PDF link */}
-          <button
-            onClick={() => navigate('/')} // Example: navigate back to home
-            className="mt-4 px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-150 hover:scale-105 active:scale-95 text-sm sm:text-base font-medium"
-          >
-            Back to Home
-          </button>
         </div>
       </div>
     </div>

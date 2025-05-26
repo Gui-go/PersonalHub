@@ -6,10 +6,7 @@ const Home = ({ content }) => {
 
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
-      <div
-        className="relative bg-cover bg-center rounded-lg shadow-lg overflow-hidden h-[40vh] xs:h-[45vh] sm:h-[50vh] md:h-[60vh] flex items-center justify-center"
-        style={{ backgroundImage: `url(${content.image})` }}
-      >
+      <div className="relative bg-cover bg-center rounded-lg shadow-lg overflow-hidden h-[40vh] xs:h-[45vh] sm:h-[50vh] md:h-[60vh] flex items-center justify-center" style={{ backgroundImage: `url(${content.image})` }}>
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative text-center text-white p-3 xs:p-4 sm:p-6 md:p-8 animate-fade-in">
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6">

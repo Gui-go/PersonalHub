@@ -1,11 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Publication1 from './publications/publication1';
-import Publication2 from './publications/publication2';
 
 const Publications = ({ content }) => {
-  const navigate = useNavigate();
-
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
@@ -21,21 +16,20 @@ const Publications = ({ content }) => {
           <p className="text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl leading-relaxed mb-4 xs:mb-5 sm:mb-6">
             {content.description}
           </p>
-          {/* Link to specific publication pages */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <button
-              onClick={() => navigate('/publications/publication1')}
-              className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-150 hover:scale-105 active:scale-95 text-sm sm:text-base font-medium"
-            >
-              Publication 1
-            </button>
-            <button
-              onClick={() => navigate('/publications/publication2')}
-              className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-150 hover:scale-105 active:scale-95 text-sm sm:text-base font-medium"
-            >
-              Publication 2
-            </button>
-          </div>
+          {content.sections?.map((section, index) => (
+            <div key={index} className="mb-4 xs:mb-5 sm:mb-6">
+              <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 mb-2 xs:mb-3 sm:mb-4">
+                {section.title}
+              </h3>
+              <ul className="list-disc list-inside text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl">
+                {section.items.map((item, idx) => (
+                  <li key={idx} className="mb-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>
