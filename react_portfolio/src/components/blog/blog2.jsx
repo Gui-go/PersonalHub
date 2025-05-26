@@ -2,16 +2,14 @@ import React from 'react';
 
 const Blog2 = () => {
   return (
-    <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
-        <div className="p-3 xs:p-4 sm:p-6 md:p-8">
-          <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2 xs:mb-3 sm:mb-4 md:mb-6">
-            Blog Post 2
-          </h2>
-          <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
-            This is a placeholder for Blog Post 2. Add specific content about this blog post here.
-          </p>
-        </div>
+    <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
+      <div className="bg-white rounded-lg shadow-lg p-6 xs:p-8 sm:p-10 md:p-12">
+        <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Geospatial Data with Leaflet</h2>
+        <p className="text-gray-600 text-base xs:text-lg sm:text-xl mb-4">Published on 2024-12-10</p>
+        <p className="text-gray-600 text-base xs:text-lg sm:text-xl leading-relaxed">
+          A tutorial on visualizing geospatial data using the Leaflet JavaScript library.
+          {/* Add full content here */}
+        </p>
       </div>
     </div>
   );

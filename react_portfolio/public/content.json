@@ -123,13 +123,24 @@
         "title": "Blog",
         "description": "Thoughts and tutorials on development and geospatial tech.",
         "image": "https://via.placeholder.com/1200x400?text=Blog+Banner",
-        "sections": [
+        "posts": [
           {
-            "title": "Recent Posts",
-            "items": [
-              "Getting Started with React Router, 2025",
-              "Geospatial Data with Leaflet, 2024"
-            ]
+            "id": "react-router-2025",
+            "title": "Getting Started with React Router",
+            "path": "/blog/react-router-2025",
+            "date": "2025-01-15",
+            "excerpt": "Learn怎麼set up and use React Router for seamless navigation in your web applications.",
+            "image": "https://via.placeholder.com/400x300?text=React+Router+Post",
+            "content": "This tutorial covers the basics of React Router, including setting up routes, handling navigation, and creating dynamic links. You’ll learn how to use `BrowserRouter`, `Routes`, `Route`, and `useNavigate` to build a single-page application with smooth transitions. Examples include a portfolio site navigation system and best practices for accessibility."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/leaflet-2024",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "https://via.placeholder.com/400x300?text=Leaflet+Post",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
           }
         ]
       },

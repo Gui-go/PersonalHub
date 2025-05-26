@@ -1,35 +1,59 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = ({ content }) => {
+  const navigate = useNavigate();
+  const blogPosts = content.posts || []; // Fallback to empty array if content.posts is undefined
+
   return (
-    <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
+    <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
-        <img
-          src={content.image}
-          alt={`${content.title} banner`}
-          className="w-full h-32 xs:h-40 sm:h-48 md:h-56 object-cover"
-        />
-        <div className="p-4 xs:p-5 sm:p-7 md:p-9">
-          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-3 xs:mb-4 sm:mb-5 md:mb-6">
+        <div className="relative">
+          <img
+            src={content.image}
+            alt={`${content.title} banner`}
+            className="w-full h-40 xs:h-48 sm:h-56 md:h-64 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <h2 className="absolute bottom-4 left-4 text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white">
             {content.title}
           </h2>
-          <p className="text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl leading-relaxed mb-4 xs:mb-5 sm:mb-6">
+        </div>
+        <div className="p-6 xs:p-8 sm:p-10 md:p-12">
+          <p className="text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 xs:mb-8 sm:mb-10">
             {content.description}
           </p>
-          {content.sections?.map((section, index) => (
-            <div key={index} className="mb-4 xs:mb-5 sm:mb-6">
-              <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 mb-2 xs:mb-3 sm:mb-4">
-                {section.title}
-              </h3>
-              <ul className="list-disc list-inside text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl">
-                {section.items.map((item, idx) => (
-                  <li key={idx} className="mb-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <h3 className="text-xl xs:text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Recent Posts</h3>
+          {blogPosts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {blogPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer animate-fade-in"
+                  onClick={() => navigate(post.path)}
+                >
+                  <img
+                    src={post.image}
+                    alt={`${post.title} thumbnail`}
+                    className="w-full h-32 xs:h-40 sm:h-48 object-cover rounded-md mb-4"
+                  />
+                  <h4 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-700 mb-2">{post.title}</h4>
+                  <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{post.date}</p>
+                  <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
+                    {post.excerpt.length > 100 ? `${post.excerpt.slice(0, 100)}...` : post.excerpt}
+                  </p>
+                  <button
+                    className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
+                    aria-label={`Read more about ${post.title}`}
+                  >
+                    Read More
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog posts available.</p>
+          )}
         </div>
       </div>
     </div>
