@@ -25,30 +25,6 @@
         ]
       },
       {
-        "id": "cv",
-        "label": "CV",
-        "path": "/cv",
-        "title": "Curriculum Vitae",
-        "description": "A detailed overview of my education, experience, and skills.",
-        "image": "https://via.placeholder.com/1200x400?text=CV+Banner",
-        "sections": [
-          {
-            "title": "Education",
-            "items": [
-              "MSc in Computer Science, University of Example, 2018-2020",
-              "BSc in Geography, University of Example, 2014-2018"
-            ]
-          },
-          {
-            "title": "Experience",
-            "items": [
-              "Senior Developer, Tech Corp, 2020-Present",
-              "Geospatial Analyst, Geo Solutions, 2018-2020"
-            ]
-          }
-        ]
-      },
-      {
         "id": "publications",
         "label": "Publications",
         "path": "/publications",
@@ -69,7 +45,7 @@
         "id": "projects",
         "label": "Projects",
         "path": "/projects",
-        "title": "My Projects",
+        "title": "Projects",
         "description": "Explore my portfolio of web and geospatial projects.",
         "image": "/images/cloud12.jpg",
         "projs": [
@@ -86,6 +62,42 @@
             "id": "azureVM4nomads",
             "title": "Azure VMs 4 Nomads",
             "path": "/projects/azure-vm-4-nomads",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/digitalNomad.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "brvectors",
+            "title": "BRvectors",
+            "path": "/projects/brvectors",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/digitalNomad.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "Motion Snitcher",
+            "title": "Azure VMs 4 Nomads",
+            "path": "/projects/azure-vm-4-nomads",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/digitalNomad.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "Equanimy Systems",
+            "title": "Azure VMs 4 Nomads",
+            "path": "/projects/azure-vm-4-nomads",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/digitalNomad.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "gcpbillinganalytics",
+            "title": "GCP Billing Analytics",
+            "path": "/projects/gcp-billing-analytics",
             "date": "2024-12-10",
             "excerpt": "abc",
             "image": "/images/digitalNomad.jpg",

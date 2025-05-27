@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import NotFound from './components/notfound';
-import Home from './home';
-import CV from './components/cv';
+import Home from './components/home';
+// import CV from './components/cv';
 import Publications from './components/publications';
 import Projects from './components/projects';
 import Agents from './components/agents';
@@ -98,7 +98,7 @@ const App = () => {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home content={menuItems.find(item => item.path === '/')} />} />
-          <Route path="/cv" element={<CV content={menuItems.find(item => item.path === '/cv')} />} />
+          {/* <Route path="/cv" element={<CV content={menuItems.find(item => item.path === '/cv')} />} /> */}
           <Route path="/publications" element={<Publications content={menuItems.find(item => item.path === '/publications')} />} />
           <Route path="/projects" element={<Projects content={menuItems.find(item => item.path === '/projects')} />} />
           <Route path="/agents" element={<Agents content={menuItems.find(item => item.path === '/agents')} />} />
