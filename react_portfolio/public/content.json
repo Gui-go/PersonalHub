@@ -71,14 +71,25 @@
         "path": "/projects",
         "title": "My Projects",
         "description": "Explore my portfolio of web and geospatial projects.",
-        "image": "https://via.placeholder.com/1200x400?text=Projects+Banner",
-        "sections": [
+        "image": "/images/cloud12.jpg",
+        "projs": [
           {
-            "title": "Featured Projects",
-            "items": [
-              "GeoMapper: A real-time GIS visualization tool",
-              "Portfolio Website: Built with React and Vite"
-            ]
+            "id": "how-much-mansion-worth",
+            "title": "How Much is this Mansion Worth",
+            "path": "/projects/how-much-mansion-worth",
+            "date": "2025-01-15",
+            "excerpt": "A Machine Learning analysis to estimate how much mansions in Brasilia are worth, considering their location and attributes.",
+            "image": "/images/mansion.jpg",
+            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+          },
+          {
+            "id": "azureVM4nomads",
+            "title": "Azure VMs 4 Nomads",
+            "path": "/projects/azure-vm-4-nomads",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/digitalNomad.jpg",
+            "content": "abcabcabc"
           }
         ]
       },
