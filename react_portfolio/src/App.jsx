@@ -9,14 +9,22 @@ import Publications from './components/publications';
 import Projects from './components/projects';
 import Agents from './components/agents';
 import Blog from './components/blog';
-import Geolayers from './components/geolayers';
+import GeoLayers from './components/geolayers';
 import About from './components/about';
 import Agent1 from './components/agents/agent1';
 import Agent2 from './components/agents/agent2';
+import VirtualGuigo from './components/agents/virtual-guigo';
+import MSdiscovery from './components/agents/masters-thesis-discovery';
+import GWRdiscovery from './components/agents/gwr-discovery';
+import TomRiddleDiary from './components/agents/tom-riddles-diary';
 import Blog1 from './components/blog/blog1';
 import Blog2 from './components/blog/blog2';
+import BlogCRS from './components/blog/blog-crs';
 import Geolayer1 from './components/geolayers/geolayer1';
 import Geolayer2 from './components/geolayers/geolayer2';
+import CitiesIvelived from './components/geolayers/cities-ivelived';
+import CitiesIvevisited from './components/geolayers/cities-ivevisited';
+import MyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
 import Project1 from './components/projects/project1';
 import Project2 from './components/projects/project2';
 import Publication1 from './components/publications/publication1';
@@ -95,14 +103,22 @@ const App = () => {
           <Route path="/projects" element={<Projects content={menuItems.find(item => item.path === '/projects')} />} />
           <Route path="/agents" element={<Agents content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/blog" element={<Blog content={menuItems.find(item => item.path === '/blog')} />} />
-          <Route path="/geolayers" element={<Geolayers content={menuItems.find(item => item.path === '/geolayers')} />} />
+          <Route path="/geolayers" element={<GeoLayers content={menuItems.find(item => item.path === '/geolayers')} />} />
           <Route path="/about" element={<About content={menuItems.find(item => item.path === '/about')} />} />
           <Route path="/agents/agent1" element={<Agent1 />} />
           <Route path="/agents/agent2" element={<Agent2 />} />
+          <Route path="/agents/virtual-guigo" element={<VirtualGuigo />} />
+          <Route path="/agents/masters-thesis-discovery" element={<MSdiscovery />} />
+          <Route path="/agents/gwr-discovery" element={<GWRdiscovery />} />
+          <Route path="/agents/tom-riddles-diary" element={<TomRiddleDiary />} />
           <Route path="/blog/blog1" element={<Blog1 />} />
           <Route path="/blog/blog2" element={<Blog2 />} />
+          <Route path="/blog/crs" element={<BlogCRS />} />
           <Route path="/geolayers/geolayer1" element={<Geolayer1 />} />
           <Route path="/geolayers/geolayer2" element={<Geolayer2 />} />
+          <Route path="/geolayers/cities-ivelived" element={<CitiesIvelived />} />
+          <Route path="/geolayers/cities-ivevisited" element={<CitiesIvevisited />} />
+          <Route path="/geolayers/my-favourite-restaurants" element={<MyFavouriteRestaurants />} />
           <Route path="/projects/project1" element={<Project1 />} />
           <Route path="/projects/project2" element={<Project2 />} />
           <Route path="/publications/publication1" element={<Publication1 />} />
@@ -117,3 +133,4 @@ const App = () => {
 };
 
 export default App;
+

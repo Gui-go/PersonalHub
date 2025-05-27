@@ -88,14 +88,34 @@
         "path": "/geolayers",
         "title": "GeoLayers",
         "description": "Interactive geospatial data visualization projects.",
-        "image": "https://via.placeholder.com/1200x400?text=GeoLayers+Banner",
-        "sections": [
+        "image": "/images/cloud12.jpg",
+        "layers": [
           {
-            "title": "Key Projects",
-            "items": [
-              "Urban Heat Map: Visualizing city temperature data",
-              "Flood Risk Analysis: Interactive GIS layers"
-            ]
+            "id": "cities-ivevisited",
+            "title": "Main cities I Have Visited",
+            "path": "/geolayers/cities-ivevisited",
+            "date": "2025-01-15",
+            "excerpt": "A customed Geo visualization about the main cities I have visited before.",
+            "image": "/images/globebridge.jpg",
+            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+          },
+          {
+            "id": "cities-ivelived",
+            "title": "Main cities I have lived in",
+            "path": "/geolayers/cities-ivelived",
+            "date": "2024-12-10",
+            "excerpt": "A Geographic visualization about the cities I have lived before.",
+            "image": "/images/2worlds.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "my-favourite-restaurants",
+            "title": "My Favourite Restaurants in the World",
+            "path": "/geolayers/my-favourite-restaurants",
+            "date": "2024-12-10",
+            "excerpt": "A Geo visualization to ilustrate my favourtite restaurants around the world.",
+            "image": "/images/restaurants2world.jpg",
+            "content": "abcabcabc"
           }
         ]
       },
@@ -105,41 +125,133 @@
         "path": "/agents",
         "title": "AI Agents",
         "description": "My work on AI-driven agents for automation and analysis.",
-        "image": "https://via.placeholder.com/1200x400?text=Agents+Banner",
-        "sections": [
+        "image": "/images/cloud6.jpg",
+        "aiagents": [
           {
-            "title": "AI Projects",
-            "items": [
-              "Chatbot for GIS Queries",
-              "Predictive Model for Urban Planning"
-            ]
+            "id": "virtual-guigo",
+            "title": "Virtual Guigo",
+            "path": "/agents/virtual-guigo",
+            "date": "2025-01-15",
+            "excerpt": "A customed LLM Agent to present Guilherme and his research.",
+            "image": "/images/wilhelmRobotProfessor.jpg",
+            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+          },
+          {
+            "id": "masters-thesis-discovery",
+            "title": "Masters' Thesis Discovery",
+            "path": "/agents/masters-thesis-discovery",
+            "date": "2024-12-10",
+            "excerpt": "A GenAI Discovery engine to reveal the motives migrants move from place A to place B, according to Guilherme's thesis.",
+            "image": "/images/migSearchEngine.png",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "gwr-discovery",
+            "title": "GWR Discovery",
+            "path": "/agents/gwr-discovery",
+            "date": "2024-12-10",
+            "excerpt": "A GenAI Discovery engine to help researchers understand the many nuances around GWR-like models.",
+            "image": "/images/gwrSearchEngine.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "tom-riddles-diary",
+            "title": "Tom Riddle's Diary",
+            "path": "/agents/tom-riddles-diary",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/diarytom.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
           }
         ]
       },
       {
-        "id": "blog",
+        "id": "blog", 
         "label": "Blog",
         "path": "/blog",
         "title": "Blog",
         "description": "Thoughts and tutorials on development and geospatial tech.",
-        "image": "https://via.placeholder.com/1200x400?text=Blog+Banner",
+        "image": "/images/cloud5.jpg",
         "posts": [
           {
-            "id": "react-router-2025",
-            "title": "Getting Started with React Router",
-            "path": "/blog/react-router-2025",
+            "id": "blog-crs",
+            "title": "A Short Review on what Coordenate Reference Systems are. Geographic Projections in D3.js",
+            "path": "/blog/crs",
             "date": "2025-01-15",
-            "excerpt": "Learn怎麼set up and use React Router for seamless navigation in your web applications.",
-            "image": "https://via.placeholder.com/400x300?text=React+Router+Post",
-            "content": "This tutorial covers the basics of React Router, including setting up routes, handling navigation, and creating dynamic links. You’ll learn how to use `BrowserRouter`, `Routes`, `Route`, and `useNavigate` to build a single-page application with smooth transitions. Examples include a portfolio site navigation system and best practices for accessibility."
+            "excerpt": "Learn what Coordenate Reference.",
+            "image": "/images/cloud3.jpg",
+            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
             "id": "leaflet-2024",
             "title": "Geospatial Data with Leaflet",
-            "path": "/blog/leaflet-2024",
+            "path": "/blog/blog2",
             "date": "2024-12-10",
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "https://via.placeholder.com/400x300?text=Leaflet+Post",
+            "image": "/images/cloud1.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud2.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud4.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud5.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud6.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud7.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud8.jpg",
+            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "leaflet-2024",
+            "title": "Geospatial Data with Leaflet",
+            "path": "/blog/blog2",
+            "date": "2024-12-10",
+            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
+            "image": "/images/cloud9.jpg",
             "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
           }
         ]

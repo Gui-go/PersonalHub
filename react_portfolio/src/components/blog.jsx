@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Blog = ({ content }) => {
   const navigate = useNavigate();
-  const blogPosts = content.posts || []; // Fallback to empty array if content.posts is undefined
+  const blogPosts = content.posts || [];
 
   return (
     <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
@@ -24,12 +24,14 @@ const Blog = ({ content }) => {
             {content.description}
           </p>
           <h3 className="text-xl xs:text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Recent Posts</h3>
-          {blogPosts.length > 0 ? (
+          {blogPosts.length === 0 ? (
+            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog posts available.</p>
+          ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {blogPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer animate-fade-in"
+                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
                   onClick={() => navigate(post.path)}
                 >
                   <img
@@ -51,8 +53,6 @@ const Blog = ({ content }) => {
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog posts available.</p>
           )}
         </div>
       </div>
