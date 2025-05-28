@@ -38,9 +38,9 @@ const Agents = ({ content }) => {
                     className="w-full h-32 xs:h-40 sm:h-48 object-cover rounded-md mb-4"
                   />
                   <h4 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-700 mb-2">{aiagents.title}</h4>
-                  <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{aiagents.date}</p>
+                  {/* <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{aiagents.date}</p> */}
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
-                    {aiagents.excerpt.length > 100 ? `${aiagents.excerpt.slice(0, 100)}...` : aiagents.excerpt}
+                    {aiagents.excerpt.length > 200 ? `${aiagents.excerpt.slice(0, 200)}...` : aiagents.excerpt}
                   </p>
                   <button
                     className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"

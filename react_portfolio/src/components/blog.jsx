@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Blog = ({ content }) => {
   const navigate = useNavigate();
-  const blogPosts = content.posts || [];
+  const blogPosts = content.posts || []; // Fallback to empty array if content.posts is undefined
 
   return (
     <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
@@ -24,14 +24,12 @@ const Blog = ({ content }) => {
             {content.description}
           </p>
           <h3 className="text-xl xs:text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Recent Posts</h3>
-          {blogPosts.length === 0 ? (
-            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog posts available.</p>
-          ) : (
+          {blogPosts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {blogPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer animate-fade-in"
                   onClick={() => navigate(post.path)}
                 >
                   <img
@@ -40,9 +38,9 @@ const Blog = ({ content }) => {
                     className="w-full h-32 xs:h-40 sm:h-48 object-cover rounded-md mb-4"
                   />
                   <h4 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-700 mb-2">{post.title}</h4>
-                  <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{post.date}</p>
+                  {/* <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{post.date}</p> */}
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
-                    {post.excerpt.length > 100 ? `${post.excerpt.slice(0, 100)}...` : post.excerpt}
+                    {post.excerpt.length > 200 ? `${post.excerpt.slice(0, 200)}...` : post.excerpt}
                   </p>
                   <button
                     className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
@@ -53,6 +51,8 @@ const Blog = ({ content }) => {
                 </div>
               ))}
             </div>
+          ) : (
+            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog posts available.</p>
           )}
         </div>
       </div>

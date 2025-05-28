@@ -35,19 +35,23 @@
           {
             "id": "migration-dynamics-in-brazil",
             "title": "Migration Dynamics in Brazil",
+            "short_title": "Migration Dynamics in Brazil",
+            "full_title": "Migration Dynamics in Brazil: A Spatial Econometric Analysis",
             "path": "/publications/migration-dynamics-in-brazil",
-            "date": "2025-02-22",
-            "excerpt": "Master's thesis awarded merit-based fellowship in the Erasmus Mundus GeoSpatial Technologies program 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR.",
+            "date": "2025-02-??",
+            "excerpt": "A Master's thesis on migration dynamics in Brazil and abroad, with an emphasis on the economic factors that drive people to relocate.",
             "image": "/images/migSearchEngine.png",
-            "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754",
+            "link": "https://drive.google.com/file/d/1lFR7ozEWcbUpphhUKJu1Zs2P0hnMrF1S/view?usp=sharing",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
             "id": "knowledge-spillovers-across-micro-regions-of-brazil",
-            "title": "Higher Education, Economic Complexity, and Knowledge Spillovers Across Micro-Regions of Brazil",
+            "title": "Knowledge Spillovers Across Micro-Regions of Brazil",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/knowledge-spillovers-microregions-brazil",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "Meet Wilhelm, your AI Econometrics Professor! This digital book provides comprehensive econometrics lessons, enhanced by an interactive AI agent designed to guide you through complex concepts and help you learn.",
             "image": "/images/peopleReading.jpg",
             "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754",
             "content": "abcabcabc"
@@ -55,9 +59,11 @@
           {
             "id": "export-complexity-in-brazil",
             "title": "Export complexity, industrial complexity and regional economic growth in Brazil",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/export-complexity-brazil",
-            "date": "2024-12-10",
-            "excerpt": "A comparison of various complexity (ECI) metrics with Brazilian exports and employment data\nPython, R, Shiny",
+            "date": "2024-12-??",
+            "excerpt": "A comparison of various complexity (ECI) metrics with Brazilian exports and employment data.",
             "image": "/images/boatContainer3.jpg",
             "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm",
             "content": "abcabcabc"
@@ -65,9 +71,11 @@
           {
             "id": "notes-on-the-census-microdata",
             "title": "Notes on the Census Microdata",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/notes-census-microdata",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "With his Census background, Guilherme illustrates a streamlined method for accessing IBGE's census data via Bash and GCP.",
             "image": "/images/peopleWrongWay.jpg",
             "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d",
             "content": "abcabcabc"
@@ -75,9 +83,11 @@
           {
             "id": "geographic-normalization",
             "title": "Geographic Normalization",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/geographic-normalization",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "Geographic Normalization can transform complex, irregular polygons into standardized hexagonal grids, and understand the far-reaching implications of this approach for spatial analysis.",
             "image": "/images/hexagons2.jpg",
             "link": "https://aquare.la/normalizacao-geografica/",
             "content": "abcabcabc"
@@ -85,9 +95,11 @@
           {
             "id": "money-neutrality-in-the-covid19-era",
             "title": "Money Neutrality in the Covid19 Era",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/money-neutrality-covid19",
-            "date": "2024-12-10",
-            "excerpt": "Based on economic models, the idea of money neutrality is explained in an animated way. Guilherme rightly predicts inflation in the medium term, as expansionary monetary policies were applied to mitigate the Covid effects. In the long term, 'inflation is nothing but a monetary phenomenon'",
+            "date": "2024-12-??",
+            "excerpt": "Based on economic models, the idea of money neutrality is explained in an animated way. Guilherme rightly predicts inflation in the medium term, as expansionary monetary policies were applied to mitigate the Covid effects. In the long term, 'inflation is nothing but a monetary phenomenon'.",
             "image": "/images/dollarsBurning.jpg",
             "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98",
             "content": "abcabcabc"
@@ -95,9 +107,11 @@
           {
             "id": "osesc",
             "title": "Socioeconomic Observatory of Santa Catarina",
+            "short_title": "",
+            "full_title": "",
             "path": "/publications/osesc",
-            "date": "2024-12-10",
-            "excerpt": "A dashboard to analyze and forecast time series of Brazilian socio-economic data, with focus on the state of Santa Catarina",
+            "date": "2024-12-??",
+            "excerpt": "A dashboard to analyze and forecast time series of Brazilian socio-economic data, with focus on the state of Santa Catarina.",
             "image": "/images/santaCatarina.jpg",
             "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view",
             "content": "abcabcabc"
@@ -115,8 +129,10 @@
           {
             "id": "how-much-mansion-worth",
             "title": "How Much is this Mansion Worth",
+            "short_title": "",
+            "full_title": "",
             "path": "/projects/how-much-mansion-worth",
-            "date": "2025-01-15",
+            "date": "2025-01-??",
             "excerpt": "A Machine Learning analysis to estimate how much mansions in Brasilia are worth, considering their location and attributes.",
             "image": "/images/mansion2.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
@@ -124,45 +140,55 @@
           {
             "id": "azureVM4nomads",
             "title": "Azure VMs 4 Nomads",
+            "short_title": "",
+            "full_title": "",
             "path": "/projects/azure-vm-4-nomads",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "Terraform automation script for deployment of Azure Virtual Machines at scale.",
             "image": "/images/digitalNomad.jpg",
             "content": "abcabcabc"
           },
           {
             "id": "brvectors",
             "title": "BRvectors",
+            "short_title": "",
+            "full_title": "",
             "path": "/projects/brvectors",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "An ELT process and database enabling multi-scale spatial data retrieval, covering municipal, micro, meso, intermediate, and immediate geographic units.",
             "image": "/images/BRvectors.jpg",
             "content": "abcabcabc"
           },
           {
             "id": "motion-snitcher",
+            "short_title": "",
+            "full_title": "",
             "title": "Motion Snitcher",
             "path": "/projects/motion-snitcher",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "Using Bash and Python, a Raspberry Pi is programmed to trigger notifications when motion is detected.",
             "image": "/images/raspberryPI.jpg",
             "content": "abcabcabc"
           },
           {
             "id": "equanimy-systems",
+            "short_title": "",
+            "full_title": "",
             "title": "Equanimy Systems",
             "path": "/projects/equanimy-systems",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "An AI system to efficiently and equitably allocate resources in a group or comunity.",
             "image": "/images/equalityDiversity.jpg",
             "content": "abcabcabc"
           },
           {
             "id": "gcpbillinganalytics",
+            "short_title": "",
+            "full_title": "",
             "title": "GCP Billing Analytics",
             "path": "/projects/gcp-billing-analytics",
-            "date": "2024-12-10",
-            "excerpt": "abc",
+            "date": "2024-12-??",
+            "excerpt": "A smart way to track expenses and get Gemini-powered suggestions for optimizing GCP spending.",
             "image": "/images/moneyPiggy3.jpg",
             "content": "abcabcabc"
           }
@@ -179,8 +205,10 @@
           {
             "id": "cities-ivevisited",
             "title": "Cities I Have Visited",
+            "short_title": "",
+            "full_title": "",
             "path": "/geolayers/cities-ivevisited",
-            "date": "2025-01-15",
+            "date": "2025-01-??",
             "excerpt": "A customed Geo visualization about the main cities I have visited before.",
             "image": "/images/globebridge.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
@@ -188,8 +216,10 @@
           {
             "id": "cities-ivelived",
             "title": "Main cities I have lived in",
+            "short_title": "",
+            "full_title": "",
             "path": "/geolayers/cities-ivelived",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A Geographic visualization about the cities I have lived before.",
             "image": "/images/2worlds.jpg",
             "content": "abcabcabc"
@@ -197,8 +227,10 @@
           {
             "id": "my-favourite-restaurants",
             "title": "My Favourite Restaurants in the World",
+            "short_title": "",
+            "full_title": "",
             "path": "/geolayers/my-favourite-restaurants",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A Geo visualization to ilustrate my favourtite restaurants around the world.",
             "image": "/images/restaurants2world.jpg",
             "content": "abcabcabc"
@@ -215,36 +247,44 @@
         "aiagents": [
           {
             "id": "virtual-guigo",
+            "short_title": "",
+            "full_title": "",
             "title": "Virtual Guigo",
             "path": "/agents/virtual-guigo",
-            "date": "2025-01-15",
+            "date": "2025-01-??",
             "excerpt": "A customed LLM Agent to present Guilherme and his research.",
             "image": "/images/wilhelmRobotProfessor.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
             "id": "masters-thesis-discovery",
+            "short_title": "",
+            "full_title": "",
             "title": "Masters' Thesis Discovery",
             "path": "/agents/masters-thesis-discovery",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A GenAI Discovery engine to reveal the motives migrants move from place A to place B, according to Guilherme's thesis.",
             "image": "/images/migSearchEngine.png",
             "content": "abcabcabc"
           },
           {
             "id": "gwr-discovery",
+            "short_title": "",
+            "full_title": "",
             "title": "GWR Discovery",
             "path": "/agents/gwr-discovery",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A GenAI Discovery engine to help researchers understand the many nuances around GWR-like models.",
             "image": "/images/gwrSearchEngine.jpg",
             "content": "abcabcabc"
           },
           {
             "id": "tom-riddles-diary",
+            "short_title": "",
+            "full_title": "",
             "title": "Tom Riddle's Diary",
             "path": "/agents/tom-riddles-diary",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
             "image": "/images/diarytom.jpg",
             "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
@@ -262,8 +302,10 @@
           {
             "id": "blog-crs",
             "title": "A Short Review on what Coordenate Reference Systems are. Geographic Projections in D3.js",
+            "short_title": "",
+            "full_title": "",
             "path": "/blog/crs",
-            "date": "2025-01-15",
+            "date": "2025-01-??",
             "excerpt": "Learn what Coordenate Reference.",
             "image": "/images/cloud3.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
@@ -271,8 +313,10 @@
           {
             "id": "leaflet-2024",
             "title": "Geospatial Data with Leaflet",
+            "short_title": "",
+            "full_title": "",
             "path": "/blog/blog2",
-            "date": "2024-12-10",
+            "date": "2024-12-??",
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
             "image": "/images/cloud1.jpg",
             "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."

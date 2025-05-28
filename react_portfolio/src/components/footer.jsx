@@ -7,7 +7,7 @@ const Footer = () => {
         <p className="text-xs xs:text-sm sm:text-base md:text-lg">
           © {new Date().getFullYear()} Guigo.dev.br | Open Code, Open Mind  🚀
         </p>
-        <div className="mt-2 xs:mt-3 sm:mt-4 flex justify-center space-x-3 sm:space-x-4">
+        {/* <div className="mt-2 xs:mt-3 sm:mt-4 flex justify-center space-x-3 sm:space-x-4">
           <a
             href="https://github.com/Gui-go"
             className="hover:text-blue-400 transition-colors duration-200 text-xs xs:text-sm sm:text-base md:text-lg"
@@ -22,7 +22,7 @@ const Footer = () => {
           >
             LinkedIn
           </a>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
