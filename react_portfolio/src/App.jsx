@@ -4,31 +4,41 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import NotFound from './components/notfound';
 import Home from './components/home';
-// import CV from './components/cv';
+
 import Publications from './components/publications';
+import PubMigrationDynamicsBrazil from './components/publications/migration-dynamics-in-brazil';
+import PubKnowledgeSpilloversMicroregionsBrazil from './components/publications/knowledge-spillovers-microregions-brazil';
+import PubExportComplexityBrazil from './components/publications/export-complexity-brazil';
+import PubNotesCensusMicrodata from './components/publications/notes-census-microdata';
+import PubGeoNormalization from './components/publications/geographic-normalization';
+import PubMoneyNeutralityCovid19 from './components/publications/money-neutrality-covid19';
+import PubOsesc from './components/publications/osesc';
+
 import Projects from './components/projects';
-import Agents from './components/agents';
-import Blog from './components/blog';
+import ProjHowMuchMansionWorth from './components/projects/how-much-mansion-worth';
+import ProjAzureVM4nomads from './components/projects/azure-vm-4-nomads';
+import ProjBRvectors from './components/projects/brvectors';
+import ProjMotionSnitcher from './components/projects/motion-snitcher';
+import ProjEquanimySys from './components/projects/equanimy-systems';
+import ProjGCPbilling from './components/projects/gcp-billing-analytics';
+
 import GeoLayers from './components/geolayers';
-import About from './components/about';
-import Agent1 from './components/agents/agent1';
-import Agent2 from './components/agents/agent2';
-import VirtualGuigo from './components/agents/virtual-guigo';
-import MSdiscovery from './components/agents/masters-thesis-discovery';
-import GWRdiscovery from './components/agents/gwr-discovery';
-import TomRiddleDiary from './components/agents/tom-riddles-diary';
-import Blog1 from './components/blog/blog1';
-import Blog2 from './components/blog/blog2';
+import GeoCitiesIvelived from './components/geolayers/cities-ivelived';
+import GeoCitiesIvevisited from './components/geolayers/cities-ivevisited';
+import GeoMyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
+
+import Agents from './components/agents';
+import AgVirtualGuigo from './components/agents/virtual-guigo';
+import AgMSdiscovery from './components/agents/masters-thesis-discovery';
+import AgGWRdiscovery from './components/agents/gwr-discovery';
+import AgTomRiddleDiary from './components/agents/tom-riddles-diary';
+
+import Blog from './components/blog';
 import BlogCRS from './components/blog/blog-crs';
-import Geolayer1 from './components/geolayers/geolayer1';
-import Geolayer2 from './components/geolayers/geolayer2';
-import CitiesIvelived from './components/geolayers/cities-ivelived';
-import CitiesIvevisited from './components/geolayers/cities-ivevisited';
-import MyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
-import Project1 from './components/projects/project1';
-import Project2 from './components/projects/project2';
-import Publication1 from './components/publications/publication1';
-import Publication2 from './components/publications/publication2';
+
+import About from './components/about';
+
+
 
 const App = () => {
   const [language, setLanguage] = useState(localStorage.getItem('language') || 'en');
@@ -105,24 +115,33 @@ const App = () => {
           <Route path="/blog" element={<Blog content={menuItems.find(item => item.path === '/blog')} />} />
           <Route path="/geolayers" element={<GeoLayers content={menuItems.find(item => item.path === '/geolayers')} />} />
           <Route path="/about" element={<About content={menuItems.find(item => item.path === '/about')} />} />
-          <Route path="/agents/agent1" element={<Agent1 />} />
-          <Route path="/agents/agent2" element={<Agent2 />} />
-          <Route path="/agents/virtual-guigo" element={<VirtualGuigo />} />
-          <Route path="/agents/masters-thesis-discovery" element={<MSdiscovery />} />
-          <Route path="/agents/gwr-discovery" element={<GWRdiscovery />} />
-          <Route path="/agents/tom-riddles-diary" element={<TomRiddleDiary />} />
-          <Route path="/blog/blog1" element={<Blog1 />} />
-          <Route path="/blog/blog2" element={<Blog2 />} />
+
+          <Route path="/publications/migration-dynamics-in-brazil" element={<PubMigrationDynamicsBrazil />} />
+          <Route path="/publications/knowledge-spillovers-microregions-brazil" element={<PubKnowledgeSpilloversMicroregionsBrazil />} />
+          <Route path="/publications/export-complexity-brazil" element={<PubExportComplexityBrazil />} />
+          <Route path="/publications/notes-census-microdata" element={<PubNotesCensusMicrodata />} />
+          <Route path="/publications/geographic-normalization" element={<PubGeoNormalization />} />
+          <Route path="/publications/money-neutrality-covid19" element={<PubMoneyNeutralityCovid19 />} />
+          <Route path="/publications/osesc" element={<PubOsesc />} />
+
+          <Route path="/projects/azure-vm-4-nomads" element={<ProjAzureVM4nomads />} />
+          <Route path="/projects/how-much-mansion-worth" element={<ProjHowMuchMansionWorth />} />
+          <Route path="/projects/brvectors" element={<ProjBRvectors />} />
+          <Route path="/projects/motion-snitcher" element={<ProjMotionSnitcher />} />
+          <Route path="/projects/equanimy-systems" element={<ProjEquanimySys />} />
+          <Route path="/projects/gcp-billing-analytics" element={<ProjGCPbilling />} />
+
+          <Route path="/geolayers/cities-ivelived" element={<GeoCitiesIvelived />} />
+          <Route path="/geolayers/cities-ivevisited" element={<GeoCitiesIvevisited />} />
+          <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
+
+          <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo />} />
+          <Route path="/agents/masters-thesis-discovery" element={<AgMSdiscovery />} />
+          <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
+          <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
+
           <Route path="/blog/crs" element={<BlogCRS />} />
-          <Route path="/geolayers/geolayer1" element={<Geolayer1 />} />
-          <Route path="/geolayers/geolayer2" element={<Geolayer2 />} />
-          <Route path="/geolayers/cities-ivelived" element={<CitiesIvelived />} />
-          <Route path="/geolayers/cities-ivevisited" element={<CitiesIvevisited />} />
-          <Route path="/geolayers/my-favourite-restaurants" element={<MyFavouriteRestaurants />} />
-          <Route path="/projects/project1" element={<Project1 />} />
-          <Route path="/projects/project2" element={<Project2 />} />
-          <Route path="/publications/publication1" element={<Publication1 />} />
-          <Route path="/publications/publication2" element={<Publication2 />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

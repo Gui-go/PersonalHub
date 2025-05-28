@@ -28,16 +28,79 @@
         "id": "publications",
         "label": "Publications",
         "path": "/publications",
-        "title": "My Publications",
+        "title": "Publications",
         "description": "A collection of my research papers and articles.",
-        "image": "https://via.placeholder.com/1200x400?text=Publications+Banner",
-        "sections": [
+        "image": "/images/cloud9.jpg",
+        "publis": [
           {
-            "title": "Recent Papers",
-            "items": [
-              "Advancements in Geospatial AI, Journal of GIS, 2023",
-              "Web Development with React, Tech Review, 2022"
-            ]
+            "id": "migration-dynamics-in-brazil",
+            "title": "Migration Dynamics in Brazil",
+            "path": "/publications/migration-dynamics-in-brazil",
+            "date": "2025-02-22",
+            "excerpt": "Master's thesis awarded merit-based fellowship in the Erasmus Mundus GeoSpatial Technologies program 2025\nR, Python, Terraform, Docker, GCP, BigQuery, DataForm, SQL, SQLX, JS, GWR, MGWR.",
+            "image": "/images/migSearchEngine.png",
+            "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754",
+            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+          },
+          {
+            "id": "knowledge-spillovers-across-micro-regions-of-brazil",
+            "title": "Higher Education, Economic Complexity, and Knowledge Spillovers Across Micro-Regions of Brazil",
+            "path": "/publications/knowledge-spillovers-microregions-brazil",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/peopleReading.jpg",
+            "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4549754",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "export-complexity-in-brazil",
+            "title": "Export complexity, industrial complexity and regional economic growth in Brazil",
+            "path": "/publications/export-complexity-brazil",
+            "date": "2024-12-10",
+            "excerpt": "A comparison of various complexity (ECI) metrics with Brazilian exports and employment data\nPython, R, Shiny",
+            "image": "/images/boatContainer3.jpg",
+            "link": "https://econpapers.repec.org/paper/arxpapers/2312.07469.htm",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "notes-on-the-census-microdata",
+            "title": "Notes on the Census Microdata",
+            "path": "/publications/notes-census-microdata",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/peopleWrongWay.jpg",
+            "link": "https://medium.com/@guilhermeviegas/observa%C3%A7%C3%B5es-sobre-os-microdados-do-censo-extra%C3%A7%C3%A3o-transforma%C3%A7%C3%A3o-e-carregamento-com-bash-pyspark-f895b2ee739d",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "geographic-normalization",
+            "title": "Geographic Normalization",
+            "path": "/publications/geographic-normalization",
+            "date": "2024-12-10",
+            "excerpt": "abc",
+            "image": "/images/hexagons2.jpg",
+            "link": "https://aquare.la/normalizacao-geografica/",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "money-neutrality-in-the-covid19-era",
+            "title": "Money Neutrality in the Covid19 Era",
+            "path": "/publications/money-neutrality-covid19",
+            "date": "2024-12-10",
+            "excerpt": "Based on economic models, the idea of money neutrality is explained in an animated way. Guilherme rightly predicts inflation in the medium term, as expansionary monetary policies were applied to mitigate the Covid effects. In the long term, 'inflation is nothing but a monetary phenomenon'",
+            "image": "/images/dollarsBurning.jpg",
+            "link": "https://medium.com/@guilhermeviegas/neutralidade-da-moeda-na-era-covid19-uma-an%C3%A1lise-animada-atrav%C3%A9s-do-r-b79cc0f3ee98",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "osesc",
+            "title": "Socioeconomic Observatory of Santa Catarina",
+            "path": "/publications/osesc",
+            "date": "2024-12-10",
+            "excerpt": "A dashboard to analyze and forecast time series of Brazilian socio-economic data, with focus on the state of Santa Catarina",
+            "image": "/images/santaCatarina.jpg",
+            "link": "https://drive.google.com/file/d/1dat0aqaCNWdex1HIRWemxf7r9SH7U57D/view",
+            "content": "abcabcabc"
           }
         ]
       },
@@ -46,8 +109,8 @@
         "label": "Projects",
         "path": "/projects",
         "title": "Projects",
-        "description": "Explore my portfolio of web and geospatial projects.",
-        "image": "/images/cloud12.jpg",
+        "description": "Check out my portfolio of coding projects.",
+        "image": "/images/cloud7.jpg",
         "projs": [
           {
             "id": "how-much-mansion-worth",
@@ -55,7 +118,7 @@
             "path": "/projects/how-much-mansion-worth",
             "date": "2025-01-15",
             "excerpt": "A Machine Learning analysis to estimate how much mansions in Brasilia are worth, considering their location and attributes.",
-            "image": "/images/mansion.jpg",
+            "image": "/images/mansion2.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
@@ -73,25 +136,25 @@
             "path": "/projects/brvectors",
             "date": "2024-12-10",
             "excerpt": "abc",
-            "image": "/images/digitalNomad.jpg",
+            "image": "/images/BRvectors.jpg",
             "content": "abcabcabc"
           },
           {
-            "id": "Motion Snitcher",
-            "title": "Azure VMs 4 Nomads",
-            "path": "/projects/azure-vm-4-nomads",
+            "id": "motion-snitcher",
+            "title": "Motion Snitcher",
+            "path": "/projects/motion-snitcher",
             "date": "2024-12-10",
             "excerpt": "abc",
-            "image": "/images/digitalNomad.jpg",
+            "image": "/images/raspberryPI.jpg",
             "content": "abcabcabc"
           },
           {
-            "id": "Equanimy Systems",
-            "title": "Azure VMs 4 Nomads",
-            "path": "/projects/azure-vm-4-nomads",
+            "id": "equanimy-systems",
+            "title": "Equanimy Systems",
+            "path": "/projects/equanimy-systems",
             "date": "2024-12-10",
             "excerpt": "abc",
-            "image": "/images/digitalNomad.jpg",
+            "image": "/images/equalityDiversity.jpg",
             "content": "abcabcabc"
           },
           {
@@ -100,7 +163,7 @@
             "path": "/projects/gcp-billing-analytics",
             "date": "2024-12-10",
             "excerpt": "abc",
-            "image": "/images/digitalNomad.jpg",
+            "image": "/images/moneyPiggy3.jpg",
             "content": "abcabcabc"
           }
         ]
@@ -115,7 +178,7 @@
         "layers": [
           {
             "id": "cities-ivevisited",
-            "title": "Main cities I Have Visited",
+            "title": "Cities I Have Visited",
             "path": "/geolayers/cities-ivevisited",
             "date": "2025-01-15",
             "excerpt": "A customed Geo visualization about the main cities I have visited before.",
@@ -213,69 +276,6 @@
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
             "image": "/images/cloud1.jpg",
             "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud2.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud4.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud5.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud6.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud7.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud8.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "path": "/blog/blog2",
-            "date": "2024-12-10",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud9.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
           }
         ]
       },
@@ -290,7 +290,7 @@
         "backgroundImage": "/image/cloud1.jpg",
         "stats": [
           {
-            "value": "5+",
+            "value": "6+",
             "label": "Years Experience"
           },
           {
@@ -307,6 +307,14 @@
           }
         ],
         "skills": [
+          {
+            "name": "Bash",
+            "icon": "🐧"
+          },
+          {
+            "name": "PowerShell",
+            "icon": "🖥️"
+          },
           {
             "name": "Python",
             "icon": "🐍"
@@ -326,66 +334,6 @@
           {
             "name": "TypeScript",
             "icon": "ʦ"
-          },
-          {
-            "name": "Java",
-            "icon": "☕"
-          },
-          {
-            "name": "Go",
-            "icon": "🐹"
-          },
-          {
-            "name": "Bash",
-            "icon": "🖥️"
-          },
-          {
-            "name": "TensorFlow",
-            "icon": "🧠"
-          },
-          {
-            "name": "PyTorch",
-            "icon": "🔥"
-          },
-          {
-            "name": "Keras",
-            "icon": "✨"
-          },
-          {
-            "name": "Scikit-learn",
-            "icon": "⚛️"
-          },
-          {
-            "name": "XGBoost",
-            "icon": "🚀"
-          },
-          {
-            "name": "Pandas",
-            "icon": "🐼"
-          },
-          {
-            "name": "NumPy",
-            "icon": "🔢"
-          },
-          {
-            "name": "Matplotlib",
-            "icon": "📈"
-          },
-          {
-            "name": "Seaborn",
-            "icon": "🌊"
-          },
-          {
-            "name": "Plotly",
-            "icon": "📊"
-          },
-          {
-            "name": "GeoPandas",
-            "icon": "🌍"
-          },
-          {
-            "name": "Shapely",
-            "icon": "📐"
           },
           {
             "name": "GDAL/OGR",
@@ -429,27 +377,11 @@
           },
           {
             "name": "Kubernetes",
-            "icon": "☸️"
+            "icon": "🔢"
           },
           {
             "name": "Git",
             "icon": "🌳"
-          },
-          {
-            "name": "GitHub",
-            "icon": "🐙"
-          },
-          {
-            "name": "GitLab",
-            "icon": "🦊"
-          },
-          {
-            "name": "Jira",
-            "icon": "🎫"
-          },
-          {
-            "name": "Confluence",
-            "icon": "✍️"
           },
           {
             "name": "AWS",
@@ -464,36 +396,8 @@
             "icon": "☁️"
           },
           {
-            "name": "Linux",
-            "icon": "🐧"
-          },
-          {
-            "name": "REST APIs",
-            "icon": "🌐"
-          },
-          {
-            "name": "GraphQL",
-            "icon": "🔮"
-          },
-          {
-            "name": "HTML",
-            "icon": " Markup"
-          },
-          {
-            "name": "CSS",
-            "icon": "🎨"
-          },
-          {
             "name": "React",
             "icon": "⚛️"
-          },
-          {
-            "name": "Angular",
-            "icon": "🅰️"
-          },
-          {
-            "name": "Vue.js",
-            "icon": "⚡"
           },
           {
             "name": "Node.js",
@@ -512,74 +416,6 @@
             "icon": "⚡"
           },
           {
-            "name": "Data Analysis",
-            "icon": "📈"
-          },
-          {
-            "name": "Machine Learning",
-            "icon": "🤖"
-          },
-          {
-            "name": "Deep Learning",
-            "icon": "🧠"
-          },
-          {
-            "name": "Computer Vision",
-            "icon": "👁️"
-          },
-          {
-            "name": "Natural Language Processing (NLP)",
-            "icon": "🗣️"
-          },
-          {
-            "name": "Reinforcement Learning",
-            "icon": "🎮"
-          },
-          {
-            "name": "Time Series Analysis",
-            "icon": "⏰"
-          },
-          {
-            "name": "Statistical Modeling",
-            "icon": "📊"
-          },
-          {
-            "name": "ETL",
-            "icon": "🔄"
-          },
-          {
-            "name": "Data Warehousing",
-            "icon": "📦"
-          },
-          {
-            "name": "Data Visualization",
-            "icon": "📈"
-          },
-          {
-            "name": "A/B Testing",
-            "icon": "🧪"
-          },
-          {
-            "name": "Agile Methodologies",
-            "icon": "🏃"
-          },
-          {
-            "name": "Scrum",
-            "icon": " scrum"
-          },
-          {
-            "name": "Jupyter Notebooks",
-            "icon": "📓"
-          },
-          {
-            "name": "Streamlit",
-            "icon": "🚀"
-          },
-          {
-            "name": "Dash",
-            "icon": "📈"
-          },
-          {
             "name": "Airflow",
             "icon": "💨"
           },
@@ -596,20 +432,8 @@
             "icon": "⚙️"
           },
           {
-            "name": "CI/CD",
+            "name": "GitHub Actions",
             "icon": "🚀"
-          },
-          {
-            "name": "Unit Testing",
-            "icon": "✅"
-          },
-          {
-            "name": "Integration Testing",
-            "icon": "🔗"
-          },
-          {
-            "name": "End-to-End Testing",
-            "icon": "🎯"
           }
         ],
         "sections": [
@@ -618,29 +442,55 @@
             "type": "timeline",
             "items": [
               {
-                "title": "Senior Data Scientist - Tech Solutions Inc.",
-                "date": "2021 - Present",
-                "description": "Leading spatial analytics projects and developing machine learning models for urban planning applications."
+                "title": "Cloud Data Engineer - CloudPilots, Germany",
+                "date": "2024 - 2025",
+                "description": "abc."
               },
               {
-                "title": "Data Analyst - GeoAnalytics Corp",
-                "date": "2018 - 2021",
-                "description": "Built econometric models for real estate valuation and developed automated reporting systems."
+                "title": "Data Consultant, Inetum/Noesis, Portugal",
+                "date": "2022 - 2024",
+                "description": "abc."
               },
               {
-                "title": "Research Assistant - University of Data Science",
-                "date": "2016 - 2018",
-                "description": "Conducted research on spatial econometrics and published papers on novel geostatistical methods."
+                "title": "Census Agent of Admnistration and Informatics, IBGE, Brazil",
+                "date": "2022",
+                "description": "abc."
+              },
+              {
+                "title": "Applied Data Scientist, 4Intelligence, Brazil",
+                "date": "2021-2022",
+                "description": "abc."
+              },
+              {
+                "title": "Junior Data Scientist, Aquarela, Brazil",
+                "date": "2019-2022",
+                "description": "abc."
               }
             ]
           },
           {
-            "title": "Education & Certifications",
+            "title": "Education",
+            "type": "timeline",
             "items": [
-              "MSc in Data Science - University of Data Science (2018)",
-              "BSc in Economics - Federal University of Analytics (2016)",
-              "Google Professional Data Engineer Certification",
-              "AWS Certified Machine Learning Specialty"
+              {
+                "title": "MSc in GeoSpatial Technologies - University of Munster",
+                "date": "2023 - 2025",
+                "description": "abc."
+              },
+              {
+                "title": "BSc in Economics - Federal University of Analytics",
+                "date": "2018 - 2022",
+                "description": "abc."
+              }
+            ]
+          },
+          {
+            "title": "Certifications",
+            "items": [
+              "Google Associate Cloud Engineer Certification (GCP)",
+              "Google Associate Data Practioner Certification (GCP)",
+              "Google Cloud Digital Leader Certification (GCP)",
+              "Azure Associate Data Scientist Certification (Azure)"
             ]
           },
           {

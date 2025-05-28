@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyFavouriteRestaurants = () => {
+const GeoMyFavouriteRestaurants = () => {
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
@@ -17,4 +17,4 @@ const MyFavouriteRestaurants = () => {
   );
 };
 
-export default MyFavouriteRestaurants;
+export default GeoMyFavouriteRestaurants;

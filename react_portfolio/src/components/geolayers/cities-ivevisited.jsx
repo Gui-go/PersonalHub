@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CitiesIvevisited = () => {
+const GeoCitiesIvevisited = () => {
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
@@ -17,4 +17,4 @@ const CitiesIvevisited = () => {
   );
 };
 
-export default CitiesIvevisited;
+export default GeoCitiesIvevisited;
