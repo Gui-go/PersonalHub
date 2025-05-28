@@ -136,7 +136,8 @@ const App = () => {
           <Route path="/geolayers/cities-ivevisited" element={<GeoCitiesIvevisited />} />
           <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
 
-          <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo />} />
+          {/* <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo />} /> */}
+          <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/masters-thesis-discovery" element={<AgMSdiscovery />} />
           <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />

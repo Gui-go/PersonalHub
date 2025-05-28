@@ -16,11 +16,11 @@
           },
           {
             "label": "Masters Thesis: Migration Dynamics in Brazil",
-            "path": "/publications/masters-thesis"
+            "path": "/publications/migration-dynamics-in-brazil"
           },
           {
             "label": "Geo Layer: Main cities I have visited",
-            "path": "/geolayers/cities-ivebeen"
+            "path": "/geolayers/cities-ivevisited"
           }
         ]
       },
@@ -252,9 +252,9 @@
             "title": "Virtual Guigo",
             "path": "/agents/virtual-guigo",
             "date": "2025-01-??",
-            "excerpt": "A customed LLM Agent to present Guilherme and his research.",
+            "excerpt": "CONTENT::::A customed LLM Agent to present Guilherme and his research.",
             "image": "/images/wilhelmRobotProfessor.jpg",
-            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+            "content": "CONTENT::::This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
             "id": "masters-thesis-discovery",
