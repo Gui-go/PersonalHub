@@ -20,4 +20,9 @@ docker buildx build --platform linux/amd64 \
 
 
 
-  
+            gcloud run deploy portfolio-run \
+            --image=guigo13/portfolio-app:latest \
+            --platform=managed \
+            --region=us-central1 \
+            --allow-unauthenticated
+

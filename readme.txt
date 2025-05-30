@@ -278,3 +278,9 @@ gcloud services list --enabled --project=personalhub3
 
 #
 terraform output -raw service_account_key_json | base64 -d > github-actions-deployer-key.json
+
+
+
+
+
+

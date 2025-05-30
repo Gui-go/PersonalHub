@@ -252,7 +252,7 @@
             "title": "Virtual Guigo",
             "path": "/agents/virtual-guigo",
             "date": "2025-01-??",
-            "image": "/images/wilhelmRobotProfessor.jpg",
+            "image": "/images/profileCartoon.jpg",
             "configId": "780e0c6c-e349-4795-8914-4f4cc7cc7b3e",
             "excerpt": "A customed LLM Agent to present Guilherme and his research.",
             "textH1": "Ask Virtual Guigo",
@@ -309,14 +309,14 @@
         "image": "/images/cloud5.jpg",
         "posts": [
           {
-            "id": "blog-crs",
-            "title": "A Short Review on what Coordenate Reference Systems are. Geographic Projections in D3.js",
+            "id": "blog-map-projection-review",
+            "title": "Map Projection Review",
             "short_title": "",
             "full_title": "",
             "path": "/blog/crs",
             "date": "2025-01-??",
-            "excerpt": "Learn what Coordenate Reference.",
-            "image": "/images/cloud3.jpg",
+            "excerpt": "A Short Review on the various map projections out there. Geographic Projections in D3.js",
+            "image": "/images/projectionglobe.jpg",
             "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
           },
           {
@@ -405,24 +405,12 @@
             "icon": "🗺️"
           },
           {
-            "name": "MySQL",
-            "icon": "🐬"
-          },
-          {
             "name": "PostgreSQL",
             "icon": "🐘"
           },
           {
             "name": "MongoDB",
             "icon": "🍃"
-          },
-          {
-            "name": "Redis",
-            "icon": "⚡"
-          },
-          {
-            "name": "Amazon S3",
-            "icon": "☁️"
           },
           {
             "name": "Docker",
@@ -479,10 +467,6 @@
           {
             "name": "Terraform",
             "icon": "🏗️"
-          },
-          {
-            "name": "Ansible",
-            "icon": "⚙️"
           },
           {
             "name": "GitHub Actions",

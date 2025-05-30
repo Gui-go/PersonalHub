@@ -21,25 +21,22 @@ const AgVirtualGuigo = ({ content }) => {
         textQ2: virtualGuigoAgent.textQ2,
         textQ3: virtualGuigoAgent.textQ3,
         textQ4: virtualGuigoAgent.textQ4,
-        textBack: virtualGuigoAgent.textBack,
-        
+        textBack: virtualGuigoAgent.textBack  
     };
-
 
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = "https://cloud.google.com/ai/gen-app-builder/client?hl=pt_BR";
+        script.src = "https://cloud.google.com/ai/gen-app-builder/client?hl=pt_BR"; //load language dynamically
         script.async = true;
-        script.onload = () => console.log('Google Cloud AI script loaded successfully');
-        script.onerror = () => console.error('Failed to load Google Cloud AI script');
         document.body.appendChild(script);
 
+
+        console.error('Loading script for virtual-guigo agent:', pageData.configId);
         return () => {
-            if (document.body.contains(script)) {
-                document.body.removeChild(script);
-            }
+            document.body.removeChild(script);
         };
     }, []);
+
 
     return (
         <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
@@ -78,7 +75,7 @@ const AgVirtualGuigo = ({ content }) => {
                         
                         <div className="space-y-4">
                             <gen-search-widget
-                                configId={pageData.configId || 'virtual-guigo-config'}
+                                configId={pageData.configId}
                                 triggerId="virtualGuigoSearchTrigger"
                             />
                             <input
