@@ -252,9 +252,18 @@
             "title": "Virtual Guigo",
             "path": "/agents/virtual-guigo",
             "date": "2025-01-??",
-            "excerpt": "CONTENT::::A customed LLM Agent to present Guilherme and his research.",
             "image": "/images/wilhelmRobotProfessor.jpg",
-            "content": "CONTENT::::This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+            "configId": "780e0c6c-e349-4795-8914-4f4cc7cc7b3e",
+            "excerpt": "A customed LLM Agent to present Guilherme and his research.",
+            "textH1": "Ask Virtual Guigo",
+            "textP1": "This AI assistant can answer questions about Guilherme's work, research, and projects.",
+            "textSearchbar": "Ask me about Guilherme's work, research, and projects...",
+            "textH2": "Try asking:",
+            "textQ1": "What is Guilherme's Masters Thesis about?",
+            "textQ2": "What geospatial projects has Guilherme worked on?",
+            "textQ3": "What AI agents has Guilherme created?",
+            "textQ4": "What programming languages does Guilherme know?",
+            "textBack": "Back to AI Agents"
           },
           {
             "id": "masters-thesis-discovery",

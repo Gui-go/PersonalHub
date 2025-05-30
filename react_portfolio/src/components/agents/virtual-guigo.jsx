@@ -9,10 +9,20 @@ const AgVirtualGuigo = ({ content }) => {
 
     const pageData = {
         ...virtualGuigoAgent,
-        ...content,
-        title: virtualGuigoAgent.title || content?.title || 'Virtual Guigo',
-        description: virtualGuigoAgent.excerpt || content?.description || 'A customized LLM Agent to present Guilherme and his research.',
-        image: virtualGuigoAgent.image || content?.image || '/images/wilhelmRobotProfessor.jpg'
+        configId: virtualGuigoAgent.configId,
+        title: virtualGuigoAgent.title,
+        excerpt: virtualGuigoAgent.excerpt,
+        image: virtualGuigoAgent.image,
+        textH1: virtualGuigoAgent.textH1,
+        textP1: virtualGuigoAgent.textP1,
+        textSearchbar: virtualGuigoAgent.textSearchbar,
+        textH2: virtualGuigoAgent.textH2,
+        textQ1: virtualGuigoAgent.textQ1,
+        textQ2: virtualGuigoAgent.textQ2,
+        textQ3: virtualGuigoAgent.textQ3,
+        textQ4: virtualGuigoAgent.textQ4,
+        textBack: virtualGuigoAgent.textBack,
+        
     };
 
 
@@ -54,68 +64,60 @@ const AgVirtualGuigo = ({ content }) => {
                 <div className="p-4 xs:p-5 sm:p-6 md:p-8">
                     {/* Description */}
                     <p className="text-gray-600 text-sm xs:text-base sm:text-lg md:text-xl leading-relaxed mb-4 xs:mb-5 sm:mb-6 md:mb-8">
-                        {pageData.description}
-                        {pageData.date}
+                        {pageData.excerpt}
                     </p>
 
                     {/* Search widget section */}
                     <div className="bg-gray-50 p-4 rounded-lg mb-6">
                         <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
-                            Ask Virtual Guigo
+                            {pageData.textH1}
                         </h3>
                         <p className="text-gray-600 text-xs xs:text-sm sm:text-base mb-4">
-                            This AI assistant can answer questions about Guilherme's work, research, and projects.
+                            {pageData.textP1}
                         </p>
                         
                         <div className="space-y-4">
                             <gen-search-widget
-                                configId={pageData.configid || 'virtual-guigo-config'}
+                                configId={pageData.configId || 'virtual-guigo-config'}
                                 triggerId="virtualGuigoSearchTrigger"
                             />
                             <input
                                 id="virtualGuigoSearchTrigger"
                                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Ask me about Guilherme's research, projects, or experience..."
+                                placeholder={pageData.textSearchbar}
                             />
                         </div>
                     </div>
 
-                    {/* Content section */}
-                    {pageData.content && (
-                        <div className="prose max-w-none text-gray-700 mb-6">
-                            {pageData.content}
-                        </div>
-                    )}
-
                     {/* Suggested questions */}
                     <div className="mt-6">
                         <h4 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-800 mb-3">
-                            Try asking:
+                            {pageData.textH2}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = "What is Guilherme's Masters Thesis about?"}
+                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ1}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
-                                What is Guilherme's Masters Thesis about?
+                                {pageData.textQ1}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = "What geospatial projects has Guilherme worked on?"}
+                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ2}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
-                                What geospatial projects has Guilherme worked on?
+                                {pageData.textQ2}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = "What AI agents has Guilherme created?"}
+                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ3}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
-                                What AI agents has Guilherme created?
+                                {pageData.textQ3}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = "What programming languages does Guilherme know?"}
+                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ4}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
-                                What programming languages does Guilherme know?
+                                {pageData.textQ4}
                             </button>
                         </div>
                     </div>
@@ -126,7 +128,7 @@ const AgVirtualGuigo = ({ content }) => {
                             onClick={() => navigate('/agents')}
                             className="inline-flex items-center px-4 py-2 border border-transparent text-sm xs:text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                            Back to AI Agents
+                            {pageData.textBack}
                         </button>
                     </div>
                 </div>

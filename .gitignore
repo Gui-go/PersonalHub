@@ -20,3 +20,6 @@ github-actions-deployer-key.json
 fastapi-sa-key.json
 
 *tfstate.lock.info*
+
+
+terraform-key.json

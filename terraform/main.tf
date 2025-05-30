@@ -25,6 +25,14 @@ locals {
 # location > region > zone
 
 
+provider "google" {
+  project     = local.proj_number
+  region      = local.location
+  credentials = file("terraform-key.json")
+  # credentials = file("path/to/service-account-key.json") # Optional if using ADC
+}
+
+
 resource "google_project_service" "apis" {
   for_each = toset([
     "run.googleapis.com",
@@ -38,7 +46,8 @@ resource "google_project_service" "apis" {
     "vpcaccess.googleapis.com",
     "eventarc.googleapis.com", # although not used, it is needed for google_cloudfunctions2_function
     "pubsub.googleapis.com",    # although not used, it is needed for google_cloudfunctions2_function
-    "bigquery.googleapis.com"
+    "bigquery.googleapis.com",
+    "discoveryengine.googleapis.com"
     # vertexAI
   ])
   project = local.proj_id
@@ -104,15 +113,15 @@ module "compute" {
   fastapi_sa_email = module.iam.fastapi_sa_email
 }
 
-# module "searchengine" {
-#   source      = "./modules/searchengine"
-#   proj_name   = local.proj_name
-#   proj_id     = local.proj_id
-#   location    = local.location
-#   # zone        = local.zone
-#   release     = local.release
-#   # tag_env   = local.tag_env
-# }
+module "discovery" {
+  source      = "./modules/discovery"
+  proj_name   = local.proj_name
+  proj_id     = local.proj_id
+  location    = local.location
+  release     = local.release
+  # zone        = local.zone
+  # tag_env   = local.tag_env
+}
 
 module "security" {
   source      = "./modules/security"

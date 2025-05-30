@@ -34,6 +34,14 @@ resource "google_storage_bucket" "geolayers_bucket" {
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
+resource "google_storage_bucket" "discovery_bucket" {
+  project                     = var.proj_id
+  name                        = "discovery-bucket-${var.proj_id}"
+  location                    = var.location
+  uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+}
+
 
 
 # datasets ------------------------------------------------------------------------------------

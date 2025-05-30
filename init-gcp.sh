@@ -33,7 +33,7 @@ gcloud config set project $PROJ_ID
 gcloud config set billing/quota_project $PROJ_ID
 gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJ_ID
 gcloud auth application-default set-quota-project $PROJ_ID --quiet
-cd ~/Documents/06-personalHub
+cd ~/Documents/01-personalHub
 gcloud config list
 
 # APIs enabling:
