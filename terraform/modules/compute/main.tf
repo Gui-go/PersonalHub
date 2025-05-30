@@ -1,28 +1,4 @@
 
-
-
-# resource "google_artifact_registry_repository" "artifact_repo" {
-#   project       = var.proj_id
-#   repository_id = "artifact-repo"
-#   description   = "Artifact registry repository for ${var.proj_name}"
-#   location      = var.location
-#   format        = "DOCKER"
-#   docker_config {
-#     immutable_tags = false
-#   }
-# }
-
-# resource "google_vpc_access_connector" "connector" {
-#   project        = var.proj_id
-#   name           = "cloudrun-connector"
-#   region         = var.location
-#   ip_cidr_range  = "192.168.16.0/28"
-#   network        = var.vpc_network_name
-#   min_throughput = 200
-#   max_throughput = 300
-# }
-
-
 # Portfolio ------------------------------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "run_portfolio" {
   project  = var.proj_id
