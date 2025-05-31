@@ -23,7 +23,6 @@ const Agents = ({ content }) => {
           <p className="text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 xs:mb-8 sm:mb-10">
             {content.description}
           </p>
-          <h3 className="text-xl xs:text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">Recent aiagentss</h3>
           {AIagents.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {AIagents.map((aiagents) => (

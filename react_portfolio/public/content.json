@@ -246,6 +246,17 @@
             "excerpt": "A Geo visualization to ilustrate my favourtite restaurants around the world.",
             "image": "/images/restaurants2world.jpg",
             "content": "abcabcabc"
+          },
+          {
+            "id": "world-tiles",
+            "title": "World Tiles",
+            "short_title": "",
+            "full_title": "",
+            "path": "/geolayers/world-tiles",
+            "date": "2024-12-??",
+            "excerpt": "Explore this interactive map, featuring customizable tiles that transform the visual style of the geographic data. Discover unique perspectives with various map designs.",
+            "image": "/images/worldTiles3.jpg",
+            "content": "abcabcabc"
           }
         ]
       },

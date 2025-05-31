@@ -27,6 +27,7 @@ import GeoLayers from './components/geolayers';
 import GeoCitiesIvelived from './components/geolayers/cities-ivelived';
 import GeoCitiesIvevisited from './components/geolayers/cities-ivevisited';
 import GeoMyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
+import WorldTiles from './components/geolayers/world-tiles';
 
 
 
@@ -138,6 +139,7 @@ const App = () => {
           <Route path="/geolayers/cities-ivelived" element={<GeoCitiesIvelived content={menuItems.find(item => item.path === '/geolayers')} />} />
           <Route path="/geolayers/cities-ivevisited" element={<GeoCitiesIvevisited />} />
           <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
+          <Route path="/geolayers/world-tiles" element={<WorldTiles />} />
 
           
 
