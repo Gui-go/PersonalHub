@@ -81,7 +81,11 @@ const About = ({ content }) => {
                       <div className="bg-gray-50 p-5 rounded-lg">
                         <h4 className="font-bold text-gray-800">{item.title}</h4>
                         <div className="text-sm text-gray-500 mb-2">{item.date}</div>
-                        <p className="text-gray-700">{item.description}</p>
+                        <p className="text-gray-700">{item.desc1}</p>
+                        <p className="text-gray-700">{item.desc2}</p>
+                        <p className="text-gray-700">{item.desc3}</p>
+                        <p className="text-gray-700">{item.desc4}</p>
+                        <p className="text-gray-700">{item.tech}</p>
                       </div>
                     </div>
                   ))}

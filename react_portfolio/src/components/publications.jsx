@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Publications = ({ content }) => {
   const navigate = useNavigate();
-  const publicationsPublis = content.publis || []; // Fallback to empty array if content.posts is undefined
+  const publicationsPublis = content.publis || [];
 
   return (
     <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
@@ -41,12 +41,6 @@ const Publications = ({ content }) => {
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
                     {publi.excerpt.length > 200 ? `${publi.excerpt.slice(0, 200)}...` : publi.excerpt}
                   </p>
-                  <button
-                    className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
-                    aria-label={`Read more about ${publi.title}`}
-                  >
-                    Read More
-                  </button>
                 </div>
               ))}
             </div>

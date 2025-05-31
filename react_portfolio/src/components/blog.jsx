@@ -41,12 +41,6 @@ const Blog = ({ content }) => {
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
                     {post.excerpt.length > 200 ? `${post.excerpt.slice(0, 200)}...` : post.excerpt}
                   </p>
-                  <button
-                    className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
-                    aria-label={`Read more about ${post.title}`}
-                  >
-                    Read More
-                  </button>
                 </div>
               ))}
             </div>

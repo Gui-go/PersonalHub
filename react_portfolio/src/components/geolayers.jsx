@@ -42,12 +42,6 @@ const GeoLayers = ({ content }) => {
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
                     {layer.excerpt.length > 100 ? `${layer.excerpt.slice(0, 100)}...` : layer.excerpt}
                   </p>
-                  <button
-                    className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
-                    aria-label={`Read more about ${layer.title}`}
-                  >
-                    Read More
-                  </button>
                 </div>
               ))}
             </div>

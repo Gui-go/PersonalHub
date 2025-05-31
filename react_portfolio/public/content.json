@@ -515,27 +515,47 @@
               {
                 "title": "Cloud Data Engineer - CloudPilots, Germany",
                 "date": "2024 - 2025",
-                "description": "abc."
+                "desc1": "Cloud Infrastructure using GCP and Terraform;",
+                "desc2": "IT Consultancy for Databases and Report Development;",
+                "desc3": "FinOps, Cloud Migration, ETL, and Reporting;",
+                "desc4": "Data Pipeline Development and Maintenance;",
+                "tech": "Tech: GCP, Terraform, BQ, SQL, SQLX, DataForm, BigData, JS, Python;"
               },
               {
                 "title": "Data Consultant, Inetum/Noesis, Portugal",
                 "date": "2022 - 2024",
-                "description": "abc."
+                "desc1": "Cloud Infrastructure Development and Maintaining;",
+                "desc2": "Database Administration;",
+                "desc3": "Network Analysis and Spatial Data Visualization;",
+                "desc4": "Training of Interns;",
+                "tech": "Azure, GCP, Terraform, Bash, Python, Postgres, PostGIS;"
               },
               {
                 "title": "Census Agent of Admnistration and Informatics, IBGE, Brazil",
                 "date": "2022",
-                "description": "abc."
+                "desc1": "Support Census Research in Assigned Areas/Regions;",
+                "desc2": "Reviewing Field Sites and Research Reports;",
+                "desc3": "Training of Census Agents to Conduct Interviews;",
+                "desc4": "Data Collection and Supervision;",
+                "tech": "Tech: Excel and Proprietary Software;"
               },
               {
                 "title": "Applied Data Scientist, 4Intelligence, Brazil",
                 "date": "2021-2022",
-                "description": "abc."
+                "desc1": "Data Cleaning and Transformation;",
+                "desc2": "Statistical and Machine Learning Modeling;",
+                "desc3": "Time Series Forecasting and Anomaly Detection;",
+                "desc4": "Development of Data Pipelines;",
+                "tech": "Tech: Python, R, Bash, Postgres, SQL, Azure, Excel;"
               },
               {
                 "title": "Junior Data Scientist, Aquarela, Brazil",
                 "date": "2019-2022",
-                "description": "abc."
+                "desc1": "Data Cleaning and Transformations;",
+                "desc2": "Development of Analytical Dashboards;",
+                "desc3": "Statistical Modeling and Machine Learning;",
+                "desc4": "Deployment of Dashboards in Production;",
+                "tech": "Tech: R, Python, Docker, JS, CSS, GCP, AWS;"
               }
             ]
           },

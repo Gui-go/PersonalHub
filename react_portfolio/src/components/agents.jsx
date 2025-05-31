@@ -41,12 +41,6 @@ const Agents = ({ content }) => {
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
                     {aiagents.excerpt.length > 200 ? `${aiagents.excerpt.slice(0, 200)}...` : aiagents.excerpt}
                   </p>
-                  <button
-                    className="text-blue-600 hover:underline text-sm xs:text-base sm:text-lg"
-                    aria-label={`Read more about ${aiagents.title}`}
-                  >
-                    Read More
-                  </button>
                 </div>
               ))}
             </div>
