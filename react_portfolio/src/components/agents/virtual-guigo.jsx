@@ -5,24 +5,7 @@ const AgVirtualGuigo = ({ content }) => {
     const navigate = useNavigate();
 
     // Extract the virtual-guigo agent data
-    const virtualGuigoAgent = content?.aiagents?.find(agent => agent.id === 'virtual-guigo') || {};
-
-    const pageData = {
-        ...virtualGuigoAgent,
-        configId: virtualGuigoAgent.configId,
-        title: virtualGuigoAgent.title,
-        excerpt: virtualGuigoAgent.excerpt,
-        image: virtualGuigoAgent.image,
-        textH1: virtualGuigoAgent.textH1,
-        textP1: virtualGuigoAgent.textP1,
-        textSearchbar: virtualGuigoAgent.textSearchbar,
-        textH2: virtualGuigoAgent.textH2,
-        textQ1: virtualGuigoAgent.textQ1,
-        textQ2: virtualGuigoAgent.textQ2,
-        textQ3: virtualGuigoAgent.textQ3,
-        textQ4: virtualGuigoAgent.textQ4,
-        textBack: virtualGuigoAgent.textBack  
-    };
+    const pageData = content.aiagents.find(agent => agent.id === 'virtual-guigo') || {};
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -30,8 +13,6 @@ const AgVirtualGuigo = ({ content }) => {
         script.async = true;
         document.body.appendChild(script);
 
-
-        console.error('Loading script for virtual-guigo agent:', pageData.configId);
         return () => {
             document.body.removeChild(script);
         };
@@ -41,15 +22,13 @@ const AgVirtualGuigo = ({ content }) => {
     return (
         <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
-                {/* Banner image and title */}
                 <div className="relative">
                     <img
                         src={pageData.image}
-                        alt={`${pageData.title} banner`}
+                        alt={`${pageData.title} banner`} // TODO: 
                         className="w-full h-40 xs:h-48 sm:h-56 md:h-64 object-cover"
                         onError={(e) => {
                             e.target.src = '/images/wilhelmRobotProfessor.jpg';
-                            console.error('Failed to load banner image:', pageData.image);
                         }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -76,42 +55,41 @@ const AgVirtualGuigo = ({ content }) => {
                         <div className="space-y-4">
                             <gen-search-widget
                                 configId={pageData.configId}
-                                triggerId="virtualGuigoSearchTrigger"
+                                triggerId="searchWidgetTrigger"
                             />
                             <input
-                                id="virtualGuigoSearchTrigger"
+                                id="searchWidgetTrigger"
                                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder={pageData.textSearchbar}
                             />
                         </div>
                     </div>
 
-                    {/* Suggested questions */}
                     <div className="mt-6">
                         <h4 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-800 mb-3">
                             {pageData.textH2}
                         </h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ1}
+                                onClick={() => document.getElementById('searchWidgetTrigger').value = pageData.textQ1}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
                                 {pageData.textQ1}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ2}
+                                onClick={() => document.getElementById('searchWidgetTrigger').value = pageData.textQ2}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
                                 {pageData.textQ2}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ3}
+                                onClick={() => document.getElementById('searchWidgetTrigger').value = pageData.textQ3}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
                                 {pageData.textQ3}
                             </button>
                             <button 
-                                onClick={() => document.getElementById('virtualGuigoSearchTrigger').value = pageData.textQ4}
+                                onClick={() => document.getElementById('searchWidgetTrigger').value = pageData.textQ4}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs xs:text-sm px-3 py-2 rounded-md transition-colors"
                             >
                                 {pageData.textQ4}
@@ -119,7 +97,6 @@ const AgVirtualGuigo = ({ content }) => {
                         </div>
                     </div>
 
-                    {/* Back to agents button */}
                     <div className="mt-8 text-center">
                         <button
                             onClick={() => navigate('/agents')}
@@ -136,5 +113,3 @@ const AgVirtualGuigo = ({ content }) => {
 
 export default AgVirtualGuigo;
 
-
-// # primeiro massa.

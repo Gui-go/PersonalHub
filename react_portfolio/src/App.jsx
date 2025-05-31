@@ -35,7 +35,7 @@ import AgGWRdiscovery from './components/agents/gwr-discovery';
 import AgTomRiddleDiary from './components/agents/tom-riddles-diary';
 
 import Blog from './components/blog';
-import BlogCRS from './components/blog/blog-crs';
+import BlogMapProjections from './components/blog/map-projection-review';
 
 import About from './components/about';
 
@@ -132,7 +132,7 @@ const App = () => {
           <Route path="/projects/equanimy-systems" element={<ProjEquanimySys />} />
           <Route path="/projects/gcp-billing-analytics" element={<ProjGCPbilling />} />
 
-          <Route path="/geolayers/cities-ivelived" element={<GeoCitiesIvelived />} />
+          <Route path="/geolayers/cities-ivelived" element={<GeoCitiesIvelived content={menuItems.find(item => item.path === '/geolayers')} />} />
           <Route path="/geolayers/cities-ivevisited" element={<GeoCitiesIvevisited />} />
           <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
 
@@ -142,7 +142,7 @@ const App = () => {
           <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 
-          <Route path="/blog/crs" element={<BlogCRS />} />
+          <Route path="/blog/map-projection-review" element={<BlogMapProjections />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

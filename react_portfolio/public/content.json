@@ -127,6 +127,28 @@
         "image": "/images/cloud7.jpg",
         "projs": [
           {
+            "id": "brvectors",
+            "title": "BRvectors",
+            "short_title": "",
+            "full_title": "",
+            "path": "/projects/brvectors",
+            "date": "2024-12-??",
+            "excerpt": "An ELT process and database enabling multi-scale spatial data retrieval, covering municipal, micro, meso, intermediate, and immediate geographic units.",
+            "image": "/images/BRvectors.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "gcpbillinganalytics",
+            "short_title": "",
+            "full_title": "",
+            "title": "GCP Billing Analytics",
+            "path": "/projects/gcp-billing-analytics",
+            "date": "2024-12-??",
+            "excerpt": "A smart way to track expenses and get Gemini-powered suggestions for optimizing GCP spending.",
+            "image": "/images/moneyPiggy3.jpg",
+            "content": "abcabcabc"
+          },
+          {
             "id": "how-much-mansion-worth",
             "title": "How Much is this Mansion Worth",
             "short_title": "",
@@ -149,17 +171,6 @@
             "content": "abcabcabc"
           },
           {
-            "id": "brvectors",
-            "title": "BRvectors",
-            "short_title": "",
-            "full_title": "",
-            "path": "/projects/brvectors",
-            "date": "2024-12-??",
-            "excerpt": "An ELT process and database enabling multi-scale spatial data retrieval, covering municipal, micro, meso, intermediate, and immediate geographic units.",
-            "image": "/images/BRvectors.jpg",
-            "content": "abcabcabc"
-          },
-          {
             "id": "motion-snitcher",
             "short_title": "",
             "full_title": "",
@@ -179,17 +190,6 @@
             "date": "2024-12-??",
             "excerpt": "An AI system to efficiently and equitably allocate resources in a group or comunity.",
             "image": "/images/equalityDiversity.jpg",
-            "content": "abcabcabc"
-          },
-          {
-            "id": "gcpbillinganalytics",
-            "short_title": "",
-            "full_title": "",
-            "title": "GCP Billing Analytics",
-            "path": "/projects/gcp-billing-analytics",
-            "date": "2024-12-??",
-            "excerpt": "A smart way to track expenses and get Gemini-powered suggestions for optimizing GCP spending.",
-            "image": "/images/moneyPiggy3.jpg",
             "content": "abcabcabc"
           }
         ]
@@ -222,7 +222,19 @@
             "date": "2024-12-??",
             "excerpt": "A Geographic visualization about the cities I have lived before.",
             "image": "/images/2worlds.jpg",
-            "content": "abcabcabc"
+            "content": "abcabcabc",
+            "name_floripa": "Florianópolis, Santa Catarina, Brazil",
+            "name_dublin": "Dublin, Ireland",
+            "name_lisbon": "Lisbon, Portugal",
+            "name_munster": "Münster, North Rhine-Westphalia, Germany",
+            "desc1_floripa": "Where I have lived most of my life, where I grow up and started working.",
+            "desc2_floripa": "Florianópolis is a city in southern Brazil known for its beautiful beaches, vibrant culture, and outdoor activities. It's a popular destination for both tourists and locals.",
+            "desc1_dublin": "Where I have matured, spent one year in the island studying business administration and English langugage to prepare myself for the challenges to come.",
+            "desc2_dublin": "Dublin is the capital of Ireland, famous for its rich history, literary heritage, and friendly atmosphere. It's a hub for technology and finance in Europe.",
+            "desc1_lisbon": "Where I continued working in IT and got back in touch with my roots, keep good memories from this place :)",
+            "desc2_lisbon": "Lisbon is the capital of Portugal, known for its stunning architecture, historic neighborhoods, and vibrant nightlife. It's a city that blends tradition with modernity.",
+            "desc1_munster": "Where I did my Masters and aim to persue a Senior carrer.",
+            "desc2_munster": "Münster is a city in Germany known for its historic old town, university, and cycling culture. It's a charming city with a rich history and vibrant student life."
           },
           {
             "id": "my-favourite-restaurants",
@@ -313,11 +325,11 @@
             "title": "Map Projection Review",
             "short_title": "",
             "full_title": "",
-            "path": "/blog/crs",
+            "path": "/blog/map-projection-review",
             "date": "2025-01-??",
-            "excerpt": "A Short Review on the various map projections out there. Geographic Projections in D3.js",
+            "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
             "image": "/images/projectionglobe.jpg",
-            "content": "This tutorial covers abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc abcabc"
+            "content": "This tutorial covers abcabc abcabc "
           },
           {
             "id": "leaflet-2024",

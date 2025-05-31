@@ -3,7 +3,7 @@ import { select } from 'd3-selection';
 import * as geo from 'd3-geo';
 import { json } from 'd3-fetch';
 
-const BlogCRS = ({ content }) => {
+const BlogMapProjections = ({ content }) => {
   useEffect(() => {
     let geojson = {};
     const projections = [
@@ -254,7 +254,7 @@ const BlogCRS = ({ content }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           <div className="absolute bottom-6 left-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-              🌐 Map Projection Explorer
+              Map Projection Explorer
             </h1>
             <p className="text-white/90 mt-2 max-w-2xl">
               A visual guide to geographic projections and their characteristics
@@ -318,4 +318,4 @@ const BlogCRS = ({ content }) => {
   );
 };
 
-export default BlogCRS;
+export default BlogMapProjections;

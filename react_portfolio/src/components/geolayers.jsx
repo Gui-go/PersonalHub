@@ -38,7 +38,7 @@ const GeoLayers = ({ content }) => {
                     className="w-full h-32 xs:h-40 sm:h-48 object-cover rounded-md mb-4"
                   />
                   <h4 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-700 mb-2">{layer.title}</h4>
-                  <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{layer.date}</p>
+                  {/* <p className="text-gray-500 text-sm xs:text-base sm:text-lg mb-2">{layer.date}</p> */}
                   <p className="text-gray-600 text-sm xs:text-base sm:text-lg mb-4">
                     {layer.excerpt.length > 100 ? `${layer.excerpt.slice(0, 100)}...` : layer.excerpt}
                   </p>
