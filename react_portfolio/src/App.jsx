@@ -28,6 +28,8 @@ import GeoCitiesIvelived from './components/geolayers/cities-ivelived';
 import GeoCitiesIvevisited from './components/geolayers/cities-ivevisited';
 import GeoMyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
 
+
+
 import Agents from './components/agents';
 import AgVirtualGuigo from './components/agents/virtual-guigo';
 import AgMSdiscovery from './components/agents/masters-thesis-discovery';
@@ -36,6 +38,7 @@ import AgTomRiddleDiary from './components/agents/tom-riddles-diary';
 
 import Blog from './components/blog';
 import BlogMapProjections from './components/blog/map-projection-review';
+import SolarTerminator from './components/blog/solar-terminator';
 
 import About from './components/about';
 
@@ -136,6 +139,8 @@ const App = () => {
           <Route path="/geolayers/cities-ivevisited" element={<GeoCitiesIvevisited />} />
           <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
 
+          
+
           {/* <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo />} /> */}
           <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/masters-thesis-discovery" element={<AgMSdiscovery />} />
@@ -143,6 +148,7 @@ const App = () => {
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 
           <Route path="/blog/map-projection-review" element={<BlogMapProjections />} />
+          <Route path="/blog/solar-terminator" element={<SolarTerminator />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

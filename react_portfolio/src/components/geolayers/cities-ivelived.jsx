@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { select } from 'd3-selection';
-import * as d3Geo from 'd3-geo';
+import { geoPath, geoMercator } from 'd3-geo'; // Import specific functions
 import { scaleSqrt } from 'd3-scale';
 import { json } from 'd3-fetch';
 import * as topojson from 'topojson-client';
@@ -9,45 +9,45 @@ const GeoCitiesIvelived = ({ content }) => {
   const pageData = content.layers.find(l => l.id === 'cities-ivelived') || {};
   const cities = [
     {
-      "name": "Florianópolis",
-      "coordinates": [-48.533458, -27.594016],
-      "description": "A coastal paradise where I started my tech journey.",
-      "timePeriods": [
-        { "start": "1993", "end": "2014" },
-        { "start": "2015", "end": "2021" }
+      name: "Florianópolis",
+      coordinates: [-48.533458, -27.594016],
+      description: "A coastal paradise where I started my tech journey.",
+      timePeriods: [
+        { start: "1993", end: "2014" },
+        { start: "2015", end: "2021" }
       ],
-      "image": "/images/floripa5.jpg",
-      "story": "Florianópolis was where it all began. The beaches inspired creativity, and the local tech scene gave me my first coding experiences. I lived here in two periods: from 1993 to 2014, and then again from 2016 to 2021.",
-      "highlight": false,
-      "population": 1324000
+      image: "/images/floripa5.jpg",
+      story: "Florianópolis was where it all began. The beaches inspired creativity, and the local tech scene gave me my first coding experiences. I lived here in two periods: from 1993 to 2014, and then again from 2016 to 2021.",
+      highlight: false,
+      population: 1324000
     },
     {
-      "name": "Dublin",
-      "coordinates": [-6.281240, 53.346563],
-      "description": "A city of history and tech innovation.",
-      "timePeriod": { "start": "2014", "end": "2015" },
-      "image": "/images/dublin3.jpg",
-      "story": "Dublin's vibrant energy and tech hubs pushed me to grow as a developer and embrace new challenges.",
-      "population": 1299000
+      name: "Dublin",
+      coordinates: [-6.281240, 53.346563],
+      description: "A city of history and tech innovation.",
+      timePeriod: { start: "2014", end: "2015" },
+      image: "/images/dublin3.jpg",
+      story: "Dublin's vibrant energy and tech hubs pushed me to grow as a developer and embrace new challenges.",
+      population: 1299000
     },
     {
-      "name": "Lisbon",
-      "coordinates": [-9.139207, 38.713354],
-      "description": "A sunny city of creativity and culture.",
-      "timePeriod": { "start": "2022", "end": "2024" },
-      "image": "/images/lisboa3.jpg",
-      "story": "Lisbon's charm and startup scene inspired me to blend design with technology, creating meaningful projects.",
-      "population": 3028000
+      name: "Lisbon",
+      coordinates: [-9.139207, 38.713354],
+      description: "A sunny city of creativity and culture.",
+      timePeriod: { start: "2022", end: "2024" },
+      image: "/images/lisboa3.jpg",
+      story: "Lisbon's charm and startup scene inspired me to blend design with technology, creating meaningful projects.",
+      population: 3028000
     },
     {
-      "name": "Münster",
-      "coordinates": [7.628406, 51.963096],
-      "description": "A peaceful city of learning and innovation.",
-      "timePeriod": { "start": "2024", "end": "Present" },
-      "image": "/images/munster4.jpg",
-      "story": "Münster's calm streets and academic environment helped me focus on innovation and personal growth.",
-      "highlight": true,
-      "population": 307071
+      name: "Münster",
+      coordinates: [7.628406, 51.963096],
+      description: "A peaceful city of learning and innovation.",
+      timePeriod: { start: "2024", end: "Present" },
+      image: "/images/munster4.jpg",
+      story: "Münster's calm streets and academic environment helped me focus on innovation and personal growth.",
+      highlight: true,
+      population: 307071
     }
   ];
 
@@ -56,7 +56,7 @@ const GeoCitiesIvelived = ({ content }) => {
   useEffect(() => {
     const width = 960;
     const height = 500;
-    
+
     // Set up SVG with separate layers
     const svg = select(svgRef.current)
       .attr("width", width)
@@ -85,11 +85,11 @@ const GeoCitiesIvelived = ({ content }) => {
       .attr("class", "legend-layer")
       .raise(); // Ensure it stays on top
 
-    const projection = d3Geo.geoMercator()
+    const projection = geoMercator()
       .scale(150)
       .translate([width / 2, height / 1.5]);
 
-    const path = d3Geo.geoPath().projection(projection);
+    const path = geoPath().projection(projection);
 
     // Create population scale
     const cityScale = scaleSqrt()
@@ -228,7 +228,7 @@ const GeoCitiesIvelived = ({ content }) => {
 
         // Populate timeline
         const sortedCities = [...cities].sort((a, b) => getEarliestStart(a) - getEarliestStart(b));
-        
+
         timelineList.selectAll("li")
           .data(sortedCities)
           .enter()
@@ -322,7 +322,7 @@ const GeoCitiesIvelived = ({ content }) => {
               .attr("opacity", 0.8)
               .attr("stroke", d.highlight ? "#d97706" : "#1d4ed8")
               .attr("stroke-width", 1.5);
-            
+
             cityLabels.selectAll(".city-label").remove();
             tooltip.style("opacity", 0);
           });
@@ -336,15 +336,11 @@ const GeoCitiesIvelived = ({ content }) => {
           .text("My Life's Journey Through Cities");
 
         // Add connecting lines between cities
-        const lineGenerator = d3Geo.geoLine()
-          .projection(projection)
-          .curve(d3Geo.curveCatmullRom.alpha(0.5));
-
         const routeCoords = sortedCities.map(city => city.coordinates);
         mapLayer.append("path")
-          .datum({type: "LineString", coordinates: routeCoords})
+          .datum({ type: "LineString", coordinates: routeCoords })
           .attr("class", "journey-route")
-          .attr("d", lineGenerator)
+          .attr("d", path) // Use geoPath instead of geoLine
           .attr("fill", "none")
           .attr("stroke", "#93c5fd")
           .attr("stroke-width", 2)
@@ -368,7 +364,7 @@ const GeoCitiesIvelived = ({ content }) => {
             <h1 className="text-3xl font-bold text-gray-800 mb-4">{content?.title}</h1>
             <h3 className="text-2xl font-semibold text-gray-700 mb-3">{content?.subtitle1}</h3>
             <p className="text-gray-600 mb-6">{content?.paragraph1}</p>
-            
+
             <div className="w-full flex justify-center mb-8 relative">
               <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-sm w-full overflow-auto">
                 <svg ref={svgRef} className="w-full h-auto"></svg>
@@ -377,13 +373,13 @@ const GeoCitiesIvelived = ({ content }) => {
 
             <h3 className="text-2xl font-semibold text-gray-700 mb-3">{content?.subtitle2}</h3>
             <p className="text-gray-600 mb-6">{content?.desc2}</p>
-            
+
             <h3 className="text-2xl font-semibold text-gray-700 mb-3">{content?.subtitle3}</h3>
             <p className="text-gray-600 mb-6">{content?.paragraph3}</p>
-            
+
             <h3 className="text-2xl font-semibold text-gray-700 mb-3">{content?.subtitle4}</h3>
             <p className="text-gray-600 mb-6">{content?.paragraph4}</p>
-            
+
             <h3 className="text-2xl font-semibold text-gray-700 mb-3">{content?.subtitle5}</h3>
             <p className="text-gray-600">{content?.paragraph5}</p>
           </div>

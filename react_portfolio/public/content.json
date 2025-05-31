@@ -341,6 +341,17 @@
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
             "image": "/images/cloud1.jpg",
             "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+          },
+          {
+            "id": "solar-terminator",
+            "title": "Solar Terminator",
+            "short_title": "",
+            "full_title": "",
+            "path": "/blog/solar-terminator",
+            "date": "2024-12-??",
+            "excerpt": "The solar terminator shows the moving line dividing Earth's day and night sides as it rotates.",
+            "image": "/images/dayNnight7.jpg",
+            "content": "abcabcabc"
           }
         ]
       },
