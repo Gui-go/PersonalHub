@@ -7,7 +7,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Portfolio",
-        "description": "I am a developer with a passion for web development, geospatial analysis, and AI projects. Below you can find my highlights.",
+        "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "/images/cloud8.jpg",
         "cta": [
           {
@@ -124,7 +124,7 @@
         "path": "/projects",
         "title": "Projects",
         "description": "Check out my portfolio of coding projects.",
-        "image": "/images/cloud7.jpg",
+        "image": "/images/cloud13.jpg",
         "projs": [
           {
             "id": "brvectors",
@@ -200,7 +200,7 @@
         "path": "/geolayers",
         "title": "GeoLayers",
         "description": "Interactive geospatial data visualization projects.",
-        "image": "/images/cloud12.jpg",
+        "image": "/images/cloud3.jpg",
         "layers": [
           {
             "id": "cities-ivevisited",
@@ -324,10 +324,10 @@
         ]
       },
       {
-        "id": "blog", 
-        "label": "Blog",
-        "path": "/blog",
-        "title": "Blog",
+        "id": "blogs", 
+        "label": "Blogs",
+        "path": "/blogs",
+        "title": "Blogs",
         "description": "Thoughts and tutorials on development and geospatial tech.",
         "image": "/images/cloud5.jpg",
         "posts": [
@@ -336,7 +336,7 @@
             "title": "Map Projection Review",
             "short_title": "",
             "full_title": "",
-            "path": "/blog/map-projection-review",
+            "path": "/blogs/map-projection-review",
             "date": "2025-01-??",
             "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
             "image": "/images/projectionglobe.jpg",
@@ -347,7 +347,7 @@
             "title": "Geospatial Data with Leaflet",
             "short_title": "",
             "full_title": "",
-            "path": "/blog/blog2",
+            "path": "/blogs/blog2",
             "date": "2024-12-??",
             "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
             "image": "/images/cloud1.jpg",
@@ -358,7 +358,7 @@
             "title": "Solar Terminator",
             "short_title": "",
             "full_title": "",
-            "path": "/blog/solar-terminator",
+            "path": "/blogs/solar-terminator",
             "date": "2024-12-??",
             "excerpt": "The solar terminator shows the moving line dividing Earth's day and night sides as it rotates.",
             "image": "/images/dayNnight7.jpg",
@@ -373,8 +373,8 @@
         "title": "Guilherme Viegas",
         "tagline": "Data Scientist | Geospatial Analyst | AI Enthusiast",
         "description": "I transform complex data into actionable insights through advanced analytics and machine learning. With expertise in econometrics and spatial analysis, I build solutions that help organizations make data-driven decisions. My approach combines technical rigor with clear communication to bridge the gap between data science and business strategy.",
-        "image": "/images/profile.jpeg",
-        "backgroundImage": "/image/cloud1.jpg",
+        "profileImage": "/images/profile.jpeg",
+        "backgroundImage": "/images/cloud1.jpg",
         "stats": [
           {
             "value": "6+",
@@ -390,7 +390,7 @@
           },
           {
             "value": "∞",
-            "label": "Cups of Coffee"
+            "label": "Cups of Cola"
           }
         ],
         "skills": [
@@ -528,7 +528,7 @@
                 "desc2": "Database Administration;",
                 "desc3": "Network Analysis and Spatial Data Visualization;",
                 "desc4": "Training of Interns;",
-                "tech": "Azure, GCP, Terraform, Bash, Python, Postgres, PostGIS;"
+                "tech": "Tech: Azure, GCP, Terraform, Bash, Python, Postgres, PostGIS;"
               },
               {
                 "title": "Census Agent of Admnistration and Informatics, IBGE, Brazil",
@@ -564,12 +564,12 @@
             "type": "timeline",
             "items": [
               {
-                "title": "MSc in GeoSpatial Technologies - University of Munster",
+                "title": "MSc in GeoSpatial Technologies - University of Münster",
                 "date": "2023 - 2025",
                 "description": "abc."
               },
               {
-                "title": "BSc in Economics - Federal University of Analytics",
+                "title": "BSc in Economics - Federal University of Santa Catarina",
                 "date": "2018 - 2022",
                 "description": "abc."
               }
@@ -587,15 +587,6 @@
           {
             "title": "Methodological Approach",
             "content": "My work follows a rigorous analytical process: 1) Problem framing with stakeholders, 2) Exploratory data analysis, 3) Model development with validation, 4) Implementation strategy, and 5) Continuous monitoring. I emphasize reproducibility through version control and documentation, ensuring insights stand up to scrutiny."
-          },
-          {
-            "title": "Recent Projects",
-            "items": [
-              "Developed a spatial prediction model for urban growth patterns with 92% accuracy",
-              "Created an automated ETL pipeline processing 1TB+ of geospatial data daily",
-              "Built a real-time dashboard for COVID-19 impact analysis used by government agencies",
-              "Implemented a machine learning system reducing operational costs by 30% for a logistics company"
-            ]
           }
         ],
         "links": [

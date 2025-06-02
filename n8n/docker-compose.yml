@@ -1,0 +1,7 @@
+services:
+  n8n2:
+    build:
+      context: .
+      dockerfile: n8n.dockerfile
+    ports:
+      - "5679:5678"

@@ -29,17 +29,15 @@ import GeoCitiesIvevisited from './components/geolayers/cities-ivevisited';
 import GeoMyFavouriteRestaurants from './components/geolayers/my-favourite-restaurants';
 import WorldTiles from './components/geolayers/world-tiles';
 
-
-
 import Agents from './components/agents';
 import AgVirtualGuigo from './components/agents/virtual-guigo';
 import AgMSdiscovery from './components/agents/masters-thesis-discovery';
 import AgGWRdiscovery from './components/agents/gwr-discovery';
 import AgTomRiddleDiary from './components/agents/tom-riddles-diary';
 
-import Blog from './components/blog';
-import BlogMapProjections from './components/blog/map-projection-review';
-import SolarTerminator from './components/blog/solar-terminator';
+import Blogs from './components/blogs';
+import BlogMapProjections from './components/blogs/map-projection-review';
+import SolarTerminator from './components/blogs/solar-terminator';
 
 import About from './components/about';
 
@@ -105,6 +103,12 @@ const App = () => {
         >
           <option value="en">English</option>
           <option value="es">Español</option>
+          <option value="pt">Português</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+          <option value="ru">Русский</option>
         </select>
       </div>
 
@@ -113,11 +117,10 @@ const App = () => {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home content={menuItems.find(item => item.path === '/')} />} />
-          {/* <Route path="/cv" element={<CV content={menuItems.find(item => item.path === '/cv')} />} /> */}
           <Route path="/publications" element={<Publications content={menuItems.find(item => item.path === '/publications')} />} />
           <Route path="/projects" element={<Projects content={menuItems.find(item => item.path === '/projects')} />} />
           <Route path="/agents" element={<Agents content={menuItems.find(item => item.path === '/agents')} />} />
-          <Route path="/blog" element={<Blog content={menuItems.find(item => item.path === '/blog')} />} />
+          <Route path="/blogs" element={<Blogs content={menuItems.find(item => item.path === '/blogs')} />} />
           <Route path="/geolayers" element={<GeoLayers content={menuItems.find(item => item.path === '/geolayers')} />} />
           <Route path="/about" element={<About content={menuItems.find(item => item.path === '/about')} />} />
 
@@ -149,8 +152,8 @@ const App = () => {
           <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 
-          <Route path="/blog/map-projection-review" element={<BlogMapProjections />} />
-          <Route path="/blog/solar-terminator" element={<SolarTerminator />} />
+          <Route path="/blogs/map-projection-review" element={<BlogMapProjections />} />
+          <Route path="/blogs/solar-terminator" element={<SolarTerminator />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

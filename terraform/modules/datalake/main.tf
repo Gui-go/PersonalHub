@@ -203,7 +203,7 @@ resource "google_bigquery_table" "bq_table_regions" {
 resource "google_bigquery_table" "bq_table_rgint" {
   project    = var.proj_id
   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Intermediate_Regions"
+  table_id   = "BR_Intermediate_Regions_new"
   deletion_protection = false
   schema = <<EOF
   [
@@ -270,7 +270,7 @@ resource "google_bigquery_table" "bq_table_rgint" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024_new.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false
     json_options {

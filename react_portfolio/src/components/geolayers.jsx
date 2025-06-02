@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const GeoLayers = ({ content }) => {
   const navigate = useNavigate();
-  const geoLayers = content.layers || []; // Fallback to empty array if content.layers is undefined
+  const geoLayers = content.layers || [];
 
   return (
     <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">

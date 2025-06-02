@@ -4,38 +4,31 @@ const About = ({ content }) => {
   return (
     <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl">
-        {/* Profile Picture Section - Centered Square Image */}
-        <div className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-8 flex justify-center">
-          <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 relative rounded-full overflow-hidden border-4 border-white shadow-lg">
+        <div className="relative py-8 flex justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${content.backgroundImage})` }}></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-10"></div>
+          <div className="relative z-10 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-lg">
             <img
-              src={content.image}
+              src={content.profileImage}
               alt="Profile picture"
               className="w-full h-full object-cover object-center"
-              style={{ objectPosition: 'top center' }} // Ensures face is properly centered
+              style={{ objectPosition: 'top center' }}
             />
           </div>
         </div>
-
-        {/* Main Content */}
         <div className="p-6 sm:p-8 md:p-10">
-          {/* Name/Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-gray-800 mb-4">
             {content.title}
           </h1>
-
-          {/* Tagline */}
           <p className="text-center text-blue-600 font-medium text-lg sm:text-xl mb-8">
             {content.tagline}
           </p>
-
-          {/* Introduction */}
           <div className="mb-10 bg-gray-50 rounded-lg p-6">
             <p className="text-gray-700 text-lg sm:text-xl leading-relaxed">
               {content.description}
             </p>
           </div>
-
-          {/* Stats Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
             {content.stats?.map((stat, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm">
@@ -44,8 +37,6 @@ const About = ({ content }) => {
               </div>
             ))}
           </div>
-
-          {/* Skills/Expertise Section */}
           {content.skills && (
             <div className="mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">
@@ -53,7 +44,7 @@ const About = ({ content }) => {
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {content.skills.map((skill, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center p-3 bg-white border border-gray-200 rounded-lg hover:border-blue-300 transition-colors"
                   >
@@ -64,15 +55,12 @@ const About = ({ content }) => {
               </div>
             </div>
           )}
-
-          {/* Detailed Sections */}
           {content.sections?.map((section, index) => (
             <div key={index} className="mb-10 last:mb-0">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6 flex items-center">
                 <span className="w-6 h-1 bg-blue-500 rounded-full mr-3"></span>
                 {section.title}
               </h3>
-              
               {section.type === 'timeline' ? (
                 <div className="space-y-6 pl-8 border-l-2 border-blue-100">
                   {section.items.map((item, idx) => (
