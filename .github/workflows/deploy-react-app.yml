@@ -40,9 +40,9 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy personalhub-run-portfolio \
+          gcloud run deploy portfolio-run \
             --image=us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
-            --allow-unauthenticated
-
+            --allow-unauthenticated \
+            --impersonate-service-account=github-actions-sa@personalhub11.iam.gserviceaccount.com
