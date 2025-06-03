@@ -4,7 +4,7 @@
 resource "google_artifact_registry_repository" "images_repository" {
   project       = var.proj_id
   location      = var.region
-  repository_id = "${var.proj_name}-repo"
+  repository_id = "${var.proj_name}-artifact-repo"
   description   = "Docker repository for storing container images"
   format        = "DOCKER"
   # Optional: Enable customer-managed encryption key (CMEK) if needed

@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
@@ -22,13 +25,27 @@ jobs:
         with:
           project_id: personalhub11
 
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./react_portfolio
+          file: ./react_portfolio/react-portfolio.dockerfile
+          push: true
+          tags: guigo13/portfolio-app:latest
+          build-args: |
+            VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
+
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy portfolio-run \
-            --source=./react_portfolio/react-portfolio.dockerfile \
+          gcloud run deploy personalhub-run-portfolio \
+            --image=us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
+
 
 
 
