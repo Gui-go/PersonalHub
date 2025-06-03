@@ -1,5 +1,5 @@
 locals {
-  release         = "11"
+  release         = "build11"
   proj_name       = "personalhub"
   proj_id         = "personalhub11"
   proj_number     = "875513564391"
