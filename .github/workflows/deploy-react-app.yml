@@ -35,7 +35,6 @@ jobs:
           tags: |
             guigo13/portfolio-app:latest
             guigo13/portfolio-app:${{ github.sha }}
-            guigo13/portfolio-app:$(date +'%Y%m%d_%H%M')
           build-args: |
             VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
 
