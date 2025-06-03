@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy personalhub11 \
+          gcloud run deploy portfolio-run \
             --image=guigo13/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
