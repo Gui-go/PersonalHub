@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          docker pull guigo13/portfolio-app:latest || true
+          docker pull --no-cache guigo13/portfolio-app:latest || true
           gcloud run deploy portfolio-run \
             --image=guigo13/portfolio-app:latest \
             --platform=managed \
