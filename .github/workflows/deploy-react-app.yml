@@ -12,33 +12,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PA_TOKEN }}
-
-      - name: Generate timestamp for tag
-        id: timestamp
-        run: echo "TIMESTAMP=$(date -u +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: ./react_portfolio
-          file: ./react_portfolio/react-portfolio.dockerfile
-          push: true
-          tags: |
-            guigo13/portfolio-app:latest
-            guigo13/portfolio-app:${{ github.sha }}
-            guigo13/portfolio-app:${{ env.TIMESTAMP }}
-          build-args: |
-            VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
-          no-cache: true
-
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
@@ -52,7 +25,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy portfolio-run \
-            --image=guigo13/portfolio-app:${{ env.TIMESTAMP }} \
+            --source=./react_portfolio/ \ 
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
