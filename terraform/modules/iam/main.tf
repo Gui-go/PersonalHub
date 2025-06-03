@@ -226,22 +226,34 @@ resource "google_service_account" "githubactions_sa" {
 }
 
 # Assign roles for Cloud Run (to deploy and manage services)
-resource "google_project_iam_member" "cloud_run_admin" {
+resource "google_project_iam_member" "run_admin_iam_member" {
   project = var.proj_id
   role    = "roles/run.admin"
   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
 }
 
 # Grant the service account permission to act as a Cloud Run runtime service account
-resource "google_project_iam_member" "iam_service_account_user" {
+resource "google_project_iam_member" "service_account_user_iam_member" {
   project = var.proj_id
   role    = "roles/iam.serviceAccountUser"
   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
 }
 
-resource "google_project_iam_member" "artifact_registry_writer" {
+resource "google_project_iam_member" "artifact_registry_writer_iam_member" {
   project = var.proj_id
   role    = "roles/artifactregistry.writer"
+  member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
+}
+
+resource "google_project_iam_member" "storage_admin_iam_member" {
+  project = var.proj_id
+  role    = "roles/storage.admin"
+  member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
+}
+
+resource "google_project_iam_member" "security_admin_iam_member" {
+  project = var.proj_id
+  role    = "roles/iam.securityAdmin"
   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
 }
 
