@@ -212,3 +212,32 @@ resource "google_bigquery_connection" "default3332323" {
   location      = "US"
   cloud_resource {}
 }
+
+
+
+# GH Actions SA -------------------------------------------------------------------------
+
+# Create a service account
+resource "google_service_account" "portfolio_sa" {
+  project      = var.proj_id
+  account_id   = "github-actions-sa"
+  display_name = "GitHub Actions Service Account"
+  description  = "Service Account for Deployment via GitHub Actions"
+}
+
+# Assign roles for Cloud Run (to deploy and manage services)
+resource "google_project_iam_member" "cloud_run_admin" {
+  project      = var.proj_id
+  role    = "roles/run.admin"
+  member  = "serviceAccount:${google_service_account.portfolio_sa.email}"
+}
+
+# Grant the service account permission to act as a Cloud Run runtime service account
+resource "google_project_iam_member" "iam_service_account_user" {
+  project      = var.proj_id
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${google_service_account.portfolio_sa.email}"
+}
+
+
+
