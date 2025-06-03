@@ -11,6 +11,9 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+ARG VIRTUALGUIGO_CONFIG_ID
+ENV VIRTUALGUIGO_CONFIG_ID=$VIRTUALGUIGO_CONFIG_ID
+
 # Expose port
 EXPOSE 3000
 

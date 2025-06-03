@@ -7,6 +7,9 @@ const AgVirtualGuigo = ({ content }) => {
     // Extract the virtual-guigo agent data
     const pageData = content.aiagents.find(agent => agent.id === 'virtual-guigo') || {};
 
+    const virtualguigo_configId = process.env.VIRTUALGUIGO_CONFIG_ID; 
+
+
     useEffect(() => {
         const script = document.createElement('script');
         script.src = "https://cloud.google.com/ai/gen-app-builder/client?hl=pt_BR"; //load language dynamically
@@ -54,7 +57,7 @@ const AgVirtualGuigo = ({ content }) => {
                         
                         <div className="space-y-4">
                             <gen-search-widget
-                                configId={pageData.configId}
+                                configId={virtualguigo_configId}
                                 triggerId="searchWidgetTrigger"
                             />
                             <input
