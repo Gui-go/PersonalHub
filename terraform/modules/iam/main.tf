@@ -5,7 +5,7 @@
 resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
   project  = var.proj_id
   service  = var.run_portfolio.service
-  location = var.run_portfolio.location
+  location = var.run_portfolio.region
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
@@ -49,7 +49,7 @@ resource "google_project_iam_member" "storage_object_viewer" {
 # Allow unauthenticated access (optional, remove if authentication is required)
 resource "google_cloud_run_service_iam_member" "public_access" {
   project  = var.proj_id
-  location = var.location
+  location = var.region
   service  = var.run_fastapi.service
   role     = "roles/run.invoker"
   member   = "allUsers"
@@ -139,7 +139,7 @@ resource "google_project_iam_member" "gcpdataform_sa_bq_job_user" {
 # # Vertex AI connection to use Gemini model in BigQuery:
 # resource "google_bigquery_connection" "billing_gemini_connection" {
 #   project = var.proj_id
-#   location = var.location
+#   location = var.region
 #   connection_id = "billing_gemini_connection"
 #   friendly_name = "Gemini Connection for Billing Data"
 #   description = "Connection to Vertex AI for Gemini model access in BigQuery"
@@ -209,7 +209,7 @@ resource "google_project_iam_member" "vertex_ai_user" {
 resource "google_bigquery_connection" "default3332323" {
   connection_id = "my_cloud_resource_connection"
   project       = var.proj_id
-  location      = "US"
+  location      = var.region
   cloud_resource {}
 }
 

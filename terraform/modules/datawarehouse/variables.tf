@@ -13,10 +13,14 @@ variable "proj_number" {
   type        = string
 }
 
-variable "location" {
-  description = "Location of the resources"
+# variable "location" {
+#   description = "Location of the resources"
+#   type        = string
+# }
+
+variable "region" {
+  description = "Region of the resources"
   type        = string
-  default     = "us-central1"
 }
 
 variable "tag_owner" {

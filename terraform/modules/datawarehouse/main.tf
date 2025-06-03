@@ -8,7 +8,7 @@ resource "google_dataform_repository" "bqdataform_billinganalytics_repo" {
   provider = google-beta
   name = "billing-dataform-repo"
   display_name = "billing-dataform-repo"
-  region     = var.location
+  region     = var.region
   service_account = var.dataform_sa_email
   git_remote_settings {
       url = "https://github.com/Gui-go/gcp_billing_analytics.git"
@@ -37,7 +37,7 @@ resource "google_dataform_repository" "bqdataform_billinganalytics_repo" {
 #   code_compilation_config {
 #     default_database = "bronze"
 #     default_schema   = "bronze"
-#     default_location = var.location
+#     default_region = var.region
 #     assertion_schema = "example-assertion-dataset"
 #     database_suffix  = ""
 #     schema_suffix    = ""
@@ -85,7 +85,7 @@ resource "google_dataform_repository" "bqdataform_brvectos_repo" {
   provider = google-beta
   name = "brvectors-dataform-repo"
   display_name = "brvectors-dataform-repo"
-  region     = var.location
+  region       = var.region
   service_account = var.dataform_sa_email
   git_remote_settings {
       url = "git@github.com:Gui-go/BRvectors.git"
@@ -107,7 +107,7 @@ resource "google_dataform_repository" "bqdataform_geolayers_repo" {
   provider = google-beta
   name = "geolayers-dataform-repo"
   display_name = "geolayers-dataform-repo"
-  region     = var.location
+  region       = var.region
   service_account = var.dataform_sa_email
   git_remote_settings {
       url = "https://github.com/Gui-go/GeoLayers.git"

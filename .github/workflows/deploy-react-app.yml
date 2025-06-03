@@ -25,12 +25,10 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy portfolio-run \
-            --source=./react_portfolio \ 
+            --source=./react_portfolio/react-portfolio.dockerfile \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
-
-
 
 
 

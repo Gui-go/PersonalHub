@@ -8,10 +8,15 @@ variable "proj_id" {
   type        = string
 }
 
-variable "location" {
-  description = "Location of the resources"
-  type        = string
-}
+# variable "location" {
+#   description = "Location of the resources"
+#   type        = string
+# }
+
+# variable "region" {
+#   description = "Region of the resources"
+#   type        = string
+# }
 
 # variable "zone" {
 #   description = "Zone of the resources"

@@ -10,14 +10,14 @@ resource "google_compute_subnetwork" "vpc_subnet" {
   name                     = "${var.proj_name}-vpc-subnet"
   ip_cidr_range            = var.vpc_subnet_cidr
   network                  = google_compute_network.vpc_net.id
-  region                   = var.location
+  region                   = var.region
   private_ip_google_access = true
 }
 
 resource "google_vpc_access_connector" "run_connector" {
   project        = var.proj_id
   name           = "cloudrun-connector"
-  region         = var.location
+  region         = var.region
   ip_cidr_range  = "192.168.16.0/28"
   network        = google_compute_network.vpc_net.name
   min_throughput = 200
@@ -27,7 +27,7 @@ resource "google_vpc_access_connector" "run_connector" {
 resource "google_compute_region_network_endpoint_group" "neg_region" {
   for_each              = toset(var.subdomains)
   name                  = "${var.proj_name}-${each.key}-neg"
-  region                = var.location
+  region                = var.region
   project               = var.proj_id
   network_endpoint_type = "SERVERLESS"
   cloud_run {

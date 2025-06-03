@@ -3,7 +3,8 @@ locals {
   proj_name       = "personalhub"
   proj_id         = "personalhub11"
   proj_number     = "875513564391"
-  location        = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
+  location        = "US"
+  region          = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
   zone            = "us-central1-b"
   vpc_subnet_cidr = "10.8.0.0/28"
   domain          = "guigo.dev.br"
@@ -47,7 +48,8 @@ resource "google_project_service" "apis" {
     "eventarc.googleapis.com", # although not used, it is needed for google_cloudfunctions2_function
     "pubsub.googleapis.com",    # although not used, it is needed for google_cloudfunctions2_function
     "bigquery.googleapis.com",
-    "discoveryengine.googleapis.com"
+    "discoveryengine.googleapis.com",
+    "artifactregistry.googleapis.com"
     # vertexAI
   ])
   project = local.proj_id
@@ -64,7 +66,7 @@ module "network" {
   source            = "./modules/network"
   proj_name         = local.proj_name
   proj_id           = local.proj_id
-  location          = local.location
+  region            = local.region
   tag_owner         = local.tag_owner
   vpc_subnet_cidr   = local.vpc_subnet_cidr
   run_frontend_name = module.compute.run_frontend_name 
@@ -79,7 +81,8 @@ module "iam" {
   proj_name     = local.proj_name
   proj_id       = local.proj_id
   proj_number   = local.proj_number
-  location      = local.location
+  location      = local.location  
+  region        = local.region  
   run_portfolio = module.compute.run_portfolio
   run_fastapi   = module.compute.run_fastapi
 }
@@ -88,7 +91,8 @@ module "datalake" {
   source    = "./modules/datalake"
   proj_name = local.proj_name
   proj_id   = local.proj_id
-  location  = "US" # NOT local.location
+  location  = local.location
+  region    = local.region
   tag_owner = local.tag_owner
   tag_env   = local.tag_env
 }
@@ -98,7 +102,7 @@ module "datawarehouse" {
   proj_name         = local.proj_name
   proj_id           = local.proj_id
   proj_number       = local.proj_number
-  location          = local.location
+  region            = local.region
   dataform_sa_email = module.iam.dataform_sa_email
   gh_token_secret   = module.security.gh_token_secret
 }
@@ -108,7 +112,7 @@ module "compute" {
   proj_name        = local.proj_name
   proj_id          = local.proj_id
   proj_number      = local.proj_number
-  location         = local.location
+  region           = local.region
   run_connector_id = module.network.run_connector_id
   fastapi_sa_email = module.iam.fastapi_sa_email
 }
@@ -117,7 +121,7 @@ module "discovery" {
   source      = "./modules/discovery"
   proj_name   = local.proj_name
   proj_id     = local.proj_id
-  location    = local.location
+  # region      = local.region
   release     = local.release
   # zone        = local.zone
   # tag_env   = local.tag_env
@@ -127,7 +131,7 @@ module "security" {
   source      = "./modules/security"
   proj_id     = local.proj_id
   proj_number = local.proj_number
-  location    = local.location
+  region      = local.region
   tag_owner   = local.tag_owner
   tag_env     = local.tag_env
 }

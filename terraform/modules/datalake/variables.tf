@@ -11,7 +11,11 @@ variable "proj_id" {
 variable "location" {
   description = "Location of the resources"
   type        = string
-  default     = "us-central1"
+}
+
+variable "region" {
+  description = "Region of the resources"
+  type        = string
 }
 
 variable "tag_owner" {

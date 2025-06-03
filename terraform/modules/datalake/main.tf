@@ -1,4 +1,31 @@
 
+
+
+resource "google_artifact_registry_repository" "images_repository" {
+  project       = var.proj_id
+  location      = var.region
+  repository_id = "${var.proj_name}-repo"
+  description   = "Docker repository for storing container images"
+  format        = "DOCKER"
+  # Optional: Enable customer-managed encryption key (CMEK) if needed
+  # kms_key_name = "projects/[PROJECT_ID]/locations/[REGION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+  # Optional: Add labels for organization
+  # labels = {
+  #   environment = "production"
+  #   purpose     = "container-storage"
+  # }
+  cleanup_policies {
+    id     = "keep-recent-versions"
+    action = "KEEP"
+    most_recent_versions {
+      keep_count = 3
+    }
+  }
+  # depends_on = [google_project_service.artifact_registry_api]
+}
+
+
+
 # buckets ------------------------------------------------------------------------------------
 
 resource "google_storage_bucket" "vault_bucket" {
@@ -49,25 +76,21 @@ resource "google_storage_bucket" "discovery_bucket" {
 # resource "google_bigquery_dataset" "billing_bq_dataset" {
 #   project       = var.proj_id
 #   dataset_id    = "billing_source"
-#   location      = "US"
+#   location      = var.location
 #   description   = "BigQuery dataset for Cloud Billing dumping"
 # }
 
 resource "google_bigquery_dataset" "billing_dev_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "billing_dev"
-  location      = "US"
-  # criar location, region, and zone at .env
-  # location      = var.location 
+  location      = var.location
   description   = "BigQuery dataset in development stage for Cloud Billing dumping"
 }
 
 resource "google_bigquery_dataset" "billing_prod_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "billing_prod"
-  location      = "US"
-  # criar location, region, and zone at .env
-  # location      = var.location 
+  location      = var.location
   description   = "BigQuery dataset in production stage for Cloud Billing dumping"
 }
 
@@ -75,24 +98,21 @@ resource "google_bigquery_dataset" "billing_prod_bq_dataset" {
 resource "google_bigquery_dataset" "brvectors_source_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "brvectors_source"
-  location      = "US"
-  # location      = var.location 
+  location      = var.location
   description   = "BigQuery dataset for BRvectors sources"
 }
 
 resource "google_bigquery_dataset" "brvectors_dev_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "brvectors_dev"
-  location      = "US"
-  # location      = var.location 
+  location      = var.location
   description   = "BigQuery dataset in developement stage for BRvectors"
 }
 
 resource "google_bigquery_dataset" "brvectors_prod_bq_dataset" {
   project       = var.proj_id
   dataset_id    = "brvectors_prod"
-  location      = "US"
-  # location      = var.location 
+  location      = var.location
   description   = "BigQuery dataset in production stage for BRvectors"
 }
 
@@ -115,7 +135,6 @@ resource "google_bigquery_table" "bq_table_br_pais" {
   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
   table_id   = "BR_Pais_2024"
   deletion_protection = false
-
   schema = <<EOF
   [
     {
@@ -153,7 +172,6 @@ resource "google_bigquery_table" "bq_table_regions" {
   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
   table_id   = "BR_Regions_2024"
   deletion_protection = false
-
   schema = <<EOF
   [
     {
@@ -270,7 +288,7 @@ resource "google_bigquery_table" "bq_table_rgint" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024_new.jsonl"]
+    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false
     json_options {
@@ -379,7 +397,6 @@ resource "google_bigquery_table" "bq_table_municipalities" {
   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
   table_id   = "BR_Municipalities"
   deletion_protection = false
-
   schema = <<EOF
   [
     {
@@ -552,7 +569,7 @@ resource "google_bigquery_table" "bq_table_municipalities" {
 resource "google_bigquery_dataset" "geolayers_bq_dataset" {
   project     = var.proj_id
   dataset_id  = "geolayers"
-  location    = "US"
+  location    = var.location
   description = "BigQuery dataset for GeoLayers"
 }
 
@@ -594,7 +611,7 @@ resource "google_bigquery_table" "cities_ivebeen" {
 # resource "google_bigquery_dataset" "geolayers_bq_dataset" {
 #   project       = var.proj_id
 #   dataset_id    = "geolayers"
-#   # location      = "US"
+#   # location      = var.location
 #   location      = var.location 
 #   description   = "BigQuery dataset for GeoLayers"
 # }

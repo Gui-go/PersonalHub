@@ -3,11 +3,11 @@
 resource "google_cloud_run_v2_service" "run_portfolio" {
   project  = var.proj_id
   name     = "portfolio-run"
-  location = var.location
+  location = var.region
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     containers {
-      # image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
+      # image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/portfolio-app:latest"
       image = "guigo13/portfolio-app:latest"
       ports { container_port = 3000 }
       resources {
@@ -38,7 +38,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
 resource "google_cloud_run_v2_service" "run_fastapi" {
   project  = var.proj_id
   name     = "fastapi-run"
-  location = var.location
+  location = var.region
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     containers {
@@ -74,7 +74,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
 # resource "google_cloud_run_v2_service" "run_vault" {
 #   project  = var.proj_id
 #   name     = "vault-run"
-#   location = var.location
+#   location = var.region
 #   ingress  = "INGRESS_TRAFFIC_ALL"
 #   template {
 #     containers {
@@ -133,11 +133,11 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
 # resource "google_cloud_run_v2_service" "run_rstudio" {
 #   project  = var.proj_id
 #   name     = "rstudio-run"
-#   location = var.location
+#   location = var.region
 #   ingress  = "INGRESS_TRAFFIC_ALL"
 #   template {
 #     containers {
-#       image = "${var.location}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/rstudio-app:latest"
+#       image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/rstudio-app:latest"
 #       # command = ["rstudio-server"]
 #       ports { container_port = 8787 }
 #       resources {

@@ -11,7 +11,7 @@ resource "google_secret_manager_secret" "gh_token_secret" {
   replication {
     user_managed {
       replicas {
-        location = var.location
+        location = var.region
       }
     }
   }
@@ -41,7 +41,7 @@ resource "google_secret_manager_secret" "gh_token_secret" {
 #   replication {
 #     user_managed {
 #       replicas {
-#         location = var.location
+#         location = var.region
 #       }
 #     }
 #   }

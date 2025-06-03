@@ -13,6 +13,11 @@ variable "location" {
   type        = string
 }
 
+variable "region" {
+  description = "Region of the resources"
+  type        = string
+}
+
 # variable "tag_owner" {
 #   description = "Tag to describe the owner of the resources"
 #   type        = string
@@ -27,7 +32,7 @@ variable "run_portfolio" {
   description = "GCP Cloud Run service for Portfolio"
   type = object({
     service  = string
-    location = string
+    region   = string
   })
 }
 
@@ -35,7 +40,7 @@ variable "run_fastapi" {
   description = "GCP Cloud Run service for FastAPI"
   type = object({
     service  = string
-    location = string
+    region   = string
   })
 }
 

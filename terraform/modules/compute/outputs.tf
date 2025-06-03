@@ -5,14 +5,14 @@ output "run_frontend_name" {
 output "run_portfolio" {
   value = {
     service  = google_cloud_run_v2_service.run_portfolio.name
-    location = google_cloud_run_v2_service.run_portfolio.location
+    region   = google_cloud_run_v2_service.run_portfolio.location
   }
 }
 
 output "run_fastapi" {
   value = {
     service  = google_cloud_run_v2_service.run_fastapi.name
-    location = google_cloud_run_v2_service.run_fastapi.location
+    region   = google_cloud_run_v2_service.run_fastapi.location
   }
 }
 

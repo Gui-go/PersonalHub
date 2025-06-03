@@ -8,8 +8,8 @@ variable "proj_id" {
   type        = string
 }
 
-variable "location" {
-  description = "Location of the resources"
+variable "region" {
+  description = "Region of the resources"
   type        = string
 }
 
