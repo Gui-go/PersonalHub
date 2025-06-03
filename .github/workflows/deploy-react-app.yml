@@ -47,7 +47,8 @@ jobs:
             --image=guigo13/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
+            --set-secrets=DOCKERHUB_TOKEN=${{ secrets.DOCKER_PA_TOKEN }}
 
 
 
