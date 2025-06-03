@@ -35,8 +35,6 @@ jobs:
           tags: guigo13/portfolio-app:latest
           build-args: |
             VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2
@@ -58,4 +56,4 @@ jobs:
 
 
 
-            
+
