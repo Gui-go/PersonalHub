@@ -26,6 +26,10 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
+      - name: Generate timestamp
+        id: timestamp
+        run: echo "TIMESTAMP=$(date -u +'%Y%m%d%H%M')"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -35,6 +39,7 @@ jobs:
           tags: |
             guigo13/portfolio-app:latest
             guigo13/portfolio-app:${{ github.sha }}
+            guigo13/portfolio-app:${{ env.TIMESTAMP }}
           build-args: |
             VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
           no-cache: true
@@ -46,9 +51,8 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          docker pull --no-cache guigo13/portfolio-app:latest || true
           gcloud run deploy portfolio-run \
-            --image=guigo13/portfolio-app:latest \
+            --image=guigo13/portfolio-app:${{ env.TIMESTAMP }} \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
