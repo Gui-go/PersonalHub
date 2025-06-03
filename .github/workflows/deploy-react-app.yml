@@ -44,5 +44,4 @@ jobs:
             --image=us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
-            --allow-unauthenticated \
-            --impersonate-service-account=github-actions-sa@personalhub11.iam.gserviceaccount.com
+            --allow-unauthenticated
