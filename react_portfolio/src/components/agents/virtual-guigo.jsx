@@ -8,8 +8,8 @@ const AgVirtualGuigo = ({ content }) => {
     const pageData = content.aiagents.find(agent => agent.id === 'virtual-guigo') || {};
 
     // const virtualguigo_configId = process.env.VIRTUALGUIGO_CONFIG_ID; 
-    const virtualguigo_configId = process.env.VIRTUALGUIGO_CONFIG_ID;
-    console.log('Config ID:', process.env.VIRTUALGUIGO_CONFIG_ID);
+    const virtualguigo_configId = process.env.REACT_APP_VIRTUALGUIGO_CONFIG_ID;
+    console.log('Config ID 123:', process.env.REACT_APP_VIRTUALGUIGO_CONFIG_ID);
 
 
     useEffect(() => {
