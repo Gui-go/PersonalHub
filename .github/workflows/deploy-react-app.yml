@@ -26,9 +26,9 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Generate timestamp
+      - name: Generate timestamp for tag
         id: timestamp
-        run: echo "TIMESTAMP=$(date -u +'%Y%m%d%H%M')"
+        run: echo "TIMESTAMP=$(date -u +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
