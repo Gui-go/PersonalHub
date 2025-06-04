@@ -146,7 +146,7 @@ const App = () => {
 
           <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/migration-dynamics-discovery" element={<AgMSdiscovery content={menuItems.find(item => item.path === '/agents')} />} />
-          <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
+          <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 
           <Route path="/blogs/map-projection-review" element={<BlogMapProjections />} />
