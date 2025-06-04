@@ -44,7 +44,8 @@ const Navbar = ({ menuItems, title }) => {
     <nav className="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <h1 onClick={() => navigate('/')}
-          className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold">{title}</h1>
+          className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold">{title}
+        </h1>
         <button
           className="md:hidden hamburger flex flex-col justify-center items-center w-8 h-8 space-y-1.5 p-1 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
           onClick={toggleMenu}

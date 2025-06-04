@@ -37,6 +37,7 @@ jobs:
           tags: us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest
           build-args: |
             REACT_APP_VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
+            REACT_APP_MIGRATIONDYNAMICS_CONFIG_ID=${{ secrets.MIGRATIONDYNAMICS_CONFIG_ID }}
 
       - name: Deploy to Cloud Run
         run: |

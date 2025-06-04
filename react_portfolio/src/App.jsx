@@ -31,7 +31,7 @@ import WorldTiles from './components/geolayers/world-tiles';
 
 import Agents from './components/agents';
 import AgVirtualGuigo from './components/agents/virtual-guigo';
-import AgMSdiscovery from './components/agents/masters-thesis-discovery';
+import AgMSdiscovery from './components/agents/migration-dynamics-discovery';
 import AgGWRdiscovery from './components/agents/gwr-discovery';
 import AgTomRiddleDiary from './components/agents/tom-riddles-diary';
 
@@ -144,11 +144,8 @@ const App = () => {
           <Route path="/geolayers/my-favourite-restaurants" element={<GeoMyFavouriteRestaurants />} />
           <Route path="/geolayers/world-tiles" element={<WorldTiles />} />
 
-          
-
-          {/* <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo />} /> */}
           <Route path="/agents/virtual-guigo" element={<AgVirtualGuigo content={menuItems.find(item => item.path === '/agents')} />} />
-          <Route path="/agents/masters-thesis-discovery" element={<AgMSdiscovery />} />
+          <Route path="/agents/migration-dynamics-discovery" element={<AgMSdiscovery content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 

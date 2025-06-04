@@ -289,15 +289,24 @@
             "textBack": "Back to AI Agents"
           },
           {
-            "id": "masters-thesis-discovery",
+            "id": "migration-dynamics-discovery",
             "short_title": "",
             "full_title": "",
-            "title": "Masters' Thesis Discovery",
-            "path": "/agents/masters-thesis-discovery",
+            "title": "Migration Dynamics Discovery",
+            "path": "/agents/migration-dynamics-discovery",
             "date": "2024-12-??",
-            "excerpt": "A GenAI Discovery engine to reveal the motives migrants move from place A to place B, according to Guilherme's thesis.",
             "image": "/images/migSearchEngine.png",
-            "content": "abcabcabc"
+            "configId": "780e0c6c-e349-4795-8914-4f4cc7cc7b3e",
+            "excerpt": "A GenAI Discovery engine to reveal the motives migrants move from place A to place B, according to Guilherme's thesis.",
+            "textH1": "Ask Migration Dynamics Discovery",
+            "textP1": "This AI assistant can answer questions about Guilherme's thesis and related publocations.",
+            "textSearchbar": "Ask me about Guilherme's thesis and related publications...",
+            "textH2": "Try asking:",
+            "textQ1": "What is Guilherme's Masters Thesis about?",
+            "textQ2": "How can GWR estimate migration dynamics?",
+            "textQ3": "What is emigration and immigration?",
+            "textQ4": "What leads people to relocate?",
+            "textBack": "Back to AI Agents"
           },
           {
             "id": "gwr-discovery",
