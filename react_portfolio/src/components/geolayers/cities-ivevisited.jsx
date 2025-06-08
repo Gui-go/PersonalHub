@@ -12,7 +12,7 @@ import Feature from 'ol/Feature';
 import { Style, Circle } from 'ol/style';
 import { Fill, Stroke } from 'ol/style';
 
-const SimpleMap = () => {
+const GeoCitiesIvevisited = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const SimpleMap = () => {
   );
 };
 
-export default SimpleMap;
+export default GeoCitiesIvevisited;
 
 
 
