@@ -501,7 +501,7 @@ const mapStyles = [
   }
 ];
 
-const CitiesIveVisited = () => {
+const GeoCitiesIvevisited = () => {
   const mapRef = useRef(null);
   const popupRef = useRef(null);
   const mapInstance = useRef(null);
@@ -782,4 +782,4 @@ const CitiesIveVisited = () => {
   );
 };
 
-export default CitiesIveVisited;
+export default GeoCitiesIvevisited;
