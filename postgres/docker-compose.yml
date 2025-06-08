@@ -1,7 +1,0 @@
-services:
-  postgres:
-    build:
-      context: .
-      dockerfile: postgres.dockerfile
-    ports:
-      - "5432:5432"
