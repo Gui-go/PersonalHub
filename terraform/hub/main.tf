@@ -13,7 +13,7 @@ locals {
   domain          = "guigo.dev.br"
   subdomains      = [
     "www", 
-    "portfolio", 
+    # "portfolio", 
     # "fastapi", 
     # "vault",
     "rstudio",

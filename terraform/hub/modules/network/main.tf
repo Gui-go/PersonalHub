@@ -41,6 +41,7 @@ resource "google_compute_backend_service" "backend" {
   project     = var.proj_id
   protocol    = "HTTPS"
   timeout_sec = 30
+  enable_cdn = true
   backend {
     group = google_compute_region_network_endpoint_group.neg_region[each.key].id
   }

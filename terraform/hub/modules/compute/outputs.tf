@@ -19,7 +19,7 @@ output "run_portfolio" {
 output "run_names" {
   value = {
     www               = google_cloud_run_v2_service.run_portfolio.name,
-    portfolio         = google_cloud_run_v2_service.run_portfolio.name,
+    # portfolio         = google_cloud_run_v2_service.run_portfolio.name,
     # fastapi           = google_cloud_run_v2_service.run_fastapi.name
     # vault             = google_cloud_run_v2_service.run_vault.name,
     rstudio           = google_cloud_run_v2_service.run_rstudio.name
