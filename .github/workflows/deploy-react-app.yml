@@ -34,7 +34,7 @@ jobs:
           context: ./react_portfolio
           file: ./react_portfolio/react-portfolio.dockerfile
           push: true
-          tags: us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest
+          tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest
           build-args: |
             REACT_APP_VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
             REACT_APP_MIGRATIONDYNAMICS_CONFIG_ID=${{ secrets.MIGRATIONDYNAMICS_CONFIG_ID }}
@@ -43,7 +43,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy portfolio-run \
-            --image=us-central1-docker.pkg.dev/personalhub11/personalhub-artifact-repo/portfolio-app:latest \
+            --image=us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
