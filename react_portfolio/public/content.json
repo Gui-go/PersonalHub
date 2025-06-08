@@ -6,7 +6,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.3.9)",
+        "title": "Welcome to Guilherme's Portfolio (v0.4)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "/images/cloud8.jpg",
         "cta": [
@@ -356,17 +356,6 @@
             "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
             "image": "/images/projectionglobe.jpg",
             "content": "This tutorial covers abcabc abcabc "
-          },
-          {
-            "id": "leaflet-2024",
-            "title": "Geospatial Data with Leaflet",
-            "short_title": "",
-            "full_title": "",
-            "path": "/blogs/blog2",
-            "date": "2024-12-??",
-            "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
-            "image": "/images/cloud1.jpg",
-            "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
           },
           {
             "id": "solar-terminator",

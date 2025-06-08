@@ -8,7 +8,7 @@ const AgGWRdiscovery = ({ content }) => {
     // Extract the virtual-guigo agent data
     const pageData = content.aiagents.find(agent => agent.id === 'gwr-discovery') || {};
 
-    const gwr_configId = process.env.REACT_APP_GWR_CONFIG_ID;
+    const gwr_configId = process.env.REACT_APP_GWR_CONFIG_ID; // Update it in GH Actions secrets
 
     useEffect(() => {
         const script = document.createElement('script');

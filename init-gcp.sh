@@ -14,20 +14,26 @@ gcloud auth login --quiet
 gcloud auth application-default login --quiet
 
 # Variables:
-if [[ -f .env ]]; then
-  set -o allexport; source .env; set +o allexport
-else
-  echo "Error: .env file not found"
-  exit 1
-fi
+set -o allexport; source .env; set +o allexport
 
 # export BILLING_ACC="01F0C7-9A2082-488963"
 # export PROJECT_NAME="personalhub"
 # export PROJ_ID="${PROJECT_NAME}11"
 # export REGION="europe-north2"
 
+# Other related projects:
+# gcloud projects create "gcs-personalhub1" --name="gcs-personalhub" --labels=owner=guilhermeviegas --enable-cloud-apis --quiet
+# gcloud beta billing projects link "gcs-personalhub1" --billing-account=$BILLING_ACC
+# gcloud config set project "gcs-personalhub1"
+# gcloud config set billing/quota_project "gcs-personalhub1"
+
+# gcloud auth application-default set-quota-project personalhub13
+# gcloud config set billing/quota_project personalhub13
+
+
+
 # GCP setting:
-gcloud projects create $PROJ_ID --name=$PROJECT_NAME --labels=owner=guilhermeviegas --enable-cloud-apis --quiet
+gcloud projects create $PROJ_ID --name=$PROJ_NAME --labels=owner=guilhermeviegas --enable-cloud-apis --quiet
 gcloud beta billing projects link $PROJ_ID --billing-account=$BILLING_ACC
 gcloud config set project $PROJ_ID
 gcloud config set billing/quota_project $PROJ_ID
@@ -42,7 +48,6 @@ gcloud services enable compute.googleapis.com --project=$PROJ_ID
 gcloud services enable dns.googleapis.com --project=$PROJ_ID
 gcloud services enable iam.googleapis.com --project=$PROJ_ID
 gcloud services enable discoveryengine.googleapis.com --project=$PROJ_ID
-gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJ_ID
 gcloud services enable secretmanager.googleapis.com --project=$PROJ_ID
 gcloud services enable artifactregistry.googleapis.com --project=$PROJ_ID
 gcloud services enable run.googleapis.com --project=$PROJ_ID
@@ -58,6 +63,7 @@ gcloud services enable cloudscheduler.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquery.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquerydatatransfer.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquerydatatransfer.googleapis.com --project=$PROJ_ID
+
 # gcloud services enable bigqueryconnection.googleapis.com aiplatform.googleapis.com
 # gcloud services enable aiplatform.googleapis.com bigqueryconnection.googleapis.com
 
@@ -108,4 +114,4 @@ gcloud services enable bigquerydatatransfer.googleapis.com --project=$PROJ_ID
 
 
 
-
+# gcloud projects delete $PROJ_ID

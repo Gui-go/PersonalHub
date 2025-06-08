@@ -33,9 +33,9 @@ variable "proj_number" {
   type        = string
 }
 
-variable "fastapi_sa_email" {
-  description = "FastAPI Service Account email"
-  type        = string
-}
+# variable "fastapi_sa_email" {
+#   description = "FastAPI Service Account email"
+#   type        = string
+# }
 
 

@@ -28,21 +28,29 @@ resource "google_artifact_registry_repository" "images_repository" {
 
 # buckets ------------------------------------------------------------------------------------
 
-resource "google_storage_bucket" "vault_bucket" {
-  project                     = var.proj_id
-  name                        = "vault-bucket-${var.proj_id}"
-  location                    = var.location
-  uniform_bucket_level_access = true
-  versioning {
-    enabled = true
-  }
-}
+# resource "google_storage_bucket" "vault_bucket" {
+#   project                     = var.proj_id
+#   name                        = "vault-bucket-${var.proj_id}"
+#   location                    = var.location
+#   uniform_bucket_level_access = true
+#   versioning {
+#     enabled = true
+#   }
+# }
 
-resource "google_storage_bucket" "billing_bucket" {
+# resource "google_storage_bucket" "billing_bucket" {
+#   project                     = var.proj_id
+#   name                        = "billing-bucket-${var.proj_id}"
+#   location                    = var.location
+#   uniform_bucket_level_access = true
+# }
+
+resource "google_storage_bucket" "sqlite_bucket" {
   project                     = var.proj_id
-  name                        = "billing-bucket-${var.proj_id}"
+  name                        = "sqlite-bucket-${var.proj_id}"
   location                    = var.location
   uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
 resource "google_storage_bucket" "brvectors_bucket" {
@@ -124,7 +132,7 @@ resource "google_bigquery_table" "bq_table_dflocations" {
   table_id            = "df_locations"
   deletion_protection = false
   external_data_configuration {
-    source_uris       = ["gs://${google_storage_bucket.brvectors_bucket.name}/df_locations.csv"]
+    source_uris       = ["gs://brvectors-bucket-${var.proj_gcs_id}/locations.csv"]
     source_format     = "CSV"
     autodetect        = true
   }
@@ -158,7 +166,7 @@ resource "google_bigquery_table" "bq_table_br_pais" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false  # Must be false when providing schema
     json_options {
@@ -207,7 +215,7 @@ resource "google_bigquery_table" "bq_table_regions" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_Regions_2024/BR_Regions_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Regions_2024/BR_Regions_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false    
     json_options {
@@ -288,7 +296,7 @@ resource "google_bigquery_table" "bq_table_rgint" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false
     json_options {
@@ -382,7 +390,7 @@ resource "google_bigquery_table" "bq_table_rgi" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_RG_Imediatas_2024/BR_RG_Imediatas_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_RG_Imediatas_2024/BR_RG_Imediatas_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
     autodetect = false
     json_options {
@@ -498,10 +506,9 @@ resource "google_bigquery_table" "bq_table_municipalities" {
   ]
   EOF
   external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-personalhub11/shapefiles/BR_Municipios_2024/BR_Municipios_2024.jsonl"]
+    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Municipios_2024/BR_Municipios_2024.jsonl"]
     source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false
-    
+    autodetect = false    
     json_options {
       encoding = "UTF-8"
     }
@@ -519,7 +526,7 @@ resource "google_bigquery_table" "bq_table_municipalities" {
 #   deletion_protection = false
 #   external_data_configuration {
 #     source_uris = [
-#       "gs://brvectors-bucket-personalhub11/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"
+#       "gs://brvectors-bucket-personalhub12/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"
 #     ]
 #     source_format = "NEWLINE_DELIMITED_JSON"
 #     autodetect    = false
@@ -552,7 +559,7 @@ resource "google_bigquery_table" "bq_table_municipalities" {
 #   deletion_protection = false 
 #   external_data_configuration {
 #     source_uris = [
-#       "gs://brvectors-bucket-personalhub11/shapefiles/BR_Pais_2024/"
+#       "gs://brvectors-bucket-personalhub12/shapefiles/BR_Pais_2024/"
 #     ]
 #     # source_format = "GEOGRAPHY"
 #     max_bad_records = 0
@@ -580,7 +587,7 @@ resource "google_bigquery_table" "cities_ivebeen" {
   table_id            = "cities_ivebeen"
   deletion_protection = false
   external_data_configuration {
-    source_uris   = ["gs://${google_storage_bucket.geolayers_bucket.name}/cities_ivebeen.csv"]
+    source_uris   = ["gs://geolayers-bucket-${var.proj_gcs_id}/cities_ivebeen.csv"]
     source_format = "CSV"
     autodetect    = true
     compression   = "NONE"

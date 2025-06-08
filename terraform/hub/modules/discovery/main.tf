@@ -11,9 +11,12 @@ resource "google_discovery_engine_data_store" "virtualguigo_ds" {
     content_config = "CONTENT_REQUIRED"
     solution_types = ["SOLUTION_TYPE_SEARCH"] # Vertex AI Search
     create_advanced_site_search = false
-    # lifecycle {
-    #     prevent_destroy = true
-    # }
+    lifecycle { prevent_destroy = true }
+    document_processing_config {
+        default_parsing_config {
+            digital_parsing_config {}
+        }
+    }
 }
 
 resource "google_discovery_engine_data_store" "migrationdynamics_ds" {
@@ -25,9 +28,12 @@ resource "google_discovery_engine_data_store" "migrationdynamics_ds" {
     content_config = "CONTENT_REQUIRED"
     solution_types = ["SOLUTION_TYPE_SEARCH"] # Vertex AI Search
     create_advanced_site_search = false
-    # lifecycle {
-    #     prevent_destroy = true
-    # }
+    lifecycle { prevent_destroy = true }
+    document_processing_config {
+        default_parsing_config {
+            digital_parsing_config {}
+        }
+    }
 }
 
 resource "google_discovery_engine_data_store" "gwr_ds" {
@@ -39,9 +45,12 @@ resource "google_discovery_engine_data_store" "gwr_ds" {
     content_config = "CONTENT_REQUIRED"
     solution_types = ["SOLUTION_TYPE_SEARCH"] # Vertex AI Search
     create_advanced_site_search = false
-    # lifecycle {
-    #     prevent_destroy = true
-    # }
+    lifecycle { prevent_destroy = true }
+    document_processing_config {
+        default_parsing_config {
+            digital_parsing_config {}
+        }
+    }
 }
 
 

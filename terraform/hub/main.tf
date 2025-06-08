@@ -1,8 +1,11 @@
 locals {
   release         = "build11"
   proj_name       = "personalhub"
-  proj_id         = "personalhub11"
-  proj_number     = "875513564391"
+  proj_id         = "personalhub13"
+  proj_number     = "241432738087"
+
+  proj_gcs_id     = "gcs-personalhub1"
+
   location        = "US"
   region          = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
   zone            = "us-central1-b"
@@ -11,9 +14,9 @@ locals {
   subdomains      = [
     "www", 
     "portfolio", 
-    "fastapi", 
+    # "fastapi", 
     # "vault",
-    # "rstudio",
+    "rstudio",
     # "ollama",
     # "tom-riddles-diary",
     # "soi-erasmus",
@@ -29,7 +32,8 @@ locals {
 provider "google" {
   project     = local.proj_number
   region      = local.location
-  credentials = file("terraform-key.json")
+  credentials = file("personalhub13-sa.json")
+  # credentials = file("terraform-key.json")
   # credentials = file("path/to/service-account-key.json") # Optional if using ADC
 }
 
@@ -54,6 +58,7 @@ resource "google_project_service" "apis" {
   ])
   project = local.proj_id
   service = each.key
+  disable_on_destroy = false
 }
 
 
@@ -84,17 +89,18 @@ module "iam" {
   location      = local.location  
   region        = local.region  
   run_portfolio = module.compute.run_portfolio
-  run_fastapi   = module.compute.run_fastapi
+  # run_fastapi   = module.compute.run_fastapi
 }
 
 module "datalake" {
-  source    = "./modules/datalake"
-  proj_name = local.proj_name
-  proj_id   = local.proj_id
-  location  = local.location
-  region    = local.region
-  tag_owner = local.tag_owner
-  tag_env   = local.tag_env
+  source      = "./modules/datalake"
+  proj_name   = local.proj_name
+  proj_id     = local.proj_id
+  proj_gcs_id = local.proj_gcs_id
+  location    = local.location
+  region      = local.region
+  tag_owner   = local.tag_owner
+  tag_env     = local.tag_env
 }
 
 module "datawarehouse" {
@@ -114,7 +120,7 @@ module "compute" {
   proj_number      = local.proj_number
   region           = local.region
   run_connector_id = module.network.run_connector_id
-  fastapi_sa_email = module.iam.fastapi_sa_email
+  # fastapi_sa_email = module.iam.fastapi_sa_email
 }
 
 module "discovery" {

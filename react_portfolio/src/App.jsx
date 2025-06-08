@@ -127,9 +127,6 @@ const App = () => {
           <Route path="/publications/migration-dynamics-in-brazil" element={<PubMigrationDynamicsBrazil />} />
           <Route path="/publications/knowledge-spillovers-microregions-brazil" element={<PubKnowledgeSpilloversMicroregionsBrazil />} />
           <Route path="/publications/export-complexity-brazil" element={<PubExportComplexityBrazil />} />
-          <Route path="/publications/notes-census-microdata" element={<PubNotesCensusMicrodata />} />
-          <Route path="/publications/geographic-normalization" element={<PubGeoNormalization />} />
-          <Route path="/publications/money-neutrality-covid19" element={<PubMoneyNeutralityCovid19 />} />
           <Route path="/publications/osesc" element={<PubOsesc />} />
 
           <Route path="/projects/azure-vm-4-nomads" element={<ProjAzureVM4nomads />} />
@@ -149,10 +146,14 @@ const App = () => {
           <Route path="/agents/gwr-discovery" element={<AgGWRdiscovery content={menuItems.find(item => item.path === '/agents')} />} />
           <Route path="/agents/tom-riddles-diary" element={<AgTomRiddleDiary />} />
 
+          <Route path="/publications/notes-census-microdata" element={<PubNotesCensusMicrodata />} />
+          <Route path="/publications/geographic-normalization" element={<PubGeoNormalization />} />
+          <Route path="/publications/money-neutrality-covid19" element={<PubMoneyNeutralityCovid19 />} />
           <Route path="/blogs/map-projection-review" element={<BlogMapProjections />} />
           <Route path="/blogs/solar-terminator" element={<SolarTerminator />} />
 
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </main>
 
