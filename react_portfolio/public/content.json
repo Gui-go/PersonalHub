@@ -24,7 +24,7 @@
           },
           {
             "label": "GCP Billing Analytics: A smart way to track cloud expenses",
-            "path": "/geolayers/gcp-billing-analytics"
+            "path": "/projects/gcp-billing-analytics"
           }
         ]
       },
@@ -260,6 +260,17 @@
             "date": "2024-12-??",
             "excerpt": "Explore this interactive map, featuring customizable tiles that transform the visual style of the geographic data. Discover unique perspectives with various map designs.",
             "image": "/images/worldTiles3.jpg",
+            "content": "abcabcabc"
+          },
+          {
+            "id": "dijkstras-br",
+            "title": "Dijkstras in Brazil",
+            "short_title": "",
+            "full_title": "",
+            "path": "/geolayers/dijkstras-br",
+            "date": "2024-12-??",
+            "excerpt": "Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
+            "image": "/images/roadsJungle.jpg",
             "content": "abcabcabc"
           }
         ]
