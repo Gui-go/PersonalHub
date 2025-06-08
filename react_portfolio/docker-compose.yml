@@ -1,10 +1,10 @@
 services:
-  react-portfolio3:
+  react-portfolio5:
     build:
       context: .
       dockerfile: react-portfolio.dockerfile
     ports:
-      - "3003:3000"
+      - "3005:3000"
     volumes:
       - .:/app
       - /app/node_modules

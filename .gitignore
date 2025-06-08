@@ -9,6 +9,7 @@ ghactionsSA-key.json
 */.terraform.lock.hcl
 */terraform.tfstate
 */terraform.tfstate.backup
+terraform/hub/terraform.tfstate.backup
 
 
 *.tfstate
