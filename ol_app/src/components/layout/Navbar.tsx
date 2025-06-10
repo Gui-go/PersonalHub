@@ -16,6 +16,7 @@ const menuItems = [
 ];
 
 export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
+  
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 

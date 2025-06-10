@@ -1,41 +1,19 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-
-// Example content - replace with real data or props
-const content = {
-  title: 'Blogs',
-  description: 'Latest posts and articles from my blog.',
-  image: '/images/blogs-banner.jpg',
-  posts: [
-    {
-      id: 'post1',
-      title: 'Exploring Spatial Econometrics',
-      path: '/blogs/post1',
-      image: '/images/post1-thumb.jpg',
-      excerpt: 'A deep dive into spatial econometrics techniques applied to migration data...',
-    },
-    {
-      id: 'post2',
-      title: 'Next.js for Portfolio Websites',
-      path: '/blogs/post2',
-      image: '/images/post2-thumb.jpg',
-      excerpt: 'How to build performant and scalable portfolio websites using Next.js and Tailwind CSS...',
-    },
-    // Add more posts...
-  ],
-};
+import content from '../../../../public/content.json';
 
 export default function BlogsPage() {
+
   const router = useRouter();
-  const blogPosts = content.posts || [];
+  const blogsContent = content.blogs;
 
   return (
     <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl">
         <div className="relative">
           <Image
-            src={content.image}
-            alt={`${content.title} banner`}
+            src={blogsContent?.image}
+            alt={`${blogsContent?.title} banner`}
             width={1920}
             height={400}
             className="w-full h-40 xs:h-48 sm:h-56 md:h-64 object-cover"
@@ -43,16 +21,16 @@ export default function BlogsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           <h2 className="absolute bottom-4 left-4 text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            {content.title}
+            {blogsContent?.title}
           </h2>
         </div>
         <div className="p-6 xs:p-8 sm:p-10 md:p-12">
           <p className="text-gray-600 text-base xs:text-lg sm:text-xl md:text-2xl leading-relaxed mb-6 xs:mb-8 sm:mb-10">
-            {content.description}
+            {blogsContent?.description}
           </p>
-          {blogPosts.length > 0 ? (
+          {blogsContent?.posts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
+              {blogsContent?.posts.map((post) => (
                 <div
                   key={post.id}
                   className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer animate-fade-in"

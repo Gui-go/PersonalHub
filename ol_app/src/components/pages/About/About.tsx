@@ -2,6 +2,7 @@
 import content from '../../../../public/content.json';
 
 export default function About() {
+  
   const aboutContent = content.about;
 
   return (

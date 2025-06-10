@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import content from '../../../../public/content.json';
 
 export default function Home() {
+  
   const router = useRouter();
   const homeContent = content.home;
 
@@ -25,13 +26,12 @@ export default function Home() {
       </div>
 
       <br />
-
-      <div className="flex flex-col xs:flex-row justify-center items-center gap-3 xs:gap-4 sm:gap-5">
+      <div className="flex flex-col justify-center items-center gap-3 xs:gap-4 sm:gap-5">
         {homeContent.cta?.map((button: any, index: number) => (
           <button
             key={index}
             onClick={() => router.push(button.path)}
-            className="w-full xs:w-auto min-w-[100px] sm:min-w-[120px] px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-150 hover:scale-105 active:scale-95 text-sm sm:text-base font-medium text-center shadow-sm"
+            className="w-full min-w-[100px] sm:min-w-[120px] px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-150 hover:scale-105 active:scale-95 text-sm sm:text-base font-medium text-center shadow-sm"
           >
             {button.label}
           </button>
