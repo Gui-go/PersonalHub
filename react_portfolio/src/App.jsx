@@ -41,33 +41,41 @@ import SolarTerminator from './components/blogs/solar-terminator';
 
 import About from './components/about';
 
-
-
 const App = () => {
-  const [language, setLanguage] = useState(localStorage.getItem('language') || 'en');
+  const [language, setLanguage] = useState('en');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Load stored language
   useEffect(() => {
-    fetch('/content.json')
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to load content');
-        return response.json();
-      })
-      .then((json) => {
-        setData(json);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+    const storedLang = localStorage.getItem('language');
+    if (storedLang) setLanguage(storedLang);
   }, []);
 
+  // Save language changes
   useEffect(() => {
     localStorage.setItem('language', language);
   }, [language]);
+
+  // Load content.json
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        const res = await fetch('/content.json');
+        const json = await res.json();
+        console.log('Loaded content:', json);
+        setData(json); // ✅ FIXED
+        setLoading(false);
+      } catch (err) {
+        console.error('Failed to load content.json:', err);
+        setError('Could not load content.');
+        setLoading(false);
+      }
+    };
+
+    loadContent();
+  }, []);
 
   if (loading) {
     return (
@@ -77,12 +85,12 @@ const App = () => {
     );
   }
 
-  if (error) {
+  if (error || !data) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 text-red-600 text-center">
         <div>
           <h2 className="text-base xs:text-lg sm:text-xl md:text-2xl font-bold mb-2 xs:mb-3 sm:mb-4">Error</h2>
-          <p className="text-xs xs:text-sm sm:text-base md:text-lg">{error}</p>
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg">{error || 'Unknown error.'}</p>
         </div>
       </div>
     );
@@ -153,7 +161,6 @@ const App = () => {
           <Route path="/blogs/solar-terminator" element={<SolarTerminator />} />
 
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </main>
 
@@ -163,4 +170,3 @@ const App = () => {
 };
 
 export default App;
-

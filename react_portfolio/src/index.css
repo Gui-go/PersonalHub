@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import "https://cdn.jsdelivr.net/npm/ol/ol.css"; */
-/* src/index.css */
-@import 'ol/ol.css';
-
-

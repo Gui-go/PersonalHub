@@ -1,0 +1,290 @@
+{
+    "home": {
+        "id": "home",
+        "label": "Home",
+        "path": "/",
+        "title": "Welcome to Guilherme's Portfolio (v0.4.4.4)",
+        "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
+        "image": "images/cloud8.jpg",
+        "cta": [
+            {
+                "label": "Virtual Guigo: A customed LLM to present myself",
+                "path": "/agents/virtual-guigo"
+            },
+            {
+                "label": "Masters Thesis: Migration Dynamics in Brazil",
+                "path": "/publications/migration-dynamics-in-brazil"
+            },
+            {
+                "label": "Geo Layer: Main cities I have visited",
+                "path": "/geolayers/cities-ivevisited"
+            },
+            {
+                "label": "GCP Billing Analytics: A smart way to track cloud expenses",
+                "path": "/projects/gcp-billing-analytics"
+            }
+        ]
+    },
+    "projects": {
+        "title": "My Projects",
+        "content": "I have worked on a variety of projects that showcase my skills in data science, geospatial analysis, and software development. Here are some highlights:",
+        "items": [
+            "Project A",
+            "Project B",
+            "Project C"
+        ]
+    },
+    "blogs": {
+        "title": "Blog Posts",
+        "items": [
+            "Post 1: Intro to Next.js",
+            "Post 2: Mapping with OpenLayers"
+        ]
+    },
+    "about": {
+        "id": "about",
+        "label": "About",
+        "path": "/about",
+        "title": "Guilherme Viegas",
+        "tagline": "Data Scientist | Geospatial Analyst | AI Enthusiast",
+        "description": "I transform complex data into actionable insights through advanced analytics and machine learning. With expertise in econometrics and spatial analysis, I build solutions that help organizations make data-driven decisions. My approach combines technical rigor with clear communication to bridge the gap between data science and business strategy.",
+        "profileImage": "/images/profile.jpeg",
+        "backgroundImage": "/images/cloud1.jpg",
+        "stats": [
+            {
+                "value": "6+",
+                "label": "Years Experience"
+            },
+            {
+                "value": "50+",
+                "label": "Projects Completed"
+            },
+            {
+                "value": "10+",
+                "label": "Technologies Mastered"
+            },
+            {
+                "value": "∞",
+                "label": "Cups of Cola"
+            }
+        ],
+        "skills": [
+            {
+                "name": "Bash",
+                "icon": "🐧"
+            },
+            {
+                "name": "PowerShell",
+                "icon": "🖥️"
+            },
+            {
+                "name": "Python",
+                "icon": "🐍"
+            },
+            {
+                "name": "R",
+                "icon": "📊"
+            },
+            {
+                "name": "SQL",
+                "icon": "🗃️"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "📜"
+            },
+            {
+                "name": "TypeScript",
+                "icon": "ʦ"
+            },
+            {
+                "name": "GDAL/OGR",
+                "icon": "🌐"
+            },
+            {
+                "name": "QGIS",
+                "icon": "🗺️"
+            },
+            {
+                "name": "ArcGIS",
+                "icon": "🗺️"
+            },
+            {
+                "name": "PostGIS",
+                "icon": "🗺️"
+            },
+            {
+                "name": "PostgreSQL",
+                "icon": "🐘"
+            },
+            {
+                "name": "MongoDB",
+                "icon": "🍃"
+            },
+            {
+                "name": "Docker",
+                "icon": "🐳"
+            },
+            {
+                "name": "Kubernetes",
+                "icon": "🔢"
+            },
+            {
+                "name": "Git",
+                "icon": "🌳"
+            },
+            {
+                "name": "AWS",
+                "icon": "☁️"
+            },
+            {
+                "name": "Google Cloud Platform (GCP)",
+                "icon": "☁️"
+            },
+            {
+                "name": "Azure",
+                "icon": "☁️"
+            },
+            {
+                "name": "React",
+                "icon": "⚛️"
+            },
+            {
+                "name": "Node.js",
+                "icon": "🟢"
+            },
+            {
+                "name": "Flask",
+                "icon": "🍶"
+            },
+            {
+                "name": "Django",
+                "icon": "🎶"
+            },
+            {
+                "name": "FastAPI",
+                "icon": "⚡"
+            },
+            {
+                "name": "Airflow",
+                "icon": "💨"
+            },
+            {
+                "name": "Kafka",
+                "icon": "⚙️"
+            },
+            {
+                "name": "Terraform",
+                "icon": "🏗️"
+            },
+            {
+                "name": "GitHub Actions",
+                "icon": "🚀"
+            }
+        ],
+        "sections": [
+            {
+                "title": "Professional Journey",
+                "type": "timeline",
+                "items": [
+                    {
+                        "title": "Cloud Data Engineer - CloudPilots, Germany",
+                        "date": "2024 - 2025",
+                        "desc1": "Cloud Infrastructure using GCP and Terraform;",
+                        "desc2": "IT Consultancy for Databases and Report Development;",
+                        "desc3": "FinOps, Cloud Migration, ETL, and Reporting;",
+                        "desc4": "Data Pipeline Development and Maintenance;",
+                        "tech": "Tech: GCP, Terraform, BQ, SQL, SQLX, DataForm, BigData, JS, Python;"
+                    },
+                    {
+                        "title": "Data Consultant, Inetum/Noesis, Portugal",
+                        "date": "2022 - 2024",
+                        "desc1": "Cloud Infrastructure Development and Maintaining;",
+                        "desc2": "Database Administration;",
+                        "desc3": "Network Analysis and Spatial Data Visualization;",
+                        "desc4": "Training of Interns;",
+                        "tech": "Tech: Azure, GCP, Terraform, Bash, Python, Postgres, PostGIS;"
+                    },
+                    {
+                        "title": "Census Agent of Admnistration and Informatics, IBGE, Brazil",
+                        "date": "2022",
+                        "desc1": "Support Census Research in Assigned Areas/Regions;",
+                        "desc2": "Reviewing Field Sites and Research Reports;",
+                        "desc3": "Training of Census Agents to Conduct Interviews;",
+                        "desc4": "Data Collection and Supervision;",
+                        "tech": "Tech: Excel and Proprietary Software;"
+                    },
+                    {
+                        "title": "Applied Data Scientist, 4Intelligence, Brazil",
+                        "date": "2021-2022",
+                        "desc1": "Data Cleaning and Transformation;",
+                        "desc2": "Statistical and Machine Learning Modeling;",
+                        "desc3": "Time Series Forecasting and Anomaly Detection;",
+                        "desc4": "Development of Data Pipelines;",
+                        "tech": "Tech: Python, R, Bash, Postgres, SQL, Azure, Excel;"
+                    },
+                    {
+                        "title": "Junior Data Scientist, Aquarela, Brazil",
+                        "date": "2019-2022",
+                        "desc1": "Data Cleaning and Transformations;",
+                        "desc2": "Development of Analytical Dashboards;",
+                        "desc3": "Statistical Modeling and Machine Learning;",
+                        "desc4": "Deployment of Dashboards in Production;",
+                        "tech": "Tech: R, Python, Docker, JS, CSS, GCP, AWS;"
+                    }
+                ]
+            },
+            {
+                "title": "Education",
+                "type": "timeline",
+                "items": [
+                    {
+                        "title": "MSc in GeoSpatial Technologies - University of Münster",
+                        "date": "2023 - 2025",
+                        "description": "abc."
+                    },
+                    {
+                        "title": "BSc in Economics - Federal University of Santa Catarina",
+                        "date": "2018 - 2022",
+                        "description": "abc."
+                    }
+                ]
+            },
+            {
+                "title": "Certifications",
+                "items": [
+                    "Google Associate Cloud Engineer Certification (GCP)",
+                    "Google Associate Data Practioner Certification (GCP)",
+                    "Google Cloud Digital Leader Certification (GCP)",
+                    "Azure Associate Data Scientist Certification (Azure)"
+                ]
+            },
+            {
+                "title": "Methodological Approach",
+                "content": "My work follows a rigorous analytical process: 1) Problem framing with stakeholders, 2) Exploratory data analysis, 3) Model development with validation, 4) Implementation strategy, and 5) Continuous monitoring. I emphasize reproducibility through version control and documentation, ensuring insights stand up to scrutiny."
+            }
+        ],
+        "links": [
+            {
+                "title": "GitHub",
+                "url": "https://github.com/guigo",
+                "icon": "👨‍💻"
+            },
+            {
+                "title": "LinkedIn",
+                "url": "https://linkedin.com/in/guilherme-viegas/",
+                "icon": "💼"
+            },
+            {
+                "title": "Email",
+                "url": "mailto:gui@example.com",
+                "icon": "✉️"
+            },
+            {
+                "title": "CV Download",
+                "url": "/cv.pdf",
+                "icon": "📄"
+            }
+        ]
+    }
+}
