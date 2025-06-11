@@ -221,6 +221,8 @@ const MapPage: React.FC = () => {
               className="w-64"
             />
           </div>
+        </div>
+        <div className="mt-2 flex items-center gap-4">
           <div>
             <label htmlFor="tileSource" className="mr-2">
               Map style:
