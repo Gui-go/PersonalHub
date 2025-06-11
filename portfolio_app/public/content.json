@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.4.7.0)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.0.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -354,6 +354,17 @@
                 "date": "2024-12-??",
                 "excerpt": "Explore the timezones of the world with this interactive map. Understand how time is divided across different regions and how it affects daily life.",
                 "image": "/images/time3.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "world-cities-population",
+                "title": "World Cities Population",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/world-cities-population",
+                "date": "2024-12-??",
+                "excerpt": "Explore cities around the world and their population size. This interactive map visualizes the population distribution in major cities, helping you understand urbanization patterns.",
+                "image": "/images/population1.jpg",
                 "content": "abcabcabc"
             },
             {

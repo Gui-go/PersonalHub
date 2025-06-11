@@ -47,3 +47,10 @@ jobs:
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
+
+      - name: Update traffic to latest revision
+        run: |
+          gcloud run services update-traffic portfolio-run \
+            --to-latest \
+            --platform=managed \
+            --region=us-central1
