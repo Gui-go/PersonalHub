@@ -10,8 +10,11 @@ import Point from 'ol/geom/Point';
 import { fromLonLat } from 'ol/proj';
 import Papa from 'papaparse';
 import XYZ from 'ol/source/XYZ';
+import { defaults as defaultInteractions } from 'ol/interaction';
 import 'ol/ol.css';
 
+
+// https://www.kaggle.com/datasets/juanmah/world-cities?resource=download
 type CityData = {
   city: string;
   lat: number;
@@ -85,6 +88,17 @@ const MapPage: React.FC = () => {
   useEffect(() => {
     if (!mapRef.current) return;
 
+    // Prevent default touch scrolling when interacting with the map
+    const preventTouchScroll = (e: TouchEvent) => {
+      if (mapRef.current && mapRef.current.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    // Add touch event listeners
+    mapRef.current.addEventListener('touchstart', preventTouchScroll, { passive: false });
+    mapRef.current.addEventListener('touchmove', preventTouchScroll, { passive: false });
+
     // Load and parse CSV
     fetch('/data/worldcities.csv')
       .then((res) => res.text())
@@ -126,13 +140,19 @@ const MapPage: React.FC = () => {
         });
         tileLayerRef.current = tileLayer;
 
-        // Initialize map
+        // Initialize map with explicit touch interactions
         mapInstance.current = new Map({
           target: mapRef.current!,
           layers: [tileLayer, pointsLayer],
           view: new View({
             center: fromLonLat([0, 0]),
             zoom: 2,
+          }),
+          interactions: defaultInteractions({
+            pinchRotate: true, // Enable pinch-to-rotate
+            pinchZoom: true, // Enable pinch-to-zoom
+            dragPan: true, // Enable drag panning
+            mouseWheelZoom: true, // Enable mouse wheel zoom (for desktop)
           }),
           controls: [],
         });
@@ -178,6 +198,10 @@ const MapPage: React.FC = () => {
     // Cleanup on unmount
     return () => {
       mapInstance.current?.setTarget(undefined);
+      if (mapRef.current) {
+        mapRef.current.removeEventListener('touchstart', preventTouchScroll);
+        mapRef.current.removeEventListener('touchmove', preventTouchScroll);
+      }
     };
   }, []);
 
@@ -203,8 +227,7 @@ const MapPage: React.FC = () => {
     <div className="relative w-full h-screen">
       <header className="bg-blue-700 text-white p-4">
         <h1 className="text-xl font-bold">World Cities Population Map</h1>
-        <p>Hover a city on the map to highlight it</p>
-        <p>Based on 2025 Kaggle <a href="https://www.kaggle.com/datasets/juanmah/world-cities/data">World Cities</a> database</p>
+        <p>Hover or tap a city on the map to highlight it</p>
         <div className="mt-2 flex items-center gap-4">
           <div>
             <label htmlFor="popRange" className="mr-2">
@@ -242,7 +265,11 @@ const MapPage: React.FC = () => {
           </div>
         </div>
       </header>
-      <div ref={mapRef} className="w-full h-full" />
+      <div
+        ref={mapRef}
+        className="w-full h-full touch-action-none"
+        style={{ touchAction: 'none' }}
+      />
       {tooltipContent && tooltipPosition && (
         <div
           className="absolute bg-black bg-opacity-70 text-white px-2 py-1 rounded text-sm pointer-events-none"

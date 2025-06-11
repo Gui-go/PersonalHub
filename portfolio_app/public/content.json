@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.0.2)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.0.3)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
