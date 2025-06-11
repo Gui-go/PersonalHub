@@ -31,8 +31,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./react_portfolio
-          file: ./react_portfolio/react-portfolio.dockerfile
+          context: ./portfolio_app
+          file: ./portfolio_app/portfolio-app.dockerfile
           push: true
           tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest
           build-args: |

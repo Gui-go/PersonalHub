@@ -288,4 +288,61 @@ terraform output -raw service_account_key_json | base64 -d > github-actions-depl
 
 
 
-Add Laguna, PoA,       
+Add: 
+Laguna, 
+PoA,       
+Toledo,
+Marbella,
+caceres,
+merida,
+portmao,
+albufeira,
+criciuma
+
+
+Correct lat-long:
+Washington (casa branca ou obelisco),
+Colon,
+floripa (morro da cruz)
+
+
+---------------------------------------------------------------------
+Features:
+Hiroshima and Nagazaki radius
+Berlin wall
+DMZ Korea
+Damian gap 
+Metros of Lisbon
+Metros of SP 
+Metros of the World
+
+
+
+
+----------------------------------------------------------------------
+Cool:
+Tile com relevo:
+const rasterLayer = new TileLayer({
+  source: new OGCMapTile({
+    url: 'https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:raster:HYP_HR_SR_OB_DR/map/tiles/WebMercatorQuad',
+    crossOrigin: '',
+  }),
+});
+
+
+
+
+
+
+----------------------------------------------------------------
+Data types:
+geojson
+topology
+geometry
+kmz
+wms
+GPX   GeoJSON   IGC   KML   TopoJSON
+WKB (Well Known Binary) format
+mvt
+
+----------------------------------------------------------

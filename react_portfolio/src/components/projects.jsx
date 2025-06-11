@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Blog = ({ content }) => {
+const Projects = ({ content }) => {
   const navigate = useNavigate();
   const projects = content.projs || []; // Fallback to empty array if content.projs is undefined
 
@@ -44,7 +44,7 @@ const Blog = ({ content }) => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No blog projs available.</p>
+            <p className="text-gray-600 text-base xs:text-lg sm:text-xl">No Projects projs available.</p>
           )}
         </div>
       </div>
@@ -52,4 +52,4 @@ const Blog = ({ content }) => {
   );
 };
 
-export default Blog;
+export default Projects;
