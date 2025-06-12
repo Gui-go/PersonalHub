@@ -5,12 +5,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { id: 'home', label: 'Home', path: '/' },
+  // { id: 'home', label: 'Home', path: '/' },
   { id: 'stories', label: 'Stories', path: '/stories' },
   { id: 'projects', label: 'Projects', path: '/projects' },
   { id: 'publications', label: 'Publications', path: '/publications' },
   { id: 'agents', label: 'Agents', path: '/agents' },
   { id: 'geolayers', label: 'GeoLayers', path: '/geolayers' },
+  { id: 'tools', label: 'Tools', path: '/tools' },
   { id: 'blogs', label: 'Blogs', path: '/blogs' },
   { id: 'about', label: 'About', path: '/about' }
 ];

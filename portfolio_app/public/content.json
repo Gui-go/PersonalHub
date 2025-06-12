@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.0.4)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.1.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -31,7 +31,7 @@
         "path": "/stories",
         "title": "Stories",
         "description": "Stories that I carefully developed and share for a better world.",
-        "image": "/images/cloud6.jpg",
+        "image": "/images/cloud29.jpg",
         "stor": [
             {
                 "id": "migration-dynamics",
@@ -53,6 +53,38 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) An interactive story about the influx of migrants from Mexico to the United States through Guilherme's perspective.",
                 "image": "/images/migrationBoarder.jpg",
+                "content": "abcabcabc"
+            }
+        ]
+    },
+    "tools": {
+        "id": "tools",
+        "label": "Tools",
+        "path": "/tools",
+        "title": "Tools",
+        "description": "Tools that I personally created and use to be more productive.",
+        "image": "/images/cloud22.jpg",
+        "tol": [
+            {
+                "id": "vault-warden",
+                "title": "Vault Warden",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/vault-warden",
+                "date": "2025-01-??",
+                "excerpt": "My own instance of VaultWarden to store my passwords and secrets in a secure way.",
+                "image": "/images/secure1.jpg",
+                "content": "covers abcabc abcabc "
+            },
+            {
+                "id": "currency-chart",
+                "title": "Currency Chart",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/currency-chart",
+                "date": "2024-12-??",
+                "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
+                "image": "/images/currency4.jpg",
                 "content": "abcabcabc"
             }
         ]
@@ -209,7 +241,7 @@
         "path": "/agents",
         "title": "AI Agents",
         "description": "My work on AI-driven agents for automation and analysis.",
-        "image": "/images/cloud15.jpg",
+        "image": "/images/cloud6.jpg",
         "agents": [
             {
                 "id": "virtual-guigo",
@@ -287,7 +319,7 @@
         "path": "/geolayers",
         "title": "GeoLayers",
         "description": "Interactive geospatial data visualization projects.",
-        "image": "/images/cloud3.jpg",
+        "image": "/images/cloud16.jpg",
         "layers": [
             {
                 "id": "cities-ivevisited",
