@@ -7,7 +7,7 @@ import KML from 'ol/format/KML';
 import TileLayer from 'ol/layer/Tile';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import StadiaMaps from 'ol/source/StadiaMaps';
+import XYZ from 'ol/source/XYZ';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Style from 'ol/style/Style';
@@ -26,9 +26,9 @@ export default function TimezoneMap() {
       local.setTime(local.getTime() + (local.getTimezoneOffset() + (tzOffset || 0)) * 60000);
       let delta = Math.abs(12 - (local.getHours() + local.getMinutes() / 60));
       if (delta > 12) delta = 24 - delta;
-      const opacity = 0.75 * (1 - delta / 12);
+      const opacity = 0.55 * (1 - delta / 12);
       return new Style({
-        fill: new Fill({ color: [0xff, 0xff, 0x33, opacity] }),
+        fill: new Fill({ color: [255, 255, 51, opacity] }),
         stroke: new Stroke({ color: '#ffffff' }),
       });
     };
@@ -56,7 +56,10 @@ export default function TimezoneMap() {
     });
 
     const raster = new TileLayer({
-      source: new StadiaMaps({ layer: 'stamen_toner' }),
+      source: new XYZ({
+        url: 'https://{a-c}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+        attributions: '© OpenStreetMap contributors © CARTO',
+      }),
     });
 
     const overlay = new Overlay({
@@ -105,14 +108,14 @@ export default function TimezoneMap() {
   }, []);
 
   return (
-<div className="fixed inset-0"> {/* Changed from p-4 to fixed inset-0 */}
-  <div className="relative w-full h-full border-gray-400 shadow-lg"> {/* Removed explicit height */}
-    <div ref={mapRef} className="w-full h-full" />
-    <div
-      ref={tooltipRef}
-      className="absolute z-10 px-2 py-1 text-xs text-white bg-black bg-opacity-75 rounded pointer-events-none"
-    ></div>
-  </div>
-</div>
+    <div className="fixed inset-0 bg-black"> 
+      <div className="relative w-full h-full border-gray-800 shadow-xl">
+        <div ref={mapRef} className="w-full h-full" />
+        <div
+          ref={tooltipRef}
+          className="absolute z-10 px-2 py-1 text-xs text-white bg-black bg-opacity-75 rounded pointer-events-none"
+        ></div>
+      </div>
+    </div>
   );
 }

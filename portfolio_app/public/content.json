@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.0.3)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.0.4)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -485,7 +485,7 @@
                 "title": "Secrets in the Cloud",
                 "short_title": "",
                 "full_title": "Secrets in the Cloud: Self-Hosting VaultWarden on GCP with Cloud Run and Terraform",
-                "path": "https://linkedin.com/in/guilherme-viegas/",
+                "path": "https://www.guigo.dev.br/",
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) A tutorial on how to self-host VaultWarden, a secure password manager, on Google Cloud Platform using Cloud Run and Terraform.",
                 "image": "/images/secretsCloud.jpg",
