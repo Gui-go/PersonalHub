@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.1.1)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.1.2)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -96,6 +96,17 @@
                 "date": "2024-12-??",
                 "excerpt": "Here is my own private instance of R Studio in the Cloud.",
                 "image": "/images/rstudio1.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "personalhub-improver",
+                "title": "Personal hub Improver",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/personalhub-improver",
+                "date": "2024-12-??",
+                "excerpt": "A Gemini AI agent to help me improve my personal hub cloud infrastructure.",
+                "image": "/images/ai8.jpg",
                 "content": "abcabcabc"
             }
         ]
