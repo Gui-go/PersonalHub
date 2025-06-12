@@ -3,7 +3,7 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.1.0)",
+        "title": "Welcome to Guilherme's Portfolio (v0.5.1.1)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -85,6 +85,17 @@
                 "date": "2024-12-??",
                 "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
                 "image": "/images/currency4.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "private-rstudio",
+                "title": "Private R Studio",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/private-rstudio",
+                "date": "2024-12-??",
+                "excerpt": "Here is my own private instance of R Studio in the Cloud.",
+                "image": "/images/rstudio1.png",
                 "content": "abcabcabc"
             }
         ]

@@ -21,13 +21,15 @@ interface Currency {
   name: string;
 }
 
+
+
 // Expanded currency list
 const ALL_CURRENCIES: Currency[] = [
   { code: 'USD', name: 'US Dollar' },
   { code: 'EUR', name: 'Euro' },
   { code: 'BRL', name: 'Brazilian Real' },
-  { code: 'JPY', name: 'Japanese Yen' },
   { code: 'CNY', name: 'Chinese Yuan' },
+  { code: 'JPY', name: 'Japanese Yen' },
   { code: 'GBP', name: 'British Pound' },
   { code: 'AUD', name: 'Australian Dollar' },
   { code: 'CAD', name: 'Canadian Dollar' },
@@ -45,6 +47,14 @@ const ALL_CURRENCIES: Currency[] = [
   { code: 'DKK', name: 'Danish Krone' },
   { code: 'HKD', name: 'Hong Kong Dollar' },
   { code: 'PLN', name: 'Polish Zloty' },
+  { code: 'BGN', name: 'Bulgarian Lev' },
+  { code: 'CZK', name: 'Czech Koruna' },
+  { code: 'HUF', name: 'Hungarian Forint' },
+  { code: 'IDR', name: 'Indonesian Rupiah' },
+  { code: 'MYR', name: 'Malaysian Ringgit' },
+  { code: 'PHP', name: 'Philippine Peso' },
+  { code: 'RON', name: 'Romanian Leu' },
+  { code: 'THB', name: 'Thai Baht' }
 ];
 
 function getColor(idx: number): string {
@@ -152,15 +162,6 @@ export default function CurrencyComparison() {
             className="border rounded px-3 py-2"
           />
         </div>
-        <input
-  type="date"
-  min={startDate}
-  max={dayjs().format('YYYY-MM-DD')}
-  value={endDate}
-  onChange={(e) => setEndDate(e.target.value)}
-  className="border rounded px-3 py-2"
-  title="Date will be saved as YYYY-MM-DD"
-/>
       </div>
 
       {/* Multi-select dropdown */}
