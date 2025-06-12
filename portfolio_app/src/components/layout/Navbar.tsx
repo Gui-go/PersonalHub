@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 
 const menuItems = [
   // { id: 'home', label: 'Home', path: '/' },
-  { id: 'projects', label: 'Projects', path: '/projects' },
   { id: 'publications', label: 'Publications', path: '/publications' },
+  { id: 'projects', label: 'Projects', path: '/projects' },
   { id: 'agents', label: 'Agents', path: '/agents' },
   { id: 'geolayers', label: 'GeoLayers', path: '/geolayers' },
   { id: 'tools', label: 'Tools', path: '/tools' },

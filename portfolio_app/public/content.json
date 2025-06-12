@@ -92,7 +92,7 @@
                 "title": "Private R Studio",
                 "short_title": "",
                 "full_title": "",
-                "path": "/tools/private-rstudio",
+                "path": "https://rstudio.guigo.dev.br/",
                 "date": "2024-12-??",
                 "excerpt": "Here is my own private instance of R Studio in the Cloud.",
                 "image": "/images/rstudio1.png",
@@ -108,6 +108,17 @@
         "description": "Check out my portfolio of coding projects.",
         "image": "/images/cloud13.jpg",
         "projs": [
+            {
+                "id": "personalhub",
+                "title": "Personal Hub",
+                "short_title": "",
+                "full_title": "",
+                "path": "https://github.com/Gui-go/PersonalHub",
+                "date": "2024-12-??",
+                "excerpt": "A project to showcase my work, research, and projects in a personal website. It can be accessed at https://www.guigo.dev.br.",
+                "image": "/images/personalhub13.jpg",
+                "content": "abcabcabc"
+            },
             {
                 "id": "brvectors",
                 "title": "BRvectors",
