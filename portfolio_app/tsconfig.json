@@ -3,10 +3,13 @@
     "target": "es6",
     "baseUrl": "src",
     "paths": {
+      "*": ["types/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@/*": ["src/*"]
     },
+    "typeRoots": ["types", "node_modules/@types"],
     "lib": [
       "dom",
       "dom.iterable",
@@ -27,9 +30,10 @@
   },
   "include": [
     "next-env.d.ts",
+    "src",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "types"  ],
   "exclude": [
     "node_modules"
   ]

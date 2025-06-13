@@ -3,7 +3,8 @@
         "id": "home",
         "label": "Home",
         "path": "/",
-        "title": "Welcome to Guilherme's Portfolio (v0.5.1.2)",
+        "title": "Welcome to Guilherme's Personal Hub",
+        "version": "(Version 0.5.1.3)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -16,12 +17,12 @@
                 "path": "https://run.unl.pt/handle/10362/180815"
             },
             {
-                "label": "Geo Layer: Main cities I have visited",
+                "label": "GeoLayer: Main cities I have visited",
                 "path": "/geolayers/cities-ivevisited"
             },
             {
-                "label": "GCP Billing Analytics: A smart way to track cloud expenses",
-                "path": "https://github.com/Gui-go/gcp_billing_analytics"
+                "label": "PersonalHub Improver: An AI to support cloud development",
+                "path": "/tools/personalhub-improver"
             }
         ]
     },
@@ -778,7 +779,19 @@
                     "Google Associate Cloud Engineer Certification (GCP)",
                     "Google Associate Data Practioner Certification (GCP)",
                     "Google Cloud Digital Leader Certification (GCP)",
-                    "Azure Associate Data Scientist Certification (Azure)"
+                    "Azure Associate Data Scientist Certification (Azure)",
+                    "Microsoft Certified: Designing and Implementing a Data Science Solution on Azure (DP-100)",
+                    "Microsoft Certified: Azure Data Fundamentals (DP-900)",
+                    "Microsoft Certified: Azure Fundamentals (AZ-900)",
+                    "Microsoft Certified: Azure AI Fundamentals (AI-900)",
+                    "Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)",
+                    "Microsoft Certified: Power Platform Fundamentals (PL-900)"
+                ]
+            },
+            {
+                "title": "Awards",
+                "items": [
+                    "Merit-based fellowship for outstanding performance in the Masters of Science program in GeoSpatial Technologies"
                 ]
             },
             {

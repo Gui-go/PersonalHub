@@ -19,6 +19,9 @@ export default function Home() {
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6">
             {homeContent.title}
           </h2>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6">
+            {homeContent.version}
+          </h2>
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl mb-4 xs:mb-5 sm:mb-6 md:mb-8 max-w-xl xs:max-w-2xl mx-auto">
             {homeContent.description}
           </p>
