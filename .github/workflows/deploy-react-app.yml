@@ -36,9 +36,9 @@ jobs:
           push: true
           tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest
           build-args: |
-            NEXT_VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
-            NEXT_MIGRATIONDYNAMICS_CONFIG_ID=${{ secrets.MIGRATIONDYNAMICS_CONFIG_ID }}
-            NEXT_GWR_CONFIG_ID=${{ secrets.GWR_CONFIG_ID }}
+            NEXT_PUBLIC_VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
+            NEXT_PUBLIC_MIGRATIONDYNAMICS_CONFIG_ID=${{ secrets.MIGRATIONDYNAMICS_CONFIG_ID }}
+            NEXT_PUBLIC_GWR_CONFIG_ID=${{ secrets.GWR_CONFIG_ID }}
 
       - name: Deploy to Cloud Run
         run: |

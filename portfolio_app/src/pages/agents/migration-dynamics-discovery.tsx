@@ -37,7 +37,7 @@ const AgMigrationDynamics = () => {
   const router = useRouter();
   const [pageData, setPageData] = useState<Agent | null>(null);
 
-  const MigrationDynamics_configId = process.env.NEXT_MIGRATIONDYNAMICS_CONFIG_ID;
+  const MigrationDynamics_configId = process.env.NEXT_PUBLIC_MIGRATIONDYNAMICS_CONFIG_ID;
 
 
 useEffect(() => {
