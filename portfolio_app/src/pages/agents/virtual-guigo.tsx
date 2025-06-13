@@ -36,8 +36,9 @@ interface Content {
 const AgVirtualGuigo = () => {
   const router = useRouter();
   const [pageData, setPageData] = useState<Agent | null>(null);
+    
+  const virtualguigo_configId = process.env.NEXT_PUBLIC_VIRTUALGUIGO_CONFIG_ID;
 
-  const virtualguigo_configId = process.env.REACT_APP_GWR_CONFIG_ID;
 
 useEffect(() => {
   fetch('/content.json')
