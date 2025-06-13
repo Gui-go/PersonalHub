@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.5.1.5)",
+        "version": "(Version 0.6.0.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -21,7 +21,7 @@
                 "path": "/geolayers/cities-ivevisited"
             },
             {
-                "label": "PersonalHub Improver: An AI to support cloud development",
+                "label": "PersonalHub+: An AI to support cloud development",
                 "path": "/tools/personalhub-improver"
             }
         ]
@@ -293,6 +293,25 @@
                 "textQ1": "What is Guilherme's Masters Thesis about?",
                 "textQ2": "What geospatial projects has Guilherme worked on?",
                 "textQ3": "What AI agents has Guilherme created?",
+                "textQ4": "What programming languages does Guilherme know?",
+                "textBack": "Back to AI Agents"
+            },
+            {
+                "id": "professor-wilhelm",
+                "short_title": "",
+                "full_title": "",
+                "title": "Professor Wilhelm",
+                "path": "/agents/professor-wilhelm",
+                "date": "2025-01-??",
+                "image": "/images/wilhelmRobotProfessor.jpg",
+                "excerpt": "(WORK IN PROGRESS) A customed LLM to support econometrics teachings.",
+                "textH1": "Ask Professor Wilhelm",
+                "textP1": "This AI assistant can answer questions about econometrics, data science, statistics, and more.",
+                "textSearchbar": "Ask me about methods and techniques...",
+                "textH2": "Try asking:",
+                "textQ1": "What is a Normal distribution?",
+                "textQ2": "What is Linear Regression?",
+                "textQ3": "What is Geographically Weighted Regression (GWR)?",
                 "textQ4": "What programming languages does Guilherme know?",
                 "textBack": "Back to AI Agents"
             },

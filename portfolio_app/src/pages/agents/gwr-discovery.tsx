@@ -56,7 +56,7 @@ useEffect(() => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = "https://cloud.google.com/ai/gen-app-builder/client?hl=pt_BR";
+    script.src = "https://cloud.google.com/ai/gen-app-builder/client?hl=en_US";
     script.async = true;
     document.body.appendChild(script);
 
