@@ -1,4 +1,4 @@
-name: Deploy React App to Cloud Run
+name: Deploy Portfolio App to Cloud Run
 
 on:
   push:
