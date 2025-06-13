@@ -33,11 +33,11 @@ interface Content {
   aiagents: Agent[];
 }
 
-const AgVirtualGuigo = () => {
+const AgMigrationDynamics = () => {
   const router = useRouter();
   const [pageData, setPageData] = useState<Agent | null>(null);
 
-  const virtualguigo_configId = process.env.NEXT_VIRTUALGUIGO_CONFIG_ID;
+  const MigrationDynamics_configId = process.env.NEXT_MIGRATIONDYNAMICS_CONFIG_ID;
 
 
 useEffect(() => {
@@ -45,7 +45,7 @@ useEffect(() => {
     .then(res => res.json())
     .then((data) => {
       const agentList = data.aiagents?.agents;
-      const agent = agentList?.find((a: Agent) => a.id === 'virtual-guigo');
+      const agent = agentList?.find((a: Agent) => a.id === 'migration-dynamics-discovery');
       setPageData(agent || null);
     })
     .catch(err => {
@@ -103,7 +103,7 @@ useEffect(() => {
                         
                         <div className="space-y-4">
                             <GenSearchWidget
-                                configId={virtualguigo_configId}
+                                configId={MigrationDynamics_configId}
                                 triggerId="searchWidgetTrigger"
                             />
                             <input
@@ -161,4 +161,4 @@ useEffect(() => {
 
 };
 
-export default AgVirtualGuigo;
+export default AgMigrationDynamics;
