@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.0.0)",
+        "version": "(Version 0.6.0.1)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -256,6 +256,17 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "benchmarking-spatial-statistics",
+                "title": "Benchmarking Spatial Statistics",
+                "short_title": "",
+                "full_title": "Benchmarking Spatial Statistics: How Hardware Impacts Moran's I Computation Time",
+                "path": "https://www.guigo.dev.br",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) A study on how different hardware configurations affect the computation time of Moran's I spatial statistic.",
+                "image": "/images/spatialStatistic2.jpg",
+                "content": "abcabcabc"
+            },
+            {
                 "id": "osesc",
                 "title": "Socioeconomic Observatory of Santa Catarina",
                 "short_title": "",
@@ -481,7 +492,7 @@
                 "full_title": "",
                 "path": "/geolayers/my-favourite-restaurants",
                 "date": "2024-12-??",
-                "excerpt": "A Geo visualization to ilustrate my favourtite restaurants around the world.",
+                "excerpt": "(WORK IN PROGRESS) A Geo visualization to ilustrate my favourtite restaurants around the world.",
                 "image": "/images/restaurants5.jpg",
                 "content": "abcabcabc"
             },
