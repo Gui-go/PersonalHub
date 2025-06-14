@@ -448,7 +448,7 @@
                 "full_title": "",
                 "path": "/geolayers/dijkstras-br",
                 "date": "2024-12-??",
-                "excerpt": "Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
+                "excerpt": "(WORK IN PROGRESS) Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
                 "image": "/images/roadsJungle.jpg",
                 "content": "abcabcabc"
             },

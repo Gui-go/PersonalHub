@@ -226,7 +226,7 @@ const SolarTerminator = () => {
             {tooltip.visible && (
               <div
                 className="absolute bg-gray-800 text-white text-sm p-2 rounded shadow-lg pointer-events-none z-10"
-                style={{ left: tooltip.x - 100, top: tooltip.y - 240, transform: 'translateY(-100%)' }}
+                style={{ left: tooltip.x - 600, top: tooltip.y - 240, transform: 'translateY(-100%)' }}
                 dangerouslySetInnerHTML={{ __html: tooltip.content }}
               />
             )}
