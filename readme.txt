@@ -346,3 +346,11 @@ WKB (Well Known Binary) format
 mvt
 
 ----------------------------------------------------------
+
+
+# find . -type f -exec sed -i 's/antes/depois/g' {} +
+
+
+
+
+

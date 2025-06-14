@@ -2,7 +2,7 @@ name: Deploy Portfolio App to Cloud Run
 
 on:
   push:
-    branches: [react-portfolio]
+    branches: [portfolio]
 
 jobs:
   deploy:

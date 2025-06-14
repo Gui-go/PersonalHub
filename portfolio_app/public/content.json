@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.0.1)",
+        "version": "(Version 0.6.0.2)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -71,7 +71,7 @@
                 "title": "Vault Warden",
                 "short_title": "",
                 "full_title": "",
-                "path": "/tools/vault-warden",
+                "path": "https://vault.vaultwarden.net/#/login",
                 "date": "2025-01-??",
                 "excerpt": "My own instance of VaultWarden to store my passwords and secrets in a secure way.",
                 "image": "/images/secure1.jpg",
@@ -97,6 +97,28 @@
                 "date": "2024-12-??",
                 "excerpt": "Here is my own private instance of R Studio in the Cloud.",
                 "image": "/images/rstudio1.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "n8n",
+                "title": "n8n",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/n8n",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) My own n8n instance to develop AI agents and tools on the Cloud.",
+                "image": "/images/n8n.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "postgres",
+                "title": "PostgreSQL",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/personalhub-improver",
+                "date": "2024-12-??",
+                "excerpt": "An instance of GCP Cloud SQL with PostgreSQL to store my data.",
+                "image": "/images/postgres3.png",
                 "content": "abcabcabc"
             },
             {
@@ -656,6 +678,14 @@
             },
             {
                 "name": "PostgreSQL",
+                "icon": "🐘"
+            },
+            {
+                "name": "SQLite",
+                "icon": "🐘"
+            },
+            {
+                "name": "Cloud SQL",
                 "icon": "🐘"
             },
             {

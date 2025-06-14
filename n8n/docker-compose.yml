@@ -1,7 +1,59 @@
 services:
-  n8n2:
+  n8n-13:
     build:
       context: .
       dockerfile: n8n.dockerfile
     ports:
-      - "5679:5678"
+      - "5683:5678"
+
+
+
+# version: "3.8"
+
+# services:
+#   n8n-p79:
+#     build:
+#       context: .
+#       dockerfile: n8n.dockerfile
+#     ports:
+#       - "5679:5678"
+#     depends_on:
+#       - ollama-p36
+#     networks:
+#       - n8n-net
+
+#   ollama-p36:
+#     image: ollama/ollama
+#     ports:
+#       - "11436:11434"
+#     volumes:
+#       - ollama-models:/root/.ollama
+#     networks:
+#       - n8n-net
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:11434"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 5
+#     # command: >
+#     #   bash -c "ollama serve & sleep 5 && ollama pull llama3"
+
+
+
+# volumes:
+#   ollama-models:
+
+# networks:
+#   n8n-net:
+#     driver: bridge
+
+
+
+
+# # # http://ollama-p36:11434
+
+
+
+
+
+

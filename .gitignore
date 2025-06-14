@@ -10,8 +10,8 @@ ghactionsSA-key.json
 */terraform.tfstate
 */terraform.tfstate.backup
 terraform/hub/terraform.tfstate.backup
-
-
+terraform/hub/terraform.tfstate.backup
+/terraform/hub/.terraform/
 *.tfstate
 
 
@@ -29,7 +29,7 @@ terraform-key.json
 
 personalhub13-sa.json
 
-
+terraform-sa-key.json
 
 
 
