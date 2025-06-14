@@ -18,6 +18,34 @@ resource "google_secret_manager_secret" "gh_token_secret" {
 }
 
 
+resource "google_secret_manager_secret" "main_secret" {
+  project   = var.proj_id
+  secret_id = "main-secret"
+  labels = {
+    owner = var.tag_owner
+    env   = var.tag_env
+  }
+  replication {
+    user_managed {
+      replicas {
+        location = var.region
+      }
+    }
+  }
+}
+
+# resource "google_secret_manager_secret_version" "postgres_password_version" {
+#   secret = google_secret_manager_secret.main_secret.id
+#   secret_data = "YourSecurePasswordHere" # Replace with secure password
+# }
+
+# data "google_secret_manager_secret_version" "main_secret_version" {
+#   project = var.proj_id
+#   secret  = google_secret_manager_secret.main_secret.secret_id
+#   depends_on = [ google_secret_manager_secret.main_secret ]
+#   # If you manage versions manually in the UI, this fetches the latest enabled version
+# }
+
 # resource "google_secret_manager_secret_version" "gh_token_secret_version" {
 # #   provider    = google-beta
 #   secret_id   = google_secret_manager_secret.gh_token_secret.id

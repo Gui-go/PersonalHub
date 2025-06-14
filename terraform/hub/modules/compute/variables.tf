@@ -13,6 +13,11 @@ variable "region" {
   type        = string
 }
 
+variable "location" {
+  description = "Location of the resources"
+  type        = string
+}
+
 # variable "tag_owner" {
 #   description = "Tag to describe the owner of the resources"
 #   type        = string
@@ -20,6 +25,21 @@ variable "region" {
 
 # variable "vault_bucket_name" {
 #   description = "Vaultwarden bucket name"
+#   type        = string
+# }
+
+# variable "vault_backup_bucket_name" {
+#   description = "Vaultwarden backup bucket name"
+#   type        = string
+# }
+
+# variable "vault_backup_function_name" {
+#   description = "Vaultwarden backup function name"
+#   type        = string
+# }
+
+# variable "vault_backup_func_sa_email" {
+#   description = "Vaultwarden backup function Service Account email"
 #   type        = string
 # }
 

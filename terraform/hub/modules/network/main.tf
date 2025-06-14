@@ -1,4 +1,7 @@
 
+
+
+
 resource "google_compute_network" "vpc_net" {
   project                 = var.proj_id
   name                    = "${var.proj_name}-vpc-net"
@@ -118,6 +121,24 @@ resource "google_compute_global_address" "lb_ip" {
   name    = "lb-ip"
   project = var.proj_id
 }
+
+resource "google_compute_global_address" "cloudsql_peering_range" {
+  name          = "cloudsql-peering-range"
+  project       = var.proj_id
+  purpose       = "VPC_PEERING"
+  address_type  = "INTERNAL"
+  prefix_length = 16
+  network       = google_compute_network.vpc_net.id
+}
+
+resource "google_service_networking_connection" "vpc_connection" {
+  network                 = google_compute_network.vpc_net.id
+  service                 = "servicenetworking.googleapis.com"
+  reserved_peering_ranges = [google_compute_global_address.cloudsql_peering_range.name]
+  # depends_on              = [google_project_service.service_networking]
+}
+
+
 
 # HTTPS Forwarding Rule
 resource "google_compute_global_forwarding_rule" "https_forwarding_rule" {

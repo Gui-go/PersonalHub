@@ -24,6 +24,59 @@ resource "google_artifact_registry_repository" "images_repository" {
   # depends_on = [google_project_service.artifact_registry_api]
 }
 
+# Vaultwarden Bucket and Backup Bucket ------------------------------------------------------------
+# resource "google_storage_bucket" "vaultwarden_bucket" {
+#   project  = var.proj_id
+#   name     = "${var.proj_id}-vault-bucket"
+#   location = var.location
+#   versioning { enabled = true }
+#   uniform_bucket_level_access = true
+# }
+
+# resource "google_storage_bucket_iam_member" "eventarc_vaultwarden_iam_member" {
+#   bucket = google_storage_bucket.vaultwarden_bucket.name
+#   role   = "roles/storage.admin"
+#   member = "serviceAccount:service-${var.proj_number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+#   depends_on = [google_storage_bucket.vaultwarden_bucket]
+# }
+
+# resource "google_storage_bucket_iam_member" "vaultwarden_objectviewer_iam_member" {
+#   bucket = google_storage_bucket.vaultwarden_bucket.name
+#   role   = "roles/storage.objectViewer"
+#   member = "serviceAccount:${google_service_account.vault_backup_func_sa.email}"
+# }
+
+
+
+# # Vault Backup Bucket ------------------------------------------------
+# resource "google_storage_bucket" "vaultwarden_backup_bucket" {
+#   project  = var.proj_id
+#   name     = "${var.proj_id}-backup-bucket"
+#   location = var.location
+#   versioning { enabled = true }
+#   uniform_bucket_level_access = true
+# }
+
+# resource "google_service_account" "vault_backup_func_sa" {
+#   project      = var.proj_id
+#   account_id   = "${var.proj_id}-backup-sa"
+#   display_name = "Vaultwarden Backup Cloud Function SA"
+# }
+
+# resource "google_storage_bucket_iam_member" "vaultwarden_backup_bucketobjectcreator_iam_member" {
+#   bucket = google_storage_bucket.vaultwarden_backup_bucket.name
+#   role   = "roles/storage.objectCreator"
+#   member = "serviceAccount:${google_service_account.vault_backup_func_sa.email}"
+# }
+
+# resource "google_storage_bucket_object" "vaultwarden_backup_func_src" {
+#   name = "func"
+#   bucket = google_storage_bucket.vaultwarden_backup_bucket.name
+#   source = "index.zip"
+# }
+
+
+#####################################################################
 
 
 # buckets ------------------------------------------------------------------------------------
@@ -45,13 +98,13 @@ resource "google_artifact_registry_repository" "images_repository" {
 #   uniform_bucket_level_access = true
 # }
 
-resource "google_storage_bucket" "sqlite_bucket" {
-  project                     = var.proj_id
-  name                        = "sqlite-bucket-${var.proj_id}"
-  location                    = var.location
-  uniform_bucket_level_access = true
-  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
-}
+# resource "google_storage_bucket" "sqlite_bucket" {
+#   project                     = var.proj_id
+#   name                        = "sqlite-bucket-${var.proj_id}"
+#   location                    = var.location
+#   uniform_bucket_level_access = true
+#   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+# }
 
 resource "google_storage_bucket" "brvectors_bucket" {
   project                     = var.proj_id

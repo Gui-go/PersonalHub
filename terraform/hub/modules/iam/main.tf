@@ -1,5 +1,21 @@
 
 
+
+# Create a service account for Terraform 
+resource "google_service_account" "terraform_sa" {
+  project      = var.proj_id
+  account_id   = "terraform-sa"
+  display_name = "Terraform Service Account"
+  description  = "Service Account for Deployment via Terraform"
+}
+
+resource "google_project_iam_member" "grant_owner_to_sa" {
+  project = var.proj_id
+  role    = "roles/owner"
+  member  = "serviceAccount:${google_service_account.terraform_sa.email}"
+}
+
+
 # Portfolio ------------------------------------------------------------------------------------------
 
 resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
@@ -9,9 +25,6 @@ resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
-
-
-
 
 
 # FastAPI API ------------------------------------------------------------------------------------------

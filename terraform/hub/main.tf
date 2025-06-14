@@ -32,9 +32,7 @@ locals {
 provider "google" {
   project     = local.proj_number
   region      = local.location
-  credentials = file("personalhub13-sa.json")
-  # credentials = file("terraform-key.json")
-  # credentials = file("path/to/service-account-key.json") # Optional if using ADC
+  credentials = file("terraform-sa-key.json")
 }
 
 
@@ -96,11 +94,26 @@ module "datalake" {
   source      = "./modules/datalake"
   proj_name   = local.proj_name
   proj_id     = local.proj_id
+  proj_number = local.proj_number
   proj_gcs_id = local.proj_gcs_id
   location    = local.location
   region      = local.region
   tag_owner   = local.tag_owner
   tag_env     = local.tag_env
+}
+
+module "storage" {
+  source         = "./modules/storage"
+  proj_name      = local.proj_name
+  proj_id        = local.proj_id
+  proj_number    = local.proj_number
+  proj_gcs_id    = local.proj_gcs_id
+  location       = local.location
+  region         = local.region
+  vpc_network_id = module.network.vpc_network_id
+  vpc_connection_id = module.network.vpc_connection_id
+  tag_owner      = local.tag_owner
+  tag_env        = local.tag_env
 }
 
 module "datawarehouse" {
@@ -114,12 +127,17 @@ module "datawarehouse" {
 }
 
 module "compute" {
-  source           = "./modules/compute"
-  proj_name        = local.proj_name
-  proj_id          = local.proj_id
-  proj_number      = local.proj_number
-  region           = local.region
-  run_connector_id = module.network.run_connector_id
+  source            = "./modules/compute"
+  proj_name         = local.proj_name
+  proj_id           = local.proj_id
+  proj_number       = local.proj_number
+  region            = local.region
+  location          = local.location
+  run_connector_id  = module.network.run_connector_id
+  # vault_bucket_name = module.datalake.vault_bucket_name
+  # vault_backup_bucket_name = module.datalake.vault_backup_bucket_name
+  # vault_backup_function_name = module.datalake.vault_backup_function_name
+  # vault_backup_func_sa_email = module.datalake.vault_backup_func_sa_email
   # fastapi_sa_email = module.iam.fastapi_sa_email
 }
 

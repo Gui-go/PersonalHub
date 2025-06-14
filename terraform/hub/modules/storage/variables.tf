@@ -18,6 +18,15 @@ variable "proj_gcs_id" {
   type        = string
 }
 
+variable "vpc_network_id" {
+  description = "VPC Network ID identifier"
+  type        = string
+}
+
+variable "vpc_connection_id" {
+  description = "VPC connection ID identifier"
+  type        = string
+}
 
 variable "location" {
   description = "Location of the resources"
