@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.0.4)",
+        "version": "(Version 0.6.1.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -123,12 +123,12 @@
             },
             {
                 "id": "personalhub-improver",
-                "title": "Personal hub Improver",
+                "title": "PersonalHub Improver",
                 "short_title": "",
                 "full_title": "",
                 "path": "/tools/personalhub-improver",
                 "date": "2024-12-??",
-                "excerpt": "A Gemini AI agent to help me improve my personal hub cloud infrastructure.",
+                "excerpt": "A Gemini AI agent to help me improve my personal hub project cloud infrastructure.",
                 "image": "/images/ai8.jpg",
                 "content": "abcabcabc"
             }
@@ -450,6 +450,17 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
                 "image": "/images/roadsJungle.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "hiroshima-nagasaki",
+                "title": "Hiroshima-Nagasaki",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/hiroshima-nagasaki",
+                "date": "2024-12-??",
+                "excerpt": "A spatial demonstration of the Hiroshima and Nagasaki atomic bombings, visualizing the impact zones and historical context.",
+                "image": "/images/bomb1.jpg",
                 "content": "abcabcabc"
             },
             {
