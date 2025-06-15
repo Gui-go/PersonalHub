@@ -1,3 +1,4 @@
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import { GetServerSideProps } from "next";
 
@@ -25,6 +26,10 @@ const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
             💡 GenAI Cost Optimization Suggestions
           </h1>
 
+          {suggestions.length === 0 && (
+            <p className="text-gray-500">No suggestions available at the moment.</p>
+          )}
+
           {suggestions.map((item, i) => (
             <div key={i} className="mb-10 border-b border-gray-200 pb-6">
               <h2 className="text-2xl font-semibold text-gray-700 mb-1">
@@ -36,7 +41,7 @@ const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
 
               <div className="bg-gray-50 rounded-lg p-4 mb-4">
                 <p className="text-sm text-gray-600 font-medium mb-1">Prompt</p>
-                <p className="text-gray-800">{item.prompt}</p>
+                <p className="text-gray-800 whitespace-pre-wrap">{item.prompt}</p>
               </div>
 
               <div className="prose prose-blue max-w-none mb-4">
@@ -56,17 +61,33 @@ const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch(
-    "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50"
-  );
-  const json = await res.json();
-  const suggestions = Array.isArray(json.results) ? json.results : [];
+  try {
+    const res = await fetch(
+      "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
+      { timeout: 10000 }
+    );
 
-  return {
-    props: {
-      suggestions,
-    },
-  };
+    if (!res.ok) {
+      console.error("API responded with status:", res.status);
+      return { props: { suggestions: [] } };
+    }
+
+    const json = await res.json();
+    const suggestions = Array.isArray(json.results) ? json.results : [];
+
+    return {
+      props: {
+        suggestions,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch suggestions:", error);
+    return {
+      props: {
+        suggestions: [],
+      },
+    };
+  }
 };
 
 export default GeoMapTemplate;
