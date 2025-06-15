@@ -61,11 +61,15 @@ const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+
   try {
     const res = await fetch(
       "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
-      { timeout: 10000 }
+      { signal: controller.signal }
     );
+    clearTimeout(timeoutId);
 
     if (!res.ok) {
       console.error("API responded with status:", res.status);
@@ -75,18 +79,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const json = await res.json();
     const suggestions = Array.isArray(json.results) ? json.results : [];
 
-    return {
-      props: {
-        suggestions,
-      },
-    };
+    return { props: { suggestions } };
   } catch (error) {
-    console.error("Failed to fetch suggestions:", error);
-    return {
-      props: {
-        suggestions: [],
-      },
-    };
+    if (error.name === "AbortError") {
+      console.error("Fetch aborted due to timeout");
+    } else {
+      console.error("Failed to fetch suggestions:", error);
+    }
+    return { props: { suggestions: [] } };
   }
 };
 
