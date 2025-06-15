@@ -7,6 +7,7 @@ export default function Home() {
   
   const router = useRouter();
   const homeContent = content.home;
+  console.log("You are not allowed to check this console, go check your mama's console!!");
 
   return (
     <div className="container mx-auto px-4 py-4 xs:py-6 sm:py-8 md:py-12">
