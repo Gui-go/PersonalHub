@@ -137,4 +137,5 @@ resource "google_sql_database_instance" "postgres_instance" {
 #   personalhub13:us-central1:cloudsql-postgres4
 
 
-# psql -h 35.224.60.87 -U YOUR_USER -d YOUR_DB
+# psql -h 35.224.60.87 -U postgres -d mydb
+# psql -h 35.224.60.87 -U postgres -d postgres

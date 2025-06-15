@@ -61,13 +61,13 @@ resource "google_project_iam_member" "storage_object_viewer" {
 }
 
 # Allow unauthenticated access (optional, remove if authentication is required)
-# resource "google_cloud_run_service_iam_member" "public_access" {
-#   project  = var.proj_id
-#   service  = var.run_fastapi.service
-#   location = var.region
-#   role     = "roles/run.invoker"
-#   member   = "allUsers"
-# }
+resource "google_cloud_run_service_iam_member" "public_access" {
+  project  = var.proj_id
+  service  = var.run_fastapi.service
+  location = var.region
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
 
 
 
