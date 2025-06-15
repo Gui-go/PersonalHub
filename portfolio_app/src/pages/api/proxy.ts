@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { GoogleAuth } from 'google-auth-library';
 
-const TARGET_API_URL = "https://fastapi.guigo.dev.br/api/v1/";
+// const TARGET_API_URL = "https://fastapi.guigo.dev.br/api/v1/";
+const TARGET_API_URL = "https://fastapi-run-241432738087.us-central1.run.app";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
