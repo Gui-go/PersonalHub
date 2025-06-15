@@ -68,7 +68,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const res = await fetch(
       // "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
       // "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50",
-      "https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_dev/genai_service_suggestions?limit=1",
+      // "https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_dev/genai_service_suggestions?limit=1",
+      "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=1",
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
