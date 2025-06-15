@@ -130,7 +130,7 @@ export default function ExplosionMap() {
       labelFeature.setStyle(
         new Style({
           text: new Text({
-            text: `${bomb.city}`,
+            text: `${bomb.city} (${bomb.name})`,
             font: 'bold 16px sans-serif',
             fill: new Fill({ color: '#fff' }),
             stroke: new Stroke({ color: '#000', width: 3 }),

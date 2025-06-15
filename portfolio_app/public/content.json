@@ -420,7 +420,7 @@
             },
             {
                 "id": "cities-ivelived",
-                "title": "Main cities I have lived in",
+                "title": "Cities I have Lived In",
                 "short_title": "",
                 "full_title": "",
                 "path": "/geolayers/cities-ivelived",
@@ -442,17 +442,6 @@
                 "desc2_munster": "Münster is a city in Germany known for its historic old town, university, and cycling culture. It's a charming city with a rich history and vibrant student life."
             },
             {
-                "id": "dijkstras-br",
-                "title": "Dijkstras in Brazil",
-                "short_title": "",
-                "full_title": "",
-                "path": "/geolayers/dijkstras-br",
-                "date": "2024-12-??",
-                "excerpt": "(WORK IN PROGRESS) Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
-                "image": "/images/roadsJungle.jpg",
-                "content": "abcabcabc"
-            },
-            {
                 "id": "hiroshima-nagasaki",
                 "title": "Hiroshima-Nagasaki",
                 "short_title": "",
@@ -464,15 +453,15 @@
                 "content": "abcabcabc"
             },
             {
-                "id": "blog-map-projection-review",
-                "title": "Map Projection Review",
+                "id": "ecosystems-world",
+                "title": "Ecosystems of the World",
                 "short_title": "",
                 "full_title": "",
-                "path": "/geolayers/map-projection-review",
-                "date": "2025-01-??",
-                "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
-                "image": "/images/globeColorful.jpg",
-                "content": "This tutorial covers abcabc abcabc "
+                "path": "/geolayers/ecosystems-world",
+                "date": "2024-12-??",
+                "excerpt": "Get to explore the ecosystems of the world, from deserts to rainforests, and understand their unique characteristics and biodiversity.",
+                "image": "/images/ecosystems3.jpg",
+                "content": "abcabcabc"
             },
             {
                 "id": "timezones",
@@ -519,6 +508,17 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "blog-map-projection-review",
+                "title": "Map Projection Review",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/map-projection-review",
+                "date": "2025-01-??",
+                "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
+                "image": "/images/globeColorful.jpg",
+                "content": "This tutorial covers abcabc abcabc "
+            },
+            {
                 "id": "my-favourite-restaurants",
                 "title": "My Favourite Restaurants in the World",
                 "short_title": "",
@@ -530,14 +530,14 @@
                 "content": "abcabcabc"
             },
             {
-                "id": "ecosystems-world",
-                "title": "Ecosystems of the World",
+                "id": "dijkstras-br",
+                "title": "Dijkstras in Brazil",
                 "short_title": "",
                 "full_title": "",
-                "path": "/geolayers/ecosystems-world",
+                "path": "/geolayers/dijkstras-br",
                 "date": "2024-12-??",
-                "excerpt": "Get to explore the ecosystems of the world, from deserts to rainforests, and understand their unique characteristics and biodiversity.",
-                "image": "/images/ecosystems3.jpg",
+                "excerpt": "(WORK IN PROGRESS) Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
+                "image": "/images/roadsJungle.jpg",
                 "content": "abcabcabc"
             },
             {
@@ -549,6 +549,206 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) Explore this interactive map, featuring customizable tiles that transform the visual style of the geographic data. Discover unique perspectives with various map designs.",
                 "image": "/images/worldTiles3.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "seven-wonders-ancient-world",
+                "title": "Seven Wonders of the Ancient World",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/seven-wonders-ancient-world",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/world10.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "new-seven-wonders-world",
+                "title": "New Seven Wonders of the World",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/new-seven-wonders-world",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/world8.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "seven-natural-wonders-world",
+                "title": "Seven Natural Wonders of the World",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/seven-natural-wonders-world",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/world3.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "seven-wonders-modern-world",
+                "title": "Seven Wonders of the Modern World",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/seven-wonders-modern-world",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/world5.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "deforestation-hotspots",
+                "title": "Deforestation Hotspots",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/deforestation-hotspots",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/deforestation1.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "underground-railroad-routes",
+                "title": "Underground Railroad Routes",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/underground-railroad-routes",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/train3.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "empires-past",
+                "title": "Empires of the Past",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/empires-past",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) How large were the empires of the past? This interactive map visualizes the extent of historical empires, allowing users to explore their boundaries and influence.",
+                "image": "/images/empire2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "active-volcanos",
+                "title": "Active Volcanos",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/active-volcanos",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/volcano2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "indigenous-lands",
+                "title": "Indigenous Lands",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/indigenous-lands",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/indigenous2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "religeous-sites",
+                "title": "Religeous Sites",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/religeous-sites",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS)",
+                "image": "/images/religion5.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "global-festivals",
+                "title": "Global Festivals",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/global-festivals",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) carnaval, oktoberfest, woodstock, etc.",
+                "image": "/images/festival5.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "particle-accelerators",
+                "title": "Particle Accelerators",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/particle-accelerators",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) Explore the locations of particle accelerators around the world, including CERN and other major research facilities. This map visualizes the global network of particle physics research.",
+                "image": "/images/particleAccelerator3.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "undersea-cables",
+                "title": "Undersea Cables",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/undersea-cables",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/underseaCables1.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "nuclear-test-sites",
+                "title": "Nuclear Test Sites",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/nuclear-test-sites",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/nuclear2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "nuclear-plants",
+                "title": "Nuclear Plants",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/nuclear-plants",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/nuclear5.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "antarctic-research-stations",
+                "title": "Antarctic Research Stations",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/antarctic-research-stations",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/antartic1.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "unesco-heritage-sites",
+                "title": "UNESCO Heritage Sites",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/unesco-heritage-sites",
+                "data": "https://www.kaggle.com/datasets/ramjasmaurya/unesco-heritage-sites2021/data",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/unesco2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "marine-traffic",
+                "title": "Marine Traffic",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/marine-traffic",
+                "data": "https://support.marinetraffic.com/en/articles/9552659-api-services",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/marineTraffic2.jpg",
                 "content": "abcabcabc"
             }
         ]
