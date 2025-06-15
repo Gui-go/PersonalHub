@@ -13,10 +13,9 @@ locals {
   domain          = "guigo.dev.br"
   subdomains      = [
     "www", 
-    # "portfolio", 
     "fastapi", 
-    # "vault",
     "rstudio"
+    # "vault",
     # "ollama",
     # "tom-riddles-diary",
     # "soi-erasmus",
@@ -138,6 +137,7 @@ module "compute" {
   # vault_backup_bucket_name = module.datalake.vault_backup_bucket_name
   # vault_backup_function_name = module.datalake.vault_backup_function_name
   # vault_backup_func_sa_email = module.datalake.vault_backup_func_sa_email
+  portfolio_sa_email = module.iam.portfolio_sa_email
   fastapi_sa_email = module.iam.fastapi_sa_email
 }
 

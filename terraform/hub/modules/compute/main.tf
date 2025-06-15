@@ -20,11 +20,12 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       max_instance_count = 1
       min_instance_count = 0
     }
-    # vpc_access {
-    #   connector = var.run_connector_id
-    #   egress = "ALL_TRAFFIC"
-    # }
+    vpc_access {
+      connector = var.run_connector_id
+      egress = "ALL_TRAFFIC"
+    }
     timeout = "60s"
+    service_account = var.portfolio_sa_email
   }
   traffic {
     percent = 100
@@ -38,8 +39,8 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
   project  = var.proj_id
   name     = "fastapi-run"
   location = var.region
-  ingress  = "INGRESS_TRAFFIC_ALL"
-  # ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
+  # ingress  = "INGRESS_TRAFFIC_ALL"
+  ingress = "INGRESS_TRAFFIC_INTERNAL_ONLY"
   template {
     containers {
       # image = "guigo13/fastapi-api:latest"

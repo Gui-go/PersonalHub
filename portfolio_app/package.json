@@ -74,6 +74,8 @@
     "d3-transition": "latest",
     "d3-zoom": "latest",
     "dayjs": "^1.11.13",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.1.0",
     "next": "latest",
     "ol": "^10.5.0",
     "papaparse": "^5.5.3",

@@ -9,7 +9,7 @@ resource "google_service_account" "terraform_sa" {
   description  = "Service Account for Deployment via Terraform"
 }
 
-resource "google_project_iam_member" "grant_owner_to_sa" {
+resource "google_project_iam_member" "terraform_sa_owner_iam_member" {
   project = var.proj_id
   role    = "roles/owner"
   member  = "serviceAccount:${google_service_account.terraform_sa.email}"
@@ -18,14 +18,21 @@ resource "google_project_iam_member" "grant_owner_to_sa" {
 
 # Portfolio ------------------------------------------------------------------------------------------
 
-resource "google_cloud_run_service_iam_member" "portfolio_public_access" {
+resource "google_service_account" "portfolio_sa" {
+  project      = var.proj_id
+  account_id   = "portfolio-sa"
+  display_name = "Portfolio Service Account"
+  description  = "Service Account for Portfolio Cloud Run Service"
+}
+
+resource "google_cloud_run_service_iam_member" "portfolio_invoker_iam_member" {
   project  = var.proj_id
   service  = var.run_portfolio.service
   location = var.run_portfolio.region
   role     = "roles/run.invoker"
   member   = "allUsers"
+  # member = "serviceAccount:${google_service_account.portfolio_sa.email}"
 }
-
 
 # FastAPI API ------------------------------------------------------------------------------------------
 
@@ -66,7 +73,9 @@ resource "google_cloud_run_service_iam_member" "public_access" {
   service  = var.run_fastapi.service
   location = var.region
   role     = "roles/run.invoker"
-  member   = "allUsers"
+  # member   = "allUsers"
+  member = "serviceAccount:${google_service_account.portfolio_sa.email}"
+  # member = "serviceAccount:frontend-invoker@your-project-id.iam.gserviceaccount.com"
 }
 
 
