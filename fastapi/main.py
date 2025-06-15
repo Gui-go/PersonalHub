@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI, HTTPException, Request
 from google.cloud import bigquery
 # from google.cloud.exceptions import NotFound
-from google.oauth2 import service_account
+# from google.oauth2 import service_account
 from pydantic import BaseModel
 from typing import List, Optional, Any
 from datetime import datetime
@@ -16,18 +16,10 @@ version_release="1.0.3"
 app = FastAPI(title="BigQuery API", version=version_release)
 
 # Configuration
-PROJECT_ID = "personalhub11"
-CREDENTIALS_PATH = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "./fastapi-sa-key.json")
+PROJECT_ID = "personalhub13"
+from google.cloud import bigquery
+client = bigquery.Client(project=PROJECT_ID)
 
-# Initialize BigQuery client
-try:
-    if os.path.exists(CREDENTIALS_PATH):
-        credentials = service_account.Credentials.from_service_account_file(CREDENTIALS_PATH)
-        client = bigquery.Client(project=PROJECT_ID, credentials=credentials)
-    else:
-        client = bigquery.Client(project=PROJECT_ID)
-except Exception as e:
-    raise Exception(f"Failed to initialize BigQuery client: {str(e)}")
 
 # Pydantic models
 class FilterCondition(BaseModel):

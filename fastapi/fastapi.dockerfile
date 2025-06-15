@@ -5,8 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# COPY main.py .
-# COPY fastapi-sa-key.json .
 COPY ./ ./
 
 EXPOSE 8080
