@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.1.0)",
+        "version": "(Version 0.6.1.1)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -330,25 +330,6 @@
                 "textBack": "Back to AI Agents"
             },
             {
-                "id": "professor-wilhelm",
-                "short_title": "",
-                "full_title": "",
-                "title": "Professor Wilhelm",
-                "path": "/agents/professor-wilhelm",
-                "date": "2025-01-??",
-                "image": "/images/wilhelmRobotProfessor.jpg",
-                "excerpt": "(WORK IN PROGRESS) A customed LLM to support econometrics teachings.",
-                "textH1": "Ask Professor Wilhelm",
-                "textP1": "This AI assistant can answer questions about econometrics, data science, statistics, and more.",
-                "textSearchbar": "Ask me about methods and techniques...",
-                "textH2": "Try asking:",
-                "textQ1": "What is a Normal distribution?",
-                "textQ2": "What is Linear Regression?",
-                "textQ3": "What is Geographically Weighted Regression (GWR)?",
-                "textQ4": "What programming languages does Guilherme know?",
-                "textBack": "Back to AI Agents"
-            },
-            {
                 "id": "migration-dynamics-discovery",
                 "short_title": "",
                 "full_title": "",
@@ -396,6 +377,25 @@
                 "excerpt": "A tutorial on visualizing geospatial data using the Leaflet JavaScript library.",
                 "image": "/images/diarytom.jpg",
                 "content": "This post dives into using Leaflet to create interactive maps for geospatial data visualization. Topics include setting up a Leaflet map, adding markers, layers, and popups, and integrating with geospatial datasets. The tutorial includes a step-by-step guide to building a city temperature heatmap."
+            },
+            {
+                "id": "professor-wilhelm",
+                "short_title": "",
+                "full_title": "",
+                "title": "Professor Wilhelm",
+                "path": "/agents/professor-wilhelm",
+                "date": "2025-01-??",
+                "image": "/images/wilhelmRobotProfessor.jpg",
+                "excerpt": "(WORK IN PROGRESS) A customed LLM to support econometrics teachings.",
+                "textH1": "Ask Professor Wilhelm",
+                "textP1": "This AI assistant can answer questions about econometrics, data science, statistics, and more.",
+                "textSearchbar": "Ask me about methods and techniques...",
+                "textH2": "Try asking:",
+                "textQ1": "What is a Normal distribution?",
+                "textQ2": "What is Linear Regression?",
+                "textQ3": "What is Geographically Weighted Regression (GWR)?",
+                "textQ4": "What programming languages does Guilherme know?",
+                "textBack": "Back to AI Agents"
             }
         ]
     },

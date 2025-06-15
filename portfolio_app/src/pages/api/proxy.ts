@@ -1,12 +1,13 @@
-import express from 'express';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { GoogleAuth } from 'google-auth-library';
 
-const router = express.Router();
-
 const TARGET_API_URL = "https://fastapi.guigo.dev.br/api/v1/";
-// const TARGET_API_URL = "https://fastapi-run-241432738087.us-central1.run.app";
 
-router.get('/api/proxy', async (req, res) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
   try {
     // 1. Get Google auth client for the FastAPI service URL
     const auth = new GoogleAuth();
@@ -21,6 +22,4 @@ router.get('/api/proxy', async (req, res) => {
     console.error("Proxy error:", err);
     res.status(500).json({ error: "Failed to fetch API data" });
   }
-});
-
-export default router;
+}
