@@ -14,9 +14,9 @@ locals {
   subdomains      = [
     "www", 
     # "portfolio", 
-    # "fastapi", 
+    "fastapi", 
     # "vault",
-    "rstudio",
+    "rstudio"
     # "ollama",
     # "tom-riddles-diary",
     # "soi-erasmus",
@@ -87,7 +87,7 @@ module "iam" {
   location      = local.location  
   region        = local.region  
   run_portfolio = module.compute.run_portfolio
-  # run_fastapi   = module.compute.run_fastapi
+  run_fastapi   = module.compute.run_fastapi
 }
 
 module "datalake" {
@@ -138,7 +138,7 @@ module "compute" {
   # vault_backup_bucket_name = module.datalake.vault_backup_bucket_name
   # vault_backup_function_name = module.datalake.vault_backup_function_name
   # vault_backup_func_sa_email = module.datalake.vault_backup_func_sa_email
-  # fastapi_sa_email = module.iam.fastapi_sa_email
+  fastapi_sa_email = module.iam.fastapi_sa_email
 }
 
 module "discovery" {
