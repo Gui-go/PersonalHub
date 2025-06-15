@@ -77,6 +77,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
 
     const json = await res.json();
+    console.log("API response JSON:", json);
     const suggestions = Array.isArray(json.results) ? json.results : [];
 
     return { props: { suggestions } };
