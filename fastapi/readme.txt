@@ -1,18 +1,19 @@
 
 
 
+
+
 docker buildx build --platform linux/amd64 \
-  -t guigo13/fastapi-api:latest \
-  -f fastapi/fastapi.dockerfile \
-  --no-cache \
-  --push fastapi/
+  -t us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest \
+  -f fastapi.dockerfile \
+  --push .
 
+gcloud run deploy fastapi-run \
+  --image=us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-app:latest \
+  --platform=managed \
+  --region=us-central1 \
+  --allow-unauthenticated \
+  --concurrency=1 \
+  --cpu=1 \
+  --memory=512Mi
 
-gcloud iam service-accounts keys create ~/Documents/06-personalHub/fastapi/fastapi-sa-key.json \
-  --iam-account=fastapi-sa@personalhub11.iam.gserviceaccount.com \
-  --project=personalhub11
-
-
-# to be able to run the functions locally:
-gcloud auth activate-service-account fastapi-sa@personalhub3.iam.gserviceaccount.com \
-  --key-file=~/Documents/06-personalHub/fastapi/service-account-key.json
