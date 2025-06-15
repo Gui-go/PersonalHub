@@ -67,7 +67,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const res = await fetch(
       // "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
-      "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50",
+      // "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50",
+      "https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_dev/genai_service_suggestions?limit=1",
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
@@ -94,42 +95,3 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default GeoMapTemplate;
 
-// export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-//   const controller = new AbortController();
-//   const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-//   try {
-//     // const baseUrl = process.env.NODE_ENV === "development"
-//     //   ? "http://localhost:3000"
-//     //   : "https://www.guigo.dev.br";
-
-//     // const res = await fetch(
-//     //   `${baseUrl}/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50`,
-//     //   { signal: controller.signal }
-//     // );
-
-//     const res = await fetch(
-//       `https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50`,
-//       { signal: controller.signal }
-//     );
-
-//     clearTimeout(timeoutId);
-
-//     if (!res.ok) {
-//       console.error("Proxy API responded with status:", res.status);
-//       return { props: { suggestions: [] } };
-//     }
-
-//     const json = await res.json();
-//     const suggestions = Array.isArray(json.results) ? json.results : [];
-
-//     return { props: { suggestions } };
-//   } catch (error: any) {
-//     if (error.name === "AbortError") {
-//       console.error("Fetch aborted due to timeout");
-//     } else {
-//       console.error("Failed to fetch suggestions:", error.message);
-//     }
-//     return { props: { suggestions: [] } };
-//   }
-// };
