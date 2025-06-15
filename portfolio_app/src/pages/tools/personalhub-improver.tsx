@@ -60,35 +60,75 @@ const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const controller = new AbortController();
+//   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+
+//   try {
+//     const res = await fetch(
+//       "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
+//       { signal: controller.signal }
+//     );
+//     clearTimeout(timeoutId);
+
+//     if (!res.ok) {
+//       console.error("API responded with status:", res.status);
+//       return { props: { suggestions: [] } };
+//     }
+
+//     const json = await res.json();
+//     console.log("API response JSON:", json);
+//     const suggestions = Array.isArray(json.results) ? json.results : [];
+
+//     return { props: { suggestions } };
+//   } catch (error) {
+//     if (error.name === "AbortError") {
+//       console.error("Fetch aborted due to timeout");
+//     } else {
+//       console.error("Failed to fetch suggestions:", error);
+//     }
+//     return { props: { suggestions: [] } };
+//   }
+// };
+
+// export default GeoMapTemplate;
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds timeout
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
 
   try {
+    // const baseUrl = process.env.NODE_ENV === "development"
+    //   ? "http://localhost:3000"
+    //   : "https://www.guigo.dev.br";
+
+    // const res = await fetch(
+    //   `${baseUrl}/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50`,
+    //   { signal: controller.signal }
+    // );
+
     const res = await fetch(
-      "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
+      `https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50`,
       { signal: controller.signal }
     );
+
     clearTimeout(timeoutId);
 
     if (!res.ok) {
-      console.error("API responded with status:", res.status);
+      console.error("Proxy API responded with status:", res.status);
       return { props: { suggestions: [] } };
     }
 
     const json = await res.json();
-    console.log("API response JSON:", json);
     const suggestions = Array.isArray(json.results) ? json.results : [];
 
     return { props: { suggestions } };
-  } catch (error) {
+  } catch (error: any) {
     if (error.name === "AbortError") {
       console.error("Fetch aborted due to timeout");
     } else {
-      console.error("Failed to fetch suggestions:", error);
+      console.error("Failed to fetch suggestions:", error.message);
     }
     return { props: { suggestions: [] } };
   }
 };
-
-export default GeoMapTemplate;
