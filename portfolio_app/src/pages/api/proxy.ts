@@ -31,7 +31,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const BACKEND_BASE_URL = 'https://fastapi.guigo.dev.br';
+const BACKEND_BASE_URL = 'https://fastapi-run-241432738087.us-central1.run.app';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const path = req.url?.replace('/api/proxy', '') || '';
