@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
     // Make the request to the FastAPI endpoint
     const apiUrl =
-      'https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_dev/genai_service_suggestions?limit=1';
+      'https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_prod/genai_service_suggestions?limit=1';
     const apiResponse = await fetch(apiUrl, {
       headers: {
         Authorization: `Bearer ${token}`,

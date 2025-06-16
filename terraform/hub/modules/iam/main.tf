@@ -228,6 +228,15 @@ resource "google_project_iam_member" "vertex_ai_user" {
   member  = "serviceAccount:${google_bigquery_connection.bq_gemini_connection.cloud_resource[0].service_account_id}"
 }
 
+resource "google_bigquery_connection_iam_member" "dataform_can_use_connection" {
+  project       = var.proj_id
+  location      = var.location
+  connection_id = google_bigquery_connection.bq_gemini_connection.connection_id
+  role          = "roles/bigquery.connectionUser"
+  member        = "serviceAccount:${google_service_account.customdataform_sa.email}"
+}
+
+
 # GH Actions SA -------------------------------------------------------------------------
 
 # Create a service account
