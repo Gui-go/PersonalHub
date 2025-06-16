@@ -11,14 +11,14 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       ports { container_port = 3000 }
       resources {
         limits = {
-          cpu    = "1"
-          memory = "512Mi"
+          cpu    = "2"  # "1"
+          memory = "2048Mi" # "1024Mi" # "512Mi"
         }
       }
     }
     scaling {
-      max_instance_count = 1
-      min_instance_count = 0
+      max_instance_count = 2 # 1
+      min_instance_count = 1 # 0 
     }
     vpc_access {
       connector = var.run_connector_id

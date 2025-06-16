@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.1.1)",
+        "version": "(Version 0.6.2.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -749,6 +749,18 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) ",
                 "image": "/images/marineTraffic2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "us-military-bases",
+                "title": "US Military Bases",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/us-military-bases",
+                "data": "",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/military2.jpg",
                 "content": "abcabcabc"
             }
         ]

@@ -164,6 +164,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   try {
     // Fetch Identity Token from metadata server
+    /////////// have API address in a ENV variable/secret to improve security
     const metadataServerUrl =
       "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=https://fastapi-run-241432738087.us-central1.run.app";
     const tokenResponse = await fetch(metadataServerUrl, {
