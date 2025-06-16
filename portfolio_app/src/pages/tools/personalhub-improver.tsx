@@ -17,7 +17,7 @@ type Props = {
   suggestions: Suggestion[];
 };
 
-const GeoMapTemplate: React.FC<Props> = ({ suggestions }) => {
+const PersonalhubGeminiSuggestions: React.FC<Props> = ({ suggestions }) => {
   return (
     <div className="container mx-auto px-4 py-10 relative">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -66,10 +66,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   try {
     const res = await fetch(
-      // "https://fastapi.guigo.dev.br/fetch/billing_dev/genai_service_suggestions?limit=50",
-      // "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=50",
-      // "https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_dev/genai_service_suggestions?limit=1",
-      "https://www.guigo.dev.br/api/proxy/fetch/billing_dev/genai_service_suggestions?limit=1",
+      "/api/fetchSuggestions",
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
@@ -86,7 +83,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = json as APIResponse;
     const suggestions = Array.isArray(data.results) ? data.results : [];
 
-
     return { props: { suggestions } };
   } catch (error) {
     if (error.name === "AbortError") {
@@ -98,5 +94,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 };
 
-export default GeoMapTemplate;
-
+export default PersonalhubGeminiSuggestions;
