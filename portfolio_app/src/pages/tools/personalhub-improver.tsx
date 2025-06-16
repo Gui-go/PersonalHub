@@ -24,7 +24,7 @@ const PersonalhubGeminiSuggestions: React.FC<Props> = ({ suggestions }) => {
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="p-6 md:p-10">
           <h1 className="text-4xl font-bold text-gray-800 mb-8">
-            💡 GenAI Cost Optimization Suggestions
+            💡 GenAI Cloud Optimization Suggestions
           </h1>
 
           {suggestions.length === 0 && (
