@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./fastapi
-          file: ./fastapi/fastapi-api.dockerfile
+          file: ./fastapi/fastapi.dockerfile
           push: true
           tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest
 
