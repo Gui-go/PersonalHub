@@ -1,4 +1,4 @@
-from fastapi import HTTPException
+from fastapi.routers import HTTPException
 from models import QueryParams
 
 def build_sql_query(table: str, params: QueryParams) -> str:

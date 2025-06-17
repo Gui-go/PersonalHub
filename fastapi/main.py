@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi.routers import FastAPI
 from routers import query, metadata
 
 version_release = "1.1.0"

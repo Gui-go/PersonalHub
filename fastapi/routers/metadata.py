@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi.routers import APIRouter, HTTPException
 from config import client, PROJECT_ID
 from models import TableSchema, SchemaField
 
