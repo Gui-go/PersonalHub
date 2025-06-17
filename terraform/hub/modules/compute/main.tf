@@ -12,7 +12,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       resources {
         limits = {
           cpu    = "2"  # "1"
-          memory = "2048Mi" # "1024Mi" # "512Mi"
+          memory = "1024Mi" #"2048Mi" # "1024Mi" # "512Mi"
         }
       }
     }
