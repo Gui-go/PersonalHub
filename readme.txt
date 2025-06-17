@@ -359,8 +359,12 @@ https://www.ibge.gov.br/geociencias/downloads-geociencias.html
 organization_of_the_territory/geographic_networks_and_flows/transport_logistics/database/2014.zip
 
 ogr2ogr -f CSV -dialect sqlite -sql "SELECT AsGeoJSON(geometry) AS geom, * FROM rodovia_2014" rodovia_2014.csv rodovia_2014.shp
+jq -c '.features[]' rodovia_2014.geojson > rodovia_2014_nd.geojson
 
 
+
+ogr2ogr -f GeoJSON BR_Municipios_2024.geojson BR_Municipios_2024
+jq -c '.features[]' BR_Municipios_2024.geojson > BR_Municipios_2024_nd.geojson
 
 
 
