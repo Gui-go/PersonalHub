@@ -30,14 +30,21 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./fastapi
+          file: ./fastapi/fastapi.dockerfile
           push: true
-          tags: guigo13/fastapi-api:latest
+          tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy personalhub-run-fastapi \
-            --image=us-central1-docker.pkg.dev/personalhub3/personalhub-artifact-repo/fastapi-api:latest \
+          gcloud run deploy fastapi-run \
+            --image=us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
 
+      - name: Update traffic to latest revision
+        run: |
+          gcloud run services update-traffic fastapi-run \
+            --to-latest \
+            --platform=managed \
+            --region=us-central1
