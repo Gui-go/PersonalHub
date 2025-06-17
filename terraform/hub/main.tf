@@ -4,8 +4,6 @@ locals {
   proj_id         = "personalhub13"
   proj_number     = "241432738087"
 
-  proj_gcs_id     = "gcs-personalhub1"
-
   location        = "US"
   region          = "us-central1" # us-central1 is the 3rd cheapest on average and has all resources.
   zone            = "us-central1-b"
@@ -94,7 +92,6 @@ module "datalake" {
   proj_name   = local.proj_name
   proj_id     = local.proj_id
   proj_number = local.proj_number
-  proj_gcs_id = local.proj_gcs_id
   location    = local.location
   region      = local.region
   tag_owner   = local.tag_owner
@@ -106,7 +103,6 @@ module "storage" {
   proj_name      = local.proj_name
   proj_id        = local.proj_id
   proj_number    = local.proj_number
-  proj_gcs_id    = local.proj_gcs_id
   location       = local.location
   region         = local.region
   vpc_network_id = module.network.vpc_network_id

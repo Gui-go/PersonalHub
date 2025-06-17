@@ -17,6 +17,12 @@ resource "google_secret_manager_secret" "gh_token_secret" {
   }
 }
 
+# data "google_secret_manager_secret_version" "gh_token_secret_version" {
+#   project = var.proj_id
+#   secret  = google_secret_manager_secret.gh_token_secret.secret_id
+#   depends_on = [ google_secret_manager_secret.gh_token_secret ]
+# }
+
 
 resource "google_secret_manager_secret" "main_secret" {
   project   = var.proj_id
@@ -33,6 +39,13 @@ resource "google_secret_manager_secret" "main_secret" {
     }
   }
 }
+
+# data "google_secret_manager_secret_version" "main_secret_version" {
+#   project = var.proj_id
+#   secret  = google_secret_manager_secret.main_secret.secret_id
+#   depends_on = [ google_secret_manager_secret.main_secret ]
+# }
+
 
 # resource "google_secret_manager_secret_version" "postgres_password_version" {
 #   secret = google_secret_manager_secret.main_secret.id

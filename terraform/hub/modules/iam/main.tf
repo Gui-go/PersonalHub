@@ -156,63 +156,6 @@ resource "google_project_iam_member" "gcpdataform_sa_bq_job_user" {
   member  = "serviceAccount:service-${var.proj_number}@gcp-sa-dataform.iam.gserviceaccount.com"
 }
 
-
-# ----------------------
-
-# # Vertex AI connection to use Gemini model in BigQuery:
-# resource "google_bigquery_connection" "billing_gemini_connection" {
-#   project = var.proj_id
-#   location = var.region
-#   connection_id = "billing_gemini_connection"
-#   friendly_name = "Gemini Connection for Billing Data"
-#   description = "Connection to Vertex AI for Gemini model access in BigQuery"
-#   cloud_resource {
-#     # service_account_id = "bqcx-875513564391-qhlb@gcp-sa-bigquery-condel.iam.gserviceaccount.com"
-#   }
-#   lifecycle {
-#     prevent_destroy = true
-#   }
-# }
-
-# resource "google_project_iam_member" "vertex_ai_user_binding" {
-#   project = var.proj_id
-#   role    = "roles/aiplatform.user"
-#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
-#   depends_on = [google_bigquery_connection.billing_gemini_connection]
-# }
-
-# resource "google_project_iam_member" "cx_objViewer" {
-#   project = var.proj_id
-#   role    = "roles/storage.objectViewer"
-#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
-#   depends_on = [google_bigquery_connection.billing_gemini_connection]
-# }
-
-
-# resource "google_project_iam_member" "cx_sa_binding" {
-#   project = var.proj_id
-#   role    = "roles/iam.serviceAccountAdmin"
-#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
-#   depends_on = [google_bigquery_connection.billing_gemini_connection]
-# }
-
-
-# resource "google_project_iam_member" "cx_admin_binding" {
-#   project = var.proj_id
-#   role    = "roles/bigquery.connectionAdmin"
-#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
-#   depends_on = [google_bigquery_connection.billing_gemini_connection]
-# }
-
-# resource "google_project_iam_member" "vertex_ai_user" {
-#   project = var.proj_id
-#   role    = "roles/aiplatform.user"
-#   member  = "serviceAccount:${google_bigquery_connection.billing_gemini_connection.cloud_resource[0].service_account_id}"
-# }
-
-
-
-
 # BQ Gemini Connection -------------------------------------------------------------------------
 
 resource "google_bigquery_connection" "bq_gemini_connection" {

@@ -13,12 +13,6 @@ variable "proj_number" {
   type        = string
 }
 
-variable "proj_gcs_id" {
-  description = "Project GCS ID identifier"
-  type        = string
-}
-
-
 variable "location" {
   description = "Location of the resources"
   type        = string

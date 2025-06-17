@@ -61,7 +61,7 @@ resource "google_discovery_engine_search_engine" "virtualguigo_searchengine" {
     depends_on = [google_discovery_engine_data_store.virtualguigo_ds]
     project = var.proj_id
     engine_id = "virtualguigo-se"
-    display_name = "virtualguigo Search Engine"
+    display_name = "Virtual Guigo Search Engine"
     collection_id = "default_collection"
     location = google_discovery_engine_data_store.virtualguigo_ds.location
     industry_vertical = "GENERIC"

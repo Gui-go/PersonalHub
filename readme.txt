@@ -351,6 +351,19 @@ mvt
 # find . -type f -exec sed -i 's/antes/depois/g' {} +
 
 
+----------------------------------------------
 
+IBGE Raod Network data:
+
+https://www.ibge.gov.br/geociencias/downloads-geociencias.html
+organization_of_the_territory/geographic_networks_and_flows/transport_logistics/database/2014.zip
+
+ogr2ogr -f CSV -dialect sqlite -sql "SELECT AsGeoJSON(geometry) AS geom, * FROM rodovia_2014" rodovia_2014.csv rodovia_2014.shp
+
+
+
+
+
+---------------------------------------------------
 
 

@@ -40,3 +40,5 @@ terraform-sa-key.json
 */.next/
 
 */node_modules/
+
+terraform.tfstate.backup

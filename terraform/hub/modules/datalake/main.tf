@@ -76,8 +76,6 @@ resource "google_artifact_registry_repository" "images_repository" {
 # }
 
 
-#####################################################################
-
 
 # buckets ------------------------------------------------------------------------------------
 
@@ -108,7 +106,7 @@ resource "google_artifact_registry_repository" "images_repository" {
 
 resource "google_storage_bucket" "brvectors_bucket" {
   project                     = var.proj_id
-  name                        = "brvectors-bucket-${var.proj_id}"
+  name                        = "${var.proj_id}-brvectors-bucket"
   location                    = var.location
   uniform_bucket_level_access = true
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
@@ -116,7 +114,7 @@ resource "google_storage_bucket" "brvectors_bucket" {
 
 resource "google_storage_bucket" "geolayers_bucket" {
   project                     = var.proj_id
-  name                        = "geolayers-bucket-${var.proj_id}"
+  name                        = "${var.proj_id}-geolayers-bucket"
   location                    = var.location
   uniform_bucket_level_access = true
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
@@ -124,7 +122,7 @@ resource "google_storage_bucket" "geolayers_bucket" {
 
 resource "google_storage_bucket" "discovery_bucket" {
   project                     = var.proj_id
-  name                        = "discovery-bucket-${var.proj_id}"
+  name                        = "${var.proj_id}-discovery-bucket"
   location                    = var.location
   uniform_bucket_level_access = true
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
@@ -179,394 +177,394 @@ resource "google_bigquery_dataset" "brvectors_prod_bq_dataset" {
 
 # Tables ----------------------------------------------------------------------------
 
-resource "google_bigquery_table" "bq_table_dflocations" {
+resource "google_bigquery_table" "bq_table_locations" {
   project             = var.proj_id
   dataset_id          = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id            = "df_locations"
+  table_id            = "locations"
   deletion_protection = false
-  external_data_configuration {
-    source_uris       = ["gs://brvectors-bucket-${var.proj_gcs_id}/locations.csv"]
+  external_data_configuration { 
+    source_uris       = ["gs://${google_storage_bucket.brvectors_bucket.name}/locations.csv"]
     source_format     = "CSV"
     autodetect        = true
   }
 }
 
-resource "google_bigquery_table" "bq_table_br_pais" {
-  project    = var.proj_id
-  dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Pais_2024"
-  deletion_protection = false
-  schema = <<EOF
-  [
-    {
-      "name": "geometry",
-      "type": "GEOGRAPHY",
-      "mode": "NULLABLE",
-      "description": "Geometry data in GEOGRAPHY format"
-    },
-    {
-      "name": "PAIS",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Country name"
-    },
-    {
-      "name": "AREA_KM2",
-      "type": "FLOAT",
-      "mode": "NULLABLE",
-      "description": "Area in square kilometers(?)"
-    }
-  ]
-  EOF
-  external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"]
-    source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false  # Must be false when providing schema
-    json_options {
-      encoding = "UTF-8"
-    }
-  }
-}
+# resource "google_bigquery_table" "bq_table_br_pais" {
+#   project    = var.proj_id
+#   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id   = "BR_Pais_2024"
+#   deletion_protection = false
+#   schema = <<EOF
+#   [
+#     {
+#       "name": "geometry",
+#       "type": "GEOGRAPHY",
+#       "mode": "NULLABLE",
+#       "description": "Geometry data in GEOGRAPHY format"
+#     },
+#     {
+#       "name": "PAIS",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Country name"
+#     },
+#     {
+#       "name": "AREA_KM2",
+#       "type": "FLOAT",
+#       "mode": "NULLABLE",
+#       "description": "Area in square kilometers(?)"
+#     }
+#   ]
+#   EOF
+#   external_data_configuration {
+#     source_uris = ["gs://${google_storage_bucket.brvectors_bucket.name}/shapefiles/BR_Pais_2024/BR_Pais_2024.jsonl"]
+#     source_format = "NEWLINE_DELIMITED_JSON"
+#     autodetect = false  # Must be false when providing schema
+#     json_options {
+#       encoding = "UTF-8"
+#     }
+#   }
+# }
 
-resource "google_bigquery_table" "bq_table_regions" {
-  project    = var.proj_id
-  dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Regions_2024"
-  deletion_protection = false
-  schema = <<EOF
-  [
-    {
-      "name": "geometry",
-      "type": "GEOGRAPHY",
-      "mode": "NULLABLE",
-      "description": "Regional boundary geometry"
-    },
-    {
-      "name": "CD_REGIA",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region code"
-    },
-    {
-      "name": "NM_REGIA",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region name"
-    },
-    {
-      "name": "SIGLA_RG",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region abbreviation"
-    },
-    {
-      "name": "AREA_KM2",
-      "type": "FLOAT64",
-      "mode": "NULLABLE",
-      "description": "Area in square kilometers"
-    }
-  ]
-  EOF
-  external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Regions_2024/BR_Regions_2024.jsonl"]
-    source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false    
-    json_options {
-      encoding = "UTF-8"
-    }
-  }
-}
-
-
-
-resource "google_bigquery_table" "bq_table_rgint" {
-  project    = var.proj_id
-  dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Intermediate_Regions_new"
-  deletion_protection = false
-  schema = <<EOF
-  [
-    {
-      "name": "geometry",
-      "type": "GEOGRAPHY",
-      "mode": "NULLABLE",
-      "description": "Intermediate region boundary polygon"
-    },
-    {
-      "name": "CD_RGINT",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "IBGE intermediate region code (4 digits)"
-    },
-    {
-      "name": "NM_RGINT",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Intermediate region name"
-    },
-    {
-      "name": "CD_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State code (2 digits)"
-    },
-    {
-      "name": "NM_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State name"
-    },
-    {
-      "name": "SIGLA_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State abbreviation (2 letters)"
-    },
-    {
-      "name": "CD_REGIA",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region code (1 digit)"
-    },
-    {
-      "name": "NM_REGIA",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region name"
-    },
-    {
-      "name": "SIGLA_RG",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region abbreviation (1 letter)"
-    },
-    {
-      "name": "AREA_KM2",
-      "type": "FLOAT64",
-      "mode": "NULLABLE",
-      "description": "Area in square kilometers"
-    }
-  ]
-  EOF
-  external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
-    source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false
-    json_options {
-      encoding = "UTF-8"
-    }
-  }
-}
+# resource "google_bigquery_table" "bq_table_regions" {
+#   project    = var.proj_id
+#   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id   = "BR_Regions_2024"
+#   deletion_protection = false
+#   schema = <<EOF
+#   [
+#     {
+#       "name": "geometry",
+#       "type": "GEOGRAPHY",
+#       "mode": "NULLABLE",
+#       "description": "Regional boundary geometry"
+#     },
+#     {
+#       "name": "CD_REGIA",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region code"
+#     },
+#     {
+#       "name": "NM_REGIA",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region name"
+#     },
+#     {
+#       "name": "SIGLA_RG",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region abbreviation"
+#     },
+#     {
+#       "name": "AREA_KM2",
+#       "type": "FLOAT64",
+#       "mode": "NULLABLE",
+#       "description": "Area in square kilometers"
+#     }
+#   ]
+#   EOF
+#   external_data_configuration {
+#     source_uris = ["gs://brvectors-bucket-${var.proj_id}/shapefiles/BR_Regions_2024/BR_Regions_2024.jsonl"]
+#     source_format = "NEWLINE_DELIMITED_JSON"
+#     autodetect = false    
+#     json_options {
+#       encoding = "UTF-8"
+#     }
+#   }
+# }
 
 
 
-
-resource "google_bigquery_table" "bq_table_rgi" {
-  project    = var.proj_id
-  dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Immediate_Regions"
-  deletion_protection = false
-  schema = <<EOF
-  [
-    {
-      "name": "geometry",
-      "type": "GEOGRAPHY",
-      "mode": "NULLABLE",
-      "description": "Regional boundary polygon"
-    },
-    {
-      "name": "CD_RGI",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "IBGE immediate region code (6 digits)"
-    },
-    {
-      "name": "NM_RGI",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Immediate region name"
-    },
-    {
-      "name": "CD_RGINT",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Intermediate region code (4 digits)"
-    },
-    {
-      "name": "NM_RGINT",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Intermediate region name"
-    },
-    {
-      "name": "CD_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State code (2 digits)"
-    },
-    {
-      "name": "NM_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State name"
-    },
-    {
-      "name": "SIGLA_UF",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "State abbreviation (2 letters)"
-    },
-    {
-      "name": "CD_REGIA",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region code (1 digit)"
-    },
-    {
-      "name": "NM_REGIA",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region name"
-    },
-    {
-      "name": "SIGLA_RG",
-      "type": "STRING",
-      "mode": "REQUIRED",
-      "description": "Region abbreviation (2 letters)"
-    },
-    {
-      "name": "AREA_KM2",
-      "type": "FLOAT64",
-      "mode": "NULLABLE",
-      "description": "Area in square kilometers"
-    }
-  ]
-  EOF
-  external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_RG_Imediatas_2024/BR_RG_Imediatas_2024.jsonl"]
-    source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false
-    json_options {
-      encoding = "UTF-8"
-    }
-  }
-}
+# resource "google_bigquery_table" "bq_table_rgint" {
+#   project    = var.proj_id
+#   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id   = "BR_Intermediate_Regions_new"
+#   deletion_protection = false
+#   schema = <<EOF
+#   [
+#     {
+#       "name": "geometry",
+#       "type": "GEOGRAPHY",
+#       "mode": "NULLABLE",
+#       "description": "Intermediate region boundary polygon"
+#     },
+#     {
+#       "name": "CD_RGINT",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "IBGE intermediate region code (4 digits)"
+#     },
+#     {
+#       "name": "NM_RGINT",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Intermediate region name"
+#     },
+#     {
+#       "name": "CD_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State code (2 digits)"
+#     },
+#     {
+#       "name": "NM_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State name"
+#     },
+#     {
+#       "name": "SIGLA_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State abbreviation (2 letters)"
+#     },
+#     {
+#       "name": "CD_REGIA",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region code (1 digit)"
+#     },
+#     {
+#       "name": "NM_REGIA",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region name"
+#     },
+#     {
+#       "name": "SIGLA_RG",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region abbreviation (1 letter)"
+#     },
+#     {
+#       "name": "AREA_KM2",
+#       "type": "FLOAT64",
+#       "mode": "NULLABLE",
+#       "description": "Area in square kilometers"
+#     }
+#   ]
+#   EOF
+#   external_data_configuration {
+#     source_uris = ["gs://brvectors-bucket-${var.proj_id}/shapefiles/BR_RG_Intermediarias_2024/BR_RG_Intermediarias_2024.jsonl"]
+#     source_format = "NEWLINE_DELIMITED_JSON"
+#     autodetect = false
+#     json_options {
+#       encoding = "UTF-8"
+#     }
+#   }
+# }
 
 
-resource "google_bigquery_table" "bq_table_municipalities" {
-  project    = var.proj_id
-  dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
-  table_id   = "BR_Municipalities"
-  deletion_protection = false
-  schema = <<EOF
-  [
-    {
-      "name": "geometry",
-      "type": "GEOGRAPHY",
-      "mode": "NULLABLE",
-      "description": "Municipal boundary geometry"
-    },
-    {
-      "name": "CD_MUN",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Municipality code (IBGE)"
-    },
-    {
-      "name": "NM_MUN",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Municipality name"
-    },
-    {
-      "name": "CD_RGI",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Immediate region code"
-    },
-    {
-      "name": "NM_RGI",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Immediate region name"
-    },
-    {
-      "name": "CD_RGINT",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Intermediate region code"
-    },
-    {
-      "name": "NM_RGINT",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Intermediate region name"
-    },
-    {
-      "name": "CD_UF",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "State code"
-    },
-    {
-      "name": "NM_UF",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "State name"
-    },
-    {
-      "name": "SIGLA_UF",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "State abbreviation"
-    },
-    {
-      "name": "CD_REGIA",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region code"
-    },
-    {
-      "name": "NM_REGIA",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region name"
-    },
-    {
-      "name": "SIGLA_RG",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Region abbreviation"
-    },
-    {
-      "name": "CD_CONCU",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Consolidated metropolitan area code"
-    },
-    {
-      "name": "NM_CONCU",
-      "type": "STRING",
-      "mode": "NULLABLE",
-      "description": "Consolidated metropolitan area name"
-    },
-    {
-      "name": "AREA_KM2",
-      "type": "FLOAT64",
-      "mode": "NULLABLE",
-      "description": "Area in square kilometers"
-    }
-  ]
-  EOF
-  external_data_configuration {
-    source_uris = ["gs://brvectors-bucket-${var.proj_gcs_id}/shapefiles/BR_Municipios_2024/BR_Municipios_2024.jsonl"]
-    source_format = "NEWLINE_DELIMITED_JSON"
-    autodetect = false    
-    json_options {
-      encoding = "UTF-8"
-    }
-  }
-}
+
+
+# resource "google_bigquery_table" "bq_table_rgi" {
+#   project    = var.proj_id
+#   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id   = "BR_Immediate_Regions"
+#   deletion_protection = false
+#   schema = <<EOF
+#   [
+#     {
+#       "name": "geometry",
+#       "type": "GEOGRAPHY",
+#       "mode": "NULLABLE",
+#       "description": "Regional boundary polygon"
+#     },
+#     {
+#       "name": "CD_RGI",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "IBGE immediate region code (6 digits)"
+#     },
+#     {
+#       "name": "NM_RGI",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Immediate region name"
+#     },
+#     {
+#       "name": "CD_RGINT",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Intermediate region code (4 digits)"
+#     },
+#     {
+#       "name": "NM_RGINT",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Intermediate region name"
+#     },
+#     {
+#       "name": "CD_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State code (2 digits)"
+#     },
+#     {
+#       "name": "NM_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State name"
+#     },
+#     {
+#       "name": "SIGLA_UF",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "State abbreviation (2 letters)"
+#     },
+#     {
+#       "name": "CD_REGIA",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region code (1 digit)"
+#     },
+#     {
+#       "name": "NM_REGIA",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region name"
+#     },
+#     {
+#       "name": "SIGLA_RG",
+#       "type": "STRING",
+#       "mode": "REQUIRED",
+#       "description": "Region abbreviation (2 letters)"
+#     },
+#     {
+#       "name": "AREA_KM2",
+#       "type": "FLOAT64",
+#       "mode": "NULLABLE",
+#       "description": "Area in square kilometers"
+#     }
+#   ]
+#   EOF
+#   external_data_configuration {
+#     source_uris = ["gs://brvectors-bucket-${var.proj_id}/shapefiles/BR_RG_Imediatas_2024/BR_RG_Imediatas_2024.jsonl"]
+#     source_format = "NEWLINE_DELIMITED_JSON"
+#     autodetect = false
+#     json_options {
+#       encoding = "UTF-8"
+#     }
+#   }
+# }
+
+
+# resource "google_bigquery_table" "bq_table_municipalities" {
+#   project    = var.proj_id
+#   dataset_id = google_bigquery_dataset.brvectors_source_bq_dataset.dataset_id
+#   table_id   = "BR_Municipalities"
+#   deletion_protection = false
+#   schema = <<EOF
+#   [
+#     {
+#       "name": "geometry",
+#       "type": "GEOGRAPHY",
+#       "mode": "NULLABLE",
+#       "description": "Municipal boundary geometry"
+#     },
+#     {
+#       "name": "CD_MUN",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Municipality code (IBGE)"
+#     },
+#     {
+#       "name": "NM_MUN",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Municipality name"
+#     },
+#     {
+#       "name": "CD_RGI",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Immediate region code"
+#     },
+#     {
+#       "name": "NM_RGI",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Immediate region name"
+#     },
+#     {
+#       "name": "CD_RGINT",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Intermediate region code"
+#     },
+#     {
+#       "name": "NM_RGINT",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Intermediate region name"
+#     },
+#     {
+#       "name": "CD_UF",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "State code"
+#     },
+#     {
+#       "name": "NM_UF",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "State name"
+#     },
+#     {
+#       "name": "SIGLA_UF",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "State abbreviation"
+#     },
+#     {
+#       "name": "CD_REGIA",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region code"
+#     },
+#     {
+#       "name": "NM_REGIA",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region name"
+#     },
+#     {
+#       "name": "SIGLA_RG",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Region abbreviation"
+#     },
+#     {
+#       "name": "CD_CONCU",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Consolidated metropolitan area code"
+#     },
+#     {
+#       "name": "NM_CONCU",
+#       "type": "STRING",
+#       "mode": "NULLABLE",
+#       "description": "Consolidated metropolitan area name"
+#     },
+#     {
+#       "name": "AREA_KM2",
+#       "type": "FLOAT64",
+#       "mode": "NULLABLE",
+#       "description": "Area in square kilometers"
+#     }
+#   ]
+#   EOF
+#   external_data_configuration {
+#     source_uris = ["gs://brvectors-bucket-${var.proj_id}/shapefiles/BR_Municipios_2024/BR_Municipios_2024.jsonl"]
+#     source_format = "NEWLINE_DELIMITED_JSON"
+#     autodetect = false    
+#     json_options {
+#       encoding = "UTF-8"
+#     }
+#   }
+# }
 
 
 
@@ -626,45 +624,45 @@ resource "google_bigquery_table" "bq_table_municipalities" {
 # GeoLayers -----------------------------------------
 
 # Define the BigQuery dataset
-resource "google_bigquery_dataset" "geolayers_bq_dataset" {
-  project     = var.proj_id
-  dataset_id  = "geolayers"
-  location    = var.location
-  description = "BigQuery dataset for GeoLayers"
-}
+# resource "google_bigquery_dataset" "geolayers_bq_dataset" {
+#   project     = var.proj_id
+#   dataset_id  = "geolayers"
+#   location    = var.location
+#   description = "BigQuery dataset for GeoLayers"
+# }
 
-# Define the BigQuery table
-resource "google_bigquery_table" "cities_ivebeen" {
-  project             = var.proj_id
-  dataset_id          = google_bigquery_dataset.geolayers_bq_dataset.dataset_id
-  table_id            = "cities_ivebeen"
-  deletion_protection = false
-  external_data_configuration {
-    source_uris   = ["gs://geolayers-bucket-${var.proj_gcs_id}/cities_ivebeen.csv"]
-    source_format = "CSV"
-    autodetect    = true
-    compression   = "NONE"
-  }
-  schema = jsonencode([
-    {
-      "name": "id",
-      "type": "INTEGER",
-      "mode": "REQUIRED"
-    },
-    {
-      "name": "name",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "geom",
-      "type": "GEOGRAPHY", # For POINT geometry
-      "mode": "NULLABLE"
-    }
-  ])
-  # Ensure the dataset is created before the table
-  depends_on = [google_bigquery_dataset.geolayers_bq_dataset]
-}
+# # Define the BigQuery table
+# resource "google_bigquery_table" "cities_ivebeen" {
+#   project             = var.proj_id
+#   dataset_id          = google_bigquery_dataset.geolayers_bq_dataset.dataset_id
+#   table_id            = "cities_ivebeen"
+#   deletion_protection = false
+#   external_data_configuration {
+#     source_uris   = ["gs://${google_storage_bucket.geolayers_bucket.name}/cities_ivebeen.csv"]
+#     source_format = "CSV"
+#     autodetect    = true
+#     compression   = "NONE"
+#   }
+#   schema = jsonencode([
+#     {
+#       "name": "id",
+#       "type": "INTEGER",
+#       "mode": "REQUIRED"
+#     },
+#     {
+#       "name": "name",
+#       "type": "STRING",
+#       "mode": "NULLABLE"
+#     },
+#     {
+#       "name": "geom",
+#       "type": "GEOGRAPHY", # For POINT geometry
+#       "mode": "NULLABLE"
+#     }
+#   ])
+#   # Ensure the dataset is created before the table
+#   depends_on = [google_bigquery_dataset.geolayers_bq_dataset]
+# }
 
 
 

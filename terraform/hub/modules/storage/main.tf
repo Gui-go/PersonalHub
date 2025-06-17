@@ -1,12 +1,5 @@
 
 
-# data "google_secret_manager_secret_version" "main_secret_version" {
-#   project = var.proj_id
-#   secret  = google_secret_manager_secret.main_secret.secret_id
-#   depends_on = [ google_secret_manager_secret.main_secret ]
-#   # If you manage versions manually in the UI, this fetches the latest enabled version
-# }
-
 resource "google_sql_database_instance" "postgres_instance" {
   project          = var.proj_id
   name             = "cloudsql-postgres"
