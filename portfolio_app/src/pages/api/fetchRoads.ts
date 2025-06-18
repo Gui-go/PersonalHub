@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const token = await tokenResponse.text();
 
     const apiUrl =
-      'https://fastapi-run-241432738087.us-central1.run.app/fetch/brvectors_dev/mart_roads?limit=10';
+      'https://fastapi-run-241432738087.us-central1.run.app/fetch/brvectors_dev/mart_roads';
 
     const apiResponse = await fetch(apiUrl, {
       headers: {
