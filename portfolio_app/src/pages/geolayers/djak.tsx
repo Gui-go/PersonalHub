@@ -20,20 +20,70 @@ interface RoadSegment {
   desc_seg: string;
 }
 
+// Expanded pseudo data for fallback
+const pseudoData: RoadSegment[] = [
+  {
+    geom: "LINESTRING(-35.1468769978752 -8.8985496994091, -5.1482950084079 -8.89831969689652)",
+    objectid: 7353,
+    codigo: "AC7353",
+    tipo_pnv: null,
+    desc_seg: "ACESSO SÃO JOSÉ DA COROA GRANDE",
+  },
+  {
+    geom: "LINESTRING(-48.9587511806225 -22.4626172284024, -48.9883743946626 -22.4700551748065, -48.990123456789 -22.4712345678901)",
+    objectid: 16860,
+    codigo: "AC16860",
+    tipo_pnv: "BR",
+    desc_seg: "ACESSO AGUDOS",
+  },
+  {
+    geom: "LINESTRING(-49.9203833608034 -29.2949805363227, -49.9242513062527 -29.2761904890998, -49.9230070222563 -29.2702132323548, -49.9108391383156 -29.2581795002837)",
+    objectid: 16142,
+    codigo: "494ERS0050",
+    tipo_pnv: null,
+    desc_seg: "ENTR. BR/453 (P/TORRES) - MAMPITUBA",
+  },
+  {
+    geom: "LINESTRING(-47.1366858681583 -23.5432923161874, -47.1821459338877 -23.5462647077501, -47.190123456789 -23.5487654321098)",
+    objectid: 16868,
+    codigo: "AC16868",
+    tipo_pnv: "SP",
+    desc_seg: "ACESSO MAIRINQUE",
+  },
+  {
+    geom: "LINESTRING(-39.1390266611515 -3.46783183237318, -39.1433689387255 -3.45779101594263, -39.1477099626447 -3.44032965139229)",
+    objectid: 6799,
+    codigo: "AC6799",
+    tipo_pnv: null,
+    desc_seg: "ACESSO PARAIPABA",
+  },
+];
+
 const Home: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<Overlay | null>(null);
   const [roadData, setRoadData] = useState<RoadSegment[]>([]);
-  const [selectedSegment, setSelectedSegment] = useState<RoadSegment | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data from API
+    // Fetch data from API with fallback to pseudo data
     fetch('https://www.guigo.dev.br/api/fetchRoads')
-      .then(response => response.json())
-      .then(data => setRoadData(data.results))
-      .catch(error => console.error('Error fetching road data:', error));
+      .then(response => {
+        if (!response.ok) throw new Error('API request failed');
+        return response.json();
+      })
+      .then(data => {
+        setRoadData(data.results);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching road data:', error);
+        setError('Failed to fetch data. Using sample data instead.');
+        setRoadData(pseudoData);
+        setIsLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -55,6 +105,7 @@ const Home: React.FC = () => {
         objectid: segment.objectid,
         codigo: segment.codigo,
         desc_seg: segment.desc_seg,
+        tipo_pnv: segment.tipo_pnv,
       });
 
       return feature;
@@ -64,10 +115,10 @@ const Home: React.FC = () => {
     const vectorSource = new VectorSource({ features });
     const vectorLayer = new VectorLayer({
       source: vectorSource,
-      style: new Style({
+      style: (feature) => new Style({
         stroke: new Stroke({
-          color: '#3B82F6',
-          width: 4,
+          color: feature.get('objectid') === overlayRef.current?.get('selectedId') ? '#F59E0B' : '#3B82F6',
+          width: feature.get('objectid') === overlayRef.current?.get('selectedId') ? 6 : 4,
         }),
       }),
     });
@@ -90,33 +141,37 @@ const Home: React.FC = () => {
       element: popupRef.current,
       autoPan: {
         animation: { duration: 250 },
+        margin: 20,
       },
     });
     overlayRef.current = overlay;
     map.addOverlay(overlay);
 
-    // Click handler for popups and sidebar
+    // Click handler for popups
     map.on('click', (event) => {
       const feature = map.forEachFeatureAtPixel(event.pixel, (f) => f);
       if (feature) {
         const coordinates = event.coordinate;
         const properties = feature.getProperties();
-        const segment = roadData.find(s => s.objectid === properties.objectid);
-        if (segment) {
-          setSelectedSegment(segment);
-          setIsSidebarOpen(true);
-          popupRef.current!.innerHTML = `
-            <div class="bg-white p-3 rounded-lg shadow-lg border border-blue-200">
-              <h3 class="font-semibold text-blue-600">${properties.desc_seg}</h3>
-              <p class="text-sm text-gray-600">Click for more details</p>
+        overlay.set('selectedId', properties.objectid);
+        vectorLayer.changed(); // Refresh layer to update styles
+        popupRef.current!.innerHTML = `
+          <div class="bg-white p-4 rounded-xl shadow-2xl border border-gray-100 max-w-xs">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="font-bold text-lg text-blue-700">${properties.desc_seg}</h3>
+              <button class="text-gray-500 hover:text-gray-700" onclick="this.closest('.ol-overlay-container').style.display='none'">✕</button>
             </div>
-          `;
-          overlay.setPosition(coordinates);
-        }
+            <p class="text-sm text-gray-600"><strong>ID:</strong> ${properties.objectid}</p>
+            <p class="text-sm text-gray-600"><strong>Código:</strong> ${properties.codigo}</p>
+            <p class="text-sm text-gray-600"><strong>Tipo PNV:</strong> ${properties.tipo_pnv || 'N/A'}</p>
+            <p class="text-xs text-gray-500 mt-2 truncate"><strong>Geom:</strong> ${properties.geometry.toString().slice(0, 30)}...</p>
+          </div>
+        `;
+        overlay.setPosition(coordinates);
       } else {
         overlay.setPosition(undefined);
-        setIsSidebarOpen(false);
-        setSelectedSegment(null);
+        overlay.set('selectedId', null);
+        vectorLayer.changed();
       }
     });
 
@@ -126,37 +181,26 @@ const Home: React.FC = () => {
   }, [roadData]);
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-gray-100">
-      <header className="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">Road Network Explorer</h1>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          {isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar'}
-        </button>
-      </header>
-      <div className="flex flex-grow overflow-hidden">
-        <div ref={mapRef} className="flex-grow" />
-        <div
-          className={`bg-white shadow-lg p-6 w-80 transition-all duration-300 ${
-            isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-          } fixed right-0 top-16 bottom-0 overflow-y-auto`}
-        >
-          {selectedSegment ? (
-            <div>
-              <h2 className="text-xl font-bold text-blue-600 mb-4">{selectedSegment.desc_seg}</h2>
-              <p className="text-gray-700 mb-2"><strong>Object ID:</strong> {selectedSegment.objectid}</p>
-              <p className="text-gray-700 mb-2"><strong>Código:</strong> {selectedSegment.codigo}</p>
-              <p className="text-gray-700 mb-2"><strong>Tipo PNV:</strong> {selectedSegment.tipo_pnv || 'N/A'}</p>
-              <p className="text-gray-700"><strong>Geometry:</strong> {selectedSegment.geom.slice(0, 50)}...</p>
-            </div>
-          ) : (
-            <p className="text-gray-500 italic">Click a road segment to view details</p>
-          )}
+    <div className="h-screen w-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
+      <header className="bg-blue-700 text-white p-4 flex items-center justify-between shadow-lg">
+        <div className="flex items-center space-x-3">
+          <h1 className="text-2xl font-extrabold tracking-tight">Road Network Analyzer</h1>
         </div>
+        <div className="flex items-center space-x-4">
+          <span className="text-sm font-medium">
+            {isLoading ? 'Loading data...' : error ? error : `${roadData.length} segments loaded`}
+          </span>
+        </div>
+      </header>
+      <div className="flex-grow relative">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 z-10">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+          </div>
+        )}
+        <div ref={mapRef} className="absolute inset-0" />
+        <div ref={popupRef} className="popup" />
       </div>
-      <div ref={popupRef} className="popup" />
     </div>
   );
 };
