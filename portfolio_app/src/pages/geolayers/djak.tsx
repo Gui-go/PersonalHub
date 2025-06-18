@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import Map from 'ol/Map';
 import View from 'ol/View';
@@ -11,6 +13,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import Overlay from 'ol/Overlay';
 import { fromLonLat } from 'ol/proj';
+import { defaults as defaultControls } from 'ol/control';
 
 interface RoadSegment {
   geom: string;
@@ -20,7 +23,6 @@ interface RoadSegment {
   desc_seg: string;
 }
 
-// Expanded pseudo data for fallback
 const pseudoData: RoadSegment[] = [
   {
     geom: "LINESTRING(-35.1468769978752 -8.8985496994091, -5.1482950084079 -8.89831969689652)",
@@ -68,18 +70,17 @@ const Home: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data from API with fallback to pseudo data
     fetch('https://www.guigo.dev.br/api/fetchRoads')
-      .then(response => {
-        if (!response.ok) throw new Error('API request failed');
-        return response.json();
+      .then((res) => {
+        if (!res.ok) throw new Error('API request failed');
+        return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setRoadData(data.results);
         setIsLoading(false);
       })
-      .catch(error => {
-        console.error('Error fetching road data:', error);
+      .catch((err) => {
+        console.error('Fetch error:', err);
         setError('Failed to fetch data. Using sample data instead.');
         setRoadData(pseudoData);
         setIsLoading(false);
@@ -89,14 +90,13 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (!mapRef.current || !popupRef.current || roadData.length === 0) return;
 
-    // Parse LINESTRING to coordinates
-    const features = roadData.map(segment => {
+    const features = roadData.map((segment) => {
       const coords = segment.geom
         .replace('LINESTRING(', '')
         .replace(')', '')
         .split(', ')
-        .map(coord => {
-          const [lon, lat] = coord.split(' ').map(Number);
+        .map((pair) => {
+          const [lon, lat] = pair.split(' ').map(Number);
           return fromLonLat([lon, lat]);
         });
 
@@ -111,62 +111,74 @@ const Home: React.FC = () => {
       return feature;
     });
 
-    // Create vector source and layer
     const vectorSource = new VectorSource({ features });
+
     const vectorLayer = new VectorLayer({
       source: vectorSource,
-      style: (feature) => new Style({
-        stroke: new Stroke({
-          color: feature.get('objectid') === overlayRef.current?.get('selectedId') ? '#F59E0B' : '#3B82F6',
-          width: feature.get('objectid') === overlayRef.current?.get('selectedId') ? 6 : 4,
+      style: (feature) =>
+        new Style({
+          stroke: new Stroke({
+            color: feature.get('objectid') === overlayRef.current?.get('selectedId') ? '#FBBF24' : '#2563EB',
+            width: feature.get('objectid') === overlayRef.current?.get('selectedId') ? 4 : 2.5,
+            lineCap: 'round',
+            lineJoin: 'round',
+          }),
         }),
-      }),
     });
 
-    // Initialize map
     const map = new Map({
       target: mapRef.current,
+      controls: defaultControls({ zoom: false, attribution: false, rotate: false }),
       layers: [
-        new TileLayer({ source: new OSM() }),
+        new TileLayer({
+          source: new OSM(),
+          opacity: 0.9,
+        }),
         vectorLayer,
       ],
       view: new View({
         center: fromLonLat([-40, -15]),
         zoom: 5,
+        smoothExtentConstraint: true,
       }),
     });
 
-    // Initialize popup
     const overlay = new Overlay({
       element: popupRef.current,
       autoPan: {
-        animation: { duration: 250 },
+        animation: { duration: 300 },
         margin: 20,
       },
+      positioning: 'bottom-center',
+      offset: [0, -10],
     });
+
     overlayRef.current = overlay;
     map.addOverlay(overlay);
 
-    // Click handler for popups
     map.on('click', (event) => {
       const feature = map.forEachFeatureAtPixel(event.pixel, (f) => f);
       if (feature) {
         const coordinates = event.coordinate;
         const properties = feature.getProperties();
         overlay.set('selectedId', properties.objectid);
-        vectorLayer.changed(); // Refresh layer to update styles
+        vectorLayer.changed();
+
         popupRef.current!.innerHTML = `
-          <div class="bg-white p-4 rounded-xl shadow-2xl border border-gray-100 max-w-xs">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="font-bold text-lg text-blue-700">${properties.desc_seg}</h3>
-              <button class="text-gray-500 hover:text-gray-700" onclick="this.closest('.ol-overlay-container').style.display='none'">✕</button>
+          <div class="bg-white p-5 rounded-2xl shadow-xl border border-gray-100 max-w-sm transform transition-all duration-200 hover:shadow-2xl">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="font-semibold text-xl text-blue-800 tracking-tight">${properties.desc_seg}</h3>
+              <button class="text-gray-400 hover:text-gray-600 transition-colors duration-150" onclick="this.closest('.ol-overlay-container').style.display='none'">✕</button>
             </div>
-            <p class="text-sm text-gray-600"><strong>ID:</strong> ${properties.objectid}</p>
-            <p class="text-sm text-gray-600"><strong>Código:</strong> ${properties.codigo}</p>
-            <p class="text-sm text-gray-600"><strong>Tipo PNV:</strong> ${properties.tipo_pnv || 'N/A'}</p>
-            <p class="text-xs text-gray-500 mt-2 truncate"><strong>Geom:</strong> ${properties.geometry.toString().slice(0, 30)}...</p>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-700"><span class="font-medium text-gray-900">ID:</span> ${properties.objectid}</p>
+              <p class="text-sm text-gray-700"><span class="font-medium text-gray-900">Código:</span> ${properties.codigo}</p>
+              <p class="text-sm text-gray-700"><span class="font-medium text-gray-900">Tipo PNV:</span> ${properties.tipo_pnv || 'N/A'}</p>
+              <p class="text-xs text-gray-500 truncate"><span class="font-medium text-gray-700">Geom:</span> ${properties.geometry.toString().slice(0, 30)}...</p>
+            </div>
           </div>
         `;
+
         overlay.setPosition(coordinates);
       } else {
         overlay.setPosition(undefined);
@@ -181,28 +193,42 @@ const Home: React.FC = () => {
   }, [roadData]);
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
-      <header className="bg-blue-700 text-white p-4 flex items-center justify-between shadow-lg">
+    <div className="h-screen w-screen flex flex-col bg-gradient-to-b from-blue-50 to-gray-100">
+      <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 flex items-center justify-between shadow-md">
         <div className="flex items-center space-x-3">
-          <h1 className="text-2xl font-extrabold tracking-tight">Road Network Analyzer</h1>
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447-2.724A1 1 0 0021 13.382V2.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <h1 className="text-2xl font-bold tracking-tight">Road Network Analyzer</h1>
         </div>
         <div className="flex items-center space-x-4">
-          <span className="text-sm font-medium">
+          <span className="text-sm font-medium bg-blue-700 bg-opacity-50 px-3 py-1 rounded-full">
             {isLoading ? 'Loading data...' : error ? error : `${roadData.length} segments loaded`}
           </span>
         </div>
       </header>
+
       <div className="flex-grow relative">
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50 z-10">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600"></div>
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-70 z-10">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent"></div>
           </div>
         )}
         <div ref={mapRef} className="absolute inset-0" />
-        <div ref={popupRef} className="popup" />
+        <div ref={popupRef} className="popup pointer-events-auto" />
+
+        {/* Hide OpenLayers UI completely */}
+        <style jsx global>{`
+          .ol-attribution,
+          .ol-zoom,
+          .ol-rotate {
+            display: none !important;
+          }
+        `}</style>
       </div>
     </div>
   );
 };
 
 export default Home;
+
