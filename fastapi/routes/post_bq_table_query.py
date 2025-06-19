@@ -5,8 +5,12 @@ from utils import build_sql_query
 
 router = APIRouter()
 
-@router.post("/query/{dataset}/{table}", summary="Query table with custom parameters", description="Execute a custom query with selectable columns, filters, grouping, and ordering.")
-async def query_table(dataset: str, table: str, params: QueryParams):
+@router.post(
+    "/query/{dataset}/{table}", 
+    summary="Query table with custom parameters", 
+    description="Execute a custom query with selectable columns, filters, grouping, and ordering."
+)
+async def post_bq_table_query(dataset: str, table: str, params: QueryParams):
     try:
         full_table = f"{PROJECT_ID}.{dataset}.{table}"
         query = build_sql_query(full_table, params)
