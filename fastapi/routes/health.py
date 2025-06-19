@@ -1,15 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from datetime import datetime
-from app.client import client
-from app.models import HealthResponse
+from config import client
+from models import HealthResponse
 
 router = APIRouter()
 
-@router.get("/")
-async def root():
-    return {"message": "FastAPI BigQuery Service"}
-
-@router.get("/health", response_model=HealthResponse)
+@router.get("/health", response_model=HealthResponse, summary="Check API health", description="Verify the API is running and can connect to BigQuery.")
 async def health_check():
     try:
         client.get_service_account_email()

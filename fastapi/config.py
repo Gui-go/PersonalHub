@@ -1,4 +1,4 @@
 from google.cloud import bigquery
-from app.config import PROJECT_ID
 
+PROJECT_ID = "personalhub13"
 client = bigquery.Client(project=PROJECT_ID)
