@@ -199,7 +199,7 @@ const Home: React.FC = () => {
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447-2.724A1 1 0 0021 13.382V2.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
           </svg>
-          <h1 className="text-2xl font-bold tracking-tight">Road Network Analyzer</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Brazilian Road Network</h1>
         </div>
         <div className="flex items-center space-x-4">
           <span className="text-sm font-medium bg-blue-700 bg-opacity-50 px-3 py-1 rounded-full">
