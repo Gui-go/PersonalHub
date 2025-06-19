@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: fastapi.dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      - NODE_ENV=development
