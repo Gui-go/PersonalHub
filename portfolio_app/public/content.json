@@ -111,6 +111,17 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "stupid-button",
+                "title": "Stupid Button",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/stupid-button",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/n8n.png",
+                "content": "abcabcabc"
+            },
+            {
                 "id": "postgres",
                 "title": "PostgreSQL",
                 "short_title": "",
