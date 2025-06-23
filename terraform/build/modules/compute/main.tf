@@ -11,21 +11,21 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       ports { container_port = 3000 }
       resources {
         limits = {
-          cpu    = "2"  # "1"
+          cpu    = "1"  # "1"
           memory = "1024Mi" #"2048Mi" # "1024Mi" # "512Mi"
         }
       }
     }
     scaling {
-      max_instance_count = 2 # 1
-      min_instance_count = 1 # 0 
+      max_instance_count = 1 # 1
+      min_instance_count = 0 # 0 
     }
     vpc_access {
       connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
-    service_account = var.portfolio_sa_email
+    service_account = var.portfolio_run_sa_email
   }
   traffic {
     percent = 100
@@ -62,7 +62,7 @@ resource "google_cloud_run_v2_service" "run_fastapi" {
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
-    service_account = var.fastapi_sa_email
+    service_account = var.fastapi_run_sa_email
   }
   traffic {
     percent = 100
@@ -259,7 +259,7 @@ resource "google_cloud_run_v2_service" "run_grafana" {
   template {
     containers {
       image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/grafana-app:latest"
-      # ports { container_port = 8787 }
+      ports { container_port = 3000 }
       resources {
         limits = {
           cpu    = "1"
@@ -274,9 +274,10 @@ resource "google_cloud_run_v2_service" "run_grafana" {
         name  = "GF_SECURITY_ADMIN_PASSWORD"
         value = "admin"
       }
-      ports {
-        container_port = 8080 # (Grafana default 3000)
-      }
+      env {
+          name  = "GCS_BUCKET"
+          value = var.grafana_bucket_name
+        }
     }
     scaling {
       max_instance_count = 1
@@ -301,6 +302,15 @@ resource "google_cloud_run_service_iam_member" "grafana_public_access" {
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
+
+
+
+
+
+
+
+
+
 # # Allow unauthenticated invocations (optional, remove if you want auth)
 # resource "google_cloud_run_service_iam_member" "noauth" {
 #   location = google_cloud_run_service.grafana.location

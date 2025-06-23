@@ -15,6 +15,7 @@ gcloud auth application-default login --quiet
 
 # Variables:
 set -o allexport; source .env; set +o allexport
+echo $PROJ_ID
 
 # export BILLING_ACC="01F0C7-9A2082-488963"
 # export PROJECT_NAME="personalhub"
@@ -63,6 +64,7 @@ gcloud services enable cloudscheduler.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquery.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquerydatatransfer.googleapis.com --project=$PROJ_ID
 gcloud services enable bigquerydatatransfer.googleapis.com --project=$PROJ_ID
+gcloud services enable servicenetworking.googleapis.com --project=$PROJ_ID
 
 # gcloud services enable bigqueryconnection.googleapis.com aiplatform.googleapis.com
 # gcloud services enable aiplatform.googleapis.com bigqueryconnection.googleapis.com

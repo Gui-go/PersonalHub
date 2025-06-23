@@ -371,3 +371,25 @@ jq -c '.features[]' BR_Municipios_2024.geojson > BR_Municipios_2024_nd.geojson
 ---------------------------------------------------
 
 
+terraform refresh
+
+terraform state list
+
+-------------------------------------------------
+
+pg tile server
+mapbiomas
+
+
+
+
+-----------------------------------------------------
+DNS zone
+Registros.br > 
+  Configurar DNS > 
+    Modo Avançado > 
+      Esperar >
+        Adicionar TXT 
+      Aguardar processo (cerca de 2 horas)
+
+
