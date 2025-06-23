@@ -44,31 +44,20 @@
 
 FROM debian:bullseye-slim
 
-# Install required tools and Grafana
 RUN apt-get update && apt-get install -y gnupg curl apt-transport-https software-properties-common && \
     echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list && \
     curl https://packages.grafana.com/gpg.key | apt-key add - && \
     apt-get update && apt-get install -y grafana && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install gcsfuse for GCS mounting
 RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-bullseye main" | tee /etc/apt/sources.list.d/gcsfuse.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && apt-get install -y gcsfuse && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create Grafana data directory
 RUN mkdir -p /var/lib/grafana && chown -R grafana:grafana /var/lib/grafana
 
-# Use consistent environment variable name
-# ARG GCP_PROJECT
-# ENV GCP_PROJECT=$GCP_PROJECT
-
-# Run gcsfuse and Grafana server
-# Note: Cloud Run requires a single process, so we use exec to run Grafana directly
-# gcsfuse is run in the background to mount GCS before starting Grafana
-# CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${VOLUME_BUCKET}-grafana-bucket/ /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
-CMD /bin/bash -c "gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${GCS_BUCKET} /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
 
 EXPOSE 3000
 
