@@ -36,7 +36,7 @@ jobs:
           push: true
           tags: us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/personalhub-artifact-repo/grafana-app:latest
           build-args: |
-            VOLUME_BUCKET=gs://${{ vars.GCP_PROJECT }}-grafana-bucket/
+            GCP_PROJECT=${{ vars.GCP_PROJECT }}
 
       - name: Deploy to Cloud Run
         run: |
