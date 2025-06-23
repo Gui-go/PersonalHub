@@ -61,13 +61,14 @@ RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-bullseye main" | tee 
 RUN mkdir -p /var/lib/grafana && chown -R grafana:grafana /var/lib/grafana
 
 # Use consistent environment variable name
-ARG GCP_PROJECT
-ENV GCP_PROJECT=$GCP_PROJECT
+# ARG GCP_PROJECT
+# ENV GCP_PROJECT=$GCP_PROJECT
 
 # Run gcsfuse and Grafana server
 # Note: Cloud Run requires a single process, so we use exec to run Grafana directly
 # gcsfuse is run in the background to mount GCS before starting Grafana
-CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${VOLUME_BUCKET}-grafana-bucket/ /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+# CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${VOLUME_BUCKET}-grafana-bucket/ /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+CMD /bin/bash -c "gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
 
 EXPOSE 3000
 
