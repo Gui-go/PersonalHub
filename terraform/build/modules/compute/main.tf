@@ -251,20 +251,98 @@ resource "google_cloud_run_service_iam_member" "rstudio_public_access" {
 # -----------------------------------------------------------------
 
 # Grafana ------------------------------------------------------------------------------------------
+# resource "google_cloud_run_v2_service" "run_grafana" {
+#   project  = var.proj_id
+#   name     = "grafana-run"
+#   location = var.region
+#   ingress  = "INGRESS_TRAFFIC_ALL"
+#   template {
+#     containers {
+#       image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/grafana-app:latest"
+#       ports { container_port = 3000 }
+#       resources {
+#         limits = {
+#           cpu    = "1"
+#           memory = "512Mi"
+#         }
+#       }
+#       env {
+#         name  = "GF_SECURITY_ADMIN_USER"
+#         value = "admin"
+#       }
+#       env {
+#         name  = "GF_SECURITY_ADMIN_PASSWORD"
+#         value = "admin"
+#       }
+#       env {
+#         name  = "GCS_BUCKET"
+#         value = var.grafana_bucket_name
+#       }
+#       env {
+#         name  = "GF_PATHS_DATA"
+#         value = "/var/lib/grafana"
+#       }
+#       env {
+#         name  = "GF_SERVER_HTTP_PORT"
+#         value = "3000"
+#       }
+#     }
+#     scaling {
+#       max_instance_count = 1
+#       min_instance_count = 0
+#     }
+#     vpc_access {
+#       connector = var.run_connector_id
+#       egress = "ALL_TRAFFIC"
+#     }
+#     timeout = "180s"
+#     service_account = var.grafana_run_sa_email
+#   }
+#   traffic {
+#     percent = 100
+#     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+#   }
+# }
+
 resource "google_cloud_run_v2_service" "run_grafana" {
-  project  = var.proj_id
+  provider = google-beta
   name     = "grafana-run"
   location = var.region
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
+    execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
     containers {
-      image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/grafana-app:latest"
+      image = "grafana/grafana:latest"
       ports { container_port = 3000 }
+      volume_mounts {
+        name       = "grafana-config"
+        mount_path = "/etc/grafana"
+      }
       resources {
         limits = {
           cpu    = "1"
           memory = "512Mi"
         }
+      }
+      # env {
+      #   name  = "PORT"
+      #   value = "3000"
+      # }
+      env {
+        name  = "GF_PATHS_CONFIG"
+        value = "/etc/grafana/grafana.ini"
+      }
+      env {
+        name  = "GF_PATHS_PROVISIONING"
+        value = "/etc/grafana/provisioning"
+      }
+      env {
+        name  = "GF_PATHS_DATA"
+        value = "/var/lib/grafana"
+      }
+      env {
+        name  = "GF_SERVER_HTTP_PORT"
+        value = "3000"
       }
       env {
         name  = "GF_SECURITY_ADMIN_USER"
@@ -278,29 +356,18 @@ resource "google_cloud_run_v2_service" "run_grafana" {
         name  = "GCS_BUCKET"
         value = var.grafana_bucket_name
       }
-      env {
-        name  = "GF_PATHS_DATA"
-        value = "/var/lib/grafana"
+    }
+    volumes {
+      name = "grafana-config"
+      gcs {
+        bucket    = var.grafana_bucket_name
+        read_only = false 
       }
-      env {
-        name  = "GF_SERVER_HTTP_PORT"
-        value = "3000"
-      }
     }
-    scaling {
-      max_instance_count = 1
-      min_instance_count = 0
-    }
-    vpc_access {
-      connector = var.run_connector_id
-      egress = "ALL_TRAFFIC"
-    }
-    timeout = "180s"
-    service_account = var.grafana_run_sa_email
   }
   traffic {
-    percent = 100
     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+    percent = 100
   }
 }
 
