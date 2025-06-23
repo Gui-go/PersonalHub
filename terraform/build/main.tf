@@ -49,7 +49,7 @@ module "network" {
   region            = var.region
   tag_owner         = var.tag_owner
   vpc_subnet_cidr   = var.vpc_subnet_cidr
-  run_frontend_name = module.compute.run_frontend_name 
+  # run_frontend_name = module.compute.run_frontend_name 
   # run_vault_name    = module.compute.run_vault_name 
   run_names         = module.compute.run_names
   domain            = var.domain

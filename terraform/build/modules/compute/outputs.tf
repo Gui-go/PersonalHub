@@ -9,21 +9,21 @@ output "run_portfolio" {
   }
 }
 
-# output "run_fastapi" {
-#   value = {
-#     service  = google_cloud_run_v2_service.run_fastapi.name
-#     region   = google_cloud_run_v2_service.run_fastapi.location
-#   }
-# }
+output "run_fastapi" {
+  value = {
+    service  = google_cloud_run_v2_service.run_fastapi.name
+    region   = google_cloud_run_v2_service.run_fastapi.location
+  }
+}
 
 output "run_names" {
   value = {
-    www               = google_cloud_run_v2_service.run_portfolio.name#,
+    www               = google_cloud_run_v2_service.run_portfolio.name,
     # portfolio         = google_cloud_run_v2_service.run_portfolio.name,
-    # fastapi           = google_cloud_run_v2_service.run_fastapi.name,
+    fastapi           = google_cloud_run_v2_service.run_fastapi.name,
     # # vault             = google_cloud_run_v2_service.run_vault.name,
-    # rstudio           = google_cloud_run_v2_service.run_rstudio.name,
-    # grafana           = google_cloud_run_v2_service.run_grafana.name
+    rstudio           = google_cloud_run_v2_service.run_rstudio.name,
+    grafana           = google_cloud_run_v2_service.run_grafana.name
 
     # tom-riddles-diary = google_cloud_run_v2_service.run_portfolio.name,
     # ollama            = google_cloud_run_v2_service.run_portfolio.name,
