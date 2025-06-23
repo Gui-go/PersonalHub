@@ -81,8 +81,8 @@ RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-bullseye main" | tee 
 RUN mkdir -p /var/lib/grafana && chown -R grafana:grafana /var/lib/grafana
 
 # Starting gcsfuse and Grafana server
-# CMD /bin/bash -c "gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana && exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
-CMD /bin/bash -c "gcsfuse --implicit-dirs --foreground --debug_gcs ${GCS_BUCKET} /var/lib/grafana && exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+CMD /bin/bash -c "gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana && exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+# CMD /bin/bash -c "gcsfuse --implicit-dirs --foreground --debug_gcs ${GCS_BUCKET} /var/lib/grafana && exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
 # Exposing Grafana's default port
 EXPOSE 3000
 
