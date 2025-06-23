@@ -77,6 +77,7 @@ module "iam" {
   location      = var.location
   region        = var.region
   run_portfolio = module.compute.run_portfolio
+  grafana_bucket_name = module.datalake.grafana_bucket_name
   # run_fastapi   = module.compute.run_fastapi
 }
 

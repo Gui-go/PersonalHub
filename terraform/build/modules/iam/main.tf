@@ -204,6 +204,18 @@ resource "google_project_iam_member" "githubactions_sa_roles" {
   project = var.proj_id
 }
 
+# Grafana SA ----------------------------------------------------------
+resource "google_service_account" "grafana_sa" {
+  project      = var.proj_id
+  account_id   = "grafana-run-sa"
+  display_name = "Grafana Cloud Run Service Account"
+}
 
+# Granting the service account storage admin access to the GCS bucket
+resource "google_storage_bucket_iam_member" "grafana_sa_role" {
+  bucket = var.grafana_bucket_name
+  role   = "roles/storage.admin"
+  member = "serviceAccount:${google_service_account.grafana_sa.email}"
+}
 
 
