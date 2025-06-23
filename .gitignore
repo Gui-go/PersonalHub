@@ -1,5 +1,7 @@
 
 .env
+/env/
+/.vscode/
 
 /data/
 
@@ -7,12 +9,12 @@ ghactionsSA-key.json
 
 */.terraform/
 */.terraform.lock.hcl
-*/terraform.tfstate
+
 */terraform.tfstate.backup
 terraform/hub/terraform.tfstate.backup
 terraform/hub/terraform.tfstate.backup
 /terraform/hub/.terraform/
-*.tfstate
+
 
 
 github-actions-deployer-key.json
@@ -42,3 +44,5 @@ terraform-sa-key.json
 */node_modules/
 
 terraform.tfstate.backup
+
+.terraform.lock.hcl

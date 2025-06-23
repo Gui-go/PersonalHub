@@ -48,8 +48,8 @@ my-app/
 
 
 docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest \
-  -f Dockerfile \
+  -t us-central1-docker.pkg.dev/personalhub14/personalhub-artifact-repo/portfolio-app:latest \
+  -f portfolio-app.dockerfile \
   --push .
 
 
@@ -62,3 +62,5 @@ docker buildx build --platform linux/amd64 \
             --region=us-central1 \
             --allow-unauthenticated
 
+
+npm run dev
