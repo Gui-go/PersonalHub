@@ -13,11 +13,14 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /var/lib/grafana
 
 # Mount GCS bucket and start Grafana in CMD
-CMD gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana && /run.sh
+
+ARG VOLUME_BUCKET
+ENV VOLUME_BUCKET=$VOLUME_BUCKET
+
+CMD gcsfuse --implicit-dirs ${VOLUME_BUCKET} /var/lib/grafana && /run.sh
 
 
 ENV GF_SERVER_HTTP_PORT=3000
-
 
 EXPOSE 3000
 
