@@ -19,12 +19,12 @@ output "run_fastapi" {
 output "run_names" {
   value = {
     www               = google_cloud_run_v2_service.run_portfolio.name,
-    # portfolio         = google_cloud_run_v2_service.run_portfolio.name,
-    fastapi           = google_cloud_run_v2_service.run_fastapi.name,
-    # # vault             = google_cloud_run_v2_service.run_vault.name,
+    api               = google_cloud_run_v2_service.run_fastapi.name,
     rstudio           = google_cloud_run_v2_service.run_rstudio.name,
-    grafana           = google_cloud_run_v2_service.run_grafana.name
+    grafana           = google_cloud_run_v2_service.run_grafana.name,
 
+    # portfolio         = google_cloud_run_v2_service.run_portfolio.name,
+    # # vault             = google_cloud_run_v2_service.run_vault.name,
     # tom-riddles-diary = google_cloud_run_v2_service.run_portfolio.name,
     # ollama            = google_cloud_run_v2_service.run_portfolio.name,
     # soi-erasmus       = google_cloud_run_v2_service.run_portfolio.name,
