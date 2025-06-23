@@ -9,9 +9,9 @@ vpc_subnet_cidr = "10.8.0.0/28"   # cicd
 domain          = "guigo.dev.br"
 subdomains      = [
     "www", 
-    # "api", 
-    # "rstudio", 
-    # "grafana"
+    "api", 
+    "rstudio", 
+    "grafana"
   ]
 tag_owner       = "guilhermeviegas"
 tag_env         = "prod"

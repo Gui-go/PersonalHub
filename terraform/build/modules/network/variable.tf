@@ -28,10 +28,10 @@ variable "vpc_subnet_cidr" {
   type        = string
 }
 
-variable "run_frontend_name" {
-  description = "Run instance frontend output name"
-  type        = string
-}
+# variable "run_frontend_name" {
+#   description = "Run instance frontend output name"
+#   type        = string
+# }
 
 variable "run_names" {
   description = "Mapping of run instances names"
