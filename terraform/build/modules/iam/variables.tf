@@ -28,6 +28,13 @@ variable "proj_number" {
   type        = string
 }
 
+variable "grafana_bucket_name" {
+  description = "Grafana bucket name"
+  type        = string
+}
+
+
+
 variable "run_portfolio" {
   description = "GCP Cloud Run service for Portfolio"
   type = object({
