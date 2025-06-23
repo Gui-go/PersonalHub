@@ -275,9 +275,13 @@ resource "google_cloud_run_v2_service" "run_grafana" {
         value = "admin"
       }
       env {
-          name  = "GCS_BUCKET"
-          value = var.grafana_bucket_name
-        }
+        name  = "GCS_BUCKET"
+        value = var.grafana_bucket_name
+      }
+      env {
+        name  = "GF_PATHS_DATA"
+        value = "/var/lib/grafana"
+      }
     }
     scaling {
       max_instance_count = 1
@@ -288,6 +292,7 @@ resource "google_cloud_run_v2_service" "run_grafana" {
       egress = "ALL_TRAFFIC"
     }
     timeout = "60s"
+    service_account = var.grafana_run_sa_email
   }
   traffic {
     percent = 100

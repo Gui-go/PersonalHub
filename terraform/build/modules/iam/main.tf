@@ -205,7 +205,7 @@ resource "google_project_iam_member" "githubactions_sa_roles" {
 }
 
 # Grafana SA ----------------------------------------------------------
-resource "google_service_account" "grafana_sa" {
+resource "google_service_account" "grafana_run_sa" {
   project      = var.proj_id
   account_id   = "grafana-run-sa"
   display_name = "Grafana Cloud Run Service Account"
@@ -215,7 +215,7 @@ resource "google_service_account" "grafana_sa" {
 resource "google_storage_bucket_iam_member" "grafana_sa_role" {
   bucket = var.grafana_bucket_name
   role   = "roles/storage.admin"
-  member = "serviceAccount:${google_service_account.grafana_sa.email}"
+  member = "serviceAccount:${google_service_account.grafana_run_sa.email}"
 }
 
 

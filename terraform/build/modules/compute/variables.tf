@@ -58,6 +58,11 @@ variable "portfolio_run_sa_email" {
   type        = string
 }
 
+variable "grafana_run_sa_email" {
+  description = "Grafana Service Account email"
+  type        = string
+}
+
 variable "fastapi_run_sa_email" {
   description = "FastAPI Service Account email"
   type        = string

@@ -96,6 +96,7 @@ module "compute" {
   grafana_bucket_name = module.datalake.grafana_bucket_name
   portfolio_run_sa_email = module.iam.portfolio_run_sa_email
   fastapi_run_sa_email = module.iam.fastapi_run_sa_email
+  grafana_run_sa_email = module.iam.grafana_run_sa_email
 }
 
 

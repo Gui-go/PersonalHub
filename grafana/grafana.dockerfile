@@ -42,25 +42,49 @@
 # EXPOSE 3000
 
 
+# FROM debian:bullseye-slim
+
+# RUN apt-get update && apt-get install -y gnupg curl apt-transport-https software-properties-common && \
+#     echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list && \
+#     curl https://packages.grafana.com/gpg.key | apt-key add - && \
+#     apt-get update && apt-get install -y grafana && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-bullseye main" | tee /etc/apt/sources.list.d/gcsfuse.list && \
+#     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+#     apt-get update && apt-get install -y gcsfuse && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# RUN mkdir -p /var/lib/grafana && chown -R grafana:grafana /var/lib/grafana
+
+# CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${GCS_BUCKET} /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+
+# EXPOSE 3000
+
+# Using Debian Bullseye slim as the base image
 FROM debian:bullseye-slim
 
+# Installing dependencies and Grafana
 RUN apt-get update && apt-get install -y gnupg curl apt-transport-https software-properties-common && \
     echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list && \
     curl https://packages.grafana.com/gpg.key | apt-key add - && \
     apt-get update && apt-get install -y grafana && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Installing gcsfuse for GCS mounting
 RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-bullseye main" | tee /etc/apt/sources.list.d/gcsfuse.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && apt-get install -y gcsfuse && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Creating and setting permissions for Grafana data directory
 RUN mkdir -p /var/lib/grafana && chown -R grafana:grafana /var/lib/grafana
 
-CMD /bin/bash -c "gcsfuse --implicit-dirs gs://${GCS_BUCKET} /var/lib/grafana & exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
+# Starting gcsfuse and Grafana server
+CMD /bin/bash -c "gcsfuse --implicit-dirs ${GCS_BUCKET} /var/lib/grafana && exec /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini"
 
+# Exposing Grafana's default port
 EXPOSE 3000
-
 
 # Optional: install Grafana plugins (example)
 # ENV GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel
