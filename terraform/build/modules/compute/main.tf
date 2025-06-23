@@ -282,6 +282,10 @@ resource "google_cloud_run_v2_service" "run_grafana" {
         name  = "GF_PATHS_DATA"
         value = "/var/lib/grafana"
       }
+      env {
+        name  = "GF_SERVER_HTTP_PORT"
+        value = "3000"
+      }
     }
     scaling {
       max_instance_count = 1
@@ -291,7 +295,7 @@ resource "google_cloud_run_v2_service" "run_grafana" {
       connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
-    timeout = "60s"
+    timeout = "180s"
     service_account = var.grafana_run_sa_email
   }
   traffic {
