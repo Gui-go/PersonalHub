@@ -32,12 +32,12 @@ jobs:
           context: ./fastapi
           file: ./fastapi/fastapi.dockerfile
           push: true
-          tags: us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest
+          tags: us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/personalhub-artifact-repo/fastapi-api:latest
 
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy fastapi-run \
-            --image=us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/fastapi-api:latest \
+            --image=us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/personalhub-artifact-repo/fastapi-api:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
