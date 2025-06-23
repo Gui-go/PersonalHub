@@ -1,26 +1,21 @@
-# Use the official Grafana image as a base
-FROM grafana/grafana-oss:10.4.2
+FROM debian:bullseye-slim
 
-# Install gcsfuse
-RUN apt-get update && apt-get install -y \
-    gnupg curl lsb-release && \
-    echo "deb http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list && \
+RUN apt-get update && apt-get install -y gnupg curl apt-transport-https software-properties-common && \
+    echo "deb https://packages.grafana.com/oss/deb stable main" > /etc/apt/sources.list.d/grafana.list && \
+    curl https://packages.grafana.com/gpg.key | apt-key add - && \
+    apt-get update && apt-get install -y grafana
+
+RUN echo "deb http://packages.cloud.google.com/apt gcsfuse-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/gcsfuse.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
     apt-get update && apt-get install -y gcsfuse && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create mount directory
 RUN mkdir -p /var/lib/grafana
-
-# Mount GCS bucket and start Grafana in CMD
 
 ARG VOLUME_BUCKET
 ENV VOLUME_BUCKET=$VOLUME_BUCKET
 
-CMD gcsfuse --implicit-dirs ${VOLUME_BUCKET} /var/lib/grafana && /run.sh
-
-
-ENV GF_SERVER_HTTP_PORT=3000
+CMD gcsfuse --implicit-dirs ${VOLUME_BUCKET} /var/lib/grafana && /usr/sbin/grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini
 
 EXPOSE 3000
 
