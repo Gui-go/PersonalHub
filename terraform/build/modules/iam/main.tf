@@ -183,45 +183,27 @@ resource "google_service_account" "fastapi_run_sa" {
 
 # # GH Actions SA -------------------------------------------------------------------------
 
-# # Create a service account
-# resource "google_service_account" "githubactions_sa" {
-#   project      = var.proj_id
-#   account_id   = "github-actions-sa"
-#   display_name = "GitHub Actions Service Account"
-#   description  = "Service Account for Deployment via GitHub Actions"
-# }
+# Create a service account
+resource "google_service_account" "githubactions_sa" {
+  project      = var.proj_id
+  account_id   = "github-actions-sa"
+  display_name = "GitHub Actions Service Account"
+  description  = "Service Account for Deployment via GitHub Actions"
+}
 
-# # Assign roles for Cloud Run (to deploy and manage services)
-# resource "google_project_iam_member" "run_admin_iam_member" {
-#   project = var.proj_id
-#   role    = "roles/run.admin"
-#   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
-# }
+resource "google_project_iam_member" "githubactions_sa_roles" {
+  for_each = toset([
+    "roles/run.admin",
+    "roles/iam.serviceAccountUser",
+    "roles/iam.securityAdmin",
+    "roles/artifactregistry.writer",
+    "roles/storage.admin",
+  ])
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
+  project = var.proj_id
+}
 
-# # Grant the service account permission to act as a Cloud Run runtime service account
-# resource "google_project_iam_member" "service_account_user_iam_member" {
-#   project = var.proj_id
-#   role    = "roles/iam.serviceAccountUser"
-#   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
-# }
-
-# resource "google_project_iam_member" "artifact_registry_writer_iam_member" {
-#   project = var.proj_id
-#   role    = "roles/artifactregistry.writer"
-#   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
-# }
-
-# resource "google_project_iam_member" "storage_admin_iam_member" {
-#   project = var.proj_id
-#   role    = "roles/storage.admin"
-#   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
-# }
-
-# resource "google_project_iam_member" "security_admin_iam_member" {
-#   project = var.proj_id
-#   role    = "roles/iam.securityAdmin"
-#   member  = "serviceAccount:${google_service_account.githubactions_sa.email}"
-# }
 
 
 
