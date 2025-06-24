@@ -6,13 +6,13 @@ services:
       context: .
       dockerfile: grafana.dockerfile
     ports:
-      - "3000:3000"
+      - "3003:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
-    # environment:
-    #   - GF_SECURITY_ADMIN_USER=admin
-    #   - GF_SECURITY_ADMIN_PASSWORD=admin
-    #   - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel
 
 volumes:
   grafana-storage:

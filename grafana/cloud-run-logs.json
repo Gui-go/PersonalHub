@@ -1,0 +1,20 @@
+{
+  "title": "Cloud Run Logs",
+  "panels": [
+    {
+      "title": "Logs",
+      "type": "table",
+      "datasource": "GoogleCloudMonitoring",
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "logs",
+          "stackdriver": {
+            "project": "${var.proj_id}",
+            "filter": "resource.type=\"cloud_run_revision\" serviceName=\"grafana-run\""
+          }
+        }
+      ]
+    }
+  ]
+}

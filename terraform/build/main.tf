@@ -3,14 +3,8 @@
 provider "google" {
   project = var.proj_id
   region  = var.region
+  credentials = file("personalhub14-terraform-sa-key.json")
 }
-
-# provider "google" {
-#   project     = var.proj_number
-#   region      = var.location
-#   credentials = file("personalhub14-teafform-service-account-key.json")
-# }
-
 
 provider "google-beta" {
   project     = var.proj_id
@@ -49,8 +43,8 @@ module "network" {
   region            = var.region
   tag_owner         = var.tag_owner
   vpc_subnet_cidr   = var.vpc_subnet_cidr
-  # run_frontend_name = module.compute.run_frontend_name 
-  # run_vault_name    = module.compute.run_vault_name 
+  # run_frontend_name = module.compute.run_frontend_name
+  # run_vault_name    = module.compute.run_vault_name
   run_names         = module.compute.run_names
   domain            = var.domain
   subdomains        = var.subdomains
@@ -78,7 +72,7 @@ module "iam" {
   region        = var.region
   run_portfolio = module.compute.run_portfolio
   grafana_bucket_name = module.datalake.grafana_bucket_name
-  # run_fastapi   = module.compute.run_fastapi
+  run_fastapi   = module.compute.run_fastapi
 }
 
 module "compute" {
@@ -88,7 +82,7 @@ module "compute" {
   proj_number       = var.proj_number
   region            = var.region
   location          = var.location
-  run_connector_id  = module.network.run_connector_id        #####################
+  run_connector_id  = module.network.run_connector_id
   # vault_bucket_name = module.datalake.vault_bucket_name
   # vault_backup_bucket_name = module.datalake.vault_backup_bucket_name
   # vault_backup_function_name = module.datalake.vault_backup_function_name
@@ -99,60 +93,31 @@ module "compute" {
   grafana_run_sa_email = module.iam.grafana_run_sa_email
 }
 
+module "security" {
+  source      = "./modules/security"
+  proj_id     = var.proj_id
+  proj_number = var.proj_number
+  region      = var.region
+  tag_owner   = var.tag_owner
+  tag_env     = var.tag_env
+}
 
-# # Enable necessary APIs
-# resource "google_project_service" "cloudbuild_api" {
-#   service = "cloudbuild.googleapis.com"
-#   disable_on_destroy = false
-# }
+module "discovery" {
+  source      = "./modules/discovery"
+  proj_name   = var.proj_name
+  proj_id     = var.proj_id
+  # region      = var.region
+  release     = var.release
+  # zone        = var.zone
+  # tag_env   = var.tag_env
+}
 
-# resource "google_project_service" "source_api" {
-#   service = "sourcerepo.googleapis.com"
-#   disable_on_destroy = false
-# }
-
-# # Create a service account for Cloud Build
-# resource "google_service_account" "cloudbuild_sa" {
-#   account_id   = "cloudbuild-sa"
-#   display_name = "Cloud Build Service Account"
-# }
-
-# # Assign necessary roles to the service account
-# resource "google_project_iam_member" "cloudbuild_sa_roles" {
-#   for_each = toset([
-#     "roles/cloudbuild.builds.builder",
-#     "roles/logging.logWriter",
-#     "roles/storage.objectAdmin",
-#   ])
-#   role    = each.key
-#   member  = "serviceAccount:${google_service_account.cloudbuild_sa.email}"
-#   project = var.proj_id
-# }
-
-
-
-
-# Create a Cloud Build trigger for GitHub
-# resource "google_cloudbuild_trigger" "github_trigger" {
-#   name        = "github-push-trigger"
-#   description = "Trigger build on push to main branch"
-#   source_to_build {
-#     uri       = "https://github.com/${var.github_owner}/${var.github_repo}"
-#     ref       = "refs/heads/main"
-#     repo_type = "GITHUB"
-#   }
-#   build {
-#     step {
-#       name = "gcr.io/cloud-builders/docker"
-#       args = ["build", "-t", "gcr.io/$PROJECT_ID/my-app", "."]
-#     }
-#     step {
-#       name = "gcr.io/cloud-builders/docker"
-#       args = ["push", "gcr.io/$PROJECT_ID/my-app"]
-#     }
-#   }
-#   depends_on = [
-#     google_project_service.cloudbuild_api,
-#     google_service_account.cloudbuild_sa,
-#   ]
-# }
+module "datawarehouse" {
+  source            = "./modules/datawarehouse"
+  proj_name         = var.proj_name
+  proj_id           = var.proj_id
+  proj_number       = var.proj_number
+  region            = var.region
+  dataform_sa_email = module.iam.dataform_sa_email
+  gh_token_secret   = module.security.gh_token_secret
+}

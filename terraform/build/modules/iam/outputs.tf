@@ -12,6 +12,6 @@ output "grafana_run_sa_email" {
   value = google_service_account.grafana_run_sa.email
 }
 
-# output "dataform_sa_email" {
-#   value = google_service_account.customdataform_sa.email
-# }
+output "dataform_sa_email" {
+  value = google_service_account.customdataform_sa.email
+}

@@ -46,3 +46,11 @@ terraform-sa-key.json
 terraform.tfstate.backup
 
 .terraform.lock.hcl
+
+terraform/build/personalhub14-terraform-sa-key.json
+
+
+
+
+
+

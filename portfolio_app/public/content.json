@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.3.0)",
+        "version": "(Version 0.6.3.2)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -67,69 +67,14 @@
         "image": "/images/cloud22.jpg",
         "tol": [
             {
-                "id": "vault-warden",
-                "title": "Vault Warden",
+                "id": "personalhub-improver",
+                "title": "PersonalHub Improver",
                 "short_title": "",
                 "full_title": "",
-                "path": "https://vault.vaultwarden.net/#/login",
-                "date": "2025-01-??",
-                "excerpt": "My own instance of VaultWarden to store my passwords and secrets in a secure way.",
-                "image": "/images/secure1.jpg",
-                "content": "covers abcabc abcabc "
-            },
-            {
-                "id": "currency-chart",
-                "title": "Currency Chart",
-                "short_title": "",
-                "full_title": "",
-                "path": "/tools/currency-chart",
+                "path": "/tools/personalhub-improver",
                 "date": "2024-12-??",
-                "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
-                "image": "/images/currency4.jpg",
-                "content": "abcabcabc"
-            },
-            {
-                "id": "private-rstudio",
-                "title": "Private R Studio",
-                "short_title": "",
-                "full_title": "",
-                "path": "https://rstudio.guigo.dev.br/",
-                "date": "2024-12-??",
-                "excerpt": "Here is my own private instance of R Studio in the Cloud.",
-                "image": "/images/rstudio1.png",
-                "content": "abcabcabc"
-            },
-            {
-                "id": "n8n",
-                "title": "n8n",
-                "short_title": "",
-                "full_title": "",
-                "path": "/tools/n8n",
-                "date": "2024-12-??",
-                "excerpt": "(WORK IN PROGRESS) My own n8n instance to develop AI agents and tools on the Cloud.",
-                "image": "/images/n8n.png",
-                "content": "abcabcabc"
-            },
-            {
-                "id": "stupid-button",
-                "title": "Stupid Button",
-                "short_title": "",
-                "full_title": "",
-                "path": "/tools/stupid-button",
-                "date": "2024-12-??",
-                "excerpt": "(WORK IN PROGRESS) ",
-                "image": "/images/n8n.png",
-                "content": "abcabcabc"
-            },
-            {
-                "id": "postgres",
-                "title": "PostgreSQL",
-                "short_title": "",
-                "full_title": "",
-                "path": "https://postgres.guigo.dev.br/",
-                "date": "2024-12-??",
-                "excerpt": "An instance of GCP Cloud SQL with PostgreSQL to store my data.",
-                "image": "/images/postgres3.png",
+                "excerpt": "A Gemini AI agent to help me improve my personal hub project cloud infrastructure.",
+                "image": "/images/ai8.jpg",
                 "content": "abcabcabc"
             },
             {
@@ -144,14 +89,80 @@
                 "content": "abcabcabc"
             },
             {
-                "id": "personalhub-improver",
-                "title": "PersonalHub Improver",
+                "id": "vault-warden",
+                "title": "Vault Warden",
                 "short_title": "",
                 "full_title": "",
-                "path": "/tools/personalhub-improver",
+                "path": "https://vault.vaultwarden.net/#/login",
+                "date": "2025-01-??",
+                "excerpt": "My own instance of VaultWarden to store my passwords and secrets in a secure way.",
+                "image": "/images/secure1.jpg",
+                "content": "covers abcabc abcabc "
+            },
+            {
+                "id": "private-rstudio",
+                "title": "Private R Studio",
+                "short_title": "",
+                "full_title": "",
+                "path": "https://rstudio.guigo.dev.br/",
                 "date": "2024-12-??",
-                "excerpt": "A Gemini AI agent to help me improve my personal hub project cloud infrastructure.",
-                "image": "/images/ai8.jpg",
+                "excerpt": "Here is my own private instance of R Studio in the Cloud.",
+                "image": "/images/rstudio1.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "postgres",
+                "title": "PostgreSQL",
+                "short_title": "",
+                "full_title": "",
+                "path": "https://postgres.guigo.dev.br/",
+                "date": "2024-12-??",
+                "excerpt": "An instance of GCP Cloud SQL with PostgreSQL to store my data.",
+                "image": "/images/postgres3.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "firestore",
+                "title": "Firestore",
+                "short_title": "",
+                "full_title": "",
+                "path": "https://firestore.guigo.dev.br/",
+                "date": "2024-12-??",
+                "excerpt": "An instance of GCP Firestore to store my data in a NoSQL schema.",
+                "image": "/images/firestore6.png",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "stupid-button",
+                "title": "Stupid Button",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/stupid-button",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) A stupid button that increses in price each time it is pressed.",
+                "image": "/images/stupid-button1.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "currency-chart",
+                "title": "Currency Chart",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/currency-chart",
+                "date": "2024-12-??",
+                "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
+                "image": "/images/currency4.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "n8n",
+                "title": "n8n",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/n8n",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) My own n8n instance to develop AI agents and tools on the Cloud.",
+                "image": "/images/n8n.png",
                 "content": "abcabcabc"
             }
         ]
