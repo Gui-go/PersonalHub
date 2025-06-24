@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 
 const menuItems = [
   // { id: 'home', label: 'Home', path: '/' },
+  { id: 'tools', label: 'Tools', path: '/tools' },
+  { id: 'agents', label: 'Agents', path: '/agents' },
   { id: 'publications', label: 'Publications', path: '/publications' },
   { id: 'projects', label: 'Projects', path: '/projects' },
-  { id: 'agents', label: 'Agents', path: '/agents' },
   { id: 'geolayers', label: 'GeoLayers', path: '/geolayers' },
-  { id: 'tools', label: 'Tools', path: '/tools' },
   { id: 'stories', label: 'Stories', path: '/stories' },
   { id: 'blogs', label: 'Blogs', path: '/blogs' },
   { id: 'about', label: 'About', path: '/about' }

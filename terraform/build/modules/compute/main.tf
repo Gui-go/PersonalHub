@@ -311,8 +311,10 @@ resource "google_cloud_run_v2_service" "run_grafana" {
   ingress  = "INGRESS_TRAFFIC_ALL"
   template {
     execution_environment = "EXECUTION_ENVIRONMENT_GEN2"
+    service_account = var.grafana_run_sa_email
     containers {
       image = "grafana/grafana:latest"
+      # image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/grafana-app:latest"
       ports { container_port = 3000 }
       volume_mounts {
         name       = "grafana-config"
@@ -324,10 +326,6 @@ resource "google_cloud_run_v2_service" "run_grafana" {
           memory = "512Mi"
         }
       }
-      # env {
-      #   name  = "PORT"
-      #   value = "3000"
-      # }
       env {
         name  = "GF_PATHS_CONFIG"
         value = "/etc/grafana/grafana.ini"
@@ -340,10 +338,10 @@ resource "google_cloud_run_v2_service" "run_grafana" {
         name  = "GF_PATHS_DATA"
         value = "/var/lib/grafana"
       }
-      env {
-        name  = "GF_SERVER_HTTP_PORT"
-        value = "3000"
-      }
+      # env {
+      #   name  = "GF_SERVER_HTTP_PORT"
+      #   value = "3000"
+      # }
       env {
         name  = "GF_SECURITY_ADMIN_USER"
         value = "admin"
@@ -351,6 +349,23 @@ resource "google_cloud_run_v2_service" "run_grafana" {
       env {
         name  = "GF_SECURITY_ADMIN_PASSWORD"
         value = "admin"
+      }
+      env {
+        name  = "GF_INSTALL_PLUGINS"
+        value = "grafana-stackdriver-datasource"
+      }
+      # env {
+      #   name  = "GF_SERVER_ROOT_URL"
+      #   value = "https://grafana.guigo.dev.br"
+      #   # value = "https://grafana-run-<HASH>-<REGION>.a.run.app"
+      # }
+      env {
+        name  = "GF_SERVER_ROOT_URL"
+        value = "%(protocol)s://%(domain)s/"
+      }
+      env {
+        name  = "GF_SERVER_HTTP_ADDR"
+        value = "0.0.0.0"
       }
       env {
         name  = "GCS_BUCKET"

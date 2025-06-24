@@ -43,11 +43,11 @@ variable "run_portfolio" {
   })
 }
 
-# variable "run_fastapi" {
-#   description = "GCP Cloud Run service for FastAPI"
-#   type = object({
-#     service  = string
-#     region   = string
-#   })
-# }
+variable "run_fastapi" {
+  description = "GCP Cloud Run service for FastAPI"
+  type = object({
+    service  = string
+    region   = string
+  })
+}
 

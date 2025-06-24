@@ -140,6 +140,27 @@ resource "google_storage_bucket" "grafana_bucket" {
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
+# resource "google_storage_bucket_object" "grafana_datasource_config" {
+#   name   = "provisioning/datasources/datasources.yaml"
+#   bucket = var.grafana_bucket_name
+#   content = templatefile("${path.module}/datasources.yaml", {
+#     proj_id = var.proj_id
+#   })
+# }
+
+# resource "google_storage_bucket_object" "grafana_dashboard_config" {
+#   name   = "provisioning/dashboards/dashboards.yaml"
+#   bucket = var.grafana_bucket_name
+#   content = file("${path.module}/dashboards.yaml")
+# }
+
+# resource "google_storage_bucket_object" "grafana_dashboard" {
+#   name   = "provisioning/dashboards/cloud-run-logs.json"
+#   bucket = var.grafana_bucket_name
+#   content = templatefile("${path.module}/cloud-run-logs.json", {
+#     proj_id = var.proj_id
+#   })
+# }
 
 # # datasets ------------------------------------------------------------------------------------
 
