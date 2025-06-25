@@ -1,0 +1,5 @@
+services:
+  r-flask-api1:
+    build: .
+    ports:
+      - "8080:8080"

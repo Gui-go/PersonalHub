@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     // Fetch Identity Token from metadata server
     /////////// have API address in a ENV variable/secret to improve security
     const metadataServerUrl =
-      "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=https://fastapi-run-241432738087.us-central1.run.app";
+      "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=https://fastapi-run-415088972722.us-central1.run.app";
     const tokenResponse = await fetch(metadataServerUrl, {
       headers: {
         "Metadata-Flavor": "Google",
@@ -87,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     // Fetch data from FastAPI endpoint
     const apiUrl =
-      "https://fastapi-run-241432738087.us-central1.run.app/fetch/billing_prod/genai_service_suggestions?limit=1";
+      "https://fastapi-run-415088972722.us-central1.run.app/fetch/billing_prod/genai_service_suggestions?limit=1";
     const apiResponse = await fetch(apiUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
