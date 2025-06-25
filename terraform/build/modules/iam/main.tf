@@ -132,6 +132,14 @@ resource "google_bigquery_connection_iam_member" "dataform_can_use_connection" {
   member        = "serviceAccount:${google_service_account.customdataform_sa.email}"
 }
 
+# BQ Remote Functions Connection -------------------------------------------------------------------------
+
+resource "google_bigquery_connection" "bq_remote_functions_connection" {
+  connection_id = "bq_remote_functions_connection"
+  project       = var.proj_id
+  location      = var.location
+  cloud_resource {}
+}
 
 # # GH Actions SA -------------------------------------------------------------------------
 

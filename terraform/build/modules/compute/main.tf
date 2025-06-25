@@ -415,3 +415,43 @@ resource "google_cloud_run_service_iam_member" "grafana_public_access" {
 
 
 
+# Rstudio ------------------------------------------------------------------------------------------
+resource "google_cloud_run_v2_service" "run_r_functions" {
+  project  = var.proj_id
+  name     = "run-r-functions"
+  location = var.region
+  ingress  = "INGRESS_TRAFFIC_ALL"
+  template {
+    containers {
+      image = "${var.region}-docker.pkg.dev/${var.proj_id}/personalhub-artifact-repo/python_function:latest"
+      ports { container_port = 8080 }
+      resources {
+        limits = {
+          cpu    = "1"
+          memory = "512Mi"
+        }
+      }
+    }
+    scaling {
+      max_instance_count = 1
+      min_instance_count = 0
+    }
+    vpc_access {
+      connector = var.run_connector_id
+      egress = "ALL_TRAFFIC"
+    }
+    timeout = "60s"
+  }
+  traffic {
+    percent = 100
+    type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+  }
+}
+
+resource "google_cloud_run_service_iam_member" "r_functions_public_access" {
+  project  = var.proj_id
+  service  = google_cloud_run_v2_service.run_r_functions.name
+  location = google_cloud_run_v2_service.run_r_functions.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
