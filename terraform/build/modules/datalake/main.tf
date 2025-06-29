@@ -140,6 +140,27 @@ resource "google_storage_bucket" "grafana_bucket" {
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
+resource "google_storage_bucket" "bqml_import_bucket" {
+  project                     = var.proj_id
+  name                        = "${var.proj_id}-bqmlimport-bucket"
+  location                    = var.location
+  uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+}
+
+resource "google_storage_bucket_object" "bqml_import_bucket_tffunction1" {
+  name   = "tf_function1/create_model.py"
+  bucket = google_storage_bucket.bqml_import_bucket.name
+  content = file("../../functions_img/tf_function1/create_model.py")
+}
+
+resource "google_storage_bucket_object" "bqml_import_bucket_tffunction2" {
+  name   = "tf_function1/simple_model.keras"
+  bucket = google_storage_bucket.bqml_import_bucket.name
+  # content = file("../../functions_img/tf_function1/simple_model.keras")
+  content = filebase64("../../functions_img/tf_function1/simple_model.keras")
+}
+
 # resource "google_storage_bucket_object" "grafana_datasource_config" {
 #   name   = "provisioning/datasources/datasources.yaml"
 #   bucket = var.grafana_bucket_name

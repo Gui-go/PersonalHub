@@ -393,3 +393,43 @@ Registros.br >
       Aguardar processo (cerca de 2 horas)
 
 
+----------------------------------------------------
+Ideas:
+
+
+1) Measure distance with different projections (as selected dropdown):
+https://openlayers.org/en/latest/examples/measure-style.html
+
+2) Geo Transition annimation 
+https://openlayers.org/en/latest/examples/animation.html
+
+
+3) Circles to ilustrate projections:
+https://openlayers.org/en/latest/examples/tissot.html
+
+4) Line annimation:
+https://openlayers.org/en/latest/examples/feature-move-animation.html
+
+5) Free hand drawer:
+https://openlayers.org/en/latest/examples/draw-freehand.html
+
+6) Where am I?
+https://openlayers.org/en/latest/examples/geolocation.html
+
+7) Wind:
+https://openlayers.org/en/latest/examples/wind.html
+
+8) Flights and airports:
+https://openflights.org/
+
+9) Flight animation:
+https://openlayers.org/en/latest/examples/flight-animation.html
+
+
+
+
+
+
+
+
+
