@@ -439,7 +439,7 @@
                 "path": "/agents/professor-wilhelm",
                 "date": "2025-01-??",
                 "image": "/images/wilhelmRobotProfessor.jpg",
-                "excerpt": "(WORK IN PROGRESS) A customed LLM to support econometrics teachings.",
+                "excerpt": "A customed LLM to support econometrics teachings.",
                 "textH1": "Ask Professor Wilhelm",
                 "textP1": "This AI assistant can answer questions about econometrics, data science, statistics, and more.",
                 "textSearchbar": "Ask me about methods and techniques...",
@@ -449,16 +449,6 @@
                 "textQ3": "What is Geographically Weighted Regression (GWR)?",
                 "textQ4": "What programming languages does Guilherme know?",
                 "textBack": "Back to AI Agents"
-            },
-            {
-                "id": "foundry-trial",
-                "short_title": "",
-                "full_title": "",
-                "title": "Foundry Trial",
-                "path": "/agents/foundry-trial",
-                "date": "2024-12-??",
-                "excerpt": "Experimenting Azure Foundry",
-                "image": "/images/foundry1.jpg"
             }
         ]
     },
