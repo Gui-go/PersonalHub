@@ -1,0 +1,9 @@
+
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: airflow.dockerfile
+    ports:
+      - "8080:8080"
+
