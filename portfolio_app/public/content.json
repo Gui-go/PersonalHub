@@ -55,6 +55,17 @@
                 "excerpt": "(WORK IN PROGRESS) An interactive story about the influx of migrants from Mexico to the United States through Guilherme's perspective.",
                 "image": "/images/migrationBoarder.jpg",
                 "content": "abcabcabc"
+            },
+            {
+                "id": "knowledge-spillovers",
+                "title": "knowledge-spillovers",
+                "short_title": "",
+                "full_title": "",
+                "path": "/stories/knowledge-spillovers",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) ",
+                "image": "/images/error_img.png",
+                "content": "abcabcabc"
             }
         ]
     },
@@ -164,7 +175,16 @@
                 "excerpt": "(WORK IN PROGRESS) My own n8n instance to develop AI agents and tools on the Cloud.",
                 "image": "/images/n8n.png",
                 "content": "abcabcabc"
-            }
+            },
+            {
+                "id": "expenses-tracker",
+                "title": "Expenses Tracker",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/expenses-tracker",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) A tool to store and analyse receipt photos over time.",
+                "image": "/images/expensesTracker12.jpg"            }
         ]
     },
     "projects": {
@@ -429,6 +449,16 @@
                 "textQ3": "What is Geographically Weighted Regression (GWR)?",
                 "textQ4": "What programming languages does Guilherme know?",
                 "textBack": "Back to AI Agents"
+            },
+            {
+                "id": "foundry-trial",
+                "short_title": "",
+                "full_title": "",
+                "title": "Foundry Trial",
+                "path": "/agents/foundry-trial",
+                "date": "2024-12-??",
+                "excerpt": "Experimenting Azure Foundry",
+                "image": "/images/foundry1.jpg"
             }
         ]
     },
