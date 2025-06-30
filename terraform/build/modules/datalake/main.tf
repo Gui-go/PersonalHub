@@ -148,6 +148,14 @@ resource "google_storage_bucket" "bqml_import_bucket" {
   # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
 }
 
+resource "google_storage_bucket" "terraform_state_bucket" {
+  project                     = var.proj_id
+  name                        = "${var.proj_id}-tf-state-bucket"
+  location                    = var.location
+  uniform_bucket_level_access = true
+  # force_destroy = true # Allows deletion of non-empty buckets (use with caution)
+}
+
 # resource "google_storage_bucket_object" "bqml_import_bucket_tffunction1" {
 #   name   = "tf_function1/create_model.py"
 #   bucket = google_storage_bucket.bqml_import_bucket.name
