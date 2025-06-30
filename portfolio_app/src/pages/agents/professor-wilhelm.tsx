@@ -14,6 +14,8 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const wilhelm_configId = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY;
+
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -28,7 +30,7 @@ export default function Chatbot() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "api-key": process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || ""
+          "api-key": wilhelm_configId || ""
         },
         body: JSON.stringify({
           messages: [...messages, userMsg]
