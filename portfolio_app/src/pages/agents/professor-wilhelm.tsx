@@ -14,8 +14,6 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const wilhelm_configId = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY;
-
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -28,9 +26,13 @@ export default function Chatbot() {
       "https://project2wilhelm-resource.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview",
       {
         method: "POST",
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   "api-key": wilhelm_configId || ""
+        // },
         headers: {
           "Content-Type": "application/json",
-          "api-key": wilhelm_configId || ""
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY}`
         },
         body: JSON.stringify({
           messages: [...messages, userMsg]
