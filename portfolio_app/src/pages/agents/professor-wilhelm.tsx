@@ -22,13 +22,18 @@ export default function Chatbot() {
     setInput("");
     setLoading(true);
 
+
+    const apiKey = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY;
+    console.log("API Key:", apiKey);
+
+
     const res = await fetch(
       "https://project2wilhelm-resource.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "api-key": process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || "",
+          "api-key": process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || ""
         },
         body: JSON.stringify({
           messages: [...messages, userMsg]
