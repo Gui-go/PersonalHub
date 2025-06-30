@@ -14,8 +14,13 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const apiKey = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY;
+
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !apiKey) {
+      setMessages(prev => [...prev, { role: 'assistant', content: 'API key not configured.' }]);
+      return;
+    }
 
     const userMsg: Message = { role: 'user', content: input };
     setMessages(prev => [...prev, userMsg]);
@@ -29,7 +34,7 @@ export default function Chatbot() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'api-key': process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || '1Itfui7KdGMVq87XATubT1gg2gin9iCXTpvwRNRKReXGlQrfgTSoJQQJ99BFACHYHv6XJ3w3AAAAACOGxz9e'
+            'api-key': apiKey
           },
           body: JSON.stringify({
             messages: [...messages, userMsg]
@@ -39,8 +44,7 @@ export default function Chatbot() {
 
       if (!res.ok) {
         const errorData = await res.json();
-        console.error('API error:', errorData);
-        throw new Error(errorData.error?.message || 'Unknown error');
+        throw new Error(`${res.status} ${errorData.error?.message || 'Unknown error'}`);
       }
 
       const data = await res.json();
