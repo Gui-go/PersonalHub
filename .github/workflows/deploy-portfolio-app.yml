@@ -41,7 +41,6 @@ jobs:
             NEXT_PUBLIC_GWR_CONFIG_ID=${{ secrets.GWR_CONFIG_ID }}
             NEXT_PUBLIC_AZURE_WILHELM_KEY=${{ secrets.AZURE_WILHELM_KEY }}
 
-
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy portfolio-run \
