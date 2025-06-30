@@ -1,55 +1,67 @@
 'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 interface Message {
-  role: "user" | "assistant";
+  role: 'user' | 'assistant';
   content: string;
 }
 
 export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Hi! How can I help you today?" }
+    { role: 'assistant', content: 'Hi! How can I help you today?' }
   ]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const userMsg: Message = { role: "user", content: input };
+    const userMsg: Message = { role: 'user', content: input };
     setMessages(prev => [...prev, userMsg]);
-    setInput("");
+    setInput('');
     setLoading(true);
 
+    try {
+      const res = await fetch(
+        'https://project2wilhelm-resource.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || ''
+          },
+          body: JSON.stringify({
+            messages: [...messages, userMsg]
+          })
+        }
+      );
 
-    const apiKey = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY;
-    console.log("API Key:", apiKey);
-
-
-    const res = await fetch(
-      "https://project2wilhelm-resource.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": apiKey || "1Itfui7KdGMVq87XATubT1gg2gin9iCXTpvwRNRKReXGlQrfgTSoJQQJ99BFACHYHv6XJ3w3AAAAACOGxz9e"
-        },
-        body: JSON.stringify({
-          messages: [...messages, userMsg]
-        })
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('API error:', errorData);
+        throw new Error(errorData.error?.message || 'Unknown error');
       }
-    );
 
-    const data = await res.json();
-    setMessages(prev => [
-      ...prev,
-      data.choices?.[0]?.message || {
-        role: "assistant",
-        content: "Hmm, I couldn't generate a response."
-      }
-    ]);
-    setLoading(false);
+      const data = await res.json();
+      setMessages(prev => [
+        ...prev,
+        data.choices?.[0]?.message || {
+          role: 'assistant',
+          content: "Hmm, I couldn't generate a response."
+        }
+      ]);
+    } catch (err: any) {
+      setMessages(prev => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: `Error: ${err.message}`
+        }
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,9 +71,9 @@ export default function Chatbot() {
           <div
             key={i}
             className={`p-3 rounded-xl max-w-[80%] ${
-              m.role === "user"
-                ? "bg-blue-100 self-end"
-                : "bg-gray-100 self-start"
+              m.role === 'user'
+                ? 'bg-blue-100 self-end'
+                : 'bg-gray-100 self-start'
             }`}
           >
             <p className="text-sm text-gray-800">{m.content}</p>
@@ -76,7 +88,7 @@ export default function Chatbot() {
           placeholder="Type your message..."
           value={input}
           onChange={e => setInput(e.target.value)}
-          onKeyDown={e => e.key === "Enter" && sendMessage()}
+          onKeyDown={e => e.key === 'Enter' && sendMessage()}
           disabled={loading}
         />
         <button
@@ -84,7 +96,7 @@ export default function Chatbot() {
           onClick={sendMessage}
           disabled={loading}
         >
-          {loading ? "..." : "Send"}
+          {loading ? '...' : 'Send'}
         </button>
       </div>
     </div>
