@@ -11,6 +11,32 @@ provider "google-beta" {
   region      = var.location
 }
 
+provider "azurerm" {
+  features {}
+  subscription_id = "125cd73f-0eb0-497b-b8ac-589bc32789cd"
+}
+
+resource "azurerm_resource_group" "main_rg" {
+  name     = "foundry-tf-rg"
+  location = "East US"
+}
+
+resource "azurerm_cognitive_account" "openai" {
+  name                = "exampleopenaiacct"
+  location            = azurerm_resource_group.main_rg.location
+  resource_group_name = azurerm_resource_group.main_rg.name
+  kind                = "OpenAI"
+  sku_name            = "S0"
+
+  custom_subdomain_name = "exampleopenaiacct"
+
+  tags = {
+    environment = "dev"
+  }
+}
+
+
+
 resource "google_project_service" "apis" {
   for_each = toset([
     "run.googleapis.com",
