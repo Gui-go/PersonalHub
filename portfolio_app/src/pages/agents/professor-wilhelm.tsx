@@ -29,7 +29,7 @@ export default function Chatbot() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'api-key': process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || ''
+            'api-key': process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || '1Itfui7KdGMVq87XATubT1gg2gin9iCXTpvwRNRKReXGlQrfgTSoJQQJ99BFACHYHv6XJ3w3AAAAACOGxz9e'
           },
           body: JSON.stringify({
             messages: [...messages, userMsg]
