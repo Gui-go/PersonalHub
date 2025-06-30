@@ -1,7 +1,0 @@
-services:
-  react-portfolio36:
-    build:
-      context: .
-      dockerfile: react-portfolio.dockerfile
-    ports:
-      - "3036:3000"
