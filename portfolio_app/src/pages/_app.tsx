@@ -16,14 +16,13 @@
 // }
 
 
-
-// pages/_app.tsx
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import * as gtag from "../../lib/gtag";
 import '../styles/globals.css';
-
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -37,5 +36,13 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => router.events.off("routeChangeComplete", handleRouteChange);
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-grow">
+        <Component {...pageProps} />
+      </main>
+      <Footer />
+    </div>
+  );
 }
