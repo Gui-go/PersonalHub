@@ -22,6 +22,17 @@ type City = {
   lat: number;
 };
 
+
+// Criciuma
+
+// Ericeira
+// Estoril
+// Alcabideche
+// Amadora
+// Óbidos
+// Cobilhã
+// Foz do Arelho
+
 const cities: City[] = [
   { name: "Florianópolis, Santa Catarina", lon: -48.564151, lat: -27.59355 },
   { name: "São José, Santa Catarina", lon: -48.6367, lat: -27.6136 },
@@ -53,7 +64,7 @@ const cities: City[] = [
   { name: "Washington DC, USA", lon: -77.0369, lat: 38.9072 },
   { name: "Lisbon, Portugal", lon: -9.1393, lat: 38.7223 },
   { name: "Porto, Portugal", lon: -8.6102, lat: 41.1496 },
-  { name: "Vila Nova de Gaia, Portugal", lon: -8.6102, lat: 41.1496 },
+  // { name: "Vila Nova de Gaia, Portugal", lon: , lat:  },
   { name: "Faro, Portugal", lon: -7.9304, lat: 37.0194 },
   { name: "Coimbra, Portugal", lon: -8.4265, lat: 40.2033 },
   { name: "Braga, Portugal", lon: -8.4253, lat: 41.5331 },
@@ -71,7 +82,7 @@ const cities: City[] = [
   { name: "Carcavelos, Portugal", lon: -9.333, lat: 38.683 },
   { name: "Parede, Portugal", lon: -9.354, lat: 38.693 },
   { name: "Cascais, Portugal", lon: -9.422, lat: 38.697 },
-  { name: "Loires, Portugal", lon: -9.000, lat: 39.000 },
+  // { name: "Loures, Portugal", lon: , lat:  },
   { name: "Sintra, Portugal", lon: -9.381, lat: 38.797 },
   { name: "Peniche, Portugal", lon: -9.381, lat: 39.356 },
   { name: "Odivelas, Portugal", lon: -9.164, lat: 38.793 },
