@@ -184,7 +184,18 @@
                 "path": "/tools/expenses-tracker",
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) A tool to store and analyse receipt photos over time.",
-                "image": "/images/expensesTracker12.jpg"            }
+                "image": "/images/expensesTracker12.jpg"
+            },
+            {
+                "id": "google-analytics",
+                "title": "Google Analytics",
+                "short_title": "",
+                "full_title": "",
+                "path": "https://analytics.google.com/",
+                "date": "2024-12-??",
+                "excerpt": "Google Analytics support for www.guigo.dev.br in order to understand its usage.",
+                "image": "/images/ga44.png"
+            }
         ]
     },
     "projects": {
