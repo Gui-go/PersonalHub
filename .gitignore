@@ -47,7 +47,7 @@ terraform.tfstate.backup
 
 .terraform.lock.hcl
 
-*/terraform/gcp/personalhub14-terraform-sa-key.json
+*/personalhub14-terraform-sa-key.json
 
 
 
