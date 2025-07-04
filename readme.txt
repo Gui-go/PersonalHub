@@ -396,6 +396,15 @@ Registros.br >
 ----------------------------------------------------
 Ideas:
 
+0) D3 maps for Stories:
+https://observablehq.com/@mbostock/methods-of-comparison-compared
+
+0) D3 projections:
+https://observablehq.com/@d3/versor-dragging
+https://observablehq.com/@d3/projection-transitions
+
+
+
 
 1) Measure distance with different projections (as selected dropdown):
 https://openlayers.org/en/latest/examples/measure-style.html
@@ -424,6 +433,21 @@ https://openflights.org/
 
 9) Flight animation:
 https://openlayers.org/en/latest/examples/flight-animation.html
+
+10/ Kaggle Datasets:
+https://www.kaggle.com/datasets/
+
+11) NDVI
+https://openlayers.org/en/latest/examples/cog-colors.html
+https://openlayers.org/en/latest/examples/raster.html
+
+12) PG ROUTING WITH PG TILE SERVER:
+https://www.youtube.com/watch?v=TXPtocZWr78&t=2394s
+https://www.postgresql.org/about/news/pg_tileserv-for-postgresqlpostgis-2016/
+
+
+
+
 
 
 

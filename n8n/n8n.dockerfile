@@ -25,7 +25,7 @@ ENV DB_POSTGRESDB_DATABASE=postgres
 ENV DB_POSTGRESDB_USER=postgres
 ENV DB_POSTGRESDB_PASSWORD=postgres
 
-
+# psql -h 35.224.60.87 -U postgres -d postgres
 
 # Disable diagnostics
 ENV N8N_DIAGNOSTICS_ENABLED=false

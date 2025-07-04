@@ -53,5 +53,3 @@ gcloud run deploy n8n-run \
   --cpu=1 \
   --memory=512Mi
 
-
-
