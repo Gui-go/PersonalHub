@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.5.2)",
+        "version": "(Version 0.6.5.3)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -281,6 +281,28 @@
                 "date": "2024-12-??",
                 "excerpt": "An AI system to efficiently and equitably allocate resources in a group or comunity.",
                 "image": "/images/equalityDiversity.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "wow-delivery",
+                "short_title": "",
+                "full_title": "",
+                "title": "WoW Delivery",
+                "path": "/projects/wow-delivery",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) A delivery application for the workers of the world, made with with transparency, to deliver fairness to the workers of the world.",
+                "image": "/images/delivery2.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "wow-feast",
+                "short_title": "",
+                "full_title": "",
+                "title": "WoW Feast",
+                "path": "/projects/wow-feast",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) An automated restaurant that frees and rewards the workers of the world.",
+                "image": "/images/wow-restaurant1.jpg",
                 "content": "abcabcabc"
             }
         ]
