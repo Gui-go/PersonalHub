@@ -1,4 +1,3 @@
-// pages/api/stupid-button.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getApps, initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
@@ -20,9 +19,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const docRef = db.collection('stupid-button-counter').doc('counter1');
-    await docRef.update({ count: FieldValue.increment(1) });
-    const snapshot = await docRef.get();
-    const count = snapshot.data()?.count ?? 0;
+    const docSnap = await docRef.get();
+
+    // If the document does not exist, create it with count: 1
+    if (!docSnap.exists) {
+      await docRef.set({ count: 1 });
+    } else {
+      await docRef.update({ count: FieldValue.increment(1) });
+    }
+
+    const updatedDoc = await docRef.get();
+    const count = updatedDoc.data()?.count ?? 0;
 
     res.status(200).json({ success: true, count });
   } catch (error: any) {
