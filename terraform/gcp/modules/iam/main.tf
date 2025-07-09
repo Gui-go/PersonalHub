@@ -193,9 +193,13 @@ resource "google_service_account" "firestore_sa" {
 resource "google_project_iam_member" "firestore_sa_roles" {
   for_each = toset([
     "roles/datastore.owner",
+    "roles/datastore.user",
+    "roles/firebase.admin",
   ])
   role    = each.key
   member  = "serviceAccount:${google_service_account.firestore_sa.email}"
   project = var.proj_id
 }
+
+
 

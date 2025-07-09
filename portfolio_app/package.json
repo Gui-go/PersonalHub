@@ -63,6 +63,7 @@
   "dependencies": {
     "@azure/ai-projects": "^1.0.0-beta.8",
     "@azure/identity": "^4.10.1",
+    "@google-cloud/firestore": "^7.11.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "axios": "^1.9.0",
@@ -77,6 +78,7 @@
     "d3-zoom": "latest",
     "dayjs": "^1.11.13",
     "express": "^5.1.0",
+    "firebase": "^11.10.0",
     "firebase-admin": "^13.4.0",
     "google-auth-library": "^10.1.0",
     "microsoft-cognitiveservices-speech-sdk": "^1.44.1",
