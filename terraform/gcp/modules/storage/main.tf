@@ -1,52 +1,77 @@
-
-
-resource "google_sql_database_instance" "postgres_instance" {
-  project          = var.proj_id
-  name             = "cloudsql-postgres"
-  region           = var.region
-  database_version = "POSTGRES_17"
-  deletion_protection = false # true
-  settings {
-    tier = "db-f1-micro"  # 1 vCPU, 0.614 GB Shared Core
-    availability_type = "ZONAL"
-    data_cache_config {
-      data_cache_enabled = false
-    }
-    disk_type        = "PD_HDD"
-    disk_size        = 10
-    disk_autoresize  = true
-    maintenance_window {
-      day          = 1    # Monday
-      hour         = 5    # 2 AM UTC
-      update_track = "stable"
-    }
-    # ip_configuration {
-    #   ipv4_enabled    = false
-    #   private_network = var.vpc_network_id
-    # }
-    ip_configuration {
-      ipv4_enabled    = true  # Enables public IP
-      authorized_networks {
-        name  = "public-access"
-        value = "0.0.0.0/0" # Open access; restrict this in production
-      }
-    }
-    # ip_configuration {
-    #   ipv4_enabled = false  # Disable public IP
-    #   private_network = var.vpc_self_link  # Connect to your VPC
-    # }
-    insights_config {
-      query_insights_enabled = true
-      record_application_tags = true
-      record_client_address = true
-    }
-    edition = "ENTERPRISE"
-  }
-  lifecycle {
-    prevent_destroy = false# true
-  }
-  depends_on = [var.vpc_connection_id]
+resource "google_firestore_database" "firestore_datastore" {
+  name                              = "firestore1"
+  project                           = var.proj_id
+  location_id                       = var.region
+  type                              = "FIRESTORE_NATIVE"
+  concurrency_mode                  = "OPTIMISTIC"
+  app_engine_integration_mode       = "DISABLED"
+  point_in_time_recovery_enablement = "POINT_IN_TIME_RECOVERY_ENABLED"
+  delete_protection_state           = "DELETE_PROTECTION_ENABLED"
 }
+
+
+# resource "google_firestore_database" "default" {
+#   name     = "firestore1"
+#   project  = var.proj_id
+#   location = var.region
+#   type     = "NATIVE"
+# }
+
+
+# resource "google_sql_database_instance" "postgres_instance" {
+#   project          = var.proj_id
+#   name             = "cloudsql-postgres"
+#   region           = var.region
+#   database_version = "POSTGRES_17"
+#   deletion_protection = false # true
+#   settings {
+#     tier = "db-f1-micro"  # 1 vCPU, 0.614 GB Shared Core
+#     availability_type = "ZONAL"
+#     data_cache_config {
+#       data_cache_enabled = false
+#     }
+#     disk_type        = "PD_HDD"
+#     disk_size        = 10
+#     disk_autoresize  = true
+#     maintenance_window {
+#       day          = 1    # Monday
+#       hour         = 5    # 2 AM UTC
+#       update_track = "stable"
+#     }
+#     # ip_configuration {
+#     #   ipv4_enabled    = false
+#     #   private_network = var.vpc_network_id
+#     # }
+#     ip_configuration {
+#       ipv4_enabled    = true  # Enables public IP
+#       authorized_networks {
+#         name  = "public-access"
+#         value = "0.0.0.0/0" # Open access; restrict this in production
+#       }
+#     }
+#     # ip_configuration {
+#     #   ipv4_enabled = false  # Disable public IP
+#     #   private_network = var.vpc_self_link  # Connect to your VPC
+#     # }
+#     insights_config {
+#       query_insights_enabled = true
+#       record_application_tags = true
+#       record_client_address = true
+#     }
+#     edition = "ENTERPRISE"
+#   }
+#   lifecycle {
+#     prevent_destroy = false# true
+#   }
+#   depends_on = [var.vpc_connection_id]
+# }
+
+
+
+
+
+
+
 
 # resource "google_sql_user" "postgres_user" {
 #   name     = "postgres"

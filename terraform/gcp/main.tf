@@ -11,10 +11,10 @@ provider "google-beta" {
   region      = var.location
 }
 
-provider "azurerm" {
-  features {}
-  subscription_id = "125cd73f-0eb0-497b-b8ac-589bc32789cd"
-}
+# provider "azurerm" {
+#   features {}
+#   subscription_id = "125cd73f-0eb0-497b-b8ac-589bc32789cd"
+# }
 
 # resource "azurerm_resource_group" "main_rg" {
 #   name     = "foundry-tf-rg"
@@ -89,6 +89,17 @@ module "datalake" {
   tag_owner   = var.tag_owner
   enabled_apis= google_project_service.apis
 #   tag_env     = var.tag_env
+}
+
+module "storage" {
+  source      = "./modules/storage"
+  proj_name   = var.proj_name
+  proj_id     = var.proj_id
+  proj_number = var.proj_number
+  region      = var.region
+  location    = var.location
+  tag_owner   = var.tag_owner
+  # tag_env     = var.tag_env
 }
 
 module "iam" {

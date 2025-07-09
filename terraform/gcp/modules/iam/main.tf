@@ -182,3 +182,20 @@ resource "google_project_iam_member" "grafana_sa_roles" {
   project = var.proj_id
 }
 
+
+# Firestore SA ----------------------------------------------------------
+resource "google_service_account" "firestore_sa" {
+  project      = var.proj_id
+  account_id   = "firestore-sa"
+  display_name = "Firestore Service Account"
+}
+
+resource "google_project_iam_member" "firestore_sa_roles" {
+  for_each = toset([
+    "roles/datastore.owner",
+  ])
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.firestore_sa.email}"
+  project = var.proj_id
+}
+
