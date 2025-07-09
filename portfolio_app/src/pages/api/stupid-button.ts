@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
 
   try {
-    const docRef = db.collection('counters').doc('stupid_button');
+    const docRef = db.collection('stupid-button-counter').doc('counter1');
     await docRef.update({ count: FieldValue.increment(1) });
     const snapshot = await docRef.get();
     const count = snapshot.data()?.count ?? 0;
