@@ -4,8 +4,8 @@ import { initializeApp, getApps, cert, ServiceAccount } from 'firebase-admin/app
 import { getFirestore } from 'firebase-admin/firestore';
 
 // ✅ Load and parse service account from a secure private env var
-const raw = process.env.FIRESTORE_SA_KEY;
-if (!raw) throw new Error('FIRESTORE_SA_KEY is not set');
+const raw = process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY;
+if (!raw) throw new Error('NEXT_PUBLIC_FIRESTORE_SA_KEY is not set');
 const serviceAccount = JSON.parse(raw) as ServiceAccount;
 
 // Firestore database info
