@@ -66,7 +66,7 @@ jobs:
             NEXT_PUBLIC_GWR_CONFIG_ID=${{ secrets.GWR_CONFIG_ID }}
             NEXT_PUBLIC_AZURE_WILHELM_KEY=${{ secrets.AZURE_WILHELM_KEY }}
             NEXT_PUBLIC_PUBLIC_GA_ID=${{ secrets.PUBLIC_GA_ID }}
-            FIRESTORE_SA_KEY=${{ secrets.FIRESTORE_SA_KEY }}
+            NEXT_PUBLIC_FIRESTORE_SA_KEY=${{ secrets.FIRESTORE_SA_KEY }}
             NEXT_PUBLIC_PROJECT_ID=${{ secrets.PROJECT_ID }}
             NEXT_PUBLIC_FIREBASE_PRIVATE_KEY=${{ secrets.FIREBASE_PRIVATE_KEY }}
             NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL=${{ secrets.FIREBASE_CLIENT_EMAIL }}

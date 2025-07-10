@@ -8,7 +8,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 //   clientEmail: "firestore-sa@personalhub14.iam.gserviceaccount.com",
 // };
 const serviceAccount: ServiceAccount = JSON.parse(
-  process.env.FIRESTORE_SA_KEY!
+  process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!
 );
 
 serviceAccount.privateKey = serviceAccount.private_key.replace(/\\n/g, '\n');
