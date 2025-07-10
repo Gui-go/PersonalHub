@@ -43,6 +43,9 @@ jobs:
             NEXT_PUBLIC_AZURE_WILHELM_KEY=${{ secrets.AZURE_WILHELM_KEY }}
             NEXT_PUBLIC_PUBLIC_GA_ID=${{ secrets.PUBLIC_GA_ID }}
             FIRESTORE_SA_KEY=${{ secrets.FIRESTORE_SA_KEY }}
+        
+      - name: Check secret value (DEBUG ONLY)
+        run: echo "${{ secrets.FIREBASE_PRIVATE_KEY }}"
 
       - name: Deploy to Cloud Run
         run: |
