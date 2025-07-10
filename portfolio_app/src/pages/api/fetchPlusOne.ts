@@ -1,7 +1,7 @@
 import { initializeApp, getApps, cert, ServiceAccount } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
-const firestore_sa_key = process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY;
+const serviceAccount = JSON.parse(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!);
 
 let database='firestore-datasbase';
 let collection='counter-collection';
@@ -12,7 +12,7 @@ let app;
 try {
   if (!getApps().length) {
     app = initializeApp({
-      credential: cert(firestore_sa_key),
+      credential: cert(serviceAccount),
     });
     console.log('Firebase Admin SDK initialized successfully');
   } else {
