@@ -11,6 +11,11 @@ const serviceAccount: ServiceAccount = JSON.parse(
   process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!
 );
 
+// console.log("---------------------------------------------------------------------");
+// console.log(serviceAccount);
+// console.log(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY?.slice(0, 50));
+
+
 // serviceAccount.privateKey = serviceAccount.private_key.replace(/\\n/g, '\n');
 
 
