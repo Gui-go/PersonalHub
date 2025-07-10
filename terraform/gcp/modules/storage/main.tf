@@ -1,5 +1,5 @@
 resource "google_firestore_database" "firestore_datastore" {
-  name                              = "firestore1"
+  name                              = "firestore-datasbase"
   project                           = var.proj_id
   location_id                       = var.region
   type                              = "FIRESTORE_NATIVE"
