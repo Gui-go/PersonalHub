@@ -37,7 +37,7 @@ const AgGWRdiscovery = () => {
   const router = useRouter();
   const [pageData, setPageData] = useState<Agent | null>(null);
 
-  const GWRdiscovery_configId = process.env.NEXT_PUBLIC_GWR_CONFIG_ID;
+  const GWRdiscovery_configId = process.env.GWR_CONFIG_ID;
 
 
 useEffect(() => {

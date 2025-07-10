@@ -14,7 +14,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const apiKey = process.env.NEXT_PUBLIC_AZURE_WILHELM_KEY || '';
+  const apiKey = process.env.AZURE_WILHELM_KEY || '';
 
   const sendMessage = async () => {
     if (!input.trim() || !apiKey) {
