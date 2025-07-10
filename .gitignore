@@ -8,6 +8,8 @@
 /data/
 
 ghactionsSA-key.json
+*/firestore_sa_key.json
+
 
 */.terraform/
 */.terraform.lock.hcl
