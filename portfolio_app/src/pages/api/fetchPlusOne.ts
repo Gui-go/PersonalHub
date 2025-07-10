@@ -1,12 +1,7 @@
 import { initializeApp, getApps, cert, ServiceAccount } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
-const serviceAccount: ServiceAccount = {
-  // projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  projectId: "personalhub14",
-  privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-  clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
-};
+const firestore_sa_key = process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY;
 
 let database='firestore-datasbase';
 let collection='counter-collection';
@@ -17,7 +12,7 @@ let app;
 try {
   if (!getApps().length) {
     app = initializeApp({
-      credential: cert(serviceAccount),
+      credential: cert(firestore_sa_key),
     });
     console.log('Firebase Admin SDK initialized successfully');
   } else {
@@ -83,4 +78,3 @@ export default async function handler(req: any, res: any) {
   console.error(`Method ${req.method} not allowed`);
   return res.status(405).json({ error: 'Method not allowed' });
 }
-
