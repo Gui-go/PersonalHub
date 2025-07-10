@@ -11,7 +11,7 @@ const serviceAccount: ServiceAccount = JSON.parse(
   process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!
 );
 
-serviceAccount.privateKey = serviceAccount.private_key.replace(/\\n/g, '\n');
+// serviceAccount.privateKey = serviceAccount.private_key.replace(/\\n/g, '\n');
 
 
 let database='firestore-datasbase';
