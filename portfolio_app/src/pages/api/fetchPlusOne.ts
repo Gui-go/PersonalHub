@@ -1,24 +1,9 @@
 import { initializeApp, getApps, cert, ServiceAccount } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
-// const serviceAccount = JSON.parse(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!);
-// const serviceAccount: ServiceAccount = {
-//   projectId: "personalhub14",
-//   privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY,
-//   clientEmail: "firestore-sa@personalhub14.iam.gserviceaccount.com",
-// };
 const serviceAccount: ServiceAccount = JSON.parse(
   process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!
 );
-
-
-// console.log("---------------------------------------------------------------------");
-// console.log(serviceAccount);
-// console.log(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY?.slice(0, 50));
-
-
-// serviceAccount.privateKey = serviceAccount.private_key.replace(/\\n/g, '\n');
-
 
 let database='firestore-datasbase';
 let collection='counter-collection';

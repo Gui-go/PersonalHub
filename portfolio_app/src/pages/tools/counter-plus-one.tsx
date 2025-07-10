@@ -7,7 +7,7 @@ const StupidButton: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
 
-  console.log(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY);
+  // console.log(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY);
 
   // Fetch initial counter value on mount
   useEffect(() => {

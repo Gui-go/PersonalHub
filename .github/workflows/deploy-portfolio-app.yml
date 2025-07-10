@@ -70,6 +70,7 @@ jobs:
             NEXT_PUBLIC_PROJECT_ID=${{ secrets.PROJECT_ID }}
             NEXT_PUBLIC_FIREBASE_PRIVATE_KEY=${{ secrets.FIREBASE_PRIVATE_KEY }}
             NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL=${{ secrets.FIREBASE_CLIENT_EMAIL }}
+            NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID }}
 
       - name: Deploy to Cloud Run
         run: |
