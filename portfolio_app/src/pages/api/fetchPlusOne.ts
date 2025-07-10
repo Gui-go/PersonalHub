@@ -3,9 +3,9 @@ import { getFirestore } from 'firebase-admin/firestore';
 
 // const serviceAccount = JSON.parse(process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY!);
 const serviceAccount: ServiceAccount = {
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  projectId: "personalhub14",
   privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY,
-  clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
+  clientEmail: "firestore-sa@personalhub14.iam.gserviceaccount.com",
 };
 
 
