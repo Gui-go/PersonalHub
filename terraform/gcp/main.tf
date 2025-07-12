@@ -130,6 +130,8 @@ module "compute" {
   portfolio_run_sa_email = module.iam.portfolio_run_sa_email
   fastapi_run_sa_email = module.iam.fastapi_run_sa_email
   grafana_run_sa_email = module.iam.grafana_run_sa_email
+
+  # ghost:5-alpine for a simple website, like wordpress
 }
 
 module "security" {
