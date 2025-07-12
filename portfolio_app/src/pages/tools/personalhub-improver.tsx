@@ -87,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     // Fetch data from FastAPI endpoint
     const apiUrl =
-      "https://fastapi-run-415088972722.us-central1.run.app/fetch/billing_prod/genai_service_suggestions?limit=1";
+      "https://fastapi-run-415088972722.us-central1.run.app/fetch/billing_prod/genai_service_billing_standard?limit=1";
     const apiResponse = await fetch(apiUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
