@@ -77,7 +77,7 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
             <li key={item.id} className="mb-3 xs:mb-4 xl:mb-0">
               <Link
                 href={item.path}
-                className={`block px-2 py-1 text-base xs:text-lg md:text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`block px-2 py-1 text-xl xs:text-2xl md:text-lg font-medium rounded-lg transition-all duration-200 ${
                   pathname === item.path
                     ? 'bg-blue-900 text-white font-semibold'
                     : 'hover:bg-blue-700 hover:text-white focus:bg-blue-700 focus:text-white'
