@@ -74,10 +74,10 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
             } xl:transform-none xl:opacity-100 overflow-y-auto xl:overflow-visible`}
         >
           {menuItems.map((item) => (
-            <li key={item.id} className="mb-3 xs:mb-4 md:mb-0">
+            <li key={item.id} className="mb-3 xs:mb-4 xl:mb-0">
               <Link
                 href={item.path}
-                className={`block px-3 py-2 text-sm xs:text-base md:text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`block px-3 py-2 text-sm xs:text-base xl:text-sm font-medium rounded-lg transition-all duration-200 ${
                   pathname === item.path
                     ? 'bg-blue-900 text-white font-semibold'
                     : 'hover:bg-blue-700 hover:text-white focus:bg-blue-700 focus:text-white'
@@ -93,3 +93,5 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
     </nav>
   );
 }
+
+
