@@ -18,7 +18,7 @@ resource "google_artifact_registry_repository" "hub" {
     id     = "keep-recent-versions"
     action = "KEEP"
     most_recent_versions {
-      keep_count = 3
+      keep_count = 1
     }
   }
   depends_on = [
