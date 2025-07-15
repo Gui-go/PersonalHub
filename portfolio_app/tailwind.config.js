@@ -19,20 +19,16 @@ module.exports = {
         '2xl': '1536px'
       },
       fontSize: {
-        '2xs': '0.7rem',    // Increased from 0.625rem (10px -> ~11.2px)
-        'xs': '0.8rem',     // Increased from 0.75rem (12px -> ~12.8px)
-        'sm': '0.9rem',     // Increased from 0.875rem (14px -> ~14.4px)
-        'base': '1.25rem',  // SIGNIFICANTLY increased from 1.1rem (17.6px -> 20px)
-        'lg': '1.5rem',     // Increased from 1.25rem (20px -> 24px)
-        'xl': '1.75rem',    // Increased from 1.5rem (24px -> 28px)
-        '2xl': '2.25rem',   // Increased from 1.875rem (30px -> 36px)
-        '3xl': '2.75rem',   // Increased from 2.25rem (36px -> 44px)
-        '4xl': '3.5rem',    // Increased from 3rem (48px -> 56px)
-        '5xl': '4.5rem',    // Increased from 3.75rem (60px -> 72px)
-        '6xl': '6rem',      // Added for even larger headings
-        '7xl': '7rem',
-        '8xl': '8rem',
-        '9xl': '9rem'
+        '2xs': '0.625rem',  // 10px
+        'xs': '0.75rem',    // 12px
+        'sm': '0.875rem',   // 14px
+        'base': '1.1rem',   // Slightly larger than default (usually 1rem = 16px)
+        'lg': '1.25rem',    // 20px
+        'xl': '1.5rem',     // 24px
+        '2xl': '1.875rem',  // 30px
+        '3xl': '2.25rem',   // 36px
+        '4xl': '3rem',      // 48px
+        '5xl': '3.75rem'    // 60px
       }
     }
   },
@@ -46,5 +42,5 @@ module.exports = {
     // require('@tailwindcss/typography'),
     // require('@tailwindcss/aspect-ratio'),
   ]
-
+  
 };
