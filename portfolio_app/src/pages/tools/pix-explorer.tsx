@@ -52,36 +52,13 @@ const PixExplorer: React.FC = () => {
   const [filterState, setFilterState] = useState('');
   const mapRef = useRef<SVGSVGElement>(null);
 
-  // Normalize state names with specific mappings
-  const normalizeName = (name: string) => {
-    const normalized = name
+  // Normalize state names to remove accents, convert to lowercase, and trim spaces
+  const normalizeName = (name: string) =>
+    name
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
       .trim();
-    const nameMap: { [key: string]: string } = {
-      'sao paulo': 'são paulo',
-      'rio': 'rio de janeiro',
-      'minas': 'minas gerais',
-      'parana': 'paraná',
-      'ceara': 'ceará',
-      'goias': 'goiás',
-      'para': 'pará',
-      'piaui': 'piauí',
-      'roraima': 'roraima',
-      'amapa': 'amapá',
-      'rondonia': 'rondônia',
-      'tocantins': 'tocantins',
-      'maranhao': 'maranhão',
-      'espirito santo': 'espírito santo',
-      'rio grande do sul': 'rio grande do sul',
-      'rio grande do norte': 'rio grande do norte',
-      'mato grosso': 'mato grosso',
-      'mato grosso do sul': 'mato grosso do sul',
-      'distrito federal': 'distrito federal'
-    };
-    return nameMap[normalized] || normalized;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,7 +74,7 @@ const PixExplorer: React.FC = () => {
         setData(pixData);
         setGeoJson(geoJsonResponse);
 
-        // Debug: Log state names and data issues
+        // Debug: Log unmatched states and data issues
         const geoJsonStates = new Set(geoJsonResponse.features.map((f: any) => normalizeName(f.properties.NM_UF)));
         const pixStates = new Set(pixData.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
         const unmatchedGeoJson = [...geoJsonStates].filter((state) => !pixStates.has(state));
@@ -108,44 +85,13 @@ const PixExplorer: React.FC = () => {
         if (unmatchedPix.length > 0) {
           console.warn('Pix data states not found in GeoJSON:', unmatchedPix);
         }
-        console.log('Pix Data States:', pixData.map((d: AggregatedMetrics) => d.Estado));
-        console.log('GeoJSON States:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
+        // Log data for debugging
+        console.log('Pix Data:', pixData);
+        console.log('GeoJSON Features:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
         setLoading(false);
       } catch (err) {
         console.error('Fetch error:', err);
-        // Fallback data for testing
-        const fallbackData: AggregatedMetrics[] = [
-          {
-            Estado: 'São Paulo',
-            DinheiroMovimentado: 1000000,
-            QuantidadeTransacoes: 5000,
-            TicketMedio: 200,
-            ParticipacaoPF: 60,
-            ParticipacaoPJ: 40,
-            PagadoresUnicosPF: 1000,
-            PagadoresUnicosPJ: 500,
-            RecebedoresUnicosPF: 800,
-            RecebedoresUnicosPJ: 400,
-            RelacaoPagadoresRecebedoresPF: 1.25,
-            RelacaoPagadoresRecebedoresPJ: 1.25,
-          },
-          {
-            Estado: 'Rio de Janeiro',
-            DinheiroMovimentado: 800000,
-            QuantidadeTransacoes: 4000,
-            TicketMedio: 200,
-            ParticipacaoPF: 55,
-            ParticipacaoPJ: 45,
-            PagadoresUnicosPF: 900,
-            PagadoresUnicosPJ: 450,
-            RecebedoresUnicosPF: 700,
-            RecebedoresUnicosPJ: 350,
-            RelacaoPagadoresRecebedoresPF: 1.28,
-            RelacaoPagadoresRecebedoresPJ: 1.28,
-          },
-        ];
-        setData(fallbackData);
-        setError('Failed to load Pix data; using fallback data');
+        setError('Failed to load Pix data or GeoJSON');
         setLoading(false);
       }
     };
@@ -154,7 +100,7 @@ const PixExplorer: React.FC = () => {
 
   useEffect(() => {
     if (!loading && data.length > 0 && geoJson && mapRef.current) {
-      // Validate Pix data
+      // Debug: Validate data
       const invalidData = data.filter(
         (d) => !d.Estado || isNaN(d.DinheiroMovimentado) || d.DinheiroMovimentado === null
       );
@@ -178,7 +124,7 @@ const PixExplorer: React.FC = () => {
       const validVolumes = data
         .map((d) => d.DinheiroMovimentado)
         .filter((v) => !isNaN(v) && v !== null);
-      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1000000];
+      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1];
       const colorScale = d3
         .scaleSequential(d3.interpolateBlues)
         .domain(volumeExtent as [number, number]);
@@ -304,7 +250,7 @@ const PixExplorer: React.FC = () => {
     normalizeName(item.Estado).includes(normalizeName(filterState))
   );
 
-  // Sort for bar charts
+  // Sort for bar charts (highest to lowest transaction volume and average ticket)
   const barChartSortedData = [...filteredData].sort((a, b) => b.DinheiroMovimentado - a.DinheiroMovimentado);
   const avgTicketSortedData = [...filteredData].sort((a, b) => b.TicketMedio - a.TicketMedio);
 
@@ -336,7 +282,7 @@ const PixExplorer: React.FC = () => {
     ],
   };
 
-  // Pie Chart: PF vs PJ Participation
+  // Pie Chart: PF vs PJ Participation (average across all states)
   const avgPF = filteredData.reduce((sum, item) => sum + item.ParticipacaoPF, 0) / (filteredData.length || 1);
   const avgPJ = filteredData.reduce((sum, item) => sum + item.ParticipacaoPJ, 0) / (filteredData.length || 1);
   const pieChartData = {
@@ -712,7 +658,7 @@ const PixExplorer: React.FC = () => {
           z-index: 1000;
         }
         svg path {
-          fill-opacity: 1 !important;
+          fill-opacity: 1;
           transition: fill 0.2s, opacity 0.2s;
         }
       `}</style>
