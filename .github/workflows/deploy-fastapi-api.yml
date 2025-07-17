@@ -1,0 +1,51 @@
+name: Deploy FastAPI API to Cloud Run
+
+on:
+  push:
+    branches: [fastapi-api]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./fastapi
+          file: ./fastapi/fastapi.dockerfile
+          push: true
+          tags: us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/personalhub-artifact-repo/fastapi-api:latest
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy fastapi-run \
+            --image=us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT }}/personalhub-artifact-repo/fastapi-api:latest \
+            --platform=managed \
+            --region=us-central1 \
+            --allow-unauthenticated
+
+      - name: Update traffic to latest revision
+        run: |
+          gcloud run services update-traffic fastapi-run \
+            --to-latest \
+            --platform=managed \
+            --region=us-central1
+

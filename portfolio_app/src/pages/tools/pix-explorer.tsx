@@ -65,18 +65,14 @@ const PixExplorer: React.FC = () => {
       try {
         const [pixResponse, geoJsonResponse] = await Promise.all([
           axios.get('/api/fetchPix'),
-          fetch('/data/BR_UF_2024.geojson').then((res) => {
-            if (!res.ok) throw new Error('Failed to fetch GeoJSON');
-            return res.json();
-          }),
+          fetch('/data/BR_UF_2024.geojson').then((res) => res.json()),
         ]);
-        const pixData = pixResponse.data;
-        setData(pixData);
+        setData(pixResponse.data);
         setGeoJson(geoJsonResponse);
 
-        // Debug: Log unmatched states and data issues
+        // Debug: Log unmatched states
         const geoJsonStates = new Set(geoJsonResponse.features.map((f: any) => normalizeName(f.properties.NM_UF)));
-        const pixStates = new Set(pixData.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
+        const pixStates = new Set(pixResponse.data.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
         const unmatchedGeoJson = [...geoJsonStates].filter((state) => !pixStates.has(state));
         const unmatchedPix = [...pixStates].filter((state) => !geoJsonStates.has(state));
         if (unmatchedGeoJson.length > 0) {
@@ -85,12 +81,9 @@ const PixExplorer: React.FC = () => {
         if (unmatchedPix.length > 0) {
           console.warn('Pix data states not found in GeoJSON:', unmatchedPix);
         }
-        // Log data for debugging
-        console.log('Pix Data:', pixData);
-        console.log('GeoJSON Features:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
+
         setLoading(false);
       } catch (err) {
-        console.error('Fetch error:', err);
         setError('Failed to load Pix data or GeoJSON');
         setLoading(false);
       }
@@ -100,14 +93,6 @@ const PixExplorer: React.FC = () => {
 
   useEffect(() => {
     if (!loading && data.length > 0 && geoJson && mapRef.current) {
-      // Debug: Validate data
-      const invalidData = data.filter(
-        (d) => !d.Estado || isNaN(d.DinheiroMovimentado) || d.DinheiroMovimentado === null
-      );
-      if (invalidData.length > 0) {
-        console.warn('Invalid Pix data entries:', invalidData);
-      }
-
       // Set up D3 map
       const svg = d3.select(mapRef.current);
       const width = 600;
@@ -121,13 +106,10 @@ const PixExplorer: React.FC = () => {
       const path = d3.geoPath().projection(projection);
 
       // Color scale for transaction volume
-      const validVolumes = data
-        .map((d) => d.DinheiroMovimentado)
-        .filter((v) => !isNaN(v) && v !== null);
-      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1];
+      const volumeExtent = d3.extent(data, (d) => d.DinheiroMovimentado) as [number, number];
       const colorScale = d3
         .scaleSequential(d3.interpolateBlues)
-        .domain(volumeExtent as [number, number]);
+        .domain(volumeExtent);
 
       // Create map
       svg
@@ -140,21 +122,13 @@ const PixExplorer: React.FC = () => {
         .attr('d', path)
         .attr('fill', (d) => {
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
-          if (!stateData) {
-            console.warn(`No data for state: ${d.properties.NM_UF}`);
-            return '#ccc';
-          }
-          if (isNaN(stateData.DinheiroMovimentado) || stateData.DinheiroMovimentado === null) {
-            console.warn(`Invalid transaction volume for state: ${d.properties.NM_UF}`, stateData);
-            return '#ccc';
-          }
-          return colorScale(stateData.DinheiroMovimentado);
+          return
+          return stateData ? colorScale(stateData.DinheiroMovimentado) : '#ccc';
         })
         .attr('stroke', '#fff')
         .attr('stroke-width', 1)
-        .style('opacity', 1)
         .on('mouseover', function (event, d) {
-          d3.select(this).attr('fill', '#ffcc00').style('opacity', 0.8);
+          d3.select(this).attr('fill', '#ffcc00');
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
           const tooltip = d3.select('body').append('div')
             .attr('class', 'tooltip')
@@ -165,21 +139,18 @@ const PixExplorer: React.FC = () => {
             .style('border-radius', '4px')
             .style('pointer-events', 'none')
             .html(
-              `${d.properties.NM_UF}<br>` +
-              `Volume: R$${stateData ? stateData.DinheiroMovimentado.toLocaleString('pt-BR') : 'N/A'}<br>` +
-              `Transactions: ${stateData ? stateData.QuantidadeTransacoes.toLocaleString('pt-BR') : 'N/A'}<br>` +
-              `Avg Ticket: R$${stateData ? stateData.TicketMedio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'N/A'}`
+              `${d.properties.NM_UF}<br>Volume: R$${
+                stateData
+                  ? stateData.DinheiroMovimentado.toLocaleString('pt-BR')
+                  : 'N/A'
+              }`
             )
             .style('left', `${event.pageX + 10}px`)
             .style('top', `${event.pageY - 28}px`);
         })
         .on('mouseout', function (event, d) {
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
-          d3.select(this)
-            .attr('fill', stateData && !isNaN(stateData.DinheiroMovimentado) && stateData.DinheiroMovimentado !== null
-              ? colorScale(stateData.DinheiroMovimentado)
-              : '#ccc')
-            .style('opacity', 1);
+          d3.select(this).attr('fill', stateData ? colorScale(stateData.DinheiroMovimentado) : '#ccc');
           d3.select('.tooltip').remove();
         });
 
@@ -190,7 +161,7 @@ const PixExplorer: React.FC = () => {
         .attr('transform', `translate(${width - 50}, 20)`);
 
       const legendScale = d3.scaleLinear()
-        .domain(volumeExtent as [number, number])
+        .domain(volumeExtent)
         .range([legendHeight, 0]);
 
       const legendAxis = d3.axisRight(legendScale)
@@ -652,14 +623,10 @@ const PixExplorer: React.FC = () => {
         </table>
       </div>
 
-      {/* Inline CSS for tooltip and map */}
+      {/* Inline CSS for tooltip */}
       <style jsx>{`
         .tooltip {
           z-index: 1000;
-        }
-        svg path {
-          fill-opacity: 1;
-          transition: fill 0.2s, opacity 0.2s;
         }
       `}</style>
     </div>
