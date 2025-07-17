@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
 
 body {
   font-family: Arial, sans-serif;
