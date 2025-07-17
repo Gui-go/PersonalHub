@@ -1,0 +1,90 @@
+name: Deploy Portfolio App to Cloud Run
+
+on:
+  push:
+    branches: [portfolio]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          
+      - name: Check secret value (DEBUG ONLY)
+        run: echo "${{ secrets.FIRESTORE_SA_KEY }}"
+    
+      - name: Check value1
+        run: echo "-----------------------------------------------------------------"
+
+      - name: Check secret value (FIREBASE_CLIENT_EMAIL)
+        run: echo "${{ secrets.FIREBASE_CLIENT_EMAIL }}"
+      
+      - name: Check value2
+        run: echo "-----------------------------------------------------------------"
+    
+      - name: Check secret value (FIREBASE_PRIVATE_KEY)
+        run: echo "${{ secrets.FIREBASE_PRIVATE_KEY }}"
+
+      - name: Check value3
+        run: echo "-----------------------------------------------------------------"
+
+      - name: Check secret value (PROJECT_ID)
+        run: echo "${{ secrets.PROJECT_ID }}"
+
+      - name: Check value4
+        run: echo "-----------------------------------------------------------------"
+      
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./portfolio_app
+          file: ./portfolio_app/portfolio-app.dockerfile
+          push: true
+          tags: us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/personalhub-artifact-repo/portfolio-app:latest
+          build-args: |
+            NEXT_PUBLIC_PROJECT_ID=${{ vars.GCP_PROJECT_ID }}
+            NEXT_PUBLIC_VIRTUALGUIGO_CONFIG_ID=${{ secrets.VIRTUALGUIGO_CONFIG_ID }}
+            NEXT_PUBLIC_MIGRATIONDYNAMICS_CONFIG_ID=${{ secrets.MIGRATIONDYNAMICS_CONFIG_ID }}
+            NEXT_PUBLIC_GWR_CONFIG_ID=${{ secrets.GWR_CONFIG_ID }}
+            NEXT_PUBLIC_AZURE_WILHELM_KEY=${{ secrets.AZURE_WILHELM_KEY }}
+            NEXT_PUBLIC_PUBLIC_GA_ID=${{ secrets.PUBLIC_GA_ID }}
+            NEXT_PUBLIC_FIRESTORE_SA_KEY=${{ secrets.FIRESTORE_SA_KEY }}
+            NEXT_PUBLIC_PROJECT_ID=${{ secrets.PROJECT_ID }}
+            NEXT_PUBLIC_FIREBASE_PRIVATE_KEY=${{ secrets.FIREBASE_PRIVATE_KEY }}
+            NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL=${{ secrets.FIREBASE_CLIENT_EMAIL }}
+            NEXT_PUBLIC_GA_ID=${{ secrets.PUBLIC_GA_ID }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy portfolio-run \
+            --image=us-central1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/personalhub-artifact-repo/portfolio-app:latest \
+            --platform=managed \
+            --region=us-central1 \
+            --allow-unauthenticated
+
+      - name: Update traffic to latest revision
+        run: |
+          gcloud run services update-traffic portfolio-run \
+            --to-latest \
+            --platform=managed \
+            --region=us-central1
+
+            
