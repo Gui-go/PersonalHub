@@ -18,31 +18,7 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          
-      - name: Check secret value (DEBUG ONLY)
-        run: echo "${{ secrets.FIRESTORE_SA_KEY }}"
-    
-      - name: Check value1
-        run: echo "-----------------------------------------------------------------"
-
-      - name: Check secret value (FIREBASE_CLIENT_EMAIL)
-        run: echo "${{ secrets.FIREBASE_CLIENT_EMAIL }}"
-      
-      - name: Check value2
-        run: echo "-----------------------------------------------------------------"
-    
-      - name: Check secret value (FIREBASE_PRIVATE_KEY)
-        run: echo "${{ secrets.FIREBASE_PRIVATE_KEY }}"
-
-      - name: Check value3
-        run: echo "-----------------------------------------------------------------"
-
-      - name: Check secret value (PROJECT_ID)
-        run: echo "${{ secrets.PROJECT_ID }}"
-
-      - name: Check value4
-        run: echo "-----------------------------------------------------------------"
+          credentials_json: ${{ secrets.GCP_SA_KEY }}          
       
       - name: Set up gcloud CLI
         uses: google-github-actions/setup-gcloud@v2

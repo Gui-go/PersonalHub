@@ -52,27 +52,54 @@ const PixExplorer: React.FC = () => {
   const [filterState, setFilterState] = useState('');
   const mapRef = useRef<SVGSVGElement>(null);
 
-  // Normalize state names to remove accents, convert to lowercase, and trim spaces
-  const normalizeName = (name: string) =>
-    name
+  // Normalize state names with specific mappings
+  const normalizeName = (name: string) => {
+    const normalized = name
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
       .trim();
+    const nameMap: { [key: string]: string } = {
+      'sao paulo': 'são paulo',
+      'rio': 'rio de janeiro',
+      'minas': 'minas gerais',
+      'parana': 'paraná',
+      'ceara': 'ceará',
+      'goias': 'goiás',
+      'para': 'pará',
+      'piaui': 'piauí',
+      'roraima': 'roraima',
+      'amapa': 'amapá',
+      'rondonia': 'rondônia',
+      'tocantins': 'tocantins',
+      'maranhao': 'maranhão',
+      'espirito santo': 'espírito santo',
+      'rio grande do sul': 'rio grande do sul',
+      'rio grande do norte': 'rio grande do norte',
+      'mato grosso': 'mato grosso',
+      'mato grosso do sul': 'mato grosso do sul',
+      'distrito federal': 'distrito federal'
+    };
+    return nameMap[normalized] || normalized;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [pixResponse, geoJsonResponse] = await Promise.all([
           axios.get('/api/fetchPix'),
-          fetch('/data/BR_UF_2024.geojson').then((res) => res.json()),
+          fetch('/data/BR_UF_2024.geojson').then((res) => {
+            if (!res.ok) throw new Error('Failed to fetch GeoJSON');
+            return res.json();
+          }),
         ]);
-        setData(pixResponse.data);
+        const pixData = pixResponse.data;
+        setData(pixData);
         setGeoJson(geoJsonResponse);
 
-        // Debug: Log unmatched states
+        // Debug: Log state names and data issues
         const geoJsonStates = new Set(geoJsonResponse.features.map((f: any) => normalizeName(f.properties.NM_UF)));
-        const pixStates = new Set(pixResponse.data.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
+        const pixStates = new Set(pixData.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
         const unmatchedGeoJson = [...geoJsonStates].filter((state) => !pixStates.has(state));
         const unmatchedPix = [...pixStates].filter((state) => !geoJsonStates.has(state));
         if (unmatchedGeoJson.length > 0) {
@@ -81,10 +108,44 @@ const PixExplorer: React.FC = () => {
         if (unmatchedPix.length > 0) {
           console.warn('Pix data states not found in GeoJSON:', unmatchedPix);
         }
-
+        console.log('Pix Data States:', pixData.map((d: AggregatedMetrics) => d.Estado));
+        console.log('GeoJSON States:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
         setLoading(false);
       } catch (err) {
-        setError('Failed to load Pix data or GeoJSON');
+        console.error('Fetch error:', err);
+        // Fallback data for testing
+        const fallbackData: AggregatedMetrics[] = [
+          {
+            Estado: 'São Paulo',
+            DinheiroMovimentado: 1000000,
+            QuantidadeTransacoes: 5000,
+            TicketMedio: 200,
+            ParticipacaoPF: 60,
+            ParticipacaoPJ: 40,
+            PagadoresUnicosPF: 1000,
+            PagadoresUnicosPJ: 500,
+            RecebedoresUnicosPF: 800,
+            RecebedoresUnicosPJ: 400,
+            RelacaoPagadoresRecebedoresPF: 1.25,
+            RelacaoPagadoresRecebedoresPJ: 1.25,
+          },
+          {
+            Estado: 'Rio de Janeiro',
+            DinheiroMovimentado: 800000,
+            QuantidadeTransacoes: 4000,
+            TicketMedio: 200,
+            ParticipacaoPF: 55,
+            ParticipacaoPJ: 45,
+            PagadoresUnicosPF: 900,
+            PagadoresUnicosPJ: 450,
+            RecebedoresUnicosPF: 700,
+            RecebedoresUnicosPJ: 350,
+            RelacaoPagadoresRecebedoresPF: 1.28,
+            RelacaoPagadoresRecebedoresPJ: 1.28,
+          },
+        ];
+        setData(fallbackData);
+        setError('Failed to load Pix data; using fallback data');
         setLoading(false);
       }
     };
@@ -93,6 +154,14 @@ const PixExplorer: React.FC = () => {
 
   useEffect(() => {
     if (!loading && data.length > 0 && geoJson && mapRef.current) {
+      // Validate Pix data
+      const invalidData = data.filter(
+        (d) => !d.Estado || isNaN(d.DinheiroMovimentado) || d.DinheiroMovimentado === null
+      );
+      if (invalidData.length > 0) {
+        console.warn('Invalid Pix data entries:', invalidData);
+      }
+
       // Set up D3 map
       const svg = d3.select(mapRef.current);
       const width = 600;
@@ -106,10 +175,13 @@ const PixExplorer: React.FC = () => {
       const path = d3.geoPath().projection(projection);
 
       // Color scale for transaction volume
-      const volumeExtent = d3.extent(data, (d) => d.DinheiroMovimentado) as [number, number];
+      const validVolumes = data
+        .map((d) => d.DinheiroMovimentado)
+        .filter((v) => !isNaN(v) && v !== null);
+      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1000000];
       const colorScale = d3
         .scaleSequential(d3.interpolateBlues)
-        .domain(volumeExtent);
+        .domain(volumeExtent as [number, number]);
 
       // Create map
       svg
@@ -122,13 +194,21 @@ const PixExplorer: React.FC = () => {
         .attr('d', path)
         .attr('fill', (d) => {
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
-          return
-          return stateData ? colorScale(stateData.DinheiroMovimentado) : '#ccc';
+          if (!stateData) {
+            console.warn(`No data for state: ${d.properties.NM_UF}`);
+            return '#ccc';
+          }
+          if (isNaN(stateData.DinheiroMovimentado) || stateData.DinheiroMovimentado === null) {
+            console.warn(`Invalid transaction volume for state: ${d.properties.NM_UF}`, stateData);
+            return '#ccc';
+          }
+          return colorScale(stateData.DinheiroMovimentado);
         })
         .attr('stroke', '#fff')
         .attr('stroke-width', 1)
+        .style('opacity', 1)
         .on('mouseover', function (event, d) {
-          d3.select(this).attr('fill', '#ffcc00');
+          d3.select(this).attr('fill', '#ffcc00').style('opacity', 0.8);
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
           const tooltip = d3.select('body').append('div')
             .attr('class', 'tooltip')
@@ -139,18 +219,21 @@ const PixExplorer: React.FC = () => {
             .style('border-radius', '4px')
             .style('pointer-events', 'none')
             .html(
-              `${d.properties.NM_UF}<br>Volume: R$${
-                stateData
-                  ? stateData.DinheiroMovimentado.toLocaleString('pt-BR')
-                  : 'N/A'
-              }`
+              `${d.properties.NM_UF}<br>` +
+              `Volume: R$${stateData ? stateData.DinheiroMovimentado.toLocaleString('pt-BR') : 'N/A'}<br>` +
+              `Transactions: ${stateData ? stateData.QuantidadeTransacoes.toLocaleString('pt-BR') : 'N/A'}<br>` +
+              `Avg Ticket: R$${stateData ? stateData.TicketMedio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'N/A'}`
             )
             .style('left', `${event.pageX + 10}px`)
             .style('top', `${event.pageY - 28}px`);
         })
         .on('mouseout', function (event, d) {
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
-          d3.select(this).attr('fill', stateData ? colorScale(stateData.DinheiroMovimentado) : '#ccc');
+          d3.select(this)
+            .attr('fill', stateData && !isNaN(stateData.DinheiroMovimentado) && stateData.DinheiroMovimentado !== null
+              ? colorScale(stateData.DinheiroMovimentado)
+              : '#ccc')
+            .style('opacity', 1);
           d3.select('.tooltip').remove();
         });
 
@@ -161,7 +244,7 @@ const PixExplorer: React.FC = () => {
         .attr('transform', `translate(${width - 50}, 20)`);
 
       const legendScale = d3.scaleLinear()
-        .domain(volumeExtent)
+        .domain(volumeExtent as [number, number])
         .range([legendHeight, 0]);
 
       const legendAxis = d3.axisRight(legendScale)
@@ -221,7 +304,7 @@ const PixExplorer: React.FC = () => {
     normalizeName(item.Estado).includes(normalizeName(filterState))
   );
 
-  // Sort for bar charts (highest to lowest transaction volume and average ticket)
+  // Sort for bar charts
   const barChartSortedData = [...filteredData].sort((a, b) => b.DinheiroMovimentado - a.DinheiroMovimentado);
   const avgTicketSortedData = [...filteredData].sort((a, b) => b.TicketMedio - a.TicketMedio);
 
@@ -253,7 +336,7 @@ const PixExplorer: React.FC = () => {
     ],
   };
 
-  // Pie Chart: PF vs PJ Participation (average across all states)
+  // Pie Chart: PF vs PJ Participation
   const avgPF = filteredData.reduce((sum, item) => sum + item.ParticipacaoPF, 0) / (filteredData.length || 1);
   const avgPJ = filteredData.reduce((sum, item) => sum + item.ParticipacaoPJ, 0) / (filteredData.length || 1);
   const pieChartData = {
@@ -623,10 +706,14 @@ const PixExplorer: React.FC = () => {
         </table>
       </div>
 
-      {/* Inline CSS for tooltip */}
+      {/* Inline CSS for tooltip and map */}
       <style jsx>{`
         .tooltip {
           z-index: 1000;
+        }
+        svg path {
+          fill-opacity: 1 !important;
+          transition: fill 0.2s, opacity 0.2s;
         }
       `}</style>
     </div>
