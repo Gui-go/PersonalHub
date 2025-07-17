@@ -52,13 +52,75 @@ const PixExplorer: React.FC = () => {
   const [filterState, setFilterState] = useState('');
   const mapRef = useRef<SVGSVGElement>(null);
 
-  // Normalize state names to remove accents, convert to lowercase, and trim spaces
-  const normalizeName = (name: string) =>
-    name
+  // Normalize state names with comprehensive mapping
+  const normalizeName = (name: string) => {
+    const normalized = name
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
       .trim();
+    const nameMap: { [key: string]: string } = {
+      'sao paulo': 'São Paulo',
+      'rio': 'Rio de Janeiro',
+      'minas': 'Minas Gerais',
+      'parana': 'Paraná',
+      'ceara': 'Ceará',
+      'goias': 'Goiás',
+      'para': 'Pará',
+      'piaui': 'Piauí',
+      'roraima': 'Roraima',
+      'amapa': 'Amapá',
+      'rondonia': 'Rondônia',
+      'tocantins': 'Tocantins',
+      'maranhao': 'Maranhão',
+      'espirito santo': 'Espírito Santo',
+      'rio grande do sul': 'Rio Grande do Sul',
+      'rio grande do norte': 'Rio Grande do Norte',
+      'mato grosso': 'Mato Grosso',
+      'mato grosso do sul': 'Mato Grosso do Sul',
+      'distrito federal': 'Distrito Federal',
+      'acre': 'Acre',
+      'alagoas': 'Alagoas',
+      'amazonas': 'Amazonas',
+      'bahia': 'Bahia',
+      'pernambuco': 'Pernambuco',
+      'santa catarina': 'Santa Catarina',
+      'sergipe': 'Sergipe',
+      'paraiba': 'Paraíba'
+    };
+    return nameMap[normalized] || name;
+  };
+
+  // Comprehensive fallback data covering all Brazilian states
+  const fallbackData: AggregatedMetrics[] = [
+    { Estado: 'São Paulo', DinheiroMovimentado: 1000000, QuantidadeTransacoes: 5000, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 1000, PagadoresUnicosPJ: 500, RecebedoresUnicosPF: 800, RecebedoresUnicosPJ: 400, RelacaoPagadoresRecebedoresPF: 1.25, RelacaoPagadoresRecebedoresPJ: 1.25 },
+    { Estado: 'Rio de Janeiro', DinheiroMovimentado: 800000, QuantidadeTransacoes: 4000, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 900, PagadoresUnicosPJ: 450, RecebedoresUnicosPF: 700, RecebedoresUnicosPJ: 350, RelacaoPagadoresRecebedoresPF: 1.28, RelacaoPagadoresRecebedoresPJ: 1.28 },
+    { Estado: 'Minas Gerais', DinheiroMovimentado: 600000, QuantidadeTransacoes: 3000, TicketMedio: 200, ParticipacaoPF: 50, ParticipacaoPJ: 50, PagadoresUnicosPF: 800, PagadoresUnicosPJ: 400, RecebedoresUnicosPF: 600, RecebedoresUnicosPJ: 300, RelacaoPagadoresRecebedoresPF: 1.33, RelacaoPagadoresRecebedoresPJ: 1.33 },
+    { Estado: 'Paraná', DinheiroMovimentado: 500000, QuantidadeTransacoes: 2500, TicketMedio: 200, ParticipacaoPF: 52, ParticipacaoPJ: 48, PagadoresUnicosPF: 700, PagadoresUnicosPJ: 350, RecebedoresUnicosPF: 500, RecebedoresUnicosPJ: 250, RelacaoPagadoresRecebedoresPF: 1.4, RelacaoPagadoresRecebedoresPJ: 1.4 },
+    { Estado: 'Ceará', DinheiroMovimentado: 400000, QuantidadeTransacoes: 2000, TicketMedio: 200, ParticipacaoPF: 58, ParticipacaoPJ: 42, PagadoresUnicosPF: 600, PagadoresUnicosPJ: 300, RecebedoresUnicosPF: 400, RecebedoresUnicosPJ: 200, RelacaoPagadoresRecebedoresPF: 1.5, RelacaoPagadoresRecebedoresPJ: 1.5 },
+    { Estado: 'Goiás', DinheiroMovimentado: 350000, QuantidadeTransacoes: 1750, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 500, PagadoresUnicosPJ: 250, RecebedoresUnicosPF: 350, RecebedoresUnicosPJ: 175, RelacaoPagadoresRecebedoresPF: 1.43, RelacaoPagadoresRecebedoresPJ: 1.43 },
+    { Estado: 'Pará', DinheiroMovimentado: 300000, QuantidadeTransacoes: 1500, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 400, PagadoresUnicosPJ: 200, RecebedoresUnicosPF: 300, RecebedoresUnicosPJ: 150, RelacaoPagadoresRecebedoresPF: 1.33, RelacaoPagadoresRecebedoresPJ: 1.33 },
+    { Estado: 'Piauí', DinheiroMovimentado: 250000, QuantidadeTransacoes: 1250, TicketMedio: 200, ParticipacaoPF: 62, ParticipacaoPJ: 38, PagadoresUnicosPF: 350, PagadoresUnicosPJ: 175, RecebedoresUnicosPF: 250, RecebedoresUnicosPJ: 125, RelacaoPagadoresRecebedoresPF: 1.4, RelacaoPagadoresRecebedoresPJ: 1.4 },
+    { Estado: 'Roraima', DinheiroMovimentado: 200000, QuantidadeTransacoes: 1000, TicketMedio: 200, ParticipacaoPF: 65, ParticipacaoPJ: 35, PagadoresUnicosPF: 300, PagadoresUnicosPJ: 150, RecebedoresUnicosPF: 200, RecebedoresUnicosPJ: 100, RelacaoPagadoresRecebedoresPF: 1.5, RelacaoPagadoresRecebedoresPJ: 1.5 },
+    { Estado: 'Amapá', DinheiroMovimentado: 180000, QuantidadeTransacoes: 900, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 250, PagadoresUnicosPJ: 125, RecebedoresUnicosPF: 180, RecebedoresUnicosPJ: 90, RelacaoPagadoresRecebedoresPF: 1.39, RelacaoPagadoresRecebedoresPJ: 1.39 },
+    { Estado: 'Rondônia', DinheiroMovimentado: 170000, QuantidadeTransacoes: 850, TicketMedio: 200, ParticipacaoPF: 58, ParticipacaoPJ: 42, PagadoresUnicosPF: 240, PagadoresUnicosPJ: 120, RecebedoresUnicosPF: 170, RecebedoresUnicosPJ: 85, RelacaoPagadoresRecebedoresPF: 1.41, RelacaoPagadoresRecebedoresPJ: 1.41 },
+    { Estado: 'Tocantins', DinheiroMovimentado: 160000, QuantidadeTransacoes: 800, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 230, PagadoresUnicosPJ: 115, RecebedoresUnicosPF: 160, RecebedoresUnicosPJ: 80, RelacaoPagadoresRecebedoresPF: 1.44, RelacaoPagadoresRecebedoresPJ: 1.44 },
+    { Estado: 'Maranhão', DinheiroMovimentado: 150000, QuantidadeTransacoes: 750, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 220, PagadoresUnicosPJ: 110, RecebedoresUnicosPF: 150, RecebedoresUnicosPJ: 75, RelacaoPagadoresRecebedoresPF: 1.47, RelacaoPagadoresRecebedoresPJ: 1.47 },
+    { Estado: 'Espírito Santo', DinheiroMovimentado: 140000, QuantidadeTransacoes: 700, TicketMedio: 200, ParticipacaoPF: 52, ParticipacaoPJ: 48, PagadoresUnicosPF: 210, PagadoresUnicosPJ: 105, RecebedoresUnicosPF: 140, RecebedoresUnicosPJ: 70, RelacaoPagadoresRecebedoresPF: 1.5, RelacaoPagadoresRecebedoresPJ: 1.5 },
+    { Estado: 'Rio Grande do Sul', DinheiroMovimentado: 130000, QuantidadeTransacoes: 650, TicketMedio: 200, ParticipacaoPF: 50, ParticipacaoPJ: 50, PagadoresUnicosPF: 200, PagadoresUnicosPJ: 100, RecebedoresUnicosPF: 130, RecebedoresUnicosPJ: 65, RelacaoPagadoresRecebedoresPF: 1.54, RelacaoPagadoresRecebedoresPJ: 1.54 },
+    { Estado: 'Rio Grande do Norte', DinheiroMovimentado: 120000, QuantidadeTransacoes: 600, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 190, PagadoresUnicosPJ: 95, RecebedoresUnicosPF: 120, RecebedoresUnicosPJ: 60, RelacaoPagadoresRecebedoresPF: 1.58, RelacaoPagadoresRecebedoresPJ: 1.58 },
+    { Estado: 'Mato Grosso', DinheiroMovimentado: 110000, QuantidadeTransacoes: 550, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 180, PagadoresUnicosPJ: 90, RecebedoresUnicosPF: 110, RecebedoresUnicosPJ: 55, RelacaoPagadoresRecebedoresPF: 1.64, RelacaoPagadoresRecebedoresPJ: 1.64 },
+    { Estado: 'Mato Grosso do Sul', DinheiroMovimentado: 100000, QuantidadeTransacoes: 500, TicketMedio: 200, ParticipacaoPF: 58, ParticipacaoPJ: 42, PagadoresUnicosPF: 170, PagadoresUnicosPJ: 85, RecebedoresUnicosPF: 100, RecebedoresUnicosPJ: 50, RelacaoPagadoresRecebedoresPF: 1.7, RelacaoPagadoresRecebedoresPJ: 1.7 },
+    { Estado: 'Distrito Federal', DinheiroMovimentado: 90000, QuantidadeTransacoes: 450, TicketMedio: 200, ParticipacaoPF: 62, ParticipacaoPJ: 38, PagadoresUnicosPF: 160, PagadoresUnicosPJ: 80, RecebedoresUnicosPF: 90, RecebedoresUnicosPJ: 45, RelacaoPagadoresRecebedoresPF: 1.78, RelacaoPagadoresRecebedoresPJ: 1.78 },
+    { Estado: 'Acre', DinheiroMovimentado: 80000, QuantidadeTransacoes: 400, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 150, PagadoresUnicosPJ: 75, RecebedoresUnicosPF: 80, RecebedoresUnicosPJ: 40, RelacaoPagadoresRecebedoresPF: 1.88, RelacaoPagadoresRecebedoresPJ: 1.88 },
+    { Estado: 'Alagoas', DinheiroMovimentado: 70000, QuantidadeTransacoes: 350, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 140, PagadoresUnicosPJ: 70, RecebedoresUnicosPF: 70, RecebedoresUnicosPJ: 35, RelacaoPagadoresRecebedoresPF: 2.0, RelacaoPagadoresRecebedoresPJ: 2.0 },
+    { Estado: 'Amazonas', DinheiroMovimentado: 60000, QuantidadeTransacoes: 300, TicketMedio: 200, ParticipacaoPF: 58, ParticipacaoPJ: 42, PagadoresUnicosPF: 130, PagadoresUnicosPJ: 65, RecebedoresUnicosPF: 60, RecebedoresUnicosPJ: 30, RelacaoPagadoresRecebedoresPF: 2.17, RelacaoPagadoresRecebedoresPJ: 2.17 },
+    { Estado: 'Bahia', DinheiroMovimentado: 50000, QuantidadeTransacoes: 250, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 120, PagadoresUnicosPJ: 60, RecebedoresUnicosPF: 50, RecebedoresUnicosPJ: 25, RelacaoPagadoresRecebedoresPF: 2.4, RelacaoPagadoresRecebedoresPJ: 2.4 },
+    { Estado: 'Pernambuco', DinheiroMovimentado: 40000, QuantidadeTransacoes: 200, TicketMedio: 200, ParticipacaoPF: 55, ParticipacaoPJ: 45, PagadoresUnicosPF: 110, PagadoresUnicosPJ: 55, RecebedoresUnicosPF: 40, RecebedoresUnicosPJ: 20, RelacaoPagadoresRecebedoresPF: 2.75, RelacaoPagadoresRecebedoresPJ: 2.75 },
+    { Estado: 'Santa Catarina', DinheiroMovimentado: 30000, QuantidadeTransacoes: 150, TicketMedio: 200, ParticipacaoPF: 52, ParticipacaoPJ: 48, PagadoresUnicosPF: 100, PagadoresUnicosPJ: 50, RecebedoresUnicosPF: 30, RecebedoresUnicosPJ: 15, RelacaoPagadoresRecebedoresPF: 3.33, RelacaoPagadoresRecebedoresPJ: 3.33 },
+    { Estado: 'Sergipe', DinheiroMovimentado: 20000, QuantidadeTransacoes: 100, TicketMedio: 200, ParticipacaoPF: 58, ParticipacaoPJ: 42, PagadoresUnicosPF: 90, PagadoresUnicosPJ: 45, RecebedoresUnicosPF: 20, RecebedoresUnicosPJ: 10, RelacaoPagadoresRecebedoresPF: 4.5, RelacaoPagadoresRecebedoresPJ: 4.5 },
+    { Estado: 'Paraíba', DinheiroMovimentado: 10000, QuantidadeTransacoes: 50, TicketMedio: 200, ParticipacaoPF: 60, ParticipacaoPJ: 40, PagadoresUnicosPF: 80, PagadoresUnicosPJ: 40, RecebedoresUnicosPF: 10, RecebedoresUnicosPJ: 5, RelacaoPagadoresRecebedoresPF: 8.0, RelacaoPagadoresRecebedoresPJ: 8.0 }
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,12 +133,22 @@ const PixExplorer: React.FC = () => {
           }),
         ]);
         const pixData = pixResponse.data;
-        setData(pixData);
+        // Validate Pix data
+        const validPixData = pixData.filter((d: AggregatedMetrics) => 
+          d.Estado && !isNaN(d.DinheiroMovimentado) && d.DinheiroMovimentado !== null
+        );
+        if (validPixData.length === 0) {
+          console.warn('No valid Pix data received; using fallback data');
+          setData(fallbackData);
+          setError('No valid Pix data; using fallback data');
+        } else {
+          setData(validPixData);
+        }
         setGeoJson(geoJsonResponse);
 
-        // Debug: Log unmatched states and data issues
+        // Debug state mismatches
         const geoJsonStates = new Set(geoJsonResponse.features.map((f: any) => normalizeName(f.properties.NM_UF)));
-        const pixStates = new Set(pixData.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
+        const pixStates = new Set(validPixData.map((d: AggregatedMetrics) => normalizeName(d.Estado)));
         const unmatchedGeoJson = [...geoJsonStates].filter((state) => !pixStates.has(state));
         const unmatchedPix = [...pixStates].filter((state) => !geoJsonStates.has(state));
         if (unmatchedGeoJson.length > 0) {
@@ -85,13 +157,13 @@ const PixExplorer: React.FC = () => {
         if (unmatchedPix.length > 0) {
           console.warn('Pix data states not found in GeoJSON:', unmatchedPix);
         }
-        // Log data for debugging
-        console.log('Pix Data:', pixData);
-        console.log('GeoJSON Features:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
+        console.log('Pix Data States:', validPixData.map((d: AggregatedMetrics) => d.Estado));
+        console.log('GeoJSON States:', geoJsonResponse.features.map((f: any) => f.properties.NM_UF));
         setLoading(false);
       } catch (err) {
         console.error('Fetch error:', err);
-        setError('Failed to load Pix data or GeoJSON');
+        setData(fallbackData);
+        setError('Failed to load Pix data; using fallback data');
         setLoading(false);
       }
     };
@@ -100,7 +172,7 @@ const PixExplorer: React.FC = () => {
 
   useEffect(() => {
     if (!loading && data.length > 0 && geoJson && mapRef.current) {
-      // Debug: Validate data
+      // Validate Pix data
       const invalidData = data.filter(
         (d) => !d.Estado || isNaN(d.DinheiroMovimentado) || d.DinheiroMovimentado === null
       );
@@ -124,7 +196,7 @@ const PixExplorer: React.FC = () => {
       const validVolumes = data
         .map((d) => d.DinheiroMovimentado)
         .filter((v) => !isNaN(v) && v !== null);
-      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1];
+      const volumeExtent = validVolumes.length > 0 ? d3.extent(validVolumes) : [0, 1000000];
       const colorScale = d3
         .scaleSequential(d3.interpolateBlues)
         .domain(volumeExtent as [number, number]);
@@ -142,11 +214,11 @@ const PixExplorer: React.FC = () => {
           const stateData = data.find((item) => normalizeName(item.Estado) === normalizeName(d.properties.NM_UF));
           if (!stateData) {
             console.warn(`No data for state: ${d.properties.NM_UF}`);
-            return '#ccc';
+            return '#d3d3d3'; // Light gray for unmatched states
           }
           if (isNaN(stateData.DinheiroMovimentado) || stateData.DinheiroMovimentado === null) {
             console.warn(`Invalid transaction volume for state: ${d.properties.NM_UF}`, stateData);
-            return '#ccc';
+            return '#d3d3d3';
           }
           return colorScale(stateData.DinheiroMovimentado);
         })
@@ -178,7 +250,7 @@ const PixExplorer: React.FC = () => {
           d3.select(this)
             .attr('fill', stateData && !isNaN(stateData.DinheiroMovimentado) && stateData.DinheiroMovimentado !== null
               ? colorScale(stateData.DinheiroMovimentado)
-              : '#ccc')
+              : '#d3d3d3')
             .style('opacity', 1);
           d3.select('.tooltip').remove();
         });
@@ -250,7 +322,7 @@ const PixExplorer: React.FC = () => {
     normalizeName(item.Estado).includes(normalizeName(filterState))
   );
 
-  // Sort for bar charts (highest to lowest transaction volume and average ticket)
+  // Sort for bar charts
   const barChartSortedData = [...filteredData].sort((a, b) => b.DinheiroMovimentado - a.DinheiroMovimentado);
   const avgTicketSortedData = [...filteredData].sort((a, b) => b.TicketMedio - a.TicketMedio);
 
@@ -282,7 +354,7 @@ const PixExplorer: React.FC = () => {
     ],
   };
 
-  // Pie Chart: PF vs PJ Participation (average across all states)
+  // Pie Chart: PF vs PJ Participation
   const avgPF = filteredData.reduce((sum, item) => sum + item.ParticipacaoPF, 0) / (filteredData.length || 1);
   const avgPJ = filteredData.reduce((sum, item) => sum + item.ParticipacaoPJ, 0) / (filteredData.length || 1);
   const pieChartData = {
@@ -658,7 +730,7 @@ const PixExplorer: React.FC = () => {
           z-index: 1000;
         }
         svg path {
-          fill-opacity: 1;
+          fill-opacity: 1 !important;
           transition: fill 0.2s, opacity 0.2s;
         }
       `}</style>
