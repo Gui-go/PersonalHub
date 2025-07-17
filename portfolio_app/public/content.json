@@ -995,8 +995,32 @@
                 "icon": "🐍"
             },
             {
+                "name": "Jupyter",
+                "icon": "📓"
+            },
+            {
+                "name": "Pandas",
+                "icon": "🐼"
+            },
+            {
+                "name": "Scikit-learn",
+                "icon": "🧪"
+            },
+            {
+                "name": "PyTorch",
+                "icon": "🔥"
+            },
+            {
+                "name": "TensorFlow",
+                "icon": "🧠"
+            },
+            {
+                "name": "MLflow",
+                "icon": "📤"
+            },
+            {
                 "name": "R",
-                "icon": "📊"
+                "icon": "📈"
             },
             {
                 "name": "SQL",
@@ -1012,11 +1036,15 @@
             },
             {
                 "name": "ArcGIS",
-                "icon": "🗺️"
+                "icon": "🧭"
+            },
+            {
+                "name": "OpenLayers",
+                "icon": "🛰️"
             },
             {
                 "name": "PostGIS",
-                "icon": "🗺️"
+                "icon": "🌍"
             },
             {
                 "name": "PostgreSQL",
@@ -1024,11 +1052,11 @@
             },
             {
                 "name": "SQLite",
-                "icon": "🐘"
+                "icon": "🗃️"
             },
             {
                 "name": "Cloud SQL",
-                "icon": "🐘"
+                "icon": "💾"
             },
             {
                 "name": "MongoDB",
@@ -1063,6 +1091,38 @@
                 "icon": "🏗️"
             },
             {
+                "name": "Ansible",
+                "icon": "🤖"
+            },
+            {
+                "name": "BigQuery",
+                "icon": "🔍"
+            },
+            {
+                "name": "RedShift",
+                "icon": "🎯"
+            },
+            {
+                "name": "SnowFlake",
+                "icon": "❄️"
+            },
+            {
+                "name": "DataFlow",
+                "icon": "🌀"
+            },
+            {
+                "name": "DataBricks",
+                "icon": "🧱"
+            },
+            {
+                "name": "DBT",
+                "icon": "🛠️"
+            },
+            {
+                "name": "SQLMesh",
+                "icon": "🧩"
+            },
+            {
                 "name": "JavaScript",
                 "icon": "📜"
             },
@@ -1076,11 +1136,27 @@
             },
             {
                 "name": "Next.js",
-                "icon": "⚛️"
+                "icon": "⏭️"
             },
             {
                 "name": "Node.js",
                 "icon": "🟢"
+            },
+            {
+                "name": "TailWind",
+                "icon": "🌬️"
+            },
+            {
+                "name": "Looker",
+                "icon": "👀"
+            },
+            {
+                "name": "Tableau",
+                "icon": "🖼️"
+            },
+            {
+                "name": "Power BI",
+                "icon": "🖥️"
             },
             {
                 "name": "Flask",
@@ -1099,6 +1175,18 @@
                 "icon": "💨"
             },
             {
+                "name": "Spark",
+                "icon": "✨"
+            },
+            {
+                "name": "Hadoop",
+                "icon": "🗄️"
+            },
+            {
+                "name": "Hive",
+                "icon": "🐝"
+            },
+            {
                 "name": "Kafka",
                 "icon": "⚙️"
             },
@@ -1108,12 +1196,12 @@
             },
             {
                 "name": "Prometheus",
-                "icon": ""
+                "icon": "⏱️"
             },
             {
-                "name": "DataBricks",
-                "icon": ""
-            },
+                "name": "Jenkins",
+                "icon": "🤵"
+            },	
             {
                 "name": "GitHub Actions",
                 "icon": "🚀"
