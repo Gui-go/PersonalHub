@@ -37,7 +37,8 @@ function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
     metrics: AggregatedMetrics;
     sumPF: number;
     sumPJ: number;
-  }>();
+  }
+  >();
 
   for (const record of data) {
     const e = record.Estado;
@@ -123,7 +124,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
+      console.time(`Pix fetch attempt ${attempt}`); // Start timer
+
       const response = await instance.get(url, { params });
+
+      console.timeEnd(`Pix fetch attempt ${attempt}`); // End timer
+
       const data: PixRecord[] = response.data?.value;
 
       if (!data || data.length === 0) {
