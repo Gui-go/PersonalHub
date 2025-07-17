@@ -19,7 +19,7 @@
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import * as gtag from "../../lib/gtag";
+import * as gtag from "../lib/gtag";
 import '../styles/globals.css';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
