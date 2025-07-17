@@ -58,7 +58,7 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
         </h1>
 
         <button
-          className="md:hidden hamburger flex flex-col justify-center items-center w-8 h-8 space-y-1.5 p-1 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
+          className="xl:hidden hamburger flex flex-col justify-center items-center w-8 h-8 space-y-1.5 p-1 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
@@ -70,14 +70,14 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
 
         <ul
           className={`${isOpen ? 'flex' : 'hidden'
-            } md:flex flex-col md:flex-row md:space-x-4 fixed md:static top-14 xs:top-16 left-0 w-3/4 xs:w-2/3 sm:w-1/2 md:w-auto h-[calc(100vh-56px)] xs:h-[calc(100vh-64px)] md:h-auto bg-blue-800 md:bg-transparent px-4 py-4 xs:py-6 md:py-0 transition-all duration-300 ease-in-out z-40 transform ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-            } md:transform-none md:opacity-100 overflow-y-auto md:overflow-visible`}
+            } xl:flex flex-col xl:flex-row xl:space-x-4 fixed xl:static top-14 xs:top-16 left-0 w-full xl:w-auto h-[calc(100vh-56px)] xs:h-[calc(100vh-64px)] xl:h-auto bg-blue-800 xl:bg-transparent px-4 py-4 xs:py-6 xl:py-0 transition-all duration-300 ease-in-out z-40 transform ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
+            } xl:transform-none xl:opacity-100 overflow-y-auto xl:overflow-visible`}
         >
           {menuItems.map((item) => (
-            <li key={item.id} className="mb-3 xs:mb-4 md:mb-0">
+            <li key={item.id} className="mb-3 xs:mb-4 xl:mb-0">
               <Link
                 href={item.path}
-                className={`block px-3 py-2 text-sm xs:text-base md:text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`block px-2 py-1 text-2xl xs:text-2xl md:text-xl font-medium rounded-lg transition-all duration-200 ${
                   pathname === item.path
                     ? 'bg-blue-900 text-white font-semibold'
                     : 'hover:bg-blue-700 hover:text-white focus:bg-blue-700 focus:text-white'
@@ -93,3 +93,4 @@ export default function Navbar({ title = "Guigo.dev.br" }: { title?: string }) {
     </nav>
   );
 }
+

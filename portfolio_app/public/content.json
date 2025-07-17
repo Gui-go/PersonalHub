@@ -4,7 +4,7 @@
         "label": "Home",
         "path": "/",
         "title": "Welcome to Guilherme's Personal Hub",
-        "version": "(Version 0.6.6.9)",
+        "version": "(Version 0.7.0.0)",
         "description": "I am a developer with a passion for data engineering, geospatial analysis, and AI projects. Below you can find my highlights.",
         "image": "images/cloud8.jpg",
         "cta": [
@@ -89,6 +89,28 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "counter-plus-one",
+                "title": "Counter Plus One",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/counter-plus-one",
+                "date": "2024-12-??",
+                "excerpt": "A simple, yet well developed, button to add one into a counter.",
+                "image": "/images/button12.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "currency-chart",
+                "title": "Currency Chart",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/currency-chart",
+                "date": "2024-12-??",
+                "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
+                "image": "/images/currency4.jpg",
+                "content": "abcabcabc"
+            },
+            {
                 "id": "grafana",
                 "title": "Grafana",
                 "short_title": "",
@@ -144,17 +166,6 @@
                 "content": "abcabcabc"
             },
             {
-                "id": "counter-plus-one",
-                "title": "Counter Plus One",
-                "short_title": "",
-                "full_title": "",
-                "path": "/tools/counter-plus-one",
-                "date": "2024-12-??",
-                "excerpt": "A simple, yet well developed, button to add one into a counter.",
-                "image": "/images/button12.jpg",
-                "content": "abcabcabc"
-            },
-            {
                 "id": "stupid-button",
                 "title": "Stupid Button",
                 "short_title": "",
@@ -163,17 +174,6 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) A stupid button that increses in price each time it is pressed.",
                 "image": "/images/stupid-button1.jpg",
-                "content": "abcabcabc"
-            },
-            {
-                "id": "currency-chart",
-                "title": "Currency Chart",
-                "short_title": "",
-                "full_title": "",
-                "path": "/tools/currency-chart",
-                "date": "2024-12-??",
-                "excerpt": "Explore the variance of the exchange rate between various currencies over time.",
-                "image": "/images/currency4.jpg",
                 "content": "abcabcabc"
             },
             {
@@ -539,15 +539,15 @@
                 "desc2_munster": "Münster is a city in Germany known for its historic old town, university, and cycling culture. It's a charming city with a rich history and vibrant student life."
             },
             {
-                "id": "brazilian-road-network",
-                "title": "Brazilian Road Network",
+                "id": "blog-map-projection-review",
+                "title": "Map Projection Review",
                 "short_title": "",
                 "full_title": "",
-                "path": "/geolayers/brazilian-road-network",
-                "date": "2024-12-??",
-                "excerpt": "A spatial visualization of the brazilian road network through OpenLayer mapping.",
-                "image": "/images/roads1.jpg",
-                "content": "abcabcabc"
+                "path": "/geolayers/map-projection-review",
+                "date": "2025-01-??",
+                "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
+                "image": "/images/globeColorful.jpg",
+                "content": "This tutorial covers abcabc abcabc "
             },
             {
                 "id": "hiroshima-nagasaki",
@@ -616,15 +616,15 @@
                 "content": "abcabcabc"
             },
             {
-                "id": "blog-map-projection-review",
-                "title": "Map Projection Review",
+                "id": "brazilian-road-network",
+                "title": "Brazilian Road Network",
                 "short_title": "",
                 "full_title": "",
-                "path": "/geolayers/map-projection-review",
-                "date": "2025-01-??",
-                "excerpt": "A Short Review on the various map projections out there, all rendered with D3.js",
-                "image": "/images/globeColorful.jpg",
-                "content": "This tutorial covers abcabc abcabc "
+                "path": "/geolayers/brazilian-road-network",
+                "date": "2024-12-??",
+                "excerpt": "A spatial visualization of the brazilian road network through OpenLayer mapping.",
+                "image": "/images/roads1.jpg",
+                "content": "abcabcabc"
             },
             {
                 "id": "my-favourite-restaurants",
@@ -646,6 +646,17 @@
                 "date": "2024-12-??",
                 "excerpt": "(WORK IN PROGRESS) Explore the optimal path between point A and point B in Brazil using Dijkstra's algorithm. This interactive map visualizes the shortest route based on road network data.",
                 "image": "/images/roadsJungle.jpg",
+                "content": "abcabcabc"
+            },
+            {
+                "id": "belin-wall-comparison",
+                "title": "Belin Wall Comparison",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/belin-wall-comparison",
+                "date": "2024-12-??",
+                "excerpt": "(WORK IN PROGRESS) An interactive visulization to compare the Berlin Wall to other parts of the world.",
+                "image": "/images/berlinWall2.jpg",
                 "content": "abcabcabc"
             },
             {
@@ -984,8 +995,32 @@
                 "icon": "🐍"
             },
             {
+                "name": "Jupyter",
+                "icon": "📓"
+            },
+            {
+                "name": "Pandas",
+                "icon": "🐼"
+            },
+            {
+                "name": "Scikit-learn",
+                "icon": "🧪"
+            },
+            {
+                "name": "PyTorch",
+                "icon": "🔥"
+            },
+            {
+                "name": "TensorFlow",
+                "icon": "🧠"
+            },
+            {
+                "name": "MLflow",
+                "icon": "📤"
+            },
+            {
                 "name": "R",
-                "icon": "📊"
+                "icon": "📈"
             },
             {
                 "name": "SQL",
@@ -1001,11 +1036,15 @@
             },
             {
                 "name": "ArcGIS",
-                "icon": "🗺️"
+                "icon": "🧭"
+            },
+            {
+                "name": "OpenLayers",
+                "icon": "🛰️"
             },
             {
                 "name": "PostGIS",
-                "icon": "🗺️"
+                "icon": "🌍"
             },
             {
                 "name": "PostgreSQL",
@@ -1013,11 +1052,11 @@
             },
             {
                 "name": "SQLite",
-                "icon": "🐘"
+                "icon": "🗃️"
             },
             {
                 "name": "Cloud SQL",
-                "icon": "🐘"
+                "icon": "💾"
             },
             {
                 "name": "MongoDB",
@@ -1052,6 +1091,38 @@
                 "icon": "🏗️"
             },
             {
+                "name": "Ansible",
+                "icon": "🤖"
+            },
+            {
+                "name": "BigQuery",
+                "icon": "🔍"
+            },
+            {
+                "name": "RedShift",
+                "icon": "🎯"
+            },
+            {
+                "name": "SnowFlake",
+                "icon": "❄️"
+            },
+            {
+                "name": "DataFlow",
+                "icon": "🌀"
+            },
+            {
+                "name": "DataBricks",
+                "icon": "🧱"
+            },
+            {
+                "name": "DBT",
+                "icon": "🛠️"
+            },
+            {
+                "name": "SQLMesh",
+                "icon": "🧩"
+            },
+            {
                 "name": "JavaScript",
                 "icon": "📜"
             },
@@ -1065,11 +1136,27 @@
             },
             {
                 "name": "Next.js",
-                "icon": "⚛️"
+                "icon": "⏭️"
             },
             {
                 "name": "Node.js",
                 "icon": "🟢"
+            },
+            {
+                "name": "TailWind",
+                "icon": "🌬️"
+            },
+            {
+                "name": "Looker",
+                "icon": "👀"
+            },
+            {
+                "name": "Tableau",
+                "icon": "🖼️"
+            },
+            {
+                "name": "Power BI",
+                "icon": "🖥️"
             },
             {
                 "name": "Flask",
@@ -1088,6 +1175,18 @@
                 "icon": "💨"
             },
             {
+                "name": "Spark",
+                "icon": "✨"
+            },
+            {
+                "name": "Hadoop",
+                "icon": "🗄️"
+            },
+            {
+                "name": "Hive",
+                "icon": "🐝"
+            },
+            {
                 "name": "Kafka",
                 "icon": "⚙️"
             },
@@ -1097,8 +1196,12 @@
             },
             {
                 "name": "Prometheus",
-                "icon": ""
+                "icon": "⏱️"
             },
+            {
+                "name": "Jenkins",
+                "icon": "🤵"
+            },	
             {
                 "name": "GitHub Actions",
                 "icon": "🚀"
