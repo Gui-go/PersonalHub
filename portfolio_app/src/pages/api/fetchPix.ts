@@ -33,122 +33,111 @@ type AggregatedMetrics = {
 };
 
 function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
-  const agrupado = new Map<string, AggregatedMetrics>();
+  const map = new Map<string, {
+    metrics: AggregatedMetrics;
+    sumPF: number;
+    sumPJ: number;
+  }>();
 
   for (const record of data) {
     const e = record.Estado;
-    if (!e) {
-      console.warn('Skipping record with missing Estado:', record);
-      continue;
-    }
+    if (!e) continue;
 
-    if (!agrupado.has(e)) {
-      agrupado.set(e, {
-        Estado: e,
-        DinheiroMovimentado: 0,
-        QuantidadeTransacoes: 0,
-        TicketMedio: 0,
-        ParticipacaoPF: 0,
-        ParticipacaoPJ: 0,
-        PagadoresUnicosPF: 0,
-        PagadoresUnicosPJ: 0,
-        RecebedoresUnicosPF: 0,
-        RecebedoresUnicosPJ: 0,
-        RelacaoPagadoresRecebedoresPF: null,
-        RelacaoPagadoresRecebedoresPJ: null,
+    if (!map.has(e)) {
+      map.set(e, {
+        metrics: {
+          Estado: e,
+          DinheiroMovimentado: 0,
+          QuantidadeTransacoes: 0,
+          TicketMedio: 0,
+          ParticipacaoPF: 0,
+          ParticipacaoPJ: 0,
+          PagadoresUnicosPF: 0,
+          PagadoresUnicosPJ: 0,
+          RecebedoresUnicosPF: 0,
+          RecebedoresUnicosPJ: 0,
+          RelacaoPagadoresRecebedoresPF: null,
+          RelacaoPagadoresRecebedoresPJ: null,
+        },
+        sumPF: 0,
+        sumPJ: 0,
       });
     }
 
-    const agg = agrupado.get(e)!;
+    const entry = map.get(e)!;
+    const { metrics } = entry;
 
-    const dinheiroMov = (record.VL_PagadorPF || 0) + (record.VL_PagadorPJ || 0);
-    if (isNaN(dinheiroMov)) {
-      console.warn(`Invalid DinheiroMovimentado for ${e}:`, record);
-      continue;
-    }
-    agg.DinheiroMovimentado += dinheiroMov;
+    const valorPF = record.VL_PagadorPF || 0;
+    const valorPJ = record.VL_PagadorPJ || 0;
+    const qtPF = record.QT_PagadorPF || 0;
+    const qtPJ = record.QT_PagadorPJ || 0;
 
-    const qtTransacoes = (record.QT_PagadorPF || 0) + (record.QT_PagadorPJ || 0);
-    agg.QuantidadeTransacoes += qtTransacoes;
+    metrics.DinheiroMovimentado += valorPF + valorPJ;
+    metrics.QuantidadeTransacoes += qtPF + qtPJ;
+    metrics.PagadoresUnicosPF += record.QT_PES_PagadorPF || 0;
+    metrics.PagadoresUnicosPJ += record.QT_PES_PagadorPJ || 0;
+    metrics.RecebedoresUnicosPF += record.QT_PES_RecebedorPF || 0;
+    metrics.RecebedoresUnicosPJ += record.QT_PES_RecebedorPJ || 0;
 
-    agg.PagadoresUnicosPF += record.QT_PES_PagadorPF || 0;
-    agg.PagadoresUnicosPJ += record.QT_PES_PagadorPJ || 0;
-    agg.RecebedoresUnicosPF += record.QT_PES_RecebedorPF || 0;
-    agg.RecebedoresUnicosPJ += record.QT_PES_RecebedorPJ || 0;
+    entry.sumPF += valorPF;
+    entry.sumPJ += valorPJ;
   }
 
-  for (const agg of agrupado.values()) {
-    agg.TicketMedio =
-      agg.QuantidadeTransacoes > 0
-        ? agg.DinheiroMovimentado / agg.QuantidadeTransacoes
-        : 0;
+  // Finalize calculations
+  const results: AggregatedMetrics[] = [];
 
-    const volumePF = data
-      .filter((d) => d.Estado === agg.Estado)
-      .reduce((sum, d) => sum + (d.VL_PagadorPF || 0), 0);
-    const volumePJ = data
-      .filter((d) => d.Estado === agg.Estado)
-      .reduce((sum, d) => sum + (d.VL_PagadorPJ || 0), 0);
-    const volumeTotal = volumePF + volumePJ;
+  for (const { metrics, sumPF, sumPJ } of map.values()) {
+    const total = sumPF + sumPJ;
+    metrics.TicketMedio = metrics.QuantidadeTransacoes > 0
+      ? metrics.DinheiroMovimentado / metrics.QuantidadeTransacoes
+      : 0;
 
-    agg.ParticipacaoPF = volumeTotal > 0 ? (volumePF / volumeTotal) * 100 : 0;
-    agg.ParticipacaoPJ = volumeTotal > 0 ? (volumePJ / volumeTotal) * 100 : 0;
+    metrics.ParticipacaoPF = total > 0 ? (sumPF / total) * 100 : 0;
+    metrics.ParticipacaoPJ = total > 0 ? (sumPJ / total) * 100 : 0;
 
-    agg.RelacaoPagadoresRecebedoresPF =
-      agg.RecebedoresUnicosPF > 0
-        ? agg.PagadoresUnicosPF / agg.RecebedoresUnicosPF
+    metrics.RelacaoPagadoresRecebedoresPF =
+      metrics.RecebedoresUnicosPF > 0
+        ? metrics.PagadoresUnicosPF / metrics.RecebedoresUnicosPF
         : null;
 
-    agg.RelacaoPagadoresRecebedoresPJ =
-      agg.RecebedoresUnicosPJ > 0
-        ? agg.PagadoresUnicosPJ / agg.RecebedoresUnicosPJ
+    metrics.RelacaoPagadoresRecebedoresPJ =
+      metrics.RecebedoresUnicosPJ > 0
+        ? metrics.PagadoresUnicosPJ / metrics.RecebedoresUnicosPJ
         : null;
+
+    results.push(metrics);
   }
 
-  return Array.from(agrupado.values());
+  return results;
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const url =
-    "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const url = "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
   const params = {
     "@DataBase": "'202404'",
     "$format": "json",
   };
 
-  // Configure axios with timeout and retry logic
-  const instance = axios.create({
-    timeout: 30000, // 30 seconds timeout
-  });
-
+  const instance = axios.create({ timeout: 30000 });
   const maxRetries = 3;
-  let attempt = 0;
 
-  while (attempt < maxRetries) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       const response = await instance.get(url, { params });
-      const data: PixRecord[] = response.data.value;
+      const data: PixRecord[] = response.data?.value;
 
       if (!data || data.length === 0) {
-        console.warn('Empty data received from BCB API');
-        return res.status(500).json({ error: 'Empty data from Pix API' });
+        return res.status(500).json({ error: "Empty data from Pix API" });
       }
 
       const resultado = calculaMetricasPixPorEstado(data);
       return res.status(200).json(resultado);
     } catch (error: any) {
-      attempt++;
       console.error(`Attempt ${attempt} failed:`, error.message);
       if (attempt === maxRetries) {
-        console.error('Max retries reached. Returning error.');
-        return res.status(500).json({ error: 'Failed to fetch Pix data after retries' });
+        return res.status(500).json({ error: "Failed to fetch Pix data after retries" });
       }
-      // Wait before retrying (exponential backoff)
-      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt)); // exponential backoff
     }
   }
 }
-
