@@ -11,8 +11,8 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       ports { container_port = 3000 }
       resources {
         limits = {
-          cpu    = "1"  # "1"
-          memory = "512Mi" #"2048Mi" # "1024Mi" # "512Mi"
+          cpu    = "2"  # "1"
+          memory = "1024Mi" #"2048Mi" # "1024Mi" # "512Mi"
         }
       }
     }
@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
-    timeout = "60s"
+    timeout = "180s"
     service_account = var.portfolio_run_sa_email
   }
   traffic {
