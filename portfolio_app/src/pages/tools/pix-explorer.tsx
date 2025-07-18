@@ -43,7 +43,7 @@ interface AggregatedMetrics {
     RelacaoPagadoresRecebedoresPJ: number | null;
 }
 
-type MapVariable = 'DinheiroMovimentado' | 'QuantidadeTransacoes' | 'TicketMedio';
+type MapVariable = 'DinheiroMovimentado' | 'TicketMedio' | 'QuantidadeTransacoes';
 
 const PixExplorer: React.FC = () => {
     const [data, setData] = useState<AggregatedMetrics[]>([]);
@@ -53,6 +53,8 @@ const PixExplorer: React.FC = () => {
     const [sortConfig, setSortConfig] = useState<{ key: keyof AggregatedMetrics; direction: 'asc' | 'desc' } | null>(null);
     const [filterState, setFilterState] = useState('');
     const [mapVariable, setMapVariable] = useState<MapVariable>('DinheiroMovimentado');
+    const [selectedMonth, setSelectedMonth] = useState('2024-05');
+    const [isUpdating, setIsUpdating] = useState(false);
     const mapRef = useRef<SVGSVGElement>(null);
 
     const normalizeName = (name: string) => {
@@ -125,9 +127,10 @@ const PixExplorer: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            setIsUpdating(true);
             try {
                 const [pixResponse, geoJsonResponse] = await Promise.all([
-                    axios.get('/api/fetchPix'),
+                    axios.get(`/api/fetchPix?month=${selectedMonth}`),
                     fetch('/data/BR_UF_2024.geojson').then((res) => {
                         if (!res.ok) throw new Error('Failed to fetch GeoJSON');
                         return res.json();
@@ -151,10 +154,12 @@ const PixExplorer: React.FC = () => {
                 setData(fallbackData);
                 setError('Failed to load Pix data; using fallback data');
                 setLoading(false);
+            } finally {
+                setIsUpdating(false);
             }
         };
         fetchData();
-    }, []);
+    }, [selectedMonth]);
 
     useEffect(() => {
         if (!loading && data.length > 0 && geoJson && mapRef.current) {
@@ -351,6 +356,55 @@ const PixExplorer: React.FC = () => {
         ],
     };
 
+    const payerReceiverRatioData = {
+        labels: filteredData.map((item) => item.Estado),
+        datasets: [
+            {
+                label: 'Payers/Receivers Ratio (PF)',
+                data: filteredData.map((item) => item.RelacaoPagadoresRecebedoresPF),
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Payers/Receivers Ratio (PJ)',
+                data: filteredData.map((item) => item.RelacaoPagadoresRecebedoresPJ),
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const totalPagadoresPF = filteredData.reduce((sum, item) => sum + item.PagadoresUnicosPF, 0);
+    const totalRecebedoresPF = filteredData.reduce((sum, item) => sum + item.RecebedoresUnicosPF, 0);
+    const totalPagadoresPJ = filteredData.reduce((sum, item) => sum + item.PagadoresUnicosPJ, 0);
+    const totalRecebedoresPJ = filteredData.reduce((sum, item) => sum + item.RecebedoresUnicosPJ, 0);
+
+    const payersPieChartData = {
+        labels: ['Payers (PF)', 'Payers (PJ)'],
+        datasets: [
+            {
+                data: [totalPagadoresPF, totalPagadoresPJ],
+                backgroundColor: ['rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)'],
+                borderColor: ['rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const receiversPieChartData = {
+        labels: ['Receivers (PF)', 'Receivers (PJ)'],
+        datasets: [
+            {
+                data: [totalRecebedoresPF, totalRecebedoresPJ],
+                backgroundColor: ['rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)'],
+                borderColor: ['rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+                borderWidth: 1,
+            },
+        ],
+    };
+
     const totalVolume = filteredData.reduce((sum, item) => sum + item.DinheiroMovimentado, 0);
     const totalTransactions = filteredData.reduce((sum, item) => sum + item.QuantidadeTransacoes, 0);
     const topState = barChartSortedData[0]?.Estado || 'N/A';
@@ -401,7 +455,7 @@ const PixExplorer: React.FC = () => {
             <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50 flex items-center justify-center min-h-screen">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mx-auto mb-4"></div>
-                    <p className="text-lg font-semibold text-gray-700 animate-pulse">Analyzing Pix transactions...</p>
+                    <p className="text-lg font-semibold text-gray-700 animate-pulse">Fetching Pix data...</p>
                 </div>
             </div>
         );
@@ -416,9 +470,32 @@ const PixExplorer: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4 py-8 xs:py-10 sm:py-12 md:py-16 bg-gray-50 relative">
+            {isUpdating && (
+                <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
+                    <div className="text-center">
+                        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500 mx-auto mb-4"></div>
+                        <p className="text-lg font-semibold text-gray-700">Updating data...</p>
+                    </div>
+                </div>
+            )}
             <h1 className="text-4xl font-bold mb-4 text-center text-gray-800">Pix Transaction Explorer</h1>
             <p className="text-lg text-gray-600 text-center mb-8">An interactive dashboard to explore Pix usage across Brazil.</p>
+
+            <div className="flex justify-center mb-6">
+                <select
+                    value={selectedMonth}
+                    onChange={(e) => setSelectedMonth(e.target.value)}
+                    className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    {Array.from({ length: 12 }, (_, i) => {
+                        const month = new Date(0, i).toLocaleString('default', { month: 'long' });
+                        const year = 2024;
+                        const value = `${year}-${String(i + 1).padStart(2, '0')}`;
+                        return <option key={value} value={value}>{`${month} ${year}`}</option>;
+                    })}
+                </select>
+            </div>
 
             <div className="bg-white p-6 rounded-lg shadow mb-8">
                 <h2 className="text-2xl font-semibold mb-4">What is Pix?</h2>
@@ -470,17 +547,19 @@ const PixExplorer: React.FC = () => {
                 </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-white p-4 rounded shadow md:col-span-2">
+            <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
                     <h2 className="text-xl font-semibold mb-4">Transaction Map by State</h2>
                     <div className="flex justify-center mb-4">
                         <button onClick={() => setMapVariable('DinheiroMovimentado')} className={`px-4 py-2 rounded-l-lg ${mapVariable === 'DinheiroMovimentado' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>Volume</button>
                         <button onClick={() => setMapVariable('QuantidadeTransacoes')} className={`px-4 py-2 ${mapVariable === 'QuantidadeTransacoes' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>Transactions</button>
                         <button onClick={() => setMapVariable('TicketMedio')} className={`px-4 py-2 rounded-r-lg ${mapVariable === 'TicketMedio' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>Average Ticket</button>
                     </div>
-                    <svg ref={mapRef}></svg>
+                    <div className="flex justify-center">
+                        <svg ref={mapRef}></svg>
+                    </div>
                 </div>
-                <div className="bg-white p-4 rounded shadow">
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
                     <h2 className="text-xl font-semibold mb-4">Transaction Volume by State</h2>
                     <Bar
                         data={barChartData}
@@ -504,7 +583,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow">
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
                     <h2 className="text-xl font-semibold mb-4">Average Ticket by State</h2>
                     <Bar
                         data={avgTicketChartData}
@@ -528,7 +607,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow">
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
                     <h2 className="text-xl font-semibold mb-4">Individual vs Business Participation</h2>
                     <Pie
                         data={pieChartData}
@@ -545,7 +624,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow">
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
                     <h2 className="text-xl font-semibold mb-4">Volume vs. Average Ticket</h2>
                     <Scatter
                         data={scatterChartData}
@@ -578,6 +657,35 @@ const PixExplorer: React.FC = () => {
                                     ticks: {
                                         callback: (value) => `${Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`,
                                     },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                    <h2 className="text-xl font-semibold mb-4">Payer/Receiver Ratio by State</h2>
+                    <Bar
+                        data={payerReceiverRatioData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'top' },
+                                tooltip: {
+                                    callbacks: {
+                                        label: (context) => {
+                                            const state = filteredData[context.dataIndex];
+                                            return [
+                                                `${context.dataset.label}: ${context.parsed.y.toFixed(2)}`,
+                                                `PF: ${state.RelacaoPagadoresRecebedoresPF?.toFixed(2) ?? 'N/A'}`,
+                                                `PJ: ${state.RelacaoPagadoresRecebedoresPJ?.toFixed(2) ?? 'N/A'}`,
+                                            ];
+                                        },
+                                    },
+                                },
+                            },
+                            scales: {
+                                y: {
+                                    title: { display: true, text: 'Ratio' },
                                 },
                             },
                         }}

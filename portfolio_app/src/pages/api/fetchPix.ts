@@ -122,10 +122,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { month } = req.query;
+  const dataBase = typeof month === 'string' ? month.replace(/-/, '') : '202405';
+
   const url =
     "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
   const params = {
-    "@DataBase": "'202405'",
+    "@DataBase": "'" + dataBase + "'",
     "$format": "json",
     "$select": [
       "Estado_Ibge",
