@@ -10,6 +10,7 @@
 ghactionsSA-key.json
 */firestore_sa_key.json
 
+portfolio_app3/
 
 */.terraform/
 */.terraform.lock.hcl

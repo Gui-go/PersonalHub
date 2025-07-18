@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
 type PixRecord = {
+  Estado_Ibge: number;
+  Estado: string;
   VL_PagadorPF: number;
   VL_RecebedorPF: number;
   VL_PagadorPJ: number;
@@ -14,10 +16,10 @@ type PixRecord = {
   QT_PES_PagadorPJ: number;
   QT_PES_RecebedorPF: number;
   QT_PES_RecebedorPJ: number;
-  Estado: string;
 };
 
 type AggregatedMetrics = {
+  Estado_Ibge: number;
   Estado: string;
   DinheiroMovimentado: number;
   QuantidadeTransacoes: number;
@@ -33,21 +35,24 @@ type AggregatedMetrics = {
 };
 
 function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
-  const map = new Map<string, {
-    metrics: AggregatedMetrics;
-    sumPF: number;
-    sumPJ: number;
-  }
+  const map = new Map<
+    number,
+    {
+      metrics: AggregatedMetrics;
+      sumPF: number;
+      sumPJ: number;
+    }
   >();
 
   for (const record of data) {
-    const e = record.Estado;
-    if (!e) continue;
+    const estadoCode = record.Estado_Ibge;
+    const estadoNome = record.Estado;
 
-    if (!map.has(e)) {
-      map.set(e, {
+    if (!map.has(estadoCode)) {
+      map.set(estadoCode, {
         metrics: {
-          Estado: e,
+          Estado_Ibge: estadoCode,
+          Estado: estadoNome,
           DinheiroMovimentado: 0,
           QuantidadeTransacoes: 0,
           TicketMedio: 0,
@@ -65,7 +70,7 @@ function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
       });
     }
 
-    const entry = map.get(e)!;
+    const entry = map.get(estadoCode)!;
     const { metrics } = entry;
 
     const valorPF = record.VL_PagadorPF || 0;
@@ -84,14 +89,15 @@ function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
     entry.sumPJ += valorPJ;
   }
 
-  // Finalize calculations
   const results: AggregatedMetrics[] = [];
 
   for (const { metrics, sumPF, sumPJ } of map.values()) {
     const total = sumPF + sumPJ;
-    metrics.TicketMedio = metrics.QuantidadeTransacoes > 0
-      ? metrics.DinheiroMovimentado / metrics.QuantidadeTransacoes
-      : 0;
+
+    metrics.TicketMedio =
+      metrics.QuantidadeTransacoes > 0
+        ? metrics.DinheiroMovimentado / metrics.QuantidadeTransacoes
+        : 0;
 
     metrics.ParticipacaoPF = total > 0 ? (sumPF / total) * 100 : 0;
     metrics.ParticipacaoPJ = total > 0 ? (sumPJ / total) * 100 : 0;
@@ -112,11 +118,31 @@ function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
   return results;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const url = "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const url =
+    "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
   const params = {
     "@DataBase": "'202405'",
     "$format": "json",
+    "$select": [
+      "Estado_Ibge",
+      "Estado",
+      "VL_PagadorPF",
+      "VL_PagadorPJ",
+      "VL_RecebedorPF",
+      "VL_RecebedorPJ",
+      "QT_PagadorPF",
+      "QT_PagadorPJ",
+      "QT_RecebedorPF",
+      "QT_RecebedorPJ",
+      "QT_PES_PagadorPF",
+      "QT_PES_PagadorPJ",
+      "QT_PES_RecebedorPF",
+      "QT_PES_RecebedorPJ",
+    ].join(","),
   };
 
   const instance = axios.create({ timeout: 240000 });
@@ -124,11 +150,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      console.time(`Pix fetch attempt ${attempt}`); // Start timer
+      console.time(`Pix fetch attempt ${attempt}`);
 
       const response = await instance.get(url, { params });
 
-      console.timeEnd(`Pix fetch attempt ${attempt}`); // End timer
+      console.timeEnd(`Pix fetch attempt ${attempt}`);
 
       const data: PixRecord[] = response.data?.value;
 
@@ -141,9 +167,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } catch (error: any) {
       console.error(`Attempt ${attempt} failed:`, error.message);
       if (attempt === maxRetries) {
-        return res.status(500).json({ error: "Failed to fetch Pix data after retries" });
+        return res
+          .status(500)
+          .json({ error: "Failed to fetch Pix data after retries" });
       }
-      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt)); // exponential backoff
+      await new Promise((resolve) =>
+        setTimeout(resolve, 1000 * attempt)
+      );
     }
   }
 }
