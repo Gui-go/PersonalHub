@@ -166,6 +166,17 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "pix-explorer",
+                "title": "Pix Explorer",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/pix-explorer",
+                "date": "2025-01-??",
+                "excerpt": "An interactive explorer tool to analyse the Brazilian instant payment method known as PIX.",
+                "image": "/images/pix1.jpg",
+                "content": "This tutorial covers abcabc abcabc "
+            },
+            {
                 "id": "stupid-button",
                 "title": "Stupid Button",
                 "short_title": "",
