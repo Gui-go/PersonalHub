@@ -24,7 +24,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
       connector = var.run_connector_id
       egress = "ALL_TRAFFIC"
     }
-    timeout = "360s"
+    timeout = "900s"
     service_account = var.portfolio_run_sa_email
   }
   traffic {

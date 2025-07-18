@@ -119,7 +119,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     "$format": "json",
   };
 
-  const instance = axios.create({ timeout: 360000 });
+  const instance = axios.create({ timeout: 240000 });
   const maxRetries = 3;
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
