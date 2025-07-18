@@ -115,7 +115,7 @@ function calculaMetricasPixPorEstado(data: PixRecord[]): AggregatedMetrics[] {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const url = "https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/odata/TransacoesPixPorMunicipio(DataBase=@DataBase)";
   const params = {
-    "@DataBase": "'202404'",
+    "@DataBase": "'202405'",
     "$format": "json",
   };
 

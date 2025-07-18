@@ -4,6 +4,7 @@ resource "google_compute_network" "vpc_net" {
   project                 = var.proj_id
   name                    = "vpc-net"
   auto_create_subnetworks = true
+  # auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "vpc_subnet" {
@@ -20,10 +21,12 @@ resource "google_vpc_access_connector" "run_connector" {
   name           = "cloudrun-connector"
   region         = var.region
   ip_cidr_range  = "192.168.16.0/28"
-  network        = google_compute_network.vpc_net.name
+  # network        = google_compute_network.vpc_net.name
+  network = google_compute_network.vpc_net.id
   min_throughput = 200
   max_throughput = 300
   # depends_on = [ google_compute_ ] RUN
+  depends_on = [ google_compute_subnetwork.vpc_subnet ]
 }
 
 resource "google_compute_region_network_endpoint_group" "neg_region" {
@@ -42,7 +45,7 @@ resource "google_compute_backend_service" "backend" {
   name        = "${each.key}-backend"
   project     = var.proj_id
   protocol    = "HTTPS"
-  timeout_sec = 30
+  # timeout_sec = 360
   enable_cdn = true
   backend {
     group = google_compute_region_network_endpoint_group.neg_region[each.key].id
@@ -179,3 +182,22 @@ resource "google_dns_record_set" "subdomain_records" {
   rrdatas      = [google_compute_global_address.lb_ip.address]
 }
 
+# -------------------------
+
+# Cloud Router
+resource "google_compute_router" "cloud_router" {
+  name    = "cloudrun-router"
+  project = var.proj_id
+  network = google_compute_network.vpc_net.name
+  region  = var.region
+}
+
+# NAT Gateway
+resource "google_compute_router_nat" "cloud_nat" {
+  name                               = "cloudrun-nat"
+  project                            = var.proj_id
+  router                             = google_compute_router.cloud_router.name
+  region                             = var.region
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
+}
