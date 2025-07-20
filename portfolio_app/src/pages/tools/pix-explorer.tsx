@@ -41,6 +41,10 @@ interface AggregatedMetrics {
     RecebedoresUnicosPJ: number;
     RelacaoPagadoresRecebedoresPF: number | null;
     RelacaoPagadoresRecebedoresPJ: number | null;
+    VolumePagadorPF: number;
+    VolumePagadorPJ: number;
+    VolumeRecebedorPF: number;
+    VolumeRecebedorPJ: number;
 }
 
 type MapVariable = 'DinheiroMovimentado' | 'TicketMedio' | 'QuantidadeTransacoes';
@@ -56,6 +60,8 @@ const PixExplorer: React.FC = () => {
     const [selectedMonth, setSelectedMonth] = useState('2024-05');
     const [isUpdating, setIsUpdating] = useState(false);
     const mapRef = useRef<SVGSVGElement>(null);
+    const mapContainerRef = useRef<HTMLDivElement>(null);
+    const [mapDimensions, setMapDimensions] = useState({ width: 600, height: 600 });
 
     const normalizeName = (name: string) => {
         const normalized = name
@@ -96,34 +102,47 @@ const PixExplorer: React.FC = () => {
     };
 
     const fallbackData: AggregatedMetrics[] = [
-        { Estado: 'São Paulo', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Rio de Janeiro', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Minas Gerais', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Paraná', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Ceará', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Goiás', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Pará', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Piauí', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Roraima', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Amapá', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Rondônia', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Tocantins', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Maranhão', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Espírito Santo', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Rio Grande do Sul', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Rio Grande do Norte', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Mato Grosso', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Mato Grosso do Sul', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Distrito Federal', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Acre', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Alagoas', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Amazonas', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Bahia', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Pernambuco', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Santa Catarina', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Sergipe', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 },
-        { Estado: 'Paraíba', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0 }
+        { Estado: 'São Paulo', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Rio de Janeiro', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Minas Gerais', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Paraná', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Ceará', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Goiás', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Pará', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Piauí', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Roraima', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Amapá', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Rondônia', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Tocantins', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Maranhão', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Espírito Santo', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Rio Grande do Sul', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Rio Grande do Norte', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Mato Grosso', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Mato Grosso do Sul', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Distrito Federal', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Acre', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Alagoas', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Amazonas', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Bahia', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Pernambuco', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Santa Catarina', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Sergipe', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 },
+        { Estado: 'Paraíba', DinheiroMovimentado: 0, QuantidadeTransacoes: 0, TicketMedio: 0, ParticipacaoPF: 0, ParticipacaoPJ: 0, PagadoresUnicosPF: 0, PagadoresUnicosPJ: 0, RecebedoresUnicosPF: 0, RecebedoresUnicosPJ: 0, RelacaoPagadoresRecebedoresPF: 0, RelacaoPagadoresRecebedoresPJ: 0, VolumePagadorPF: 0, VolumePagadorPJ: 0, VolumeRecebedorPF: 0, VolumeRecebedorPJ: 0 }
     ];
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (mapContainerRef.current) {
+                const parentWidth = mapContainerRef.current.offsetWidth;
+                const newWidth = Math.max(parentWidth - 32, 250);
+                setMapDimensions({ width: newWidth, height: newWidth });
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -163,10 +182,9 @@ const PixExplorer: React.FC = () => {
 
     useEffect(() => {
         if (!loading && data.length > 0 && geoJson && mapRef.current) {
+            const { width, height } = mapDimensions;
             const svg = d3.select(mapRef.current);
-            const width = 600;
-            const height = 600;
-
+            
             svg.selectAll('*').remove();
 
             const projection = d3.geoMercator().fitSize([width, height], geoJson);
@@ -272,7 +290,7 @@ const PixExplorer: React.FC = () => {
                 .attr('height', legendHeight)
                 .style('fill', 'url(#legend-gradient)');
         }
-    }, [data, geoJson, loading, filterState, mapVariable]);
+    }, [data, geoJson, loading, filterState, mapVariable, mapDimensions]);
 
     const handleSort = (key: keyof AggregatedMetrics) => {
         let direction: 'asc' | 'desc' = 'asc';
@@ -381,6 +399,15 @@ const PixExplorer: React.FC = () => {
     const totalPagadoresPJ = filteredData.reduce((sum, item) => sum + item.PagadoresUnicosPJ, 0);
     const totalRecebedoresPJ = filteredData.reduce((sum, item) => sum + item.RecebedoresUnicosPJ, 0);
 
+    const totalVolume = filteredData.reduce((sum, item) => sum + item.DinheiroMovimentado, 0);
+    const totalTransactions = filteredData.reduce((sum, item) => sum + item.QuantidadeTransacoes, 0);
+    const totalVolumePagadorPF = filteredData.reduce((sum, item) => sum + item.VolumePagadorPF, 0);
+    const totalVolumePagadorPJ = filteredData.reduce((sum, item) => sum + item.VolumePagadorPJ, 0);
+    const totalVolumeRecebedorPF = filteredData.reduce((sum, item) => sum + item.VolumeRecebedorPF, 0);
+    const totalVolumeRecebedorPJ = filteredData.reduce((sum, item) => sum + item.VolumeRecebedorPJ, 0);
+    const topStateVolume = barChartSortedData[0]?.DinheiroMovimentado || 0;
+    const topState = barChartSortedData[0]?.Estado || 'N/A';
+
     const payersPieChartData = {
         labels: ['Payers (PF)', 'Payers (PJ)'],
         datasets: [
@@ -405,10 +432,29 @@ const PixExplorer: React.FC = () => {
         ],
     };
 
-    const totalVolume = filteredData.reduce((sum, item) => sum + item.DinheiroMovimentado, 0);
-    const totalTransactions = filteredData.reduce((sum, item) => sum + item.QuantidadeTransacoes, 0);
-    const topState = barChartSortedData[0]?.Estado || 'N/A';
-    const topStateVolume = barChartSortedData[0]?.DinheiroMovimentado || 0;
+    const payersVolumePieChartData = {
+        labels: ['Payers Volume (PF)', 'Payers Volume (PJ)'],
+        datasets: [
+            {
+                data: [totalVolumePagadorPF, totalVolumePagadorPJ],
+                backgroundColor: ['rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)'],
+                borderColor: ['rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const receiversVolumePieChartData = {
+        labels: ['Receivers Volume (PF)', 'Receivers Volume (PJ)'],
+        datasets: [
+            {
+                data: [totalVolumeRecebedorPF, totalVolumeRecebedorPJ],
+                backgroundColor: ['rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)'],
+                borderColor: ['rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+                borderWidth: 1,
+            },
+        ],
+    };
 
     const downloadCSV = () => {
         const headers = [
@@ -441,7 +487,7 @@ const PixExplorer: React.FC = () => {
                 item.RelacaoPagadoresRecebedoresPF || 'N/A',
                 item.RelacaoPagadoresRecebedoresPJ || 'N/A',
             ].join(','))
-        ].join('\n');
+        ].join('');
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
@@ -547,8 +593,8 @@ const PixExplorer: React.FC = () => {
                 </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mb-8">
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+            <div className="grid grid-cols-1 gap-6 mb-8">
+                <div className="bg-white p-4 rounded shadow" ref={mapContainerRef}>
                     <h2 className="text-xl font-semibold mb-4">Transaction Map by State</h2>
                     <div className="flex justify-center mb-4">
                         <button onClick={() => setMapVariable('DinheiroMovimentado')} className={`px-4 py-2 rounded-l-lg ${mapVariable === 'DinheiroMovimentado' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>Volume</button>
@@ -559,7 +605,7 @@ const PixExplorer: React.FC = () => {
                         <svg ref={mapRef}></svg>
                     </div>
                 </div>
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-semibold mb-4">Transaction Volume by State</h2>
                     <Bar
                         data={barChartData}
@@ -583,7 +629,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-semibold mb-4">Average Ticket by State</h2>
                     <Bar
                         data={avgTicketChartData}
@@ -607,7 +653,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-semibold mb-4">Individual vs Business Participation</h2>
                     <Pie
                         data={pieChartData}
@@ -624,7 +670,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-semibold mb-4">Volume vs. Average Ticket</h2>
                     <Scatter
                         data={scatterChartData}
@@ -662,7 +708,7 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
-                <div className="bg-white p-4 rounded shadow md:col-span-3">
+                <div className="bg-white p-4 rounded shadow">
                     <h2 className="text-xl font-semibold mb-4">Payer/Receiver Ratio by State</h2>
                     <Bar
                         data={payerReceiverRatioData}
@@ -691,6 +737,40 @@ const PixExplorer: React.FC = () => {
                         }}
                     />
                 </div>
+                {/* <div className="bg-white p-4 rounded shadow">
+                    <h2 className="text-xl font-semibold mb-4">Payers (PF vs PJ)</h2>
+                    <Pie
+                        data={payersPieChartData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'top' },
+                                tooltip: {
+                                    callbacks: {
+                                        label: (context) => `${context.label}: ${context.parsed.toLocaleString('pt-BR')}`,
+                                    },
+                                },
+                            },
+                        }}
+                    />
+                </div>
+                <div className="bg-white p-4 rounded shadow">
+                    <h2 className="text-xl font-semibold mb-4">Receivers (PF vs PJ)</h2>
+                    <Pie
+                        data={receiversPieChartData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'top' },
+                                tooltip: {
+                                    callbacks: {
+                                        label: (context) => `${context.label}: ${context.parsed.toLocaleString('pt-BR')}`,
+                                    },
+                                },
+                            },
+                        }}
+                    />
+                </div> */}
             </div>
 
             <div className="overflow-x-auto bg-white rounded shadow">
