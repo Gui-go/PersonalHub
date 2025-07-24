@@ -67,3 +67,6 @@ terraform/gcp/personalhub14-terraform-sa-key.json
 draft/node_modules/
 venv/
 draft/package-lock.json
+
+
+airflow/

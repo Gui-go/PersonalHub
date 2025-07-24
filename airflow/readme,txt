@@ -14,3 +14,25 @@ gcloud run deploy airflow-run \
   --memory=512Mi \
   --port=8080
 
+
+
+
+
+
+
+# Domicilios ocupados
+## Total != Particulares ocupados + Particulares nao ocupados
+https://sidra.ibge.gov.br/geratabela?format=xlsx&name=tabela4711.xlsx&terr=N&rank=-&query=t/4711/n6/all/v/allxp/p/all/c3/59993,59998,60001/l/v,p%2Bc3,t
+wget -O data/tabela4711.tsv "https://sidra.ibge.gov.br/geratabela?format=us.tsv&name=tabela4711.tsv&terr=NC&rank=-&query=t/4711/n6/all/v/allxp/p/all/c3/59993,59998,60001/l/v,p%2Bc3,t"
+
+
+
+
+
+
+
+
+
+
+
+
