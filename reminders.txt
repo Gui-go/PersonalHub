@@ -4,6 +4,8 @@
 
 
 
-add Selenium to about
+add Selenium to about skills
 
 flappy bird 
+
+Change jpg to png images
