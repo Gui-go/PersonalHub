@@ -57,7 +57,7 @@ const PixExplorer: React.FC = () => {
     const [sortConfig, setSortConfig] = useState<{ key: keyof AggregatedMetrics; direction: 'asc' | 'desc' } | null>(null);
     const [filterState, setFilterState] = useState('');
     const [mapVariable, setMapVariable] = useState<MapVariable>('DinheiroMovimentado');
-    const [selectedMonth, setSelectedMonth] = useState('2024-05');
+    const [selectedMonth, setSelectedMonth] = useState('2025-07');
     const [isUpdating, setIsUpdating] = useState(false);
     const mapRef = useRef<SVGSVGElement>(null);
     const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -184,7 +184,7 @@ const PixExplorer: React.FC = () => {
         if (!loading && data.length > 0 && geoJson && mapRef.current) {
             const { width, height } = mapDimensions;
             const svg = d3.select(mapRef.current);
-            
+
             svg.selectAll('*').remove();
 
             const projection = d3.geoMercator().fitSize([width, height], geoJson);
@@ -534,19 +534,21 @@ const PixExplorer: React.FC = () => {
                     onChange={(e) => setSelectedMonth(e.target.value)}
                     className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                    {Array.from({ length: 12 }, (_, i) => {
-                        const month = new Date(0, i).toLocaleString('default', { month: 'long' });
-                        const year = 2024;
-                        const value = `${year}-${String(i + 1).padStart(2, '0')}`;
+                    {Array.from({ length: 19 }, (_, i) => {
+                        const year = 2024 + Math.floor(i / 12);
+                        const monthIndex = i % 12;
+                        const month = new Date(0, monthIndex).toLocaleString('default', { month: 'long' });
+                        const value = `${year}-${String(monthIndex + 1).padStart(2, '0')}`;
+                        if (year === 2025 && monthIndex > 6) return null; // Exclude months after July 2025
                         return <option key={value} value={value}>{`${month} ${year}`}</option>;
-                    })}
+                    }).filter(Boolean)}
                 </select>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow mb-8">
                 <h2 className="text-2xl font-semibold mb-4">What is Pix?</h2>
                 <p className="text-gray-700">
-                    Pix is an instant payment system created by the Central Bank of Brazil. It allows for free, real-time money transfers 24/7, including weekends and holidays. 
+                    Pix is an instant payment system created by the Central Bank of Brazil. It allows for free, real-time money transfers 24/7, including weekends and holidays.
                     Since its launch in 2020, Pix has revolutionized the way Brazilians handle their finances, promoting financial inclusion and reducing the reliance on cash and traditional banking methods.
                 </p>
             </div>
