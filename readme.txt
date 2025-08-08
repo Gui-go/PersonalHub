@@ -308,7 +308,6 @@ floripa (morro da cruz)
 
 ---------------------------------------------------------------------
 Features:
-Hiroshima and Nagazaki radius
 Berlin wall
 DMZ Korea
 Damian gap 
@@ -445,15 +444,19 @@ https://openlayers.org/en/latest/examples/raster.html
 https://www.youtube.com/watch?v=TXPtocZWr78&t=2394s
 https://www.postgresql.org/about/news/pg_tileserv-for-postgresqlpostgis-2016/
 
+13) tratado de versalhes
 
 
 
 
 
+Berliner Mauer API data:
+https://sigcfe.maps.arcgis.com/home/item.html?id=a8543baa8ffc41fe9c78d367e912bc70
+https://services2.arcgis.com/jUpNdisbWqRpMo35/ArcGIS/rest/services/Berliner_Mauer/FeatureServer/0
+https://services2.arcgis.com/jUpNdisbWqRpMo35/arcgis/rest/services/Berliner_Mauer/FeatureServer/0/query?where=1=1&outFields=*&f=json
 
-
-
-
+Berlin city polygon:
+https://opendatalab.de/projects/geojson-utilities/
 
 
 
