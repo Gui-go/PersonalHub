@@ -9,6 +9,29 @@ resource "google_firestore_database" "firestore_datastore" {
   delete_protection_state           = "DELETE_PROTECTION_ENABLED"
 }
 
+resource "google_firestore_database" "firestore_counterplusone" {
+  name                              = "counterplusone-db"
+  project                           = var.proj_id
+  location_id                       = var.region
+  type                              = "FIRESTORE_NATIVE"
+  concurrency_mode                  = "OPTIMISTIC"
+  app_engine_integration_mode       = "DISABLED"
+  point_in_time_recovery_enablement = "POINT_IN_TIME_RECOVERY_ENABLED"
+  delete_protection_state           = "DELETE_PROTECTION_ENABLED"
+}
+
+resource "google_firestore_database" "firestore_flappybird" {
+  name                              = "flappybird-db"
+  project                           = var.proj_id
+  location_id                       = var.region
+  type                              = "FIRESTORE_NATIVE"
+  concurrency_mode                  = "OPTIMISTIC"
+  app_engine_integration_mode       = "DISABLED"
+  point_in_time_recovery_enablement = "POINT_IN_TIME_RECOVERY_ENABLED"
+  delete_protection_state           = "DELETE_PROTECTION_ENABLED"
+}
+
+
 
 # resource "google_firestore_database" "default" {
 #   name     = "firestore1"

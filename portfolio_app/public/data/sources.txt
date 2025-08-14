@@ -16,3 +16,24 @@ https://services2.arcgis.com/jUpNdisbWqRpMo35/arcgis/rest/services/Berliner_Maue
 
 Berlin city polygon:
 https://opendatalab.de/projects/geojson-utilities/
+
+
+
+
+
+
+Barcelona Streets:
+https://datos.gob.es/en/catalogo/l01080193-grafo-viario-de-las-calles-de-la-ciudad-de-barcelona
+ogr2ogr -f "GeoJSON" -t_srs EPSG:4326  barcelona_streets.geojson BCN_GrafVial_Trams_ETRS89_SHP.shp
+
+
+
+
+
+
+
+
+
+
+
+

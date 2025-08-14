@@ -9,3 +9,30 @@ add Selenium to about skills
 flappy bird 
 
 Change jpg to png images
+
+
+remove terms like "get" or "post" from the APIs. It should be understood.
+
+
+
+
+
+
+Ideas: 
+
+1) One-commit-per-day
+2) lenguages reminder
+
+
+
+3) barcelona writings
+https://opendata-ajuntament.barcelona.cat/data/en/dataset/mapa-graf-viari-carrers-wms
+
+
+
+
+
+
+
+
+
