@@ -2,36 +2,37 @@
 
 import { useEffect, useRef, useState } from "react";
 
+interface Score {
+  name: string;
+  score: number;
+  distance: number;
+  date: string;
+}
+
 const FlappyPlanePage: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [playerName, setPlayerName] = useState("");
-  const [selectedPlane, setSelectedPlane] = useState("/data/plane1.png");
   const [nameInput, setNameInput] = useState("");
-  const [scores, setScores] = useState<{ name: string; score: number; distance: number; date: string }[]>([]);
+  const [selectedPlane, setSelectedPlane] = useState("/data/plane1.png");
+  const [scores, setScores] = useState<Score[]>([]);
 
-  // Fetch top 5 scores from API
+  // Fetch top scores from Firestore
   const fetchScores = async () => {
-    if (typeof window !== "undefined") {
-      try {
-        const response = await fetch("/api/fetchFlappyData", { method: "GET" });
-        if (!response.ok) {
-          throw new Error(`Failed to fetch scores: ${response.status} ${response.statusText}`);
-        }
-        const data = await response.json();
-        setScores(data.scores);
-      } catch (error: any) {
-        console.error("Error fetching scores:", error.message, error.stack);
-      }
+    try {
+      const response = await fetch("/api/highScores");
+      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      const data = await response.json();
+      setScores(data.scores);
+    } catch (error: any) {
+      console.error("Error fetching scores:", error.message);
     }
   };
 
-  // Load scores on component mount
   useEffect(() => {
     fetchScores();
   }, []);
 
-  // Plane options
   const planeOptions = [
     { src: "/data/plane1.png", label: "Blue Plane" },
     { src: "/data/plane2.png", label: "Red Plane" },
@@ -46,7 +47,6 @@ const FlappyPlanePage: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Load plane sprite
     const planeImg = new Image();
     planeImg.src = selectedPlane;
 
@@ -59,7 +59,6 @@ const FlappyPlanePage: React.FC = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Initial game settings (very easy mode)
     let gravity = 0.25;
     let jump = -8;
     let pipeWidth = 60;
@@ -69,78 +68,59 @@ const FlappyPlanePage: React.FC = () => {
     let currentScore = 0;
     let currentDistance = 0;
 
-    // Game state
     let birdY = canvas.height / 2;
     let birdVelocity = 0;
     let pipes: { x: number; height: number }[] = [];
     let frame = 0;
     let gameOver = false;
     let difficulty = "Easy";
+    let scoreSaved = false;
 
     const saveScore = async () => {
-      if (playerName && typeof window !== "undefined") {
-        try {
-          const response = await fetch("/api/highScores", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: playerName,
-              score: currentScore,
-              distance: Math.floor(currentDistance),
-              date: new Date().toLocaleDateString("en-GB"),
-            }),
-          });
-          if (!response.ok) {
-            throw new Error(`Failed to save score: ${response.status} ${response.statusText}`);
-          }
-          await fetchScores(); // Refresh scoreboard after saving
-        } catch (error: any) {
-          console.error("Error saving score:", error.message, error.stack);
-        }
+      if (!playerName.trim() || scoreSaved) return;
+      scoreSaved = true;
+
+      try {
+        const response = await fetch("/api/highScores", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: playerName,
+            score: currentScore,
+            distance: Math.floor(currentDistance),
+            date: new Date().toISOString(),
+          }),
+        });
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        await fetchScores();
+      } catch (error: any) {
+        console.error("Error saving score:", error.message);
       }
     };
 
     const flap = () => {
-      if (gameOver) {
-        // Save score before resetting
-        saveScore();
-        birdY = canvas.height / 2;
-        birdVelocity = 0;
-        pipes = [];
-        frame = 0;
-        currentScore = 0;
-        currentDistance = 0;
-        gameOver = false;
-        gravity = 0.25;
-        jump = -8;
-        pipeGap = 300;
-        pipeSpeed = 1.5;
-        pipeFrequency = 200;
-        difficulty = "Easy";
-        requestAnimationFrame(gameLoop);
-      } else {
-        birdVelocity = jump;
-      }
+      if (!gameOver) birdVelocity = jump;
     };
 
     const returnToMenu = () => {
       if (gameOver) {
-        // Save score before returning to menu
-        saveScore();
         setGameStarted(false);
-        // Reset name input for new player
         setNameInput("");
         setPlayerName("");
       }
     };
 
-    window.addEventListener("keydown", (e) => {
-      if (e.code === "Space" && gameStarted) flap();
-      if (e.code === "Escape" && gameStarted && gameOver) returnToMenu();
-    });
-    canvas.addEventListener("click", () => {
-      if (gameStarted && !gameOver) flap();
-    });
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === "Space") {
+        if (gameOver) {
+          returnToMenu();
+        } else {
+          flap();
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    canvas.addEventListener("click", flap);
 
     const gameLoop = () => {
       if (!ctx) return;
@@ -150,10 +130,9 @@ const FlappyPlanePage: React.FC = () => {
       ctx.fillStyle = "#87CEEB";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add new pipes
+      // Add pipes
       if (frame % pipeFrequency === 0) {
-        const pipeHeight =
-          Math.random() * (canvas.height - pipeGap - 100) + 50;
+        const pipeHeight = Math.random() * (canvas.height - pipeGap - 100) + 50;
         pipes.push({ x: canvas.width, height: pipeHeight });
       }
 
@@ -161,12 +140,7 @@ const FlappyPlanePage: React.FC = () => {
       ctx.fillStyle = "#228B22";
       pipes.forEach((pipe) => {
         ctx.fillRect(pipe.x, 0, pipeWidth, pipe.height);
-        ctx.fillRect(
-          pipe.x,
-          pipe.height + pipeGap,
-          pipeWidth,
-          canvas.height - pipe.height - pipeGap
-        );
+        ctx.fillRect(pipe.x, pipe.height + pipeGap, pipeWidth, canvas.height - pipe.height - pipeGap);
         pipe.x -= pipeSpeed;
       });
 
@@ -183,13 +157,7 @@ const FlappyPlanePage: React.FC = () => {
       const planeWidth = 60;
       const planeHeight = 40;
       if (planeImg.complete) {
-        ctx.drawImage(
-          planeImg,
-          80 - planeWidth / 2,
-          birdY - planeHeight / 2,
-          planeWidth,
-          planeHeight
-        );
+        ctx.drawImage(planeImg, 80 - planeWidth / 2, birdY - planeHeight / 2, planeWidth, planeHeight);
       } else {
         ctx.fillStyle = "#FFD700";
         ctx.beginPath();
@@ -201,22 +169,19 @@ const FlappyPlanePage: React.FC = () => {
       birdVelocity += gravity;
       birdY += birdVelocity;
 
-      // Collision detection
-      if (birdY + planeHeight / 2 >= canvas.height || birdY - planeHeight / 2 <= 0) {
-        gameOver = true;
-      }
+      // Collision
+      if (birdY + planeHeight / 2 >= canvas.height || birdY - planeHeight / 2 <= 0) gameOver = true;
       pipes.forEach((pipe) => {
         if (
           80 + planeWidth / 2 > pipe.x &&
           80 - planeWidth / 2 < pipe.x + pipeWidth &&
-          (birdY - planeHeight / 2 < pipe.height ||
-            birdY + planeHeight / 2 > pipe.height + pipeGap)
+          (birdY - planeHeight / 2 < pipe.height || birdY + planeHeight / 2 > pipe.height + pipeGap)
         ) {
           gameOver = true;
         }
       });
 
-      // Difficulty scaling based on score and time
+      // Difficulty scaling
       if (frame % 300 === 0 && frame !== 0) {
         if (currentScore < 10) {
           difficulty = "Easy";
@@ -239,7 +204,7 @@ const FlappyPlanePage: React.FC = () => {
         }
       }
 
-      // HUD: Score, Distance, Difficulty, Player Name
+      // HUD
       ctx.fillStyle = "#fff";
       ctx.font = "28px Arial";
       ctx.fillText(`Score: ${currentScore}`, 20, 40);
@@ -251,21 +216,14 @@ const FlappyPlanePage: React.FC = () => {
 
       // Game over screen
       if (gameOver) {
+        saveScore();
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "#fff";
         ctx.font = "48px Arial";
-        ctx.fillText(
-          "Game Over",
-          canvas.width / 2 - 120,
-          canvas.height / 2 - 20
-        );
+        ctx.fillText("Game Over", canvas.width / 2 - 120, canvas.height / 2 - 20);
         ctx.font = "24px Arial";
-        ctx.fillText(
-          "Space to restart, Esc to return to menu",
-          canvas.width / 2 - 210,
-          canvas.height / 2 + 30
-        );
+        ctx.fillText("Space/Esc to return to menu", canvas.width / 2 - 180, canvas.height / 2 + 30);
       } else {
         currentDistance += pipeSpeed / 2;
         frame++;
@@ -277,7 +235,7 @@ const FlappyPlanePage: React.FC = () => {
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("keydown", flap);
+      window.removeEventListener("keydown", handleKeyDown);
       canvas.removeEventListener("click", flap);
     };
   }, [gameStarted, selectedPlane, playerName]);
@@ -315,9 +273,7 @@ const FlappyPlanePage: React.FC = () => {
                   key={plane.src}
                   onClick={() => setSelectedPlane(plane.src)}
                   className={`p-2 rounded ${
-                    selectedPlane === plane.src
-                      ? "bg-blue-500"
-                      : "bg-gray-500"
+                    selectedPlane === plane.src ? "bg-blue-500" : "bg-gray-500"
                   } hover:bg-blue-400 transition`}
                 >
                   {plane.label}
@@ -344,7 +300,7 @@ const FlappyPlanePage: React.FC = () => {
                         <td className="pr-2">{score.name}</td>
                         <td className="pr-2">{score.score}</td>
                         <td className="pr-2">{score.distance}m</td>
-                        <td>{score.date}</td>
+                        <td>{new Date(score.date).toLocaleDateString("en-GB")}</td>
                       </tr>
                     ))}
                   </tbody>
