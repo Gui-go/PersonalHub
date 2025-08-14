@@ -4,8 +4,8 @@ import { Firestore } from "@google-cloud/firestore";
 
 // Initialize Firestore client
 const db = new Firestore({
-  projectId: process.env.GCP_PROJECT_ID,
-  keyFilename: process.env.GCP_SERVICE_ACCOUNT_KEY_FILE, // path to your service account JSON
+  projectId: "personalhub14",
+  keyFilename: process.env.NEXT_PUBLIC_FIRESTORE_SA_KEY, // path to your service account JSON
 });
 
 export default async function handler(
