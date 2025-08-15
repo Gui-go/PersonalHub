@@ -177,6 +177,17 @@
                 "content": "This tutorial covers abcabc abcabc "
             },
             {
+                "id": "flappy-bird",
+                "title": "Flappy Bird",
+                "short_title": "",
+                "full_title": "",
+                "path": "/tools/flappy-bird",
+                "date": "2024-12-??",
+                "excerpt": "My own version of the famous game Flappy Bird",
+                "image": "/images/flappyBird.png",
+                "content": "abcabcabc"
+            },
+            {
                 "id": "stupid-button",
                 "title": "Stupid Button",
                 "short_title": "",
