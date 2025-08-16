@@ -766,7 +766,7 @@ const FlappyPlanePage: React.FC = () => {
     <div style={{ width: "100vw", height: "100vh", margin: 0, padding: 0, overflow: "hidden" }}>
       {!gameStarted ? (
         <div className="flex flex-col items-center justify-center h-full bg-gray-800 text-white">
-          <h1 className="text-4xl mb-6">Flappy Plane</h1>
+          <h1 className="text-4xl mb-6">Flappy Bird</h1>
 
           <div className="mb-4">
             <label htmlFor="playerName" className="block text-lg mb-2">
