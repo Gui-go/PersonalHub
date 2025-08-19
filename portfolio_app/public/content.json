@@ -682,6 +682,17 @@
                 "content": "abcabcabc"
             },
             {
+                "id": "barcelona-street-writings",
+                "title": "Barcelona Street Writtings",
+                "short_title": "",
+                "full_title": "",
+                "path": "/geolayers/barcelona-street-writings",
+                "date": "2024-12-??",
+                "excerpt": "A tool to write words accross the streets of Barcelona, accross the so-called Barcelona manzanas.",
+                "image": "/images/barcelona2.jpg",
+                "content": "abcabcabc"
+            },
+            {
                 "id": "world-tiles",
                 "title": "World Tiles",
                 "short_title": "",
