@@ -80,6 +80,7 @@
     "express": "^5.1.0",
     "firebase": "^11.10.0",
     "firebase-admin": "^13.4.0",
+    "framer-motion": "^12.23.12",
     "google-auth-library": "^10.1.0",
     "leaflet": "^1.9.4",
     "microsoft-cognitiveservices-speech-sdk": "^1.44.1",
