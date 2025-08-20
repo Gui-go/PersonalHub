@@ -23,15 +23,20 @@ type City = {
 };
 
 
-// Criciuma
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
 
-// Ericeira
-// Estoril
-// Alcabideche
-// Amadora
-// Óbidos
-// Cobilhã
-// Foz do Arelho
+// 
+// 
+// 
 
 const cities: City[] = [
   { name: "Florianópolis, Santa Catarina", lon: -48.564151, lat: -27.59355 },
@@ -45,6 +50,7 @@ const cities: City[] = [
   { name: "Jaraguá do Sul, Santa Catarina", lon: -49.0713, lat: -26.4851 },
   { name: "Balneário Camboriú, Santa Catarina", lon: -48.6175, lat: -26.9926 },
   { name: "Lages, Santa Catarina", lon: -50.326, lat: -27.816 },
+  { name: "Criciúma, Santa Catarina", lon: -49.3697, lat: -28.6775 },
   { name: "Porto Alegre, Rio Grande do Sul", lon: -51.230, lat: -30.033 },
   { name: "Cananéia, São Paulo", lon: -47.927, lat: -25.015 },
   { name: "Morretes, Paraná", lon: -48.834, lat: -25.477 },
@@ -61,10 +67,29 @@ const cities: City[] = [
   { name: "Rio Claro, São Paulo", lon: -47.556, lat: -22.3988 },
   { name: "Rio de Janeiro, Rio de Janeiro", lon: -43.1729, lat: -22.9068 },
   { name: "Niterói, Rio de Janeiro", lon: -43.104, lat: -22.883 },
+  { name: "Foz do Iguaçu, Paraná", lon: -54.5881, lat: -25.5163 },
+
+  { name: "Puerto Iguazú, Argentina", lon: -54.5736, lat: -25.5991 },
+
+  { name: "Asunción, Paraguay", lon: -57.5759, lat: -25.2637 },
+  { name: "Ciudad del Este, Paraguay", lon: -54.6111, lat: -25.5097 },
+
+  { name: "Panama City, Panama", lon: -79.5199, lat: 8.9824 },
+  { name: "Colón, Panama", lon: -79.9068, lat: 9.356 },
+
   { name: "Washington DC, USA", lon: -77.0369, lat: 38.9072 },
+
   { name: "Lisbon, Portugal", lon: -9.1393, lat: 38.7223 },
   { name: "Porto, Portugal", lon: -8.6102, lat: 41.1496 },
-  // { name: "Vila Nova de Gaia, Portugal", lon: , lat:  },
+  { name: "Loures, Portugal", lon: -9.1689, lat: 38.8309 },
+  { name: "Vila Nova de Gaia, Portugal", lon: -8.6110, lat: 41.1336 },
+  { name: "Ericeira, Portugal", lon: -9.4167, lat: 38.9667 },
+  { name: "Estoril, Portugal", lon: -9.3977, lat: 38.7057 },
+  { name: "Alcabideche, Portugal", lon: -9.4197, lat: 38.7336 },
+  { name: "Amadora, Portugal", lon: -9.2308, lat: 38.7597 },
+  { name: "Óbidos, Portugal", lon: -9.1567, lat: 39.3600 },
+  { name: "Covilhã, Portugal", lon: -7.5000, lat: 40.2833 },
+  { name: "Foz do Arelho, Portugal", lon: -9.2167, lat: 39.4333 },
   { name: "Faro, Portugal", lon: -7.9304, lat: 37.0194 },
   { name: "Coimbra, Portugal", lon: -8.4265, lat: 40.2033 },
   { name: "Braga, Portugal", lon: -8.4253, lat: 41.5331 },
@@ -82,26 +107,26 @@ const cities: City[] = [
   { name: "Carcavelos, Portugal", lon: -9.333, lat: 38.683 },
   { name: "Parede, Portugal", lon: -9.354, lat: 38.693 },
   { name: "Cascais, Portugal", lon: -9.422, lat: 38.697 },
-  // { name: "Loures, Portugal", lon: , lat:  },
   { name: "Sintra, Portugal", lon: -9.381, lat: 38.797 },
   { name: "Peniche, Portugal", lon: -9.381, lat: 39.356 },
   { name: "Odivelas, Portugal", lon: -9.164, lat: 38.793 },
   { name: "Caldas da Rainha, Portugal", lon: -9.134, lat: 39.407 },
   { name: "Manteigas, Portugal", lon: -7.539, lat: 40.402 },
   { name: "Viseu, Portugal", lon: -7.912, lat: 40.661 },
-  { name: "Ayamonte, Espanha", lon: -7.404, lat: 37.214 },
-  { name: "Mérida, Espanha", lon: -6.344, lat: 38.916 },
-  { name: "Cáceres, Espanha", lon: -6.372, lat: 39.476 },
-  { name: "Toledo, Espanha", lon: -4.023, lat: 39.862 },
-  { name: "Tarifa, Espanha", lon: -5.606, lat: 36.013 },
-  { name: "Cáceres, Espanha", lon: -6.372, lat: 39.476 },
-  { name: "Algeciras, Espanha", lon: -5.441, lat: 36.140 },
-  { name: "La Línea de la Concepción, Espanha", lon: -5.348, lat: 36.168 },
-  { name: "Marbella, Espanha", lon: -4.882, lat: 36.515 },
-  { name: "Ronda, Espanha", lon: -5.167, lat: 36.742 },
-  { name: "Marbella, Espanha", lon: -4.882, lat: 36.515 },
-  { name: "Setenil de las Bodegas, Espanha", lon: -5.181, lat: 36.864 },
-  { name: "Marbella, Espanha", lon: -4.882, lat: 36.515 },
+
+  { name: "Ayamonte, Spain", lon: -7.404, lat: 37.214 },
+  { name: "Mérida, Spain", lon: -6.344, lat: 38.916 },
+  { name: "Cáceres, Spain", lon: -6.372, lat: 39.476 },
+  { name: "Toledo, Spain", lon: -4.023, lat: 39.862 },
+  { name: "Tarifa, Spain", lon: -5.606, lat: 36.013 },
+  { name: "Cáceres, Spain", lon: -6.372, lat: 39.476 },
+  { name: "Algeciras, Spain", lon: -5.441, lat: 36.140 },
+  { name: "La Línea de la Concepción, Spain", lon: -5.348, lat: 36.168 },
+  { name: "Marbella, Spain", lon: -4.882, lat: 36.515 },
+  { name: "Ronda, Spain", lon: -5.167, lat: 36.742 },
+  { name: "Marbella, Spain", lon: -4.882, lat: 36.515 },
+  { name: "Setenil de las Bodegas, Spain", lon: -5.181, lat: 36.864 },
+  { name: "Marbella, Spain", lon: -4.882, lat: 36.515 },
   { name: "Madrid, Spain", lon: -3.7038, lat: 40.4168 },
   { name: "Barcelona, Spain", lon: 2.1734, lat: 41.3851 },
   { name: "Badajoz, Spain", lon: -6.9707, lat: 38.8794 },
@@ -113,15 +138,20 @@ const cities: City[] = [
   { name: "Cádiz, Spain", lon: -6.2946, lat: 36.5297 },
   { name: "Valencia, Spain", lon: -0.3774, lat: 39.4699 },
   { name: "Castellón de la Plana, Spain", lon: -0.0576, lat: 39.9864 },
-  { name: "Gibraltar, UK", lon: -5.3436, lat: 36.1408 },
+
+  { name: "Gibraltar, United Kingdom", lon: -5.3436, lat: 36.1408 },
+  
+  { name: "London, England", lon: -0.1276, lat: 51.5074 },
+  { name: "Manchester, England", lon: -2.2426, lat: 53.4808 },
+
   { name: "Dublin, Ireland", lon: -6.2603, lat: 53.3498 },
   { name: "Cork, Ireland", lon: -8.4761, lat: 51.8969 },
   { name: "Belfast, Ireland", lon: -5.9301, lat: 54.5973 },
   { name: "Limerick, Ireland", lon: -8.6291, lat: 52.668 },
   { name: "Galway, Ireland", lon: -9.0488, lat: 53.2707 },
-  { name: "London, England", lon: -0.1276, lat: 51.5074 },
-  { name: "Manchester, England", lon: -2.2426, lat: 53.4808 },
+
   { name: "Edinburgh, Scotland", lon: -3.1883, lat: 55.953 },
+
   { name: "Münster, Germany", lon: 7.6261, lat: 51.9607 },
   { name: "Dortmund, Germany", lon: 7.4686, lat: 51.5136 },
   { name: "Bonn, Germany", lon: 7.0982, lat: 50.7374 },
@@ -143,28 +173,37 @@ const cities: City[] = [
   { name: "Hanover, Germany", lon: 9.7332, lat: 52.3759 },
   { name: "Osnabrück, Germany", lon: 8.0476, lat: 52.2799 },
   { name: "Bremen, Germany", lon: 8.8017, lat: 53.0793 },
-  { name: "Salzburg, Austria", lon: 13.0434, lat: 47.8095 },
-  { name: "Flachau, Austria", lon: 13.3833, lat: 47.3333 },
   { name: "Nuremberg, Germany", lon: 11.0775, lat: 49.4521 },
   { name: "Bielefeld, Germany", lon: 8.5325, lat: 52.0302 },
   { name: "Emden, Germany", lon: 8.212, lat: 53.3667 },
   { name: "Hamm, Germany", lon: 7.199, lat: 51.6739 },
   { name: "Würzburg, Germany", lon: 9.9333, lat: 49.7903 },
+  { name: "Leipzig, Germany", lon: 12.3731, lat: 51.3397 },
+  { name: "Dresden, Germany", lon: 13.7373, lat: 51.0504 },
+  { name: "Chemnitz, Germany", lon: 12.9200, lat: 50.8333 },
+  { name: "Zwickau, Germany", lon: 12.5000, lat: 50.7167 },
+  { name: "Cottbus, Germany", lon: 14.3333, lat: 51.7667 },
+  { name: "Potsdam, Germany", lon: 13.0667, lat: 52.4000 },
+  { name: "Göttingen, Germany", lon: 9.9333, lat: 51.5333 },
+  { name: "Wünsdorf, Germany", lon: 13.4500, lat: 52.1667 },
+
+  { name: "Salzburg, Austria", lon: 13.0434, lat: 47.8095 },
+  { name: "Flachau, Austria", lon: 13.3833, lat: 47.3333 },
+
+  { name: "Słubice, Poland", lon: 14.5667, lat: 52.3500 },
+
   { name: "Luxembourg City, Luxembourg", lon: 6.1296, lat: 49.6118 },
   { name: "Esch-sur-Alzette, Luxembourg", lon: 6.0369, lat: 49.5 },
+
   { name: "Rome, Italy", lon: 12.4964, lat: 41.9028 },
   { name: "Florence, Italy", lon: 11.2558, lat: 43.7696 },
   { name: "Pisa, Italy", lon: 10.3966, lat: 43.7228 },
+
   { name: "Amsterdam, Netherlands", lon: 4.8952, lat: 52.3702 },
   { name: "Enschede, Netherlands", lon: 6.8937, lat: 52.2215 },
   { name: "Eindhoven, Netherlands", lon: 5.4697, lat: 51.4416 },
-  { name: "Moscow, Russia", lon: 37.6173, lat: 55.7558 },
-  { name: "Panama City, Panama", lon: -79.5199, lat: 8.9824 },
-  { name: "Colón, Panama", lon: -79.9068, lat: 9.356 },
-  { name: "Asunción, Paraguay", lon: -57.5759, lat: -25.2637 },
-  { name: "Ciudad del Este, Paraguay", lon: -54.6111, lat: -25.5097 },
-  { name: "Foz do Iguaçu, Brazil", lon: -54.5881, lat: -25.5163 },
-  { name: "Puerto Iguazú, Argentina", lon: -54.5736, lat: -25.5991 }
+  
+  { name: "Moscow, Russia", lon: 37.6173, lat: 55.7558 }
 ]
 
 const tileSources = {
