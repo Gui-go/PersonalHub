@@ -26,11 +26,6 @@ Ideas:
 
 
 3) barcelona writings
-https://opendata-ajuntament.barcelona.cat/data/en/dataset/mapa-graf-viari-carrers-wms
-
-
-4) Egg Timer:
-A timer to help cook egg :)
 
 
 5) pomodoro
@@ -42,9 +37,17 @@ flappy birdmenu or restart
 
 music player
 
+6) Joplin note taker:
+https://joplinapp.org/
 
+7) file browser
+As a replacement for Google Drive.
 
+8) NextCloud docker image
 
+9) "Kodi TV" on a strawberry pi
+
+_dj_dave__ instagram program to rave, code to music
 
 
 

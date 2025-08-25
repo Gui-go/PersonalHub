@@ -74,3 +74,15 @@ airflow/
 portfolio_app/package-lock.json
 
 
+/terragrunt1
+
+*.terragrunt-cache
+
+terragrunt-sa.json
+
+*/personalhub15sa4terragrunt.json
+
+
+
+
+

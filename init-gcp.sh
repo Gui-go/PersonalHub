@@ -14,13 +14,8 @@ gcloud auth login --quiet
 gcloud auth application-default login --quiet
 
 # Variables:
-set -o allexport; source .env; set +o allexport
+# set -o allexport; source .env; set +o allexport
 echo $PROJ_ID
-
-# export BILLING_ACC="01F0C7-9A2082-488963"
-# export PROJECT_NAME="personalhub"
-# export PROJ_ID="${PROJECT_NAME}11"
-# export REGION="europe-north2"
 
 # Other related projects:
 # gcloud projects create "gcs-personalhub1" --name="gcs-personalhub" --labels=owner=guilhermeviegas --enable-cloud-apis --quiet
