@@ -1,13 +1,9 @@
 # environments/dev/terragrunt.hcl
-include "root" {
-  path = find_in_parent_folders()
-}
-
-terraform {
-  source = "/home/guigo/Documents/01-personalHub/terragrunt/modules/storage"
-}
+# This file defines common settings for the 'dev' environment.
+# It includes the global root terragrunt.hcl to inherit global configurations.
 
 inputs = {
-  bucket_name = "personalhub15gcs4state"
-  location    = "us-central1"
+  gcp_project_id = "personalhub15"
+  gcp_region     = "us-central1"
 }
+

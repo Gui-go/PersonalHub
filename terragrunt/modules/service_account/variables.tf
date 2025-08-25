@@ -12,3 +12,8 @@ variable "bucket_name" {
   description = "Name of the bucket to grant access to"
   type        = string
 }
+
+variable "project_id" {
+  description = "The GCP project ID"
+  type        = string
+}

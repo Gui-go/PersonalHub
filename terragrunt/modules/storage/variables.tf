@@ -4,7 +4,12 @@ variable "bucket_name" {
 }
 
 variable "location" {
-  description = "GCP region for the bucket"
+  description = "The GCS bucket location"
   type        = string
   default     = "US"
+}
+
+variable "project_id" {
+  description = "The GCP project ID"
+  type        = string
 }
