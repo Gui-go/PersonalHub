@@ -1,6 +1,9 @@
-variable "bucket_name" {
-  description = "Name of the GCS bucket"
-  type        = string
+variable "bucket" {
+  description = "Map of bucket names to their configuration (location, storage class, etc.)"
+  type = map(object({
+    location      = string
+    storage_class = string
+  }))
 }
 
 variable "location" {

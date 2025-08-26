@@ -4,8 +4,25 @@ resource "google_service_account" "sa" {
   project      = var.project_id
 }
 
+# resource "google_storage_bucket_iam_member" "sa_bucket_access" {
+#   bucket = var.bucket_name
+#   role   = "roles/storage.admin"
+#   member = "serviceAccount:${google_service_account.sa.email}"
+# }
+
+# resource "google_storage_bucket_iam_member" "sa_bucket_access" {
+#   for_each = var.bucket
+#   bucket = each.key
+#   member = "serviceAccount:${var.service_account_email}"
+#   role   = "roles/storage.admin"
+# }
 resource "google_storage_bucket_iam_member" "sa_bucket_access" {
-  bucket = var.bucket_name
-  role   = "roles/storage.admin"
-  member = "serviceAccount:${google_service_account.sa.email}"
+  for_each = var.bucket
+  bucket   = each.value
+  member   = "serviceAccount:${google_service_account.sa.email}"
+  role     = "roles/storage.admin"
 }
+
+
+
+

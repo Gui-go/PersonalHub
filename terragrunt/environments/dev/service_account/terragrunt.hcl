@@ -7,14 +7,14 @@ include "dev_common" {
   expose = true # Expose inputs from dev_common
 }
 
-dependency "storage" {
-  config_path = "../state_bucket"
+dependency "state" {
+  config_path = "../bucket_state"
   skip_outputs = true
 }
 
 dependency "storage" {
-  config_path = "../storage"
-  skip_outputs = true
+  config_path = "../buckets_data"
+  skip_outputs = false
 }
 
 terraform {
@@ -22,10 +22,11 @@ terraform {
 }
 
 inputs = {
-  service_account_id = "personalhub15-dev-sa"
+  service_account_id   = "personalhub15-dev-sa"
   service_account_name = "personalhub15-dev-sa"
-  bucket_name = "personalhub15-dev-storage"
-  project_id = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
+  service_account_email = "personalhub15-dev-sa@personalhub15.iam.gserviceaccount.com"
+  bucket                = dependency.storage.outputs.bucket_urls
+  project_id           = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
 }
 
 

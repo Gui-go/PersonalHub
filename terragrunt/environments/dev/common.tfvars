@@ -1,1 +1,6 @@
-location = "us-central1"
+location = "US"
+region = "us-central1"
+
+
+
+

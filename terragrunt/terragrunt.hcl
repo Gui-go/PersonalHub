@@ -6,10 +6,11 @@
 remote_state {
   backend = "gcs"
   config = {
-    bucket  = "personalhub15gcs4state"
-    prefix  = "terragrunt/${path_relative_to_include()}"
-    project = "personalhub15"
-    location = "us-central1"
+    bucket   = "personalhub15gcs4state"
+    prefix   = "terragrunt/${path_relative_to_include()}"
+    project  = "personalhub15"
+    region   = "us-central1"
+    location = "US"
   }
   generate = {
     path      = "backend.tf"

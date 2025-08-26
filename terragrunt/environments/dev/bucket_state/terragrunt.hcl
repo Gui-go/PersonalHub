@@ -4,12 +4,7 @@ include "root" {
 
 include "dev_common" {
   path = "../terragrunt.hcl"
-  expose = true
-}
-
-dependency "storage" {
-  config_path = "../state_bucket"
-  skip_outputs = true
+  expose = true # Expose inputs from dev_common
 }
 
 terraform {
@@ -17,7 +12,12 @@ terraform {
 }
 
 inputs = {
-  bucket_name = "personalhub15-dev-storage"
   project_id = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
-}
 
+  bucket = {
+    "personalhub15gcs4state4dev" = {
+      location      = "US"
+      storage_class = "STANDARD"
+    }
+  }
+}
