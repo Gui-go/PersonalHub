@@ -17,16 +17,17 @@ resource "google_storage_bucket" "buckets" {
   uniform_bucket_level_access  = true
   lifecycle {
     prevent_destroy = true
-    # ignore_changes = [
-    #   labels,
-    #   effective_labels,
-    #   versioning,
-    #   public_access_prevention,
-    #   rpo,
-    #   soft_delete_policy,
-    #   enable_object_retention,
-    #   default_event_based_hold
-    # ]
+    ignore_changes = [
+      project
+      # labels,
+      # effective_labels,
+      # versioning,
+      # public_access_prevention,
+      # rpo,
+      # soft_delete_policy,
+      # enable_object_retention,
+      # default_event_based_hold
+    ]
   }
 }
 

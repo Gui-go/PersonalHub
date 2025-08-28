@@ -52,7 +52,11 @@ _dj_dave__ instagram program to rave, code to music
 
 11) A store online that presents the prices of its products according to how much money people make, in time of work.
 
+Container with warnings:
 
+ 2 warnings found (use docker --debug to expand):
+ - UndefinedVar: Usage of undefined variable '$NEXT_PUBLIC_FIREBASE_PRIVATE_KEY' (line 26)
+ - UndefinedVar: Usage of undefined variable '$NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL' (line 27)
 
 
 

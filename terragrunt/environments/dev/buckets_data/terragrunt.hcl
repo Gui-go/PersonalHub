@@ -7,13 +7,13 @@ include "dev_common" {
   expose = true
 }
 
-dependency "storage" {
+dependency "bucket_state" {
   config_path = "../bucket_state"
   skip_outputs = true
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/storage"
+  source = "${get_repo_root()}//terragrunt/modules/gcs"
 }
 
 # inputs = {

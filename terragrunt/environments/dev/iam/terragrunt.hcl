@@ -21,16 +21,25 @@ dependency "buckets_data" {
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/service_account"
+  source = "${get_repo_root()}//terragrunt/modules/iam"
 }
 
 inputs = {
-  service_account_id    = "personalhub15-dev-sa"
-  service_account_name  = "personalhub15-dev-sa"
-  service_account_email = "personalhub15-dev-sa@personalhub15.iam.gserviceaccount.com"
-  project_id            = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
-  bucket                = dependency.buckets_data.outputs.bucket_urls
+  project_id = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
+  bucket_iam = {
+    "personalhub15-raw" = {
+      member = "personalhub15-dev-sa@personalhub15.iam.gserviceaccount.com"
+      role   = "roles/storage.admin"
+    }
+    # "personalhub15-mart" = {
+    #   member = "US"
+    #   role   = "roles/storage.admin"
+    # }
+  }
 }
+
+
+
 
 
 

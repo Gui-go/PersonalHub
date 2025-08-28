@@ -21,16 +21,24 @@ dependency "buckets_data" {
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/service_account"
+  source = "${get_repo_root()}//terragrunt/modules/vpc"
 }
 
 inputs = {
-  service_account_id    = "personalhub15-dev-sa"
-  service_account_name  = "personalhub15-dev-sa"
-  service_account_email = "personalhub15-dev-sa@personalhub15.iam.gserviceaccount.com"
-  project_id            = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
-  bucket                = dependency.buckets_data.outputs.bucket_urls
+  vpc_net_name    = "vpc-net"
+  vpc_subnet_name = "vpc-subnet"
+  vpc_subnet_cidr = "10.0.1.0/24"
+  project_id      = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
+  region          = include.dev_common.inputs.gcp_region
 }
+
+
+
+
+
+
+
+
 
 
 

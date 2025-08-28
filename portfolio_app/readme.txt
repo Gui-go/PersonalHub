@@ -48,16 +48,15 @@ my-app/
 
 
 docker buildx build --platform linux/amd64 \
-  -t us-central1-docker.pkg.dev/personalhub14/personalhub-artifact-repo/portfolio-app:latest \
+  -t us-central1-docker.pkg.dev/personalhub15/artifact-repo/portfolio-app:latest \
   -f portfolio-app.dockerfile \
   --push .
 
 
 
 
-
             gcloud run deploy portfolio-run \
-            --image=us-central1-docker.pkg.dev/personalhub13/personalhub-artifact-repo/portfolio-app:latest \
+            --image=us-central1-docker.pkg.dev/personalhub15/personalhub15-artifact-repo/portfolio-app:latest \
             --platform=managed \
             --region=us-central1 \
             --allow-unauthenticated
