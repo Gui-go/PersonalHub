@@ -13,7 +13,7 @@ dependency "bucket_state" {
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/bq_dataset"
+  source = "${get_repo_root()}/terragrunt/modules//bq_dataset"
 }
 
 inputs = {

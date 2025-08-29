@@ -13,13 +13,8 @@ dependency "bucket_state" {
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/gcs"
+  source = "${get_repo_root()}/terragrunt/modules//gcs"
 }
-
-# inputs = {
-#   bucket_name = "personalhub15-dev-storage"
-#   project_id  = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id
-# }
 
 inputs = {
   project_id = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs.gcp_project_id

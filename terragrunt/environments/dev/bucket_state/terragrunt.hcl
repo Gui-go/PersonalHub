@@ -8,7 +8,7 @@ include "dev_common" {
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/gcs"
+  source = "${get_repo_root()}/terragrunt/modules//gcs"
 }
 
 inputs = {

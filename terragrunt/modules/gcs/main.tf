@@ -1,12 +1,3 @@
-# resource "google_storage_bucket" "bucket" {
-#   project       = var.project_id
-#   name          = var.bucket_name
-#   location      = var.location
-#   storage_class = "STANDARD"
-#   force_destroy = false
-#   uniform_bucket_level_access = true
-# }
-
 resource "google_storage_bucket" "buckets" {
   for_each      = var.bucket
   project       = var.project_id

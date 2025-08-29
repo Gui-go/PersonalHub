@@ -9,7 +9,7 @@ remote_state {
     bucket   = "personalhub15gcs4state"
     prefix   = "terragrunt/${path_relative_to_include()}"
     project  = "personalhub15"
-    region   = "us-central1"
+
     location = "US"
   }
   generate = {

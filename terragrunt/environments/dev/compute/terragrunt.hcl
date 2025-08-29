@@ -4,11 +4,11 @@ include "root" {
 
 include "dev_common" {
   path = "../terragrunt.hcl"
-  expose = true # Expose inputs from dev_common
 }
 
 locals {
-  gcp_vars = include.dev_common.inputs
+  gcp_vars = read_terragrunt_config(find_in_parent_folders("terragrunt.hcl", "terragrunt.hcl")).inputs
+  # artifact_registry_config = read_terragrunt_config("../artifact_registry/terragrunt.hcl")
 }
 
 dependency "bucket_state" {
@@ -16,16 +16,22 @@ dependency "bucket_state" {
   skip_outputs = true
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
+dependency "network" {
+  config_path = "../network"
 }
 
 dependency "service_account" {
   config_path = "../service_account"
+  skip_outputs = false
+}
+
+dependency "artifact_registry" {
+  config_path = "../artifact_registry"
+  skip_outputs = true
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/compute"
+  source = "${get_repo_root()}/terragrunt/modules//compute"
 }
 
 inputs = {
@@ -33,9 +39,10 @@ inputs = {
   region                = local.gcp_vars.gcp_region
   run_connector_name    = "cloudrun-connector"
   run_connector_ip_cidr_range = "10.8.0.0/28"
-  vpc_network_id        = dependency.vpc.outputs.network_id
-  vpc_subnet_id         = dependency.vpc.outputs.subnet_id
+#  vpc_network_id        = dependency.network.outputs.network_id
+#  vpc_subnet_id         = dependency.network.outputs.subnet_id
   service_account_email = dependency.service_account.outputs.service_account_email
+  artifact_registry_id  = "artifact-repo"
   run = {
     "portfolio-run" = {
       ingress             = "INGRESS_TRAFFIC_ALL"

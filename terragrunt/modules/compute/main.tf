@@ -15,7 +15,6 @@ resource "google_cloud_run_v2_service" "run_services" {
   name     = each.key
   location = var.region
   ingress  = each.value.ingress
-
   template {
     containers {
       image = each.value.image
@@ -40,7 +39,6 @@ resource "google_cloud_run_v2_service" "run_services" {
     timeout         = each.value.timeout
     service_account = var.service_account_email
   }
-
   traffic {
     percent = 100
     type    = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
@@ -56,17 +54,3 @@ resource "google_cloud_run_service_iam_member" "run_services_invoker_iam_member"
   member   = "allUsers"
 }
 
-resource "google_artifact_registry_repository" "artifact_repository" {
-  project       = var.project_id
-  location      = var.region
-  repository_id = "artifact-repo"
-  description   = "Docker repository for storing container images"
-  format        = "DOCKER"
-  cleanup_policies {
-    id     = "keep-recent-versions"
-    action = "KEEP"
-    most_recent_versions {
-      keep_count = 1
-    }
-  }
-}

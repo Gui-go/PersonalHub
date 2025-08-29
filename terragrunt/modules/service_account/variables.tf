@@ -13,8 +13,7 @@ variable "service_account_name" {
 #   type        = string
 # }
 variable "bucket" {
-  description = "Map of bucket names to bucket URLs"
-  type = map(string)
+  type = list(string)
 }
 
 # variable "bucket" {

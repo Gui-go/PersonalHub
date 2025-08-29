@@ -16,12 +16,12 @@ dependency "buckets_data" {
   config_path = "../buckets_data"
   skip_outputs = false
   mock_outputs = {
-    bucket_urls = ["mock-bucket-url"]
+    bucket_names = ["mock-bucket-name"]
   }
 }
 
 terraform {
-  source = "${get_repo_root()}//terragrunt/modules/iam"
+  source = "${get_repo_root()}/terragrunt/modules//iam"
 }
 
 inputs = {

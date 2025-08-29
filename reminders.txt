@@ -59,4 +59,12 @@ Container with warnings:
  - UndefinedVar: Usage of undefined variable '$NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL' (line 27)
 
 
+13) Trolley game: The user needs to make difficult decisions to save lives
+
+
+
+
+
+
+
 
