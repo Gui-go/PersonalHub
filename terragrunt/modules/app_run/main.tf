@@ -5,7 +5,7 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
   ingress  = var.ingress
   template {
     containers {
-      image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_name}/${var.app_name}:latest"
+      image = "${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_id}/${var.app_name}:latest"
       ports { container_port = var.port }
       resources {
         limits = {

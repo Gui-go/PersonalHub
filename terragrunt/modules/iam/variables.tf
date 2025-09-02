@@ -1,21 +1,32 @@
-variable "service_account_id" {
-  description = "ID for the service account"
+variable "project_id" {
+  description = "The GCP project ID"
   type        = string
 }
 
-variable "service_account_name" {
-  description = "Name for the service account"
-  type        = string
-}
-
-# variable "bucket_name" {
-#   description = "Name of the bucket to grant access to"
+# variable "sa_id" {
+#   description = "ID for the service account"
 #   type        = string
 # }
-variable "bucket" {
-  type = list(string)
-}
 
+# variable "sa_name" {
+#   description = "Name for the service account"
+#   type        = string
+# }
+
+# variable "sa_desc" {
+#   description = ""
+#   type        = string
+# }
+
+variable "sa" {
+  description = ""
+  type = map(object({
+    sa_id   = string
+    sa_name = string
+    sa_desc = string
+  }))
+}
+# google_service_account.sa["terraform-sa"]
 # variable "bucket" {
 #   description = "Map of bucket names to their configuration (location, storage class, etc.)"
 #   type = map(object({
@@ -24,14 +35,10 @@ variable "bucket" {
 #   }))
 # }
 
-variable "service_account_email" {
-  description = "Email of the service account for IAM assignments"
-  type        = string
-}
+# variable "service_account_email" {
+#   description = "Email of the service account for IAM assignments"
+#   type        = string
+# }
 
 
 
-variable "project_id" {
-  description = "The GCP project ID"
-  type        = string
-}

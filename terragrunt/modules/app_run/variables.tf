@@ -13,8 +13,8 @@ variable "app_name" {
   type        = string
 }
 
-variable "repo_name" {
-  description = "Name of the Artifact Registry"
+variable "repo_id" {
+  description = "ID of the Artifact Registry"
   type        = string
 }
 
