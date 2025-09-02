@@ -31,7 +31,7 @@ dependency "artifact_registry" {
 }
 
 terraform {
-  source = "${get_repo_root()}/terragrunt/modules//compute"
+  source = "../../../modules/compute"
 }
 
 inputs = {
@@ -39,8 +39,8 @@ inputs = {
   region                = local.gcp_vars.gcp_region
   run_connector_name    = "cloudrun-connector"
   run_connector_ip_cidr_range = "10.8.0.0/28"
-#  vpc_network_id        = dependency.network.outputs.network_id
-#  vpc_subnet_id         = dependency.network.outputs.subnet_id
+  vpc_network_id        = dependency.network.outputs.network_id
+  vpc_subnet_id         = dependency.network.outputs.subnet_id
   service_account_email = dependency.service_account.outputs.service_account_email
   artifact_registry_id  = "artifact-repo"
   run = {

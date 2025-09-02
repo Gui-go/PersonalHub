@@ -18,6 +18,11 @@ variable "subdomains" {
   type        = list(string)
 }
 
+variable "proj_id" {
+  description = "The GCP project ID."
+  type        = string
+}
+
 variable "run_names" {
   description = "A map of Cloud Run service names, with keys matching the subdomains."
   type        = map(string)
