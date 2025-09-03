@@ -37,19 +37,32 @@ resource "google_artifact_registry_repository" "artifact_repository" {
   }
 }
 
-# resource "null_resource" "push_initial_images" {
+# resource "null_resource" "push_initial_images2" {
 #   depends_on = [google_artifact_registry_repository.artifact_repository]
 #   provisioner "local-exec" {
-#     working_dir = "${path.root}/../../../" 
+#     working_dir = "${path.root}/../../../../portfolio_app"
 #     command = <<EOT
 #       gcloud auth configure-docker ${var.region}-docker.pkg.dev -q
 #       docker buildx build --platform linux/amd64 \
 #         -t ${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_id}/portfolio-app:latest \
-#         -f portfolio_app/portfolio-app.dockerfile \
-#         --push portfolio_app/
+#         -f portfolio-app.dockerfile \
+#         --push .
 #     EOT
 #   }
 # }
 
+resource "null_resource" "push_initial_images" {
+  depends_on = [google_artifact_registry_repository.artifact_repository]
+  provisioner "local-exec" {
+    working_dir = var.portfolio_app_path
+    command = <<EOT
+      gcloud auth configure-docker ${var.region}-docker.pkg.dev -q
+      docker buildx build --platform linux/amd64 \
+        -t ${var.region}-docker.pkg.dev/${var.project_id}/${var.repo_id}/portfolio-app:latest \
+        -f portfolio-app.dockerfile \
+        --push .
+    EOT
+  }
+}
 
 

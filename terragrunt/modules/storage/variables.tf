@@ -41,3 +41,8 @@ variable "keep_count" {
 }
 
 
+variable "portfolio_app_path" {
+  description = "Portfolio app folder path"
+  type        = string
+}
+

@@ -3,42 +3,25 @@ variable "project_id" {
   type        = string
 }
 
-# variable "sa_id" {
-#   description = "ID for the service account"
-#   type        = string
-# }
-
-# variable "sa_name" {
-#   description = "Name for the service account"
-#   type        = string
-# }
-
-# variable "sa_desc" {
-#   description = ""
-#   type        = string
-# }
+variable "region" {
+  description = "Region of the resources"
+  type        = string
+}
 
 variable "sa" {
-  description = ""
-  type = map(object({
-    sa_id   = string
-    sa_name = string
-    sa_desc = string
-  }))
+  description = "Map of service accounts to create"
+  type        = any
+  default     = {}
 }
-# google_service_account.sa["terraform-sa"]
-# variable "bucket" {
-#   description = "Map of bucket names to their configuration (location, storage class, etc.)"
-#   type = map(object({
-#     location      = string
-#     storage_class = string
-#   }))
-# }
 
-# variable "service_account_email" {
-#   description = "Email of the service account for IAM assignments"
-#   type        = string
-# }
+variable "artifact_registry_readers" {
+  description = "List of service account keys that should have Artifact Registry Reader role"
+  type        = list(string)
+  default     = []
+}
 
-
-
+variable "public_run_services" {
+  description = "List of Cloud Run service names to make public"
+  type        = list(string)
+  default     = []
+}

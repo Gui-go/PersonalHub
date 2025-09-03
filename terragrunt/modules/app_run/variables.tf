@@ -59,6 +59,7 @@ variable "max_instance" {
 variable "run_connector" {
   description = ""
   type        = string
+  default     = ""
 }
 
 variable "timeout" {
@@ -70,4 +71,21 @@ variable "service_account" {
   description = ""
   type        = string
 }
+
+variable "network_id" {
+  description = ""
+  type        = string
+}
+
+variable "connector_name" {
+  description = ""
+  type        = string
+}
+
+variable "ip_cidr" {
+  description = ""
+  type        = string
+}
+
+
 

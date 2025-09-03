@@ -11,10 +11,10 @@ output "repo_id" {
     value       = google_artifact_registry_repository.artifact_repository.repository_id
 }
 
-output "repo_name" {
-    description = "The name of the Artifact Registry repository"
-    value       = google_artifact_registry_repository.artifact_repository.name
-}
+# output "repo_name" {
+#     description = "The name of the Artifact Registry repository"
+#     value       = google_artifact_registry_repository.artifact_repository.name
+# }
 
 output "repo_location" {
     description = "The location of the Artifact Registry repository"
