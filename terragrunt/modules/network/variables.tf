@@ -8,29 +8,24 @@ variable "region" {
   type        = string
 }
 
-variable "vpc_subnet_cidr" {
+variable "subnet_cidr" {
   description = "CIDE subnetwork for the VPC"
   type        = string
 }
 
-variable "subdomains" {
-  description = "A list of subdomains to create."
-  type        = list(string)
-}
-
-variable "run_names" {
-  description = "A map of Cloud Run service names, with keys matching the subdomains."
-  type        = map(string)
-}
-
-variable "domain" {
-  description = "The domain name."
-  type        = string
-}
-
-
-
-variable "vpc_network_name" {
+variable "net_name" {
   description = "The name of the VPC network"
   type        = string
 }
+
+variable "subnet_name" {
+  description = ""
+  type        = string
+}
+
+variable "domain" {
+  description = ""
+  type        = string
+}
+
+

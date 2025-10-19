@@ -63,6 +63,48 @@ Container with warnings:
 
 14) Snake game
 
+15) Rock, paper, scizors
+
+16) DockPeek - To have a hub of all containers in system
+
+17) Capa/dataset "Landing zone (lz)", "bronze", "silver", "gold", "mart"?????
+
+18)
+Germany, Prussia, and both territories.
+Austro-Hungarian Empire
+german territorial losses in ww1 and ww2
+
+add lives to flappy bird
+
+19) Al-Andalus, avanço Mouro na Iberia e França
+
+20) the 5 guianas
+
+21) Add WIF in project, federacion de identidades
+
+22) Create a GH Webhook to visualize changes in PortfolioHub git changes 
+
+23) Calculadora de juros compostos
+
+24) Article about removing the option to deploy GCP resources on the UI/portal and only using Terraform
+
+25) Tools -> Features ?
+
+26) Library tag/tool for links of my favourite articles and books;
+download blocked by password, so not to be accused of piracy
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

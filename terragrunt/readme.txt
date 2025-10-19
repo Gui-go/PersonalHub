@@ -2,6 +2,11 @@
 
 
 
+terraform init -reconfigure
+terragrunt run-all init
+
+
+
 environment
     network
     iam

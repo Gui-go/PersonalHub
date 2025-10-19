@@ -35,6 +35,11 @@ resource "google_artifact_registry_repository" "artifact_repository" {
       keep_count = var.keep_count
     }
   }
+  lifecycle {
+    ignore_changes = [
+      update_time
+    ]
+  }
 }
 
 # resource "null_resource" "push_initial_images2" {

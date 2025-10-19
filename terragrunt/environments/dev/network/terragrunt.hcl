@@ -9,20 +9,22 @@ terraform {
 inputs = {
   project_id       = local.parent_vars.inputs.project_id
   region           = local.parent_vars.inputs.region
-  vpc_subnet_cidr  = "10.0.1.0/24"
-  vpc_network_name = "vpc-net"
+  subnet_cidr      = "10.0.1.0/24"
+  net_name         = "vpc-net"
+  subnet_name      = "vpc-subnet"
   domain           = "guigo.dev.br"
-  subdomains       = [
-    "www", 
-    # "api", 
-    # "rstudio", 
-    # "grafana"
-  ]
-  run_names = {
-    "www" = "www-service"
-    # "api" = "api-service"
-  }
+  # subdomains       = [
+  #   "www", 
+  #   # "api", 
+  #   # "rstudio", 
+  #   # "grafana"
+  # ]
+  # run_names = {
+  #   "www" = "www-service"
+  #   # "api" = "api-service"
+  # }
 }
+
 
 
 

@@ -6,7 +6,7 @@ locals {
 remote_state {
   backend = "gcs"
   config = {
-    bucket   = "personalhub16gcs4state"
+    bucket   = "personalhub18gcs4state"
     prefix   = "terragrunt/${path_relative_to_include()}"
     project  = local.common_vars.inputs.project_id
     location = local.common_vars.inputs.location
@@ -15,6 +15,7 @@ remote_state {
     path      = "backend.tf"
     if_exists = "overwrite_terragrunt"
   }
+  # disable_init_prompt = true
 }
 
 # Generate a common provider configuration for all modules.
@@ -31,6 +32,4 @@ generate "provider" {
 }
 
 inputs = local.common_vars.inputs
-
-
 

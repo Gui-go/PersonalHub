@@ -37,6 +37,8 @@ gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJ_ID
 gcloud auth application-default set-quota-project $PROJ_ID --quiet
 cd ~/Documents/01-personalHub
 gcloud config list
+# gcloud projects delete personalhub17
+
 
 # APIs enabling:
 gcloud services enable vpcaccess.googleapis.com --project=$PROJ_ID
