@@ -17,6 +17,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      pull-requests: write  # needed to post PR comments
 
     steps:
       - name: Checkout repository
@@ -28,12 +29,13 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Set up Terragrunt
-        uses: gruntwork-io/setup-terragrunt@v2
+        uses: autero1/actions-terragrunt@v1.3.2
         with:
-          terragrunt-version: ${{ env.TERRAGRUNT_VERSION }}
+          terragrunt_version: ${{ env.TERRAGRUNT_VERSION }}
 
       # Optional: Authenticate to cloud provider if needed (e.g., GCP)
-      # - uses: google-github-actions/auth@v2
+      # - name: Authenticate to Google Cloud
+      #   uses: google-github-actions/auth@v2
       #   with:
       #     workload_identity_provider: ${{ env.WIF_PROVIDER }}
       #     service_account: ${{ env.SERVICE_ACCOUNT }}
@@ -45,7 +47,7 @@ jobs:
       - name: Terragrunt Plan
         if: github.event.pull_request.merged != true
         working-directory: ${{ env.TERRAGRUNT_WORKING_DIR }}
-        run: terragrunt plan
+        run: terragrunt plan -out=plan.out | tee terragrunt-plan.log
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
@@ -57,12 +59,15 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const planOutput = require('fs').readFileSync('./infrastructure/terragrunt-plan.log', 'utf8');
+            const fs = require('fs');
+            const planPath = './infrastructure/terragrunt-plan.log';
+            let planOutput = 'Terragrunt plan output not found.';
+            if (fs.existsSync(planPath)) {
+              planOutput = fs.readFileSync(planPath, 'utf8').substring(0, 60000); // limit output to avoid exceeding comment size
+            }
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `### Terragrunt Plan Output\n\`\`\`\n${planOutput}\n\`\`\``
             })
-
-
