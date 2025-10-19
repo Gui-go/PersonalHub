@@ -35,7 +35,7 @@ jobs:
       # Run Terragrunt Init and Plan
       # Note: The gruntwork-io action can install, and then you use 'run' steps for multi-step execution.
       - name: Terragrunt Init
-        run: terragrunt --terragrunt-non-interactive run-all init
+        run: terragrunt -terragrunt-non-interactive run-all init
         working-directory: ./terragrunt/environments/dev
 
       # - name: Terragrunt Plan
