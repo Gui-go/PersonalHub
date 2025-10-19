@@ -9,8 +9,7 @@ on:
 env:
   TERRAGRUNT_VERSION: 0.46.3
   TF_VERSION: 1.11.4
-  TERRAGRUNT_WORKING_DIR: ./infrastructure  # root folder with terragrunt.hcl
-  TG_DIR: ./terragrunt/environments/dev
+  TG_DIR: ./terragrunt/environments/dev  # root folder with terragrunt.hcl
 
 jobs:
   terragrunt:
@@ -61,17 +60,17 @@ jobs:
       #     service_account: ${{ env.SERVICE_ACCOUNT }}
 
       - name: Terragrunt Validate
-        working-directory: ${{ env.TERRAGRUNT_WORKING_DIR }}
+        working-directory: ${{ env.TG_DIR }}
         run: terragrunt validate
 
       - name: Terragrunt Plan
         if: github.event.pull_request.merged != true
-        working-directory: ${{ env.TERRAGRUNT_WORKING_DIR }}
+        working-directory: ${{ env.TG_DIR }}
         run: terragrunt plan -out=plan.out | tee terragrunt-plan.log
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
-        working-directory: ${{ env.TERRAGRUNT_WORKING_DIR }}
+        working-directory: ${{ env.TG_DIR }}
         run: terragrunt apply -auto-approve
 
       - name: Post PR Comment (Plan Results)
