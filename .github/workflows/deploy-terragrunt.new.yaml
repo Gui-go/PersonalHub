@@ -23,15 +23,34 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
+      # Install Terragrunt and Terraform/OpenTofu
+      - name: Install Terragrunt and OpenTofu
+        uses: gruntwork-io/terragrunt-action@v3
         with:
-          terraform_version: ${{ env.TF_VERSION }}
+          # Specify versions here, or use a mise.toml file in your repository root
+          tg_version: 'latest' # Replace with a fixed version
+          tofu_version: 'latest' # Replace with a fixed version
 
-      - name: Set up Terragrunt
-        uses: autero1/actions-terragrunt@v1.3.2
-        with:
-          terragrunt_version: ${{ env.TERRAGRUNT_VERSION }}
+      # Run Terragrunt Init and Plan
+      # Note: The gruntwork-io action can install, and then you use 'run' steps for multi-step execution.
+      - name: Terragrunt Init
+        run: terragrunt run-all init --terragrunt-non-interactive
+        working-directory: infrastructure # Change to your root Terragrunt directory
+
+      - name: Terragrunt Plan
+        run: terragrunt run-all plan --terragrunt-non-interactive
+        working-directory: infrastructure
+
+      # - name: Set up Terraform
+      #   uses: hashicorp/setup-terraform@v3
+      #   with:
+      #     terraform_version: ${{ env.TF_VERSION }}
+
+      # - name: Set up Terragrunt
+      #   uses: gruntwork-io/terragrunt-action@v3
+      #   with:
+      #     tg_version: ${{ env.TERRAGRUNT_VERSION }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # Optional: Authenticate to cloud provider if needed (e.g., GCP)
       # - name: Authenticate to Google Cloud
