@@ -10,6 +10,7 @@ env:
   TERRAGRUNT_VERSION: 0.46.3
   TF_VERSION: 1.11.4
   TERRAGRUNT_WORKING_DIR: ./infrastructure  # root folder with terragrunt.hcl
+  TG_DIR: ./terragrunt/environments/dev
 
 jobs:
   terragrunt:
@@ -35,11 +36,11 @@ jobs:
       # Note: The gruntwork-io action can install, and then you use 'run' steps for multi-step execution.
       - name: Terragrunt Init
         run: terragrunt run-all init --terragrunt-non-interactive
-        working-directory: infrastructure # Change to your root Terragrunt directory
+        working-directory: ./terragrunt/environments/dev
 
       - name: Terragrunt Plan
         run: terragrunt run-all plan --terragrunt-non-interactive
-        working-directory: infrastructure
+        working-directory: ./terragrunt/environments/dev
 
       # - name: Set up Terraform
       #   uses: hashicorp/setup-terraform@v3
