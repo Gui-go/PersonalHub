@@ -45,7 +45,7 @@ jobs:
 
       - name: Terragrunt Init (all modules)
         working-directory: ${{ env.TG_DIR }}
-        run: terragrunt run-all init
+        run: terragrunt run -- run-all init
 
 
       # Run Terragrunt Init and Plan
