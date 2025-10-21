@@ -45,11 +45,12 @@ jobs:
 
       - name: 'Terragrunt Init'
         # run: terragrunt run-all init --terragrunt-non-interactive
-        run: terragrunt init --terragrunt-non-interactive --terragrunt-working-dir terragrunt/environments/dev/network
+        run: terragrunt init --terragrunt-working-dir terragrunt/environments/dev/network --terragrunt-non-interactive 
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: 'Terragrunt Plan'
-        run: terragrunt run-all plan --terragrunt-non-interactive
+        # run: terragrunt run-all plan --terragrunt-non-interactive
+        run: terragrunt run-all plan --terragrunt-working-dir terragrunt/environments/dev --terragrunt-non-interactive
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
         ####
