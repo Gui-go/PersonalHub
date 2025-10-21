@@ -4,14 +4,14 @@ on:
   pull_request:
     branches:
       - main
-    types: [opened, synchronize, closed]
+    types: [opened, synchronize, reopened, closed]
 
 env:
-  TERRAGRUNT_VERSION: 0.46.3
+  TG_VERSION: 0.46.3
   TF_VERSION: 1.11.4
   TG_DIR: ./terragrunt/environments/dev  # root folder with terragrunt.hcl
 
-jobs:
+jobs:  
   terragrunt:
     runs-on: ubuntu-latest
     permissions:
@@ -20,16 +20,31 @@ jobs:
       pull-requests: write  # needed to post PR comments
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Google Cloud credentials
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          echo "$GOOGLE_CREDENTIALS" > "${HOME}/gcp-key.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcp-key.json"
 
       # Install Terragrunt and Terraform/OpenTofu
       - name: Install Terragrunt and OpenTofu
         uses: gruntwork-io/terragrunt-action@v3
         with:
-          # Specify versions here, or use a mise.toml file in your repository root
-          tg_version: 'latest' # Replace with a fixed version
-          tofu_version: 'latest' # Replace with a fixed version
+          tg_version: ${{ env.TG_VERSION }}
+          tofu_version: ${{ env.TF_VERSION }}
+
+      - name: Terragrunt Init (all modules)
+        working-directory: ${{ env.TG_DIR }}
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcp-key.json"
+        run: terragrunt run-all init
+
+
 
       # Run Terragrunt Init and Plan
       # Note: The gruntwork-io action can install, and then you use 'run' steps for multi-step execution.
@@ -95,4 +110,3 @@ jobs:
 
 
 
-            
