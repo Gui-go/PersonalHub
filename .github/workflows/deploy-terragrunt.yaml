@@ -43,6 +43,11 @@ jobs:
       #     tg_version: ${{ env.TG_VERSION }}
       #     tofu_version: ${{ env.TF_VERSION }}
 
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
       - name: Install Terragrunt
         run: |
           TG_VERSION=v0.59.4
