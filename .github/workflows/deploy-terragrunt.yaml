@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 env:
-  TG_VERSION: 0.59.4
+  TG_VERSION: v0.59.4
   TF_VERSION: 1.13.4
   TG_DIR: ./terragrunt/environments/dev  # root folder with terragrunt.hcl
 
