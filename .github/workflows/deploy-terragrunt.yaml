@@ -29,12 +29,10 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Install Custom Terraform
-        run: |
-          curl -Lo /tmp/terraform https://your-company-bucket/terraform-${{ env.TF_VERSION }}-linux-amd64
-          chmod +x /tmp/terraform
-          sudo mv /tmp/terraform /usr/local/bin/terraform
-          terraform --version
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
 
       - name: Install Terragrunt
         run: |
@@ -43,9 +41,9 @@ jobs:
           sudo mv /tmp/terragrunt /usr/local/bin/terragrunt
           terragrunt --version
 
-      - name: Terragrunt Init (all modules)
-        working-directory: ${{ env.TG_DIR }}
-        run: terragrunt run-all init
+      # - name: Terragrunt Init (all modules)
+      #   working-directory: ${{ env.TG_DIR }}
+      #   run: terragrunt run-all init
 
 
 
