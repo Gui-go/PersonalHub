@@ -66,12 +66,12 @@ jobs:
 
       - name: Terragrunt Plan
         working-directory: ${{ env.TG_DIR }}
-        run: terragrunt plan run-all -out=plan.out | tee terragrunt-plan.log
+        run: terragrunt run-all plan -out=plan.out | tee terragrunt-plan.log
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
         working-directory: ${{ env.TG_DIR }}
-        run: terragrunt apply run-all -auto-approve
+        run: terragrunt run-all apply -auto-approve
 
       - name: Post PR Comment (Plan Results)
         if: github.event_name == 'pull_request' && github.event.pull_request.merged != true
