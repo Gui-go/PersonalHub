@@ -42,7 +42,7 @@ jobs:
         working-directory: ${{ env.TG_DIR }}
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcp-key.json"
-        run: terragrunt run -- all init
+        run: terragrunt run-all init
 
 
       # Run Terragrunt Init and Plan
