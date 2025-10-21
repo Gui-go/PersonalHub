@@ -47,7 +47,7 @@ jobs:
         # run: terragrunt run-all init --terragrunt-non-interactive
         run: |
           terragrunt init \
-            --terragrunt-working-dir terragrunt/environments/dev/network \
+            --terragrunt-working-dir terragrunt/environments/dev/ \
             --terragrunt-non-interactive 
         working-directory: ${{ env.TG_DIR }}
         
