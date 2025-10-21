@@ -1,4 +1,8 @@
 
+locals {
+  parent_vars = read_terragrunt_config("../terragrunt.hcl")
+}
+
 terraform {
   source = "${get_repo_root()}/terragrunt/modules//app_run"
 }
@@ -52,7 +56,4 @@ inputs = {
   }
 }
 
-locals {
-  parent_vars = read_terragrunt_config("../terragrunt.hcl")
-}
 
