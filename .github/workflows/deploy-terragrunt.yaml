@@ -43,15 +43,34 @@ jobs:
       - name: Interact with Terragrunt
         run: terragrunt --version
 
-      - name: 'Terragrunt Init'
+      - name: Terragrunt Init
         # run: terragrunt run-all init --terragrunt-non-interactive
-        run: terragrunt init --terragrunt-working-dir terragrunt/environments/dev/network --terragrunt-non-interactive 
+        run: terragrunt init \
+          --terragrunt-working-dir terragrunt/environments/dev/network \
+          --terragrunt-non-interactive 
         working-directory: ${{ env.WORKING_DIRECTORY }}
+        
+      - name: Terragrunt Validate
+        working-directory: ${{ env.TG_DIR }}
+        run: terragrunt validate
+        #### Workload Identity Pool and Provider 
 
       - name: 'Terragrunt Plan'
         # run: terragrunt run-all plan --terragrunt-non-interactive
-        run: terragrunt run-all plan --terragrunt-working-dir terragrunt/environments/dev --terragrunt-non-interactive
+        run: terragrunt run-all plan \
+          --terragrunt-working-dir terragrunt/environments/dev/network \
+          --terragrunt-non-interactive
         working-directory: ${{ env.WORKING_DIRECTORY }}
+
+      - name: Terragrunt Apply
+        if: github.event.pull_request.merged == true
+        working-directory: ${{ env.TG_DIR }}
+        run: terragrunt apply \
+          -auto-approve \
+          --terragrunt-working-dir terragrunt/environments/dev/network \
+          --terragrunt-non-interactive
+
+
 
         ####
 
