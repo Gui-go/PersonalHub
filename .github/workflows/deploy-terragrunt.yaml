@@ -65,7 +65,6 @@ jobs:
       #   working-directory: ${{ env.TG_DIR }}
 
       - name: Terragrunt Plan
-        if: github.event.pull_request.merged != true
         working-directory: ${{ env.TG_DIR }}
         run: terragrunt plan run-all -out=plan.out | tee terragrunt-plan.log
 
