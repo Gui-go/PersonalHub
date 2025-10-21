@@ -1,5 +1,6 @@
 locals {
   parent_vars = read_terragrunt_config("../terragrunt.hcl")
+  network_id = dependency.network.outputs.network_id
 }
 
 terraform {
