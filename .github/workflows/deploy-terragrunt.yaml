@@ -7,8 +7,8 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 env:
-  TG_VERSION: 0.45.0
-  TF_VERSION: 1.12.2
+  TG_VERSION: latest
+  TF_VERSION: latest
   TG_DIR: ./terragrunt/environments/dev  # root folder with terragrunt.hcl
 
 jobs:  
@@ -42,8 +42,7 @@ jobs:
         working-directory: ${{ env.TG_DIR }}
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcp-key.json"
-        run: terragrunt run-all init
-
+        run: terragrunt run -- all init
 
 
       # Run Terragrunt Init and Plan
