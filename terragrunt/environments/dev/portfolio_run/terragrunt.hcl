@@ -20,7 +20,7 @@ dependency "network" {
 inputs = {
   project_id    = local.parent_vars.inputs.project_id
   region        = local.parent_vars.inputs.region
-  lb_ip_id      = dependency.network.outputs.lb_ip_id
+  lb_ip_id      = try(dependency.network.outputs.lb_ip_id, null)
   lb_ip_address = dependency.network.outputs.lb_ip_address
   dns_zone_name = dependency.network.outputs.dns_zone_name
   repo_id       = dependency.storage.outputs.repo_id
