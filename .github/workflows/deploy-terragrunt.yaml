@@ -8,7 +8,7 @@ on:
 
 env:
   TG_VERSION: v0.59.4
-  TF_VERSION: 1.13.4
+  TF_VERSION: 1.6.5
   TG_DIR: ./terragrunt/environments/dev  # root folder with terragrunt.hcl
 
 jobs:  
@@ -28,20 +28,6 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      # - name: Set up Google Cloud credentials
-      #   env:
-      #     GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
-      #   run: |
-      #     echo "$GOOGLE_CREDENTIALS" > "${HOME}/gcp-key.json"
-      #     export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcp-key.json"
-
-      # Install Terragrunt and Terraform/OpenTofu
-      # - name: Install Terraform and Terragrunt
-      #   uses: gruntwork-io/terragrunt-action@v3
-      #   with:
-      #     tg_version: ${{ env.TG_VERSION }}
-      #     tofu_version: ${{ env.TF_VERSION }}
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
@@ -125,3 +111,16 @@ jobs:
 
 
 
+      # - name: Set up Google Cloud credentials
+      #   env:
+      #     GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      #   run: |
+      #     echo "$GOOGLE_CREDENTIALS" > "${HOME}/gcp-key.json"
+      #     export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcp-key.json"
+
+      # Install Terragrunt and Terraform/OpenTofu
+      # - name: Install Terraform and Terragrunt
+      #   uses: gruntwork-io/terragrunt-action@v3
+      #   with:
+      #     tg_version: ${{ env.TG_VERSION }}
+      #     tofu_version: ${{ env.TF_VERSION }}
