@@ -48,11 +48,6 @@ jobs:
 
       - name: Terragrunt Init
         run: terragrunt run-all init --terragrunt-non-interactive
-        # run: |
-        #   terragrunt init \
-        #     # --terragrunt-working-dir terragrunt/environments/dev/network \
-        #     --terragrunt-non-interactive 
-        # working-directory: ${{ env.WORKING_DIRECTORY }}
         working-directory: ${{ env.TG_DIR }}
         
       - name: Terragrunt Validate # check the configuration files for syntax and internal consistency
@@ -63,19 +58,11 @@ jobs:
       - name: Terragrunt Plan
         run: terragrunt run-all plan --terragrunt-non-interactive
         working-directory: ${{ env.TG_DIR }}
-        # run: |
-        #   terragrunt run-all plan \
-        #     --terragrunt-working-dir terragrunt/environments/dev/network \
-        #     --terragrunt-non-interactive
 
       - name: Terragrunt Apply
-        if: github.event.pull_request.merged == true
+        # if: github.event.pull_request.merged == true
         run: terragrunt apply --terragrunt-non-interactive
         working-directory: ${{ env.TG_DIR }}
-        # run: |
-        #   terragrunt apply -auto-approve \
-        #     --terragrunt-working-dir terragrunt/environments/dev/network \
-        #     --terragrunt-non-interactive
 
 
 
