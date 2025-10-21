@@ -62,6 +62,7 @@ jobs:
       - name: Terragrunt Validate
         working-directory: ${{ env.TG_DIR }}
         run: terragrunt validate
+        #### Workload Identity Pool and Provider 
 
       - name: Terragrunt Plan
         if: github.event.pull_request.merged != true

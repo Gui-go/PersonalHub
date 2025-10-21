@@ -34,7 +34,6 @@ resource "google_cloud_run_v2_service" "run_portfolio" {
 }
 
 # FastAPI API ------------------------------------------------------------------------------------------
-
 resource "google_cloud_run_v2_service" "run_fastapi" {
   project  = var.proj_id
   name     = "fastapi-run"
