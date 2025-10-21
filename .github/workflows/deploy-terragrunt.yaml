@@ -47,9 +47,9 @@ jobs:
         # run: terragrunt run-all init --terragrunt-non-interactive
         run: |
           terragrunt init \
-            --terragrunt-working-dir terragrunt/environments/dev/ \
+            --terragrunt-working-dir terragrunt/environments/dev/network \
             --terragrunt-non-interactive 
-        working-directory: ${{ env.TG_DIR }}
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         
       - name: Terragrunt Validate # check the configuration files for syntax and internal consistency
         working-directory: ${{ env.TG_DIR }}
@@ -62,7 +62,7 @@ jobs:
           terragrunt run-all plan \
             --terragrunt-working-dir terragrunt/environments/dev/network \
             --terragrunt-non-interactive
-        working-directory: ${{ env.TG_DIR }}
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
