@@ -44,7 +44,11 @@ jobs:
         run: terragrunt --version
 
       - name: 'Terragrunt Init'
-        run: terragrunt run-all init --terragrunt-non-interactive
+        # run: terragrunt run-all init --terragrunt-non-interactive
+        run: terragrunt run-all init \
+          --terragrunt-include-dir terragrunt/environments/dev/network \
+          --terragrunt-include-dir terragrunt/environments/dev/storage \
+          --terragrunt-non-interactive
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: 'Terragrunt Plan'
