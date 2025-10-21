@@ -1,3 +1,7 @@
+terraform {
+  experiments = [module_variable_optional_attrs]
+}
+
 resource "google_cloud_run_v2_service" "run_portfolio" {
   for_each = var.apps
   project  = var.project_id
