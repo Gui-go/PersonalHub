@@ -27,9 +27,9 @@ inputs = {
   network_id    = try(dependency.network.outputs.network_id, null)
   apps = {
     "portfolio" = {
-      app_id          = "portfolio-app"
-      app_name        = "portfolio-app"
-      app_desc        = "portfolio-app instance for portfolio website <www.guigo.dev.br>"
+      app_id          = "portfolio-app2"
+      app_name        = "portfolio-app2"
+      app_desc        = "portfolio-app2"
       ingress         = "INGRESS_TRAFFIC_ALL"
       port            = 3000
       cpu             = "1"
@@ -44,7 +44,7 @@ inputs = {
       timeout         = "360s"
       service_account = ""
       cloud_run_iam = {
-        service = "portfolio-app"
+        service = "portfolio-app2"
         role    = "roles/run.invoker"
       }
     }
