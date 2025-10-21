@@ -1,3 +1,4 @@
+
 locals {
   parent_vars = read_terragrunt_config("../terragrunt.hcl")
 }
@@ -8,22 +9,22 @@ terraform {
 
 dependency "storage" {
   config_path = "../storage"
-#   skip_outputs = true
+  skip_outputs = true
 }
 
 dependency "network" {
   config_path = "../network"
-#   skip_outputs = true
+  skip_outputs = true
 }
 
 inputs = {
-  project_id    = local.parent_vars.inputs.project_id
-  region        = local.parent_vars.inputs.region
-  lb_ip_id      = dependency.network.outputs.lb_ip_id
-  lb_ip_address = dependency.network.outputs.lb_ip_address
-  dns_zone_name = dependency.network.outputs.dns_zone_name
-  repo_id       = dependency.storage.outputs.repo_id
-  network_id    = dependency.network.outputs.network_id
+  project_id    = try(local.parent_vars.inputs.project_id, null)
+  region        = try(local.parent_vars.inputs.region, null)
+  lb_ip_id      = try(dependency.network.outputs.lb_ip_id, null)
+  lb_ip_address = try(dependency.network.outputs.lb_ip_address, null)
+  dns_zone_name = try(dependency.network.outputs.dns_zone_name, null)
+  repo_id       = try(dependency.storage.outputs.repo_id, null)
+  network_id    = try(dependency.network.outputs.network_id, null)
   apps = {
     "portfolio" = {
       app_id          = "portfolio-app"
