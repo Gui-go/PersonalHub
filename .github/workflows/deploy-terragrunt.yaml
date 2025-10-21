@@ -24,12 +24,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Google Cloud credentials
-        env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
-        run: |
-          echo "$GOOGLE_CREDENTIALS" > "${HOME}/gcp-key.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcp-key.json"
+      - name: Set up GCP credentials
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # - name: Set up Google Cloud credentials
+      #   env:
+      #     GOOGLE_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      #   run: |
+      #     echo "$GOOGLE_CREDENTIALS" > "${HOME}/gcp-key.json"
+      #     export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcp-key.json"
 
       # Install Terragrunt and Terraform/OpenTofu
       - name: Install Terraform and Terragrunt
@@ -40,9 +45,7 @@ jobs:
 
       - name: Terragrunt Init (all modules)
         working-directory: ${{ env.TG_DIR }}
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcp-key.json"
-        run: terragrunt init
+        run: terragrunt run-all init
 
 
       # Run Terragrunt Init and Plan
