@@ -44,15 +44,16 @@ jobs:
         run: terragrunt --version
 
       - name: Print!!!
-        run: echo ${{ env.WORKING_DIRECTORY }}
+        run: echo ${{ env.TG_DIR }}
 
       - name: Terragrunt Init
-        # run: terragrunt run-all init --terragrunt-non-interactive
-        run: |
-          terragrunt init \
-            --terragrunt-working-dir terragrunt/environments/dev/network \
-            --terragrunt-non-interactive 
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: terragrunt run-all init --terragrunt-non-interactive
+        # run: |
+        #   terragrunt init \
+        #     # --terragrunt-working-dir terragrunt/environments/dev/network \
+        #     --terragrunt-non-interactive 
+        # working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.TG_DIR }}
         
       - name: Terragrunt Validate # check the configuration files for syntax and internal consistency
         working-directory: ${{ env.TG_DIR }}
