@@ -8,7 +8,7 @@ terraform {
 
 dependency "storage" {
   config_path = "../storage"
-#   skip_outputs = true
+  skip_outputs = true
 }
 
 dependency "network" {
