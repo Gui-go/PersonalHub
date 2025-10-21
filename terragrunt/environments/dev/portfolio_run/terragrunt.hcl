@@ -13,7 +13,7 @@ dependency "storage" {
 
 dependency "network" {
   config_path = "../network"
-#   skip_outputs = true
+  skip_outputs = true
 }
 
 inputs = {
