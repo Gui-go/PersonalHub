@@ -70,7 +70,7 @@ jobs:
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
-        run: terragrunt apply --terragrunt-working-dir terragrunt/environments/dev/ --terragrunt-non-interactive
+        run: terragrunt apply --terragrunt-non-interactive
         working-directory: ${{ env.TG_DIR }}
         # run: |
         #   terragrunt apply -auto-approve \
