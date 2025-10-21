@@ -43,13 +43,17 @@ jobs:
       - name: Interact with Terragrunt
         run: terragrunt --version
 
+      - name: Print!!!
+        run: echo ${{ env.TG_DIR }}
+
       - name: Terragrunt Init
-        # run: terragrunt run-all init --terragrunt-non-interactive
-        run: |
-          terragrunt init \
-            --terragrunt-working-dir terragrunt/environments/dev/network \
-            --terragrunt-non-interactive 
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: terragrunt run-all init --terragrunt-non-interactive
+        # run: |
+        #   terragrunt init \
+        #     # --terragrunt-working-dir terragrunt/environments/dev/network \
+        #     --terragrunt-non-interactive 
+        # working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.TG_DIR }}
         
       - name: Terragrunt Validate # check the configuration files for syntax and internal consistency
         working-directory: ${{ env.TG_DIR }}
@@ -57,21 +61,21 @@ jobs:
         #### Workload Identity Pool and Provider ...
 
       - name: 'Terragrunt Plan'
-        # run: terragrunt run-all plan --terragrunt-non-interactive
-        run: |
-          terragrunt run-all plan \
-            --terragrunt-working-dir terragrunt/environments/dev/network \
-            --terragrunt-non-interactive
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: terragrunt run-all plan --terragrunt-non-interactive
+        # run: |
+        #   terragrunt run-all plan \
+        #     --terragrunt-working-dir terragrunt/environments/dev/network \
+        #     --terragrunt-non-interactive
+        working-directory: ${{ env.TG_DIR }}
 
       - name: Terragrunt Apply
         if: github.event.pull_request.merged == true
         working-directory: ${{ env.TG_DIR }}
-        run: |
-          terragrunt apply \
-            -auto-approve \
-            --terragrunt-working-dir terragrunt/environments/dev/network \
-            --terragrunt-non-interactive
+        run: terragrunt apply -auto-approve --terragrunt-non-interactive
+        # run: |
+        #   terragrunt apply -auto-approve \
+        #     --terragrunt-working-dir terragrunt/environments/dev/network \
+        #     --terragrunt-non-interactive
 
 
 
