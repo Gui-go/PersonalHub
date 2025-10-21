@@ -43,6 +43,9 @@ jobs:
       - name: Interact with Terragrunt
         run: terragrunt --version
 
+      - name: Print!!!
+        run: echo ${{ env.WORKING_DIRECTORY }}
+
       - name: Terragrunt Init
         # run: terragrunt run-all init --terragrunt-non-interactive
         run: |
