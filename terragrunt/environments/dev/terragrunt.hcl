@@ -6,7 +6,7 @@ locals {
 remote_state {
   backend = "gcs"
   config = {
-    bucket   = "personalhub18gcs4state"
+    bucket   = "personalhub19gcs4state"
     prefix   = "terragrunt/${path_relative_to_include()}"
     project  = local.common_vars.inputs.project_id
     location = local.common_vars.inputs.location
